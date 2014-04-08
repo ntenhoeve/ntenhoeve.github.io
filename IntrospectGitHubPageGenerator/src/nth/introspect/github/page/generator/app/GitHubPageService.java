@@ -1,12 +1,12 @@
 package nth.introspect.github.page.generator.app;
 
-import nth.introspect.github.page.generator.IndexPageGenerator;
+import nth.introspect.github.page.generator.element.page.IndexPage;
 
 
 public class GitHubPageService {
 
 	public void createPages(GitHubPageGeneratorConfig config){
-		 IndexPageGenerator indexPageGenerator=new IndexPageGenerator(config);
+		 IndexPage indexPageGenerator=new IndexPage(config);
 		 indexPageGenerator.createPageFile();
 		 
 	}

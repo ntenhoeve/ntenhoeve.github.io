@@ -1,20 +1,22 @@
-package nth.introspect.github.page.generator;
+package nth.introspect.github.page.generator.element.page;
 
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 
-public abstract class PageGenerator {
+import nth.introspect.github.page.generator.element.Element;
+
+public abstract class Page {
 
 	public abstract File getFile();
-	public abstract StringBuilder getHtml();
+	public abstract Element getElement();
 	
 	public void createPageFile() {
 		File file = getFile();
-		StringBuilder html = getHtml();
+		String html = "<!DOCTYPE html>\n"+getElement().toString();
 		try {
 			BufferedWriter out = new BufferedWriter(new FileWriter(file));
-			out.write(html.toString());
+			out.write(html);
 			out.flush();
 			out.close();
 		} catch (Exception e) {
