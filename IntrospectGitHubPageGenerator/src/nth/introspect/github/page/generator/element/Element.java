@@ -15,7 +15,7 @@ import nth.introspect.github.page.generator.element.style.StyleBuilder;
  *@Depricated Use JSoup instead
  */
 public class Element  {
-	private static final String INDENT = " ";
+	protected static final String INDENT = " ";
 	private static final String EQUALS = "=";
 	private static final String LESS_THAN = "<";
 	private static final String GREATER_THAN = ">";
@@ -27,6 +27,10 @@ public class Element  {
 	private final String name;
 	private Map<String, String> attributes;
 	private List<Element> children;
+
+	public List<Element> getChildren() {
+		return children;
+	}
 
 	public Element(ElementType elementType) {
 		this(elementType.toString().toLowerCase());

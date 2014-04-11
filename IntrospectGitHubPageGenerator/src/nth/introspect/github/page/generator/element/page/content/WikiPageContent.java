@@ -22,9 +22,9 @@ public class WikiPageContent extends Element {
 			URL url = pageDetail.getGitGubRepositoryWikiPage();
 			Document doc = Jsoup.connect(url.toExternalForm()).get();
 
-			// find div that contains the wiki page content with page
-			// references.
+			// find DIV element that contains the Wiki page content
 			Elements wikiContent = doc.select("div#wiki-content");
+
 			String html = wikiContent.toString();
 			addText(html);
 		} catch (Exception exception) {

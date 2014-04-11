@@ -5,10 +5,13 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
 
+import nth.introspect.provider.domain.info.valuemodel.annotations.OrderInForm;
+
 public class GitHubPageGeneratorConfig {
 	private URL gitHubRepository;
 	private File htmlFileDestination;
 
+	@OrderInForm(1)
 	public URL getGitHubRepository() {
 		return gitHubRepository;
 	}
@@ -17,6 +20,7 @@ public class GitHubPageGeneratorConfig {
 		this.gitHubRepository = gitHubRepository;
 	}
 
+	@OrderInForm(2)
 	public File getHtmlFileDestination() {
 		return htmlFileDestination;
 	}
