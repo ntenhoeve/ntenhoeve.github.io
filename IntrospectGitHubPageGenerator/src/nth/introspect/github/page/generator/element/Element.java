@@ -7,19 +7,26 @@ import java.util.Map;
 
 import nth.introspect.github.page.generator.element.style.StyleBuilder;
 
-public class Element {
+
+
+/**
+ * Simple implementation of a HTML element.<br>
+ * @author nilsth
+ *@Depricated Use JSoup instead
+ */
+public class Element  {
 	private static final String INDENT = " ";
 	private static final String EQUALS = "=";
 	private static final String LESS_THAN = "<";
 	private static final String GREATER_THAN = ">";
 	private static final Object QUOTE = "\"";
 	private static final Object SLASH = "/";
-	private static final Object NEW_LINE = "\n";
+	protected static final Object NEW_LINE = "\n";
+
 	public static final Element TABLE = null;
 	private final String name;
-	private String text;
 	private Map<String, String> attributes;
-	private List<Element> elements;
+	private List<Element> children;
 
 	public Element(ElementType elementType) {
 		this(elementType.toString().toLowerCase());
@@ -28,11 +35,7 @@ public class Element {
 	public Element(String name) {
 		this.name = name;
 		attributes = new HashMap<>();
-		elements = new ArrayList<>();
-	}
-
-	public void setText(String text) {
-		this.text = text;
+		children = new ArrayList<>();
 	}
 
 	public void addAttribute(AttributeType attributeType, String value) {
@@ -51,12 +54,12 @@ public class Element {
 
 	
 	public void addElement(Element child) {
-		elements.add(child);
+		children.add(child);
 	}
 
 	public Element addElement(ElementType elementType) {
 		Element element=new Element(elementType);
-		elements.add(element);
+		children.add(element);
 		return element;
 	}
 
@@ -80,11 +83,8 @@ public class Element {
 			}
 		}
 		line.append(GREATER_THAN);
-		// text
-		if (text != null && text.length() > 0) {
-			line.append(text);
-		}
-		if (elements.size() == 0) {
+		
+		if (children.size() == 0) {
 			// no children:
 			line.append(LESS_THAN);
 			line.append(SLASH);
@@ -98,7 +98,7 @@ public class Element {
 			// add begin of element line
 			lines.add(line.toString());
 			// add lines of child elements
-			for (Element child : elements) {
+			for (Element child : children) {
 				List<String> childLines = child.print();
 				for (String childLine : childLines) {
 					lines.add(INDENT + childLine);
@@ -115,6 +115,8 @@ public class Element {
 		return lines;
 	}
 
+	
+
 	@Override
 	public String toString() {
 		List<String> lines = print();
@@ -125,5 +127,10 @@ public class Element {
 		}
 		return result.toString();
 	}
+
+	public void addText(String textBlock) {
+		addElement(new TextBlock(textBlock));
+	}
+
 
 }

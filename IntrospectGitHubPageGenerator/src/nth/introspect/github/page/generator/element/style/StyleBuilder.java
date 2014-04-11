@@ -13,8 +13,8 @@ public class StyleBuilder {
 		return stringBuilder.toString();
 	}
 
-	public StyleBuilder backGroundColor(HtmlColor darkGray) {
-		append("background-color", darkGray.getColorCode());
+	public StyleBuilder backGroundColor(HtmlColor color) {
+		append("background-color", color.getColorCode());
 		return this;
 	}
 
@@ -117,6 +117,11 @@ public class StyleBuilder {
 
 	public StyleBuilder marginBottom(String distance) {
 		append("margin-bottom", distance);
+		return this;
+	}
+
+	public StyleBuilder cursor(String cursorType) {
+		append("cursor", cursorType);
 		return this;
 	}
 

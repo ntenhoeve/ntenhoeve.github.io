@@ -1,19 +1,20 @@
 package nth.introspect.github.page.generator.app;
 
 import java.io.File;
+import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
 
 public class GitHubPageGeneratorConfig {
-	private URL urlGitHubRepositorySource;
+	private URL gitHubRepository;
 	private File htmlFileDestination;
 
-	public URL getUrlGitHubRepositorySource() {
-		return urlGitHubRepositorySource;
+	public URL getGitHubRepository() {
+		return gitHubRepository;
 	}
 
-	public void setUrlGitHubRepositorySource(URL urlGitHubRepositorySource) {
-		this.urlGitHubRepositorySource = urlGitHubRepositorySource;
+	public void setGitHubRepository(URL gitHubRepository) {
+		this.gitHubRepository = gitHubRepository;
 	}
 
 	public File getHtmlFileDestination() {
@@ -22,6 +23,28 @@ public class GitHubPageGeneratorConfig {
 
 	public void setHtmlFileDestination(File htmlFileDestination) {
 		this.htmlFileDestination = htmlFileDestination;
+	}
+
+	public URL getGitHubRepositoryWikiHome() {
+		try {
+			URL gitHubRepositoryWikiHome = new URL(gitHubRepository.toString()
+					+ "/wiki");
+			return gitHubRepositoryWikiHome;
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public URL getGitHubRepositoryWikiPages() {
+		try {
+			URL gitHubRepositoryWikiPages = new URL(gitHubRepository.toString()
+					+ "/wiki");
+			return gitHubRepositoryWikiPages;
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }
