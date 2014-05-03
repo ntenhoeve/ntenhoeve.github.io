@@ -1,9 +1,12 @@
-﻿<!DOCTYPE html>
-<html>
-
-  <head>
-  </head>
-    Hello world
-  <body>
-  </body>
-</html>
+<!DOCTYPE html>
+<head>
+ <script type="text/javascript">
+  function redirect() {
+  if (window.innerWidth <= 1024) {
+    window.location.replace('http://ntenhoeve.github.io/small/Index.html');
+  } else {
+    alert('wide');
+  }}
+ </script>
+</head>
+<body onload="redirect();"></body>
