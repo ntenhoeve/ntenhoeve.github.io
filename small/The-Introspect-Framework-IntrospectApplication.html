@@ -4,7 +4,7 @@
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"></meta>
   <meta content="width=device-width, initial-scale=1" name="viewport"></meta>
   <title>
-   Getting Started
+   The Introspect Framework-IntrospectApplication
   </title>
  </head>
  <body>
@@ -13,7 +13,7 @@
     Introspect-Framework
    </h1>
    <div id="buttonBar" style="position:absolute;bottom:0;right:9px;width:110px;">
-    <a href="http://ntenhoeve.github.io/small/Getting-Started-Integrated-Development-EnvironmentIDE.html">
+    <a href="http://ntenhoeve.github.io/small/The-Introspect-Framework-Initializing-the-framework.html">
      <div title="Next page" style="float:right;background-color:#909090;width:25px;height:25px;margin-bottom:5px;-webkit-border-radius:5px;-khtml-border-radius:5px;-moz-border-radius:5px;-ms-border-radius:5px;-o-border-radius:5px;border-radius:5px;color:#FFFFFF;font-family:'Arial Black';font-size:18px;text-align:center;cursor:pointer;margin-right:10px;">
       &gt;
      </div>
@@ -23,7 +23,7 @@
       ^
      </div>
     </a>
-    <a href="http://ntenhoeve.github.io/small/Provider-Layer-LanguageProvider.html">
+    <a href="http://ntenhoeve.github.io/small/The-Introspect-Framework-IntrospectFramework.html">
      <div title="Previous page" style="float:right;background-color:#909090;width:25px;height:25px;margin-bottom:5px;-webkit-border-radius:5px;-khtml-border-radius:5px;-moz-border-radius:5px;-ms-border-radius:5px;-o-border-radius:5px;border-radius:5px;color:#FFFFFF;font-family:'Arial Black';font-size:18px;text-align:center;cursor:pointer;margin-right:10px;">
       &lt;
      </div>
@@ -36,83 +36,117 @@
      <div id="content" style="background-color:#F0F0F0;padding:7px;-webkit-border-radius:10px;-khtml-border-radius:10px;-moz-border-radius:10px;-ms-border-radius:10px;-o-border-radius:10px;border-radius:10px;">
       <div>
        <h1>
-        Getting Started
+        The Introspect Framework
        </h1>
-       This section is a how-to guide and explains all you need to know to create and deploy your own applications.
+       An Introspect Application class 
+       basically provides all the information needed (configu
+       ration) to start the 
+       <a>
+        Introspect
+       </a>
+       <a>
+        Framework
+       </a>
+        class
+       .
+       <br>
+       <br>
+       The Introspect Framework 
+       favours
+        configuration by code over configuration by configuration files 
+       (see 
+       <a href="http://www.martinfowler.com/articles/injection.html">
+        “Code or configuration files”
+       </a>
+        chapter in Martin Fowlers article for the arguments why). Configuring the 
+       Introspect Framework configuration is done by implementing the 
+       IntrospectApplication
+        interface. If you 
+       favour
+        to use configuration files, it should not be difficult to 
+       write an application class that implement the 
+       IntrospectApplication
+        interface which gets the information from a configuration file.
+       <br>
+       <br>
+       An 
+       Introspect
+       Application
+        class
+        
+       serves several purposes:
        <br>
        <br>
        <ul>
         <li>
-         <a href="C:\Users\nilsth\My Git\ntenhoeve.github.io\small/Getting-Started-Integrated-Development-EnvironmentIDE.html">
-          Integrated Development Environment(IDE) 
+         It provides the name, description and an optional icon of the application. 
+         See section 
+         <a>
+          Object 
+         </a>
+         <a>
+          Behavior
          </a>
         </li>
         <li>
-         <a href="C:\Users\nilsth\My Git\ntenhoeve.github.io\small/Getting-Started-Create-your-domain-objects.html">
-          Create your domain object's 
+         It provides the 
+         classes that are used in the different layers of the application. The 
+         <a>
+          IntrospectFramework
+         </a>
+          class needs these classes so that it knows what objects need to be created
+         . 
+         See section 
+         <a>
+          initia
+         </a>
+         <a>
+          lizing the introspect framework
+         </a>
+         . Classes that need to be provided by the 
+         IntrospectApplication
+          are:
+        </li>
+        <li>
+         <a>
+          The user interface cla
+         </a>
+         <a>
+          s
+         </a>
+         <a>
+          s
          </a>
         </li>
         <li>
-         <a href="C:\Users\nilsth\My Git\ntenhoeve.github.io\small/Getting-Started-Creating-your-Introspect-application.html">
-          Creating your Introspect application
+         <a>
+          Service classes
          </a>
         </li>
         <li>
-         <a href="C:\Users\nilsth\My Git\ntenhoeve.github.io\small/Getting-Started-Create-a-command-line-application.html">
-           Create a command line application
+         <a>
+          Infrastructure classes
          </a>
         </li>
         <li>
-         <a href="C:\Users\nilsth\My Git\ntenhoeve.github.io\small/Getting-Started-Create-a-desktop-application.html">
-          Create a desktop application 
+         <a>
+          Provider classes
          </a>
         </li>
         <li>
-         <a href="C:\Users\nilsth\My Git\ntenhoeve.github.io\small/Getting-Started-Create-a-mobile-application.html">
-          Create a mobile application 
-         </a>
+         In some cases the application class needs to extend a class of the user interface framework that is being used in the background:
         </li>
         <li>
-         <a href="C:\Users\nilsth\My Git\ntenhoeve.github.io\small/Getting-Started-Create-a-web-application.html">
-          Create a web application 
-         </a>
+         For mobile applications (Android) the application class needs to extend ....!!!
         </li>
         <li>
-         <a href="C:\Users\nilsth\My Git\ntenhoeve.github.io\small/Getting-Started-Create-a-soap-application.html">
-          Create a soap application 
-         </a>
-        </li>
-        <li>
-         <a href="C:\Users\nilsth\My Git\ntenhoeve.github.io\small/Getting-Started-Create-a-restfull-XML-application.html">
-          Create a restfull XML application 
-         </a>
-        </li>
-        <li>
-         <a href="C:\Users\nilsth\My Git\ntenhoeve.github.io\small/Getting-Started-Icons.html">
-          Icons 
-         </a>
-        </li>
-        <li>
-         <a href="C:\Users\nilsth\My Git\ntenhoeve.github.io\small/Getting-Started-Language.html">
-          Language 
-         </a>
-        </li>
-        <li>
-         <a href="C:\Users\nilsth\My Git\ntenhoeve.github.io\small/Getting-Started-Validation.html">
-          Validation 
-         </a>
-        </li>
-        <li>
-         <a href="C:\Users\nilsth\My Git\ntenhoeve.github.io\small/Getting-Started-Authorization.html">
-          Authorization 
-         </a>
-        </li>
-        <li>
-         <a href="C:\Users\nilsth\My Git\ntenhoeve.github.io\small/Getting-Started-Reports.html">
-          Reports
-         </a>
+         For web applications (
+         Vaadin
+         ) the application class needs to extend ....!!!
         </li>
        </ul>
+       <br>
+       <br>
       </div>
      </div>
     </td>

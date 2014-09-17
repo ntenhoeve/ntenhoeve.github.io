@@ -4,7 +4,7 @@
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"></meta>
   <meta content="width=device-width, initial-scale=1" name="viewport"></meta>
   <title>
-   Adding object behaviour-MultiLanguage
+   Service Layer
   </title>
  </head>
  <body>
@@ -13,7 +13,7 @@
     Introspect-Framework
    </h1>
    <div id="buttonBar" style="position:absolute;bottom:0;right:9px;width:110px;">
-    <a href="http://ntenhoeve.github.io/small/Infrastructure-Layer.html">
+    <a href="http://ntenhoeve.github.io/small/Service-Layer-Service-Objects.html">
      <div title="Next page" style="float:right;background-color:#909090;width:25px;height:25px;margin-bottom:5px;-webkit-border-radius:5px;-khtml-border-radius:5px;-moz-border-radius:5px;-ms-border-radius:5px;-o-border-radius:5px;border-radius:5px;color:#FFFFFF;font-family:'Arial Black';font-size:18px;text-align:center;cursor:pointer;margin-right:10px;">
       &gt;
      </div>
@@ -23,7 +23,7 @@
       ^
      </div>
     </a>
-    <a href="http://ntenhoeve.github.io/small/Adding-object-behaviour-Validation.html">
+    <a href="http://ntenhoeve.github.io/small/Domain-Layer-Domain-Object-Methods-Actions.html">
      <div title="Previous page" style="float:right;background-color:#909090;width:25px;height:25px;margin-bottom:5px;-webkit-border-radius:5px;-khtml-border-radius:5px;-moz-border-radius:5px;-ms-border-radius:5px;-o-border-radius:5px;border-radius:5px;color:#FFFFFF;font-family:'Arial Black';font-size:18px;text-align:center;cursor:pointer;margin-right:10px;">
       &lt;
      </div>
@@ -36,18 +36,29 @@
      <div id="content" style="background-color:#F0F0F0;padding:7px;-webkit-border-radius:10px;-khtml-border-radius:10px;-moz-border-radius:10px;-ms-border-radius:10px;-o-border-radius:10px;border-radius:10px;">
       <div>
        <h1>
-        Adding object behaviour
+        Service Layer
        </h1>
-       Sometimes applications need to support multiple languages. There is as separate section on Multilanguage (see 
-       <a>
-        LanguageProvider
+       The service layer is also known as application layer.
+       <br>
+       It defines the jobs the software is supposed to do and directs the expressive domain objects to work out problems. The tasks this layer is responsible for are meaningful to the business or necessary for interaction with the application layers of other systems. This layer is kept thin (see Martin Fowlers article on 
+       <a href="http://martinfowler.com/bliki/AnemicDomainModel.html">
+        Anemic
        </a>
-       )
+       <a href="http://martinfowler.com/bliki/AnemicDomainModel.html">
+         Domain Model
+       </a>
+        on why the service layer should be thin). It does 
+       not contain business rules or knowledge, but only coordinates tasks and delegates work to collaborations of domain objects in the next layer down. It does not have state reflecting the
        <br>
+       business situation, but it can have state that reflects the progress of a task for the user or the program.
        <br>
-       <br>
-       <br>
-       <br>
+       <ul>
+        <li>
+         <a href="C:\Users\nilsth\My Git\ntenhoeve.github.io\small/Service-Layer-Service-Objects.html">
+          Service Objects
+         </a>
+        </li>
+       </ul>
       </div>
      </div>
     </td>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html style="background-color:#0F0F0F;">
+ <head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"></meta>
+  <meta content="width=device-width, initial-scale=1" name="viewport"></meta>
+  <title>
+   Domain Layer-Domain Object Methods (Actions)
+  </title>
+ </head>
+ <body>
+  <div id="titleBar" style="position:fixed;top:0;width:100%;height:100px;background-color:#0F0F0F;">
+   <h1 title="Introspect-Framework" style="color:#F0F0F0;" align="center">
+    Introspect-Framework
+   </h1>
+   <div id="buttonBar" style="position:absolute;bottom:0;right:9px;width:110px;">
+    <a href="http://ntenhoeve.github.io/small/Service-Layer.html">
+     <div title="Next page" style="float:right;background-color:#909090;width:25px;height:25px;margin-bottom:5px;-webkit-border-radius:5px;-khtml-border-radius:5px;-moz-border-radius:5px;-ms-border-radius:5px;-o-border-radius:5px;border-radius:5px;color:#FFFFFF;font-family:'Arial Black';font-size:18px;text-align:center;cursor:pointer;margin-right:10px;">
+      &gt;
+     </div>
+    </a>
+    <a href="http://ntenhoeve.github.io/small/Home.html">
+     <div title="Home page" style="float:right;background-color:#909090;width:25px;height:25px;margin-bottom:5px;-webkit-border-radius:5px;-khtml-border-radius:5px;-moz-border-radius:5px;-ms-border-radius:5px;-o-border-radius:5px;border-radius:5px;color:#FFFFFF;font-family:'Arial Black';font-size:18px;text-align:center;cursor:pointer;margin-right:10px;">
+      ^
+     </div>
+    </a>
+    <a href="http://ntenhoeve.github.io/small/Domain-Layer-Property-Types.html">
+     <div title="Previous page" style="float:right;background-color:#909090;width:25px;height:25px;margin-bottom:5px;-webkit-border-radius:5px;-khtml-border-radius:5px;-moz-border-radius:5px;-ms-border-radius:5px;-o-border-radius:5px;border-radius:5px;color:#FFFFFF;font-family:'Arial Black';font-size:18px;text-align:center;cursor:pointer;margin-right:10px;">
+      &lt;
+     </div>
+    </a>
+   </div>
+  </div>
+  <table style="margin-top:100px;width:100%;">
+   <tr>
+    <td style="width:100%;vertical-align:top;">
+     <div id="content" style="background-color:#F0F0F0;padding:7px;-webkit-border-radius:10px;-khtml-border-radius:10px;-moz-border-radius:10px;-ms-border-radius:10px;-o-border-radius:10px;border-radius:10px;">
+      <div>
+       <h1>
+        Domain Layer
+       </h1>
+       An action is a method that is intended to be invoked by a user - though it may also be invoked programmatically from within another method or another object.
+       <br>
+       <br>
+       For example:
+       <br>
+       <ul>
+        <li>
+         An Order class may have an action method 
+         addOrderLine
+         (
+         OrderLine
+          
+         orderLine
+         )
+        </li>
+        <li>
+         An 
+         OrderService
+          May have an action method 
+         findOrdersOfCustommer
+         (Customer customer)
+        </li>
+       </ul>
+       <br>
+       By default, any public instance method that you add to a class (whether it is a domain class or a service) will be treated as a user action, provided that it c
+       o
+       mplies with the
+        following:
+       <br>
+       <ul>
+        <li>
+         T
+         he method has no or one parameter. If it has a parameter it needs to be of a type that is recognized by the Introspect framework
+        </li>
+        <li>
+         Its return type (if any) are types recognized by the Introspect framework.
+        </li>
+       </ul>
+       <br>
+       A method will also not be treated as an action if it represents a property or another recognized method. Note also that static methods are ignored by the Introspect framework.
+       <br>
+       <br>
+       If you have a method that you don't want to be made available as a user-action 
+       you should either:
+       <br>
+       <ul>
+        <li>
+         G
+         ive it a non-public 
+         (private) 
+         access modifier
+        </li>
+        <li>
+         Mark it with the 
+         V
+         isible
+         I
+         n
+         F
+         orm
+          and/or 
+         V
+         isible
+         I
+         n
+         T
+         able
+          attribute with value false
+        </li>
+        <li>
+         Mark it with the 
+         E
+         nabled attribute with value false
+        </li>
+       </ul>
+       <br>
+       You can specify certain things about both the behavior and presentation of actions by adding specific attributes o
+       r methods. See 
+       <a>
+        object behavior
+       </a>
+       <br>
+       <br>
+       <br>
+       <br>
+      </div>
+     </div>
+    </td>
+   </tr>
+  </table>
+ </body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html style="background-color:#0F0F0F;">
+ <head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"></meta>
+  <meta content="width=device-width, initial-scale=1" name="viewport"></meta>
+  <title>
+   The Introspect Framework-Architecture of an introspect application
+  </title>
+ </head>
+ <body>
+  <div id="titleBar" style="position:fixed;top:0;width:100%;height:100px;background-color:#0F0F0F;">
+   <h1 title="Introspect-Framework" style="color:#F0F0F0;" align="center">
+    Introspect-Framework
+   </h1>
+   <div id="buttonBar" style="position:absolute;bottom:0;right:9px;width:110px;">
+    <a href="http://ntenhoeve.github.io/small/The-Introspect-Framework-IntrospectFramework.html">
+     <div title="Next page" style="float:right;background-color:#909090;width:25px;height:25px;margin-bottom:5px;-webkit-border-radius:5px;-khtml-border-radius:5px;-moz-border-radius:5px;-ms-border-radius:5px;-o-border-radius:5px;border-radius:5px;color:#FFFFFF;font-family:'Arial Black';font-size:18px;text-align:center;cursor:pointer;margin-right:10px;">
+      &gt;
+     </div>
+    </a>
+    <a href="http://ntenhoeve.github.io/small/Home.html">
+     <div title="Home page" style="float:right;background-color:#909090;width:25px;height:25px;margin-bottom:5px;-webkit-border-radius:5px;-khtml-border-radius:5px;-moz-border-radius:5px;-ms-border-radius:5px;-o-border-radius:5px;border-radius:5px;color:#FFFFFF;font-family:'Arial Black';font-size:18px;text-align:center;cursor:pointer;margin-right:10px;">
+      ^
+     </div>
+    </a>
+    <a href="http://ntenhoeve.github.io/small/The-Introspect-Framework-Introspect-Licence.html">
+     <div title="Previous page" style="float:right;background-color:#909090;width:25px;height:25px;margin-bottom:5px;-webkit-border-radius:5px;-khtml-border-radius:5px;-moz-border-radius:5px;-ms-border-radius:5px;-o-border-radius:5px;border-radius:5px;color:#FFFFFF;font-family:'Arial Black';font-size:18px;text-align:center;cursor:pointer;margin-right:10px;">
+      &lt;
+     </div>
+    </a>
+   </div>
+  </div>
+  <table style="margin-top:100px;width:100%;">
+   <tr>
+    <td style="width:100%;vertical-align:top;">
+     <div id="content" style="background-color:#F0F0F0;padding:7px;-webkit-border-radius:10px;-khtml-border-radius:10px;-moz-border-radius:10px;-ms-border-radius:10px;-o-border-radius:10px;border-radius:10px;">
+      <div>
+       <h1>
+        The Introspect Framework
+       </h1>
+       The Introspect Framework helps you to create a 
+       <a href="http://en.wikipedia.org/wiki/Multilayered_architecture">
+        multi layer
+       </a>
+       <a href="http://en.wikipedia.org/wiki/Multilayered_architecture">
+        ed
+       </a>
+       <a href="http://en.wikipedia.org/wiki/Multilayered_architecture">
+         architecture
+       </a>
+        for your application. A multi layer architecture has several 
+       <a href="http://martinfowler.com/bliki/LayeringPrinciples.html">
+        design principles
+       </a>
+       :
+       <br>
+       <ul>
+        <li>
+         Separation of concerns (separate responsibilities within the application into different layers).
+        </li>
+        <li>
+         Low coupling between layers, high cohesion within them.
+        </li>
+        <li>
+         User interface modules should contain no business logic.
+        </li>
+        <li>
+         Layers should be testable individual. 
+        </li>
+        <li>
+         Business logic layers contain no user interface and don't refer to user interface modules.
+        </li>
+        <li>
+         No circular references between layers. 
+        </li>
+        <li>
+         Business layer only uses abstractions of technological services. 
+        </li>
+        <li>
+         Lower layers should not depend on upper layers. 
+        </li>
+        <li>
+         Layers should be shy about their internals. 
+        </li>
+        <li>
+         Layers may share infrastructural aspects (
+         eg
+          security) 
+        </li>
+        <li>
+         Inbound external interface modules (
+         eg
+          web service handlers) should not contain business logic. 
+        </li>
+       </ul>
+       <br>
+       These multi layer architecture design principles try to prevent 
+       <a href="http://en.wikipedia.org/wiki/Spaghetti_code">
+        spaghetti code
+       </a>
+       , which is hard to extend, hard to trouble shoot, hard to test, and hard to keep 
+       <a href="http://en.wikipedia.org/wiki/Software_bug">
+        bug
+       </a>
+        free.
+       <br>
+       <br>
+       There are many different opinions on how a multi layered architecture 
+       <a href="https://www.google.nl/search?q=layered+architecture&tbm=isch">
+        should look like
+       </a>
+       . It really doesn’t matter what it should look like, as long as your multi layered architecture complies with the design principles above. Below you will find one representation of a multi tier application, to explain how a application with the introspect application could (/should) look like. 
+       <br>
+       <br>
+       <br>
+       <br>
+       <br>
+       Red objects are provided by the Introspect framework
+       <br>
+       Yellow objects need to be written or included by the developer.
+       <br>
+       <br>
+       These layers are explained in the following chapters. Please read Eric Evans brilliant book Domain Driven Design. In his book he explains (among other things) the well accepted concept of domain objects being the core layer of an application and the functions of the other layers.
+       <br>
+       <br>
+       <br>
+       The Introspect Framework has 2 additional objects that do not fit in any of these layers.
+       <br>
+       <ul>
+        <li>
+         IntrospectFramework
+          object
+         , which is basically a dependency injection container that creates, links and holds references to all the objects above
+        </li>
+        <li>
+         IntrospectApplication
+          object
+         , provides all the information needed to initialize the Introspect Framework object
+        </li>
+       </ul>
+      </div>
+     </div>
+    </td>
+   </tr>
+  </table>
+ </body>
+</html>
