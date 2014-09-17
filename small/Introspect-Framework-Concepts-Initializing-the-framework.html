@@ -23,7 +23,7 @@
       ^
      </div>
     </a>
-    <a href="http://ntenhoeve.github.io/small/Introspect-Framework-Concepts-The-Introspect-class.html">
+    <a href="http://ntenhoeve.github.io/small/Introspect-Framework-Concepts-IntrospectApplication.html">
      <div title="Previous page" style="float:right;background-color:#909090;width:25px;height:25px;margin-bottom:5px;-webkit-border-radius:5px;-khtml-border-radius:5px;-moz-border-radius:5px;-ms-border-radius:5px;-o-border-radius:5px;border-radius:5px;color:#FFFFFF;font-family:'Arial Black';font-size:18px;text-align:center;cursor:pointer;margin-right:10px;">
       &lt;
      </div>
@@ -39,102 +39,104 @@
         Introspect Framework Concepts
        </h1>
        The 
-       Introspect
-        class
+       [
+       Introspect class
+       ] (
+       todo
+        link)
+        (framework)
         
-       needs to be initialized before it can be used. This is done once using 
-       the 
-       IntrospectInitializer
-        interface.
-        This interface basically provides the implementations of the different 
-       <a>
-        provider
-       </a>
-        interfaces. 
-        
-       <br>
-       <br>
-       You can choose to implement this interface your sel
-       f
-       , but t
-       o make things easy, 
-       you can 
-       also 
-       choose to use one of the default implementations of the 
-       IntrospectInitializer
-        interface
-        depending on the type of application you are writing:
-       <br>
-       <ul>
-        <li>
-         A command line application (
-         CommandLineIntrospectInitializer
-         )
-        </li>
-        <li>
-         A desktop application  (
-         SwingIntrospectInitializer
-         )
-        </li>
-        <li>
-         A mobile application (
-         AndroidIntrospectInitializer
-         )
-        </li>
-        <li>
-         A web application (
-         VaadinIntrospectInitializer
-         )
-        </li>
-        <li>
-         A command line application (
-         CommandLineUserInterfaceProvider
-         )
-        </li>
-        <li>
-         A desktop application  (
-         SwingUserInterfaceProvider
-         )
-        </li>
-        <li>
-         A mobile application (
-         AndroidUserInterface
-         )
-        </li>
-        <li>
-         A web application (
-         VaadinUserInterface
-         )
-        </li>
-       </ul>
-       <br>
-       Steps to initialize the 
-       introspect framework/ your application
+       needs to be initialized before it can be used. This is done once using an [
+       IntrospectApplication
+        class]
+        (
+       todo
+        link)
        .
        <br>
+       <br>
+       You can choose to implement this interface yourself, but to make things easy, you can also choose to extend one of the default implementations of the application interface depending on the type 
+       of application you are writing:
+       <br>
        <ul>
         <li>
-         Choose the 
-         IntrospectInitializer
-          
-         implementation you need.
+         A command line application (
+         IntrospectCommandLineApplication
+         )
         </li>
         <li>
-         <a>
-          service objects
-         </a>
-         .
+         A desktop application (
+         IntrospectSwingApplication
+         )
         </li>
         <li>
-         Initialize the introspect framework with the 
-         Introspect.initialize
-         (
-         yourIntrospectInitializer
+         A mobile application (
+         IntrospectAndroidApplication
+         )
+        </li>
+        <li>
+         A web application (
+         IntrospectVaadinApplication
          )
         </li>
        </ul>
        <br>
-       code example of a swing application
+       These default application classes implement the get
+       …
+       Provider methods of the 
+       [
+       IntrospectApplication
+        
+        so that the correct provider implementations are given for the application type they represent.
+       <br>
+       <br>
+       Steps to initialize the introspect framework/ your application:
+       <br>
+       <br>
+       Create an application class by extending one of the default application class (or by doing it the hard way by implementing the full 
+       [
+       IntrospectApplication
+       ]
+        
+       interface your
+       self)
+       <br>
+       <br>
+       Implement the remaining 
+       getFrontEndServiceClasses
+       () and 
+       getBackEndServiceClasses
+       () methods to provide the [service object types]. Note that service classes can only be registere
+       d as 
+       <a>
+        front end service objects
+       </a>
+        (with action methods that are
+        accessible to the user) or as 
+       <a>
+        back end service objects
+       </a>
+        (with methods not visible to the user) but not as both!
+       <br>
+       <br>
+       Initialize the introspect framework with the 
+       Introspect.initialize
+       (
+       yourApplication
+        Instance)
+       <br>
+       change to: new 
+       IntrospectFramework
+       (
+       yourApplicationInstance
+       )
+       <br>
+       <br>
+       AcmeeSalesApplication
+       <br>
+       <br>
+       For more examples see the [Getting started] section.
+       <br>
        <br>
       </div>
      </div>

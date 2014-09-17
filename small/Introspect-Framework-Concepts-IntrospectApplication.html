@@ -4,7 +4,7 @@
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"></meta>
   <meta content="width=device-width, initial-scale=1" name="viewport"></meta>
   <title>
-   Introspect Domain Concepts-Domain Object
+   Introspect Framework Concepts-IntrospectApplication
   </title>
  </head>
  <body>
@@ -13,7 +13,7 @@
     Introspect-Framework
    </h1>
    <div id="buttonBar" style="position:absolute;bottom:0;right:9px;width:110px;">
-    <a href="http://ntenhoeve.github.io/small/Introspect-Domain-Concepts-Domain-Object-Properties.html">
+    <a href="http://ntenhoeve.github.io/small/Introspect-Framework-Concepts-Initializing-the-framework.html">
      <div title="Next page" style="float:right;background-color:#909090;width:25px;height:25px;margin-bottom:5px;-webkit-border-radius:5px;-khtml-border-radius:5px;-moz-border-radius:5px;-ms-border-radius:5px;-o-border-radius:5px;border-radius:5px;color:#FFFFFF;font-family:'Arial Black';font-size:18px;text-align:center;cursor:pointer;margin-right:10px;">
       &gt;
      </div>
@@ -23,7 +23,7 @@
       ^
      </div>
     </a>
-    <a href="http://ntenhoeve.github.io/small/Introspect-Domain-Concepts.html">
+    <a href="http://ntenhoeve.github.io/small/Introspect-Framework-Concepts-The-Introspect-class.html">
      <div title="Previous page" style="float:right;background-color:#909090;width:25px;height:25px;margin-bottom:5px;-webkit-border-radius:5px;-khtml-border-radius:5px;-moz-border-radius:5px;-ms-border-radius:5px;-o-border-radius:5px;border-radius:5px;color:#FFFFFF;font-family:'Arial Black';font-size:18px;text-align:center;cursor:pointer;margin-right:10px;">
       &lt;
      </div>
@@ -36,46 +36,72 @@
      <div id="content" style="background-color:#F0F0F0;padding:7px;-webkit-border-radius:10px;-khtml-border-radius:10px;-moz-border-radius:10px;-ms-border-radius:10px;-o-border-radius:10px;border-radius:10px;">
       <div>
        <h1>
-        Introspect Domain Concepts
+        Introspect Framework Concepts
        </h1>
-       Domain objects represent ent
-       ities;
-        the
-        nouns of the domain
-       . If your application domain is a sales application it’s likely that your domain model contains domain objects
-        such as: customers, products and orders.
+       An Introspect Application class 
+       basically provides all the information needed (configuration) 
+       to start
+        the Introspect Framework.
        <br>
        <br>
-       Domain objects 
-       already exist in an applicat
-       ion that needs to be re-written, or 
-       are created by the developer
+       The Introspect Framework 
+       favours
+        configuration by code over configuration by configuration files 
+       (see 
+       <a href="http://www.martinfowler.com/articles/injection.html">
+        “Code or configuration files”
+       </a>
+        chapter in Martin Fowlers article for the arguments why). Configuring the 
+       Introspect Framework configuration is done by implementing the 
+       IntrospectApplication
+        interface. If you 
+       favour
+        to use configuration files, it should not be difficult to write an application class that implement the 
+       IntrospectApplication
+        interface which gets the information from a configuration file.
+       <br>
+       <br>
+       An Introspect Application class
         
-       . They can be created from scratch or generated from a schema (in example from a 
-       <a href="http://en.wikipedia.org/wiki/Database_schema">
-        database schema
-       </a>
-       , 
-       <a href="http://nl.wikipedia.org/wiki/XML_Schema">
-        XML schema
-       </a>
-        or 
-        
-       <a href="http://en.wikipedia.org/wiki/Web_Services_Description_Language">
-        web service
-       </a>
-       )
+       serves several purposes:
        <br>
        <br>
-       You can specify certain things about both the behaviour and presentation of domain objects by adding specific attributes
-        
-       or methods
-        (see chapter 
-       <a>
-        Adding object behaviour
-       </a>
-       )
-       . 
+       <ul>
+        <li>
+         It provides the name, description and an optional icon of the application. 
+         See section 
+         <a>
+          Object 
+         </a>
+         <a>
+          Behavior
+         </a>
+        </li>
+        <li>
+         It provides the information needed to initialize the Introspect framework. See section [initializing the introspect framework]:
+        </li>
+        <li>
+         [provider classes]
+        </li>
+        <li>
+         [front end service classes]
+        </li>
+        <li>
+         [back end service classes]
+        </li>
+        <li>
+         In some cases the application class needs to extend a class of the user interface framework that is being used in the background:
+        </li>
+        <li>
+         For mobile applications (Android) the application class needs to extend ....!!!
+        </li>
+        <li>
+         For web applications (
+         Vaadin
+         ) the application class needs to extend ....!!!
+        </li>
+       </ul>
+       <br>
        <br>
       </div>
      </div>

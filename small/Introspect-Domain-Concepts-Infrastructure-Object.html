@@ -4,7 +4,7 @@
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"></meta>
   <meta content="width=device-width, initial-scale=1" name="viewport"></meta>
   <title>
-   Introspect Domain Concepts-Domain Object
+   Introspect Domain Concepts-Infrastructure Object
   </title>
  </head>
  <body>
@@ -13,7 +13,7 @@
     Introspect-Framework
    </h1>
    <div id="buttonBar" style="position:absolute;bottom:0;right:9px;width:110px;">
-    <a href="http://ntenhoeve.github.io/small/Introspect-Domain-Concepts-Domain-Object-Properties.html">
+    <a href="http://ntenhoeve.github.io/small/Adding-object-behaviour.html">
      <div title="Next page" style="float:right;background-color:#909090;width:25px;height:25px;margin-bottom:5px;-webkit-border-radius:5px;-khtml-border-radius:5px;-moz-border-radius:5px;-ms-border-radius:5px;-o-border-radius:5px;border-radius:5px;color:#FFFFFF;font-family:'Arial Black';font-size:18px;text-align:center;cursor:pointer;margin-right:10px;">
       &gt;
      </div>
@@ -23,7 +23,7 @@
       ^
      </div>
     </a>
-    <a href="http://ntenhoeve.github.io/small/Introspect-Domain-Concepts.html">
+    <a href="http://ntenhoeve.github.io/small/Introspect-Domain-Concepts-Service-Objects.html">
      <div title="Previous page" style="float:right;background-color:#909090;width:25px;height:25px;margin-bottom:5px;-webkit-border-radius:5px;-khtml-border-radius:5px;-moz-border-radius:5px;-ms-border-radius:5px;-o-border-radius:5px;border-radius:5px;color:#FFFFFF;font-family:'Arial Black';font-size:18px;text-align:center;cursor:pointer;margin-right:10px;">
       &lt;
      </div>
@@ -38,44 +38,14 @@
        <h1>
         Introspect Domain Concepts
        </h1>
-       Domain objects represent ent
-       ities;
-        the
-        nouns of the domain
-       . If your application domain is a sales application it’s likely that your domain model contains domain objects
-        such as: customers, products and orders.
+       The principle of “naked objects” is that any 'Plain Old Java Object' (POJO) can function as a domain object. In other words: a service class does not have to inherit from any special class, nor implement any particular interface, nor have any specific attributes.
        <br>
        <br>
-       Domain objects 
-       already exist in an applicat
-       ion that needs to be re-written, or 
-       are created by the developer
+       Extending service classes is allowed.
+       <br>
+       <br>
+       The service class must have a public default constructor (with no arguments). This allows easy instantiation within the framework.
         
-       . They can be created from scratch or generated from a schema (in example from a 
-       <a href="http://en.wikipedia.org/wiki/Database_schema">
-        database schema
-       </a>
-       , 
-       <a href="http://nl.wikipedia.org/wiki/XML_Schema">
-        XML schema
-       </a>
-        or 
-        
-       <a href="http://en.wikipedia.org/wiki/Web_Services_Description_Language">
-        web service
-       </a>
-       )
-       <br>
-       <br>
-       You can specify certain things about both the behaviour and presentation of domain objects by adding specific attributes
-        
-       or methods
-        (see chapter 
-       <a>
-        Adding object behaviour
-       </a>
-       )
-       . 
        <br>
       </div>
      </div>

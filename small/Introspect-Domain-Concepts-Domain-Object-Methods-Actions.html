@@ -4,7 +4,7 @@
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"></meta>
   <meta content="width=device-width, initial-scale=1" name="viewport"></meta>
   <title>
-   Introspect Framework Concepts-Providers
+   Introspect Domain Concepts-Domain Object Methods (Actions)
   </title>
  </head>
  <body>
@@ -13,7 +13,7 @@
     Introspect-Framework
    </h1>
    <div id="buttonBar" style="position:absolute;bottom:0;right:9px;width:110px;">
-    <a href="http://ntenhoeve.github.io/small/Introspect-Framework-Concepts-DomainProvider.html">
+    <a href="http://ntenhoeve.github.io/small/Introspect-Domain-Concepts-Service-Objects.html">
      <div title="Next page" style="float:right;background-color:#909090;width:25px;height:25px;margin-bottom:5px;-webkit-border-radius:5px;-khtml-border-radius:5px;-moz-border-radius:5px;-ms-border-radius:5px;-o-border-radius:5px;border-radius:5px;color:#FFFFFF;font-family:'Arial Black';font-size:18px;text-align:center;cursor:pointer;margin-right:10px;">
       &gt;
      </div>
@@ -23,7 +23,7 @@
       ^
      </div>
     </a>
-    <a href="http://ntenhoeve.github.io/small/Introspect-Framework-Concepts-Initializing-the-framework.html">
+    <a href="http://ntenhoeve.github.io/small/Introspect-Domain-Concepts-Property-Types.html">
      <div title="Previous page" style="float:right;background-color:#909090;width:25px;height:25px;margin-bottom:5px;-webkit-border-radius:5px;-khtml-border-radius:5px;-moz-border-radius:5px;-ms-border-radius:5px;-o-border-radius:5px;border-radius:5px;color:#FFFFFF;font-family:'Arial Black';font-size:18px;text-align:center;cursor:pointer;margin-right:10px;">
       &lt;
      </div>
@@ -36,106 +36,91 @@
      <div id="content" style="background-color:#F0F0F0;padding:7px;-webkit-border-radius:10px;-khtml-border-radius:10px;-moz-border-radius:10px;-ms-border-radius:10px;-o-border-radius:10px;border-radius:10px;">
       <div>
        <h1>
-        Introspect Framework Concepts
+        Introspect Domain Concepts
        </h1>
-       Providers 
-       are interfaces for 
-       an specific 
-       <a href="http://en.wikipedia.org/wiki/Separation_of_concerns">
-        concern
-       </a>
-       .
-        The introspect framework 
-       distinguishes
-        the following concerns
-       / provider interfaces
-       :
+       An action is a method that is intended to be invoked by a user - though it may also be invoked programmatically from within another method or another object.
+       <br>
+       <br>
+       For example:
        <br>
        <ul>
         <li>
-         Managing the domain (
-         DomainProvider
+         An Order class may have an action method 
+         addOrderLine
+         (
+         OrderLine
+          
+         orderLine
          )
         </li>
         <li>
-         Managing validation (
-         ValidationProvider
-         )
-        </li>
-        <li>
-         Managing the user interface (
-         UserInterfaceProvider
-         )
-        </li>
-        <li>
-         Managing authorization (
-         AuthorizationProvider
-         )
-        </li>
-        <li>
-         Managing paths (
-         PathProvider
-         )
-        </li>
-        <li>
-         Managing multi languages (
-         LanguageProvider
-         )
+         An 
+         OrderService
+          May have an action method 
+         findOrdersOfCustommer
+         (Customer customer)
         </li>
        </ul>
        <br>
-       Most providers have a default implementation
-       . For example: 
-       the 
-       DomainProvider
-        interface has a 
-       DefaultDomainProvider
-        implementation
-       . 
-       <br>
-       <br>
-       Depending on the type application that you are going to write, you need to use a specific provider implementation. For example there are different implementations of the 
-       UserInterfaceProvider
-        for:
+       By default, any public instance method that you add to a class (whether it is a domain class or a service) will be treated as a user action, provided that it c
+       o
+       mplies with the
+        following:
        <br>
        <ul>
         <li>
-         A command line application (
-         CommandLineUserInterfaceProvider
-         )
+         T
+         he method has no or one parameter. If it has a parameter it needs to be of a type that is recognized by the Introspect framework
         </li>
         <li>
-         A desktop application  (
-         SwingUserInterfaceProvider
-         )
-        </li>
-        <li>
-         A mobile application (
-         AndroidUserInterface
-         )
-        </li>
-        <li>
-         A web application (
-         VaadinUserInterface
-         )
+         Its return type (if any) are types recognized by the Introspect framework.
         </li>
        </ul>
        <br>
-       You could decide to write your own implementation of a 
+       A method will also not be treated as an action if it represents a property or another recognized method. Note also that static methods are ignored by the Introspect framework.
+       <br>
+       <br>
+       If you have a method that you don't want to be made available as a user-action 
+       you should either:
+       <br>
+       <ul>
+        <li>
+         G
+         ive it a non-public 
+         (private) 
+         access modifier
+        </li>
+        <li>
+         Mark it with the 
+         V
+         isible
+         I
+         n
+         F
+         orm
+          and/or 
+         V
+         isible
+         I
+         n
+         T
+         able
+          attribute with value false
+        </li>
+        <li>
+         Mark it with the 
+         E
+         nabled attribute with value false
+        </li>
+       </ul>
+       <br>
+       You can specify certain things about both the behavior and presentation of actions by adding specific attributes o
+       r methods. See 
        <a>
-        provider
+        object behavior
        </a>
-        interface (or extend an existing implementation) and plug it into the Introspect Framework using 
-       the 
-       [
        <br>
        <br>
-       <br>
-       Introspect
-       Application
-       <br>
-        class
-       .
        <br>
       </div>
      </div>
