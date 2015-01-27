@@ -63,8 +63,11 @@
          )
         </li>
         <li>
-         Managing the user interface (
-         UserInterfaceProvider
+         Managing 
+         notifications
+          (
+         Notification
+         Provider
          )
         </li>
         <li>
@@ -95,28 +98,32 @@
        <br>
        <br>
        Depending on the type application that you are going to write, you need to use a specific provider implementation. For example there are different implementations of the 
-       UserInterfaceProvider
+       IntrospectApplication
         for:
        <br>
        <ul>
         <li>
          A command line application (
-         CommandLineUserInterfaceProvider
+         IntrospectApplicationFor
+         CommandLine
          )
         </li>
         <li>
          A desktop application  (
-         SwingUserInterfaceProvider
+         IntrospectApplicationFor
+         Swing
          )
         </li>
         <li>
          A mobile application (
-         AndroidUserInterface
+         IntrospectApplicationFor
+         Android
          )
         </li>
         <li>
          A web application (
-         VaadinUserInterface
+         IntrospectApplicationFor
+         Vaadin
          )
         </li>
        </ul>
