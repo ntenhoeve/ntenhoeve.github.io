@@ -451,12 +451,10 @@ Almost everyday new
  Any method in a <A href="#Domain Objects">DomainObject</A> or <A href="#Service Objects">ServiceObject</A> can be an
  Action method, provided that it complies with the following:
  <UL>
- <LI>The method has no parameter or a single parameter (must be a
- <A href="#Domain Objects">DomainObject</A> type).</LI>
+ <LI>The method has no parameter or a single <A href="#Domain Objects">DomainObject</A> parameter</LI>
  <LI>Its return type (if any) are types recognized by the Introspect framework
- (see below).</LI>
- <LI>The method does not represent a <A href="#Properties">DomainObjectProperty</A> (getter and
- setter methods can not be an action method).</LI>
+ (see below)</LI>
+ <LI>The method is not a getter method or a setter method (see <A href="#Properties">DomainObjectProperty</A>)</LI>
  <LI>The method is public (private methods can not be action methods)</LI>
  <LI>The method is NOT static</LI>
  </UL>
