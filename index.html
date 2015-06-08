@@ -303,38 +303,72 @@ Almost everyday new
 
  Domain objects represent entities; the nouns of the domain. If your
  application domain is a sales application it&#8217;s likely that your domain model
- contains domain objects such as: customers, products and orders.
- 
- Domain objects are created by a developer or are reused from an existing application that needs to be
- re-written. They can be created from scratch or generated from a schema (in example from a <A href="http://en.wikipedia.org/wiki/Database_schema">database schema</A>, <A href="http://nl.wikipedia.org/wiki/XML_Schema">XML schema</A> or
- <A href="http://en.wikipedia.org/wiki/Web_Services_Description_Language">web service</A>)<BR>
+ contains domain objects such as: customers, products and orders. <BR>
+ <BR>
+ Domain objects are created by a developer or are reused from an existing
+ application that needs to be re-written. They can be created from scratch or
+ generated from a schema (in example from a <A href="http://en.wikipedia.org/wiki/Database_schema">database schema</A>, <A href="http://nl.wikipedia.org/wiki/XML_Schema">XML schema</A> or <A href="http://en.wikipedia.org/wiki/Web_Services_Description_Language">web
+ service</A>)<BR>
  <BR>
  Domain objects contain:
  <UL>
  <LI><A href="http://en.wikipedia.org/wiki/Property_(programming)">Properties</A>:
  that represent specific information within a <A href="#Domain Objects">DomainObject</A></LI>
- <LI>Methods: that either represent <A href="#Action Methods">ActionMethod</A>s or define <A href="#Object behavior">ObjectBehavior</A></LI>
+ <LI>Methods: that either represent a <A href="#Action Methods">DomainObjectActionMethod</A>s or
+ define <A href="#Object behavior">ObjectBehavior</A></LI>
  <LI>Annotations: that define <A href="#Object behavior">ObjectBehavior</A></LI>
  </UL>
  
- <H3>Naming</H3>
- Domain objects names are nouns, such as customer, product and order. They basically describe the things that are important in your application.
+ <H3>Naming</H3> Domain objects names are nouns, such as customer, product and
+ order. They basically describe the things that are important in your
+ application.
  
- <H3>Construction</H3>
- The principle of &#8220;naked objects&#8221; is that any <A href="http://en.wikipedia.org/wiki/Plain_Old_Java_Object">'Plain Old Java Object' (POJO)</A> can function as a domain object. In other words: a domain class does not have to inherit from any special class, nor implement any particular interface, nor have any specific attributes.
- TODO domain objects are created by ....
- TODO adding references to <A href="#Infrastructure Objects">InfrastructureObject</A>s or <A>Provider</A> objects
-
- <H3>Presentation</H3>
- An Introspect Interface can display domain objects in 3 ways:<BR>
+ <H3>Construction</H3> The principle of &#8220;naked objects&#8221; is that any <A href="http://en.wikipedia.org/wiki/Plain_Old_Java_Object">'Plain Old Java
+ Object' (POJO)</A> can function as a domain object. In other words: a domain
+ class does not have to inherit from any special class, nor implement any
+ particular interface, nor have any specific attributes.
+ 
+ <A href="#Domain Objects">DomainObject</A>s can be created by different objects: By a
+ <A>ServiceObjectActionMethod</A> such as CustomerService.createNewCustomer()
+ By a <A href="#Action Methods">DomainObjectActionMethod</A> such as
+ ShoppingCart.lineItemCreate(LineItem lineItem) By a <A>DomainContainer</A>
+ such as domainContainer.getObject(Customer.class) By a
+ <A href="#Infrastructure Objects">InfrastructureObject</A> method such as OrderRepository.allOpenOrders()
+ or ShoppingCartFactory.createForCustomer(Customer customer). <BR>
+ <BR>
+ There are 2 ways to create new <A href="#Domain Objects">DomainObject</A>s:
  <UL>
- <LI>Domain object as form:<BR><IMG src="ObjectAsForm.png"></LI>
- <LI>Domain object as a field in a form:<BR><IMG src="ObjectAsField.png"></LI>
- <LI>Domain object as a row in a table:<BR><IMG src="ObjectAsTable.png"></LI>
+ <LI>Creating a new <A href="#Domain Objects">DomainObject</A> with the new keyword:<BR>
+ In example: Order order=new OrderLine()</LI>
+ <LI>Creating a domain object using Dependency Injection:<BR>
+ Sometime you want a new <A href="#Domain Objects">DomainObject</A> to have references to other
+ objects (being other <A href="#Domain Objects">DomainObject</A>s, <A href="#Infrastructure Objects">InfrastructureObject</A>s or
+ <A>Provider</A>Objects). In example: A Customer object needs a references to a
+ ShoppingCartFactory. The Customer object can therefore be created by the
+ <A>DomainContainer</A> with Customer customer=(Customer)
+ domainContainer.getObject(Customer.class). The ShopingCart object will automatically be injected as a constructor parameter of the Customer class. In order to create <A href="#Domain Objects">DomainObject</A>s using dependency injection you need to:</LI>
+ <UL>
+ <LI>Override the <A href="#The Introspect Application">IntrospectApplication.getDomainClasses()</A> method and
+ return a list of <A href="#Domain Objects">DomainObject</A>s that need to be created using
+ Dependency Injection</LI>
+ <LI>The object that creates the Customer objects needs to have a reference to
+ the <A>DomainContainer</A>. A CustomerService object can get a reference to
+ the <A>DomainContainer</A> when it is created by the
+ <A>ServiceContainer</A> (which is done by the <A href="#The Introspect Framework">IntrospectFramework</A>)</LI></UL></UL>
+ 
+ 
+ <H3>Presentation</H3> An <A>UserInterfaceController</A> can display domain objects in 3
+ ways:<BR>
+ <UL>
+ <LI>Domain object as form:<BR>
+ <IMG src="ObjectAsForm.png"></LI>
+ <LI>Domain object as a field in a form:<BR>
+ <IMG src="ObjectAsField.png"></LI>
+ <LI>Domain object as a row in a table:<BR>
+ <IMG src="ObjectAsTable.png"></LI>
  </UL>
  <BR>
- <A name="Properties"><H2>Properties</H2></A>
- 
+ <A name="Properties"><H2>Properties</H2></A> 
 
  Domain objects have <A href="http://en.wikipedia.org/wiki/State_(computer_science)">state</A>. This
  means the domain objects contain information that may change over time. This
@@ -446,17 +480,17 @@ Almost everyday new
  display a <A href="#Domain Objects">DomainObject</A> property as a <A href="http://en.wikipedia.org/wiki/Combo_box">combo-box</A>, containing the
  referenced object (as an icon and title). The button of the combo-box will
  open a <A href="http://en.wikipedia.org/wiki/Context_menu">context menu</A>,
- that contains <A href="#Action Methods">ActionMethod</A>s to manipulate the property value.</LI>
+ that contains <A>ActionMethod</A>s to manipulate the property value.</LI>
  <LI>Collection Property: A 'collection property' is a property that returns
  an collection of either value properties (<A href="null">primitive data type</A>) or reference properties (<A href="#Domain Objects">DomainObject</A>s).
  The <A>UserInterfaceController</A> will display these types as a table. If
  the user clicks on a row a <A href="http://en.wikipedia.org/wiki/Context_menu">context menu</A> opens,
- containing <A href="#Action Methods">ActionMethod</A>s to manipulate the property value. Note that
+ containing <A>ActionMethod</A>s to manipulate the property value. Note that
  you will need to annotate the getter method with a @<A>GenericReturnType</A>
  annotation in which you need to define the property type. Collections must be
  initialized (collection properties should never return null). Collection
  properties should not contain large collections. If you have a big collection associated with a <A href="#Domain Objects">DomainObject</A>
- it is better to return the collection from an <A href="#Action Methods">ActionMethod</A> in the <A href="#Domain Objects">DomainObject</A>, so that
+ it is better to return the collection from an <A>ActionMethod</A> in the <A href="#Domain Objects">DomainObject</A>, so that
  the table is displayed on a new tab.</LI>
  </UL>
  
@@ -465,27 +499,54 @@ Almost everyday new
  properties by adding specific attributes or methods. See chapter
  <A href="#Object behavior">ObjectBehavior</A>.
  
-<A name="Action Methods"><H2>Action Methods</H2></A> 
+ <A name="Action Methods"><H2>Action Methods</H2></A> 
+
+ 
+ An action is a method in a <A href="#Domain Objects">DomainObject</A> or <A href="#Service Objects">ServiceObject</A> is
+ displayed by the <A>UserInterfaceController</A> as a menu item. An Action
+ method is invoked by the <A>UserInterfaceController</A> when the user clicks
+ on the menu item.
+ 
+ <H3>Action Methods for Domain Objects</H3>
+ 
+ <A href="#Domain Objects">DomainObject</A>s may have <A>ActionMethod</A>s that to do something with
+ or for the given <A href="#Domain Objects">DomainObject</A>.
+ 
+ <UL>
+ <LI>These <A>ActionMethod</A>s are displayed as menu options in a form tab
+ that represents the <A href="#Domain Objects">DomainObject</A>.</LI>
+ <LI>Example: an ShoppingCar object may have an <A>ActionMethod</A> such as
+ checkout().</LI>
+ </UL>
+ <H3>Action Methods for Domain Object Properties</H3>
+ 
+ <A href="#Domain Objects">DomainObject</A>s may have <A>ActionMethod</A>s to do something with the
+ value of a property (e.g. manipulate it).
+ <UL>
+ <LI>These <A>ActionMethod</A>s are displayed as menu options of a
+ <A href="#Properties">DomainObjectProperty</A> in a form tab that represents the
+ <A href="#Domain Objects">DomainObject</A>.</LI>
+ <LI>The name of the <A>ActionMethod</A> for a <A href="#Properties">DomainObjectProperty</A>
+ must begin with the name of the property, followed with a description of what
+ is does.</LI>
+ <LI>Example: an ShoppingCar object may have <A>ActionMethod</A> such as
+ lineItemsAdd(LineItem lineItem) or lineItemsRemove(LineItem lineItem) or
+ lineItemsRemoveAll().</LI>
+ </UL>
+ 
  
 
- An action is a method in a <A href="#Domain Objects">DomainObject</A> or <A href="#Service Objects">ServiceObject</A> is
- displayed by the <A>UserInterfaceController</A> as a menu item. An Action method is
- invoked by the <A>UserInterfaceController</A> when the user clicks on the
- menu item. <BR>
- Examples of action methods:
- <UL>
- <LI>A <A href="#Domain Objects">DomainObject</A> Order may have an action method addOrderLine(OrderLine
- orderLine)</LI>
- <LI>A <A href="#Service Objects">ServiceObject</A> OrderService may have an action method findOrdersOfCustommer(Customer
- customer) that returns a list of Customers</LI>
- </UL>
+ <H3>Action Methods Convention</H3>
+ 
  Any method in a <A href="#Domain Objects">DomainObject</A> or <A href="#Service Objects">ServiceObject</A> can be an
  Action method, provided that it complies with the following:
+ 
  <UL>
  <LI>The method has no parameter or a single <A href="#Domain Objects">DomainObject</A> parameter</LI>
  <LI>Its return type (if any) are types recognized by the Introspect framework
  (see below)</LI>
- <LI>The method is not a getter method or a setter method (see <A href="#Properties">DomainObjectProperty</A>)</LI>
+ <LI>The method is not a getter method or a setter method (see
+ <A href="#Properties">DomainObjectProperty</A>)</LI>
  <LI>The method is public (not private)</LI>
  <LI>The method is NOT static</LI>
  </UL>
@@ -514,17 +575,40 @@ Almost everyday new
  <LI>A <A>DownloadStream</A>: The <A>UserInterfaceController</A> will open a
  "Save as" dialog" so that the file can be down loaded.</LI>
  </UL>
- 
+ <H3>Action execution modes</H3> <A>ActionMethod</A>s can be annotated, so
+ that the <A>UserInterfaceController</A> know how the <A>ActionMethod</A>
+ needs to be invoked after the user has clicked on the corresponding menu
+ item.
+ <UL>
+ <LI>@<A>ExecutionMode</A>(<A>ExecutionModeType.EXECUTE_METHOD_DIRECTLY</A>
+ ): executes the method directly without user intervention</LI>
+ <LI>@<A>ExecutionMode</A>(
+ <A>ExecutionModeType.EXECUTE_METHOD_AFTER_CONFORMATION</A>): the
+ <A>UserInterfaceController</A> opens a confirmation dialog. The method is
+ executed after the user has confirmed by the user. The method is NOT executed
+ when the user cancels the confirmation dialog.</LI>
+ <LI>@<A>ExecutionMode</A>(
+ <A>ExecutionModeType.EDIT_PARAMETER_THAN_EXECUTE_METHOD_OR_CANCEL</A>): the
+ <A>UserInterfaceController</A> opens a form on a new tab, so that the user
+ can modify (edit) the <A href="#Domain Objects">DomainObject</A>. The method is executed with the
+ edited <A href="#Domain Objects">DomainObject</A> as the method parameter, when the user clicks the
+ confirmation button on the button bar. The method is NOT executed when the
+ user clicks on cancel in the bottom bar.</LI>
+ </UL>
  <H3>Action behavior</H3> You can specify certain things about both the
  behavior and presentation of actions methods, such as their display name,
  icon, visibility, enabled state, etc with help of annotations or behavior
  methods. See chapter on <A href="#Object behavior">ObjectBehavior</A>.
  
- <H3>Action execution modes</H3> TODO
- 
- TODO: Domain objects and Action Methods on properties (to manipulate properties of type domainobject or collections) e.g. customer.moveToNewAddress(Address newAddress) or shoppingCart.addLineItem(LineItem item) 
- TODO: Service objects and Action Methods: customerService.findCustomer(SearchCriteria), productSalesService.bestSellingProducts()   
-See CQRS https://msdn.microsoft.com/en-us/library/ms978509.aspx   or   https://msdn.microsoft.com/en-us/library/ms954638.aspx) DomainLayer
+ TODO: Domain objects and Action Methods on properties (to manipulate
+ properties of type domainobject or collections) e.g.
+ customer.moveToNewAddress(Address newAddress) or
+ shoppingCart.addLineItem(LineItem item) TODO: Service objects and Action
+ Methods: customerService.findCustomer(SearchCriteria),
+ productSalesService.bestSellingProducts() See CQRS
+ https://msdn.microsoft.com/en-us/library/ms978509.aspx or
+ https://msdn.microsoft.com/en-us/library/ms954638.aspx)
+  DomainLayer
  
   IntrospectArchitecture
  
