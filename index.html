@@ -312,10 +312,9 @@ Almost everyday new
  <BR>
  Domain objects contain:
  <UL>
- <LI><A href="http://en.wikipedia.org/wiki/Property_(programming)">Properties</A>:
- that represent specific information within a <A href="#Domain Objects">DomainObject</A></LI>
- <LI>Methods: that either represent a <A href="#Action Methods">DomainObjectActionMethod</A>s or
- define <A href="#Object behavior">ObjectBehavior</A></LI>
+ <LI>Getter and setter methods (and possible fields): that define <A href="http://en.wikipedia.org/wiki/Property_(programming)">properties</A></LI>
+ <LI><A href="#Action Methods">DomainObjectActionMethod</A>s: that define user actions</LI>
+ <LI>Methods: that define <A href="#Object behavior">ObjectBehavior</A></LI>
  <LI>Annotations: that define <A href="#Object behavior">ObjectBehavior</A></LI>
  </UL>
  
@@ -359,7 +358,8 @@ Almost everyday new
  to:</LI>
  <UL>
  <LI>Add the reference object as a parameter in the constructor and link it to
- a private field, so that it can be used throughout the class. TODO what happens see above</LI>
+ a private field, so that it can be used throughout the class. TODO what
+ happens see above</LI>
  <LI>Override the <A href="#The Introspect Application">IntrospectApplication.getDomainClasses()</A> method and
  return a list of <A href="#Domain Objects">DomainObject</A>s that need to be created using
  Dependency Injection</LI>
@@ -622,79 +622,93 @@ Almost everyday new
  <A name="The Service Layer"><H1>The Service Layer</H1></A>
  
 
- The <A href="#The Service Layer">ServiceLayer</A> is part if the <A href="# Architecture of an introspect application">IntrospectArchitecture</A>. <BR>
- The <A href="#The Service Layer">ServiceLayer</A> is also know as application layer.<BR>
- The <A href="#The Service Layer">ServiceLayer</A> contains <A href="#Service Objects">ServiceObject</A>s.<BR>
- The <A href="#The Service Layer">ServiceLayer</A> defines the jobs the software is supposed to do and
- directs the expressive domain objects to work out problems. The tasks this
- layer is responsible for are meaningful to the business or necessary for
- interaction with the application layers of other systems. This layer is kept
- thin (see Martin Fowlers article on <A href="http://martinfowler.com/bliki/AnemicDomainModel.html">Anemic Domain Model</A> on why the service
- layer should be thin). It does not contain business rules or knowledge, but
- only coordinates tasks and delegates work to collaborations of domain objects
- in the next layer down. It does not have state reflecting the business
- situation, but it can have state that reflects the progress of a task for the
- user or the program.<BR><BR>
- The <A href="#The Service Layer">ServiceLayer</A> is implemented by the <A>ServiceContainer</A><BR>
- Note that this layer is a middle layer: the <A href="#Service Objects">ServiceObject</A>s have no knowledge of the <A href="#The UserInterface Layer">UserInterfaceLayer</A> , the <A href="#Service Objects">ServiceObject</A>s may know the objects in the lower layers but not visa versa!
  
- <A name="Service Objects"><H2>Service Objects</H2></A>
+ The <A href="#The Service Layer">ServiceLayer</A> defines what the software is supposed to do. It is
+ called upon by the <A href="#UserInterfaceController">UserInterfaceController</A> and directs the
+ <A href="#Domain Objects">DomainObject</A>s and <A href="#Infrastructure Objects">InfrastructureObject</A>s to work out the
+ complicated stuff.
  
+ 
+ Because there is many debate on the naming within a layered architecture, the
+ <A href="#The Service Layer">ServiceLayer</A> is sometimes also called application layer (e.g. by <A href="http://en.wikipedia.org/wiki/Domain-driven_design">Eric Evans in Domain
+ Driven Design</A>).
+ 
+ <A>ServiceContainer</A> is an <A href="#Dependency Injection">IntrospectContainer</A> that represents
+ the <A href="#The Service Layer">ServiceLayer</A> and holds and manages <A href="#Service Objects">ServiceObject</A>s.<BR>
+ 
+ 
+ Note that this layer is a middle layer: the <A href="#Service Objects">ServiceObject</A>s have no
+ knowledge of the <A href="#The UserInterface Layer">UserInterfaceLayer</A> , the <A href="#Service Objects">ServiceObject</A>s know
+ the objects in the lower layers but not visa versa!
+ 
+ <A name="Service Objects"><H2>Service Objects</H2></A> 
 
- <A href="#Service Objects">ServiceObject</A>s do not need to implement any interface or superclass.<BR>
- <BR>
- <A href="#Service Objects">ServiceObject</A>s are placed in the <A href="#The Service Layer">ServiceLayer</A><BR>
- <A href="#Service Objects">ServiceObject</A>s contain methods that basically represent the main menu
- items in <A href="#UserInterfaceController">UserInterfaceController</A> <BR>
- <A href="#Service Objects">ServiceObject</A>s are normally named to the
- <A href="#Domain Objects">DomainObject</A>s that they service (e.g. CustomerService).
+ 
+ <A href="#Service Objects">ServiceObject</A>s contain <A href="#Action Methods">ServiceObjectActionMethod</A>s that are
+ displayed and invoked by the <A href="#UserInterfaceController">UserInterfaceController</A>. The purpose of
+ the <A href="#Action Methods">ServiceObjectActionMethod</A> is to delegate these actions on the
+ <A href="#Domain Objects">DomainObject</A>s and <A href="#Infrastructure Objects">InfrastructureObject</A>s, to handle the
+ complicated stuff such as handling a financial transaction, sending an E-mail
+ and storing a picking order.
  
  
- &#8226;	To provide methods for creating and retrieving domain objects where the user does not have an existing object to navigate from. Services that perform this role are often referred to as 'repositories'. (Some designers prefer to draw a distinction between a 'factory' service, which has responsibility for creating domain objects, and a 'repository' service for retrieving them. If you prefer to maintain this distinction, then they may be implemented in two separate services. However, there is merit in keeping the ideas together, and we tend to refer to the combination as a 'repository'. For more information see Section 2.2.5, &#8220;Repository&#8221;.
-&#8226;	To provide a bridge to external functionality. For more information see Section 2.2.6, &#8220;External or System service&#8221;.
-&#8226;	To provide functionality that is to be shared by multiple classes of domain objects which do not necessarily have any common superclass. This is achieved through the concept of contributed actions whereby methods are written on a service but appear to the user as actions on a domain object. For more information see Section 2.2.7, &#8220;Contributed action&#8221;.
-In whichever of these roles, a service is just an ordinary POCO class but without any state - just methods. Just like a domain object it does not have to inherit from any special class, nor implement any interface, nor include any specific attribute. What makes it a service is simply that it is registered as a service in the Services property of the Run class. Registering the service serves two purposes:
-&#8226;	It makes the service's actions available to the user
-&#8226;	It instructs the Naked Objects framework to inject that service into any domain object that needs access to it. See Dependency Injection.
-A service may provide multiple methods any of which may appear as user actions - following the same rules as for actions on a domain object.
-
+ <A href="#Service Objects">ServiceObject</A>s therefore do not have state and therefore do not have
+ properties (no getter and setter methods). To me a <A href="#Service Objects">ServiceObject</A> with state
+ is a good indicator for a <A href="http://en.wikipedia.org/wiki/Code_smell">code-smell</A>, which you can solve by moving the
+ <A href="#Action Methods">ServiceObjectActionMethod</A>s that share state (fields) to an new or existing
+ <A href="#Domain Objects">DomainObject</A>.
+ 
+ 
  Service objects contain:
+ 
  <UL>
-  * <LI>Methods: that either represent a <A href="#Action Methods">ServiceObjectActionMethod</A>s or
- define <A href="#Object behavior">ObjectBehavior</A></LI>
+ <LI><A href="#Action Methods">ServiceObjectActionMethod</A>s: that define user actions</LI>
+ <LI>Methods: that define <A href="#Object behavior">ObjectBehavior</A></LI>
  <LI>Annotations: that define <A href="#Object behavior">ObjectBehavior</A></LI>
  </UL>
- TODO service objects are not suppose to have state (TODO explain why) and therefore may not have properties (no getter and setter methods).
+ 
+ The <A href="#The Service Layer">ServiceLayer</A> needs to be kept thin (see Martin Fowlers article on
+ the <A href="http://martinfowler.com/bliki/AnemicDomainModel.html">Anemic
+ Domain Model</A> <A href="http://en.wikipedia.org/wiki/Anti-pattern">anti-pattern</A>). Therefore
+ <A href="#Service Objects">ServiceObject</A>s should not contain business rules or knowledge, but
+ only coordinate tasks and delegate work to collaborations of domain objects
+ in the next layer down.
  
  
- <H3>Naming</H3> Domain objects names are nouns, such as customer, product and
- order. They basically describe the things that are important in your
- application.
+ 
+ <H3>Naming</H3> <A href="#Service Objects">ServiceObject</A>s are normally named to the
+ <A href="#Domain Objects">DomainObject</A>s that they service (e.g. CustomerService, OrderService,
+ etc).
  
  <H3>Construction</H3>
  
  The principle of &#8220;naked objects&#8221; is that any <A href="http://en.wikipedia.org/wiki/Plain_Old_Java_Object">'Plain Old Java
- Object' (POJO)</A> can function as a domain object. In other words: a domain
- class does not have to inherit from any special class, nor implement any
- particular interface, nor have any specific attributes.
+ Object' (POJO)</A> can function as a <A href="#Service Objects">ServiceObject</A>. In other words: a
+ service class does not have to inherit from any special class, nor implement
+ any particular interface, nor have any specific attributes.
  
 
-TODO: Service objects need to be registred to the <A href="#The Introspect Application">IntrospectApplication.getServiceClasses()</A> method
+ TODO: Service objects need to be registred to the
+ <A href="#The Introspect Application">IntrospectApplication.getServiceClasses()</A> method
  
  <BR>
- <A href="#Service Objects">ServiceObject</A>s are created by the <A>ServiceContainer</A>. TODO how objects are created with Dependency Injection by the <A href="#The Introspect Framework">IntrospectFramework</A>:<BR>
+ <A href="#Service Objects">ServiceObject</A>s are created by the <A>ServiceContainer</A>. TODO how
+ objects are created with Dependency Injection by the
+ <A href="#The Introspect Framework">IntrospectFramework</A>:<BR>
  
- <A href="#Service Objects">ServiceObject</A>s can have references to other objects (being other <A href="#Service Objects">ServiceObject</A>s, <A href="#Domain Objects">DomainObject</A>s, <A href="#Infrastructure Objects">InfrastructureObject</A>s or
- <A href="#Provider Objects">Provider</A> objects). In example: TODO: A Customer object needs a references to
- a ShoppingCartFactory object. The Customer object can therefore be created by
- the <A>DomainContainer</A> with Customer customer=(Customer)
+ <A href="#Service Objects">ServiceObject</A>s can have references to other objects (being other
+ <A href="#Service Objects">ServiceObject</A>s, <A href="#Domain Objects">DomainObject</A>s, <A href="#Infrastructure Objects">InfrastructureObject</A>s
+ or <A href="#Provider Objects">Provider</A> objects). In example: TODO: A Customer object needs a
+ references to a ShoppingCartFactory object. The Customer object can therefore
+ be created by the <A>DomainContainer</A> with Customer customer=(Customer)
  domainContainer.getObject(Customer.class). The ShopingCart object will
  automatically be injected as a constructor parameter of the Customer class.
  In order to create <A href="#Domain Objects">DomainObject</A>s using dependency injection you need
  to:
  <UL>
  <LI>Add the reference object as a parameter in the constructor and link it to
- a private field, so that it can be used throughout the class. TODO what happens see above</LI>
+ a private field, so that it can be used throughout the class. TODO what
+ happens see above</LI>
  <LI>Override the <A href="#The Introspect Application">IntrospectApplication.getDomainClasses()</A> method and
  return a list of <A href="#Domain Objects">DomainObject</A>s that need to be created using
  Dependency Injection</LI>
@@ -702,11 +716,17 @@ TODO: Service objects need to be registred to the <A href="#The Introspect Appli
  the <A>DomainContainer</A>. A CustomerService object can get a reference to
  the <A>DomainContainer</A> when it is created by the
  <A>ServiceContainer</A> (which is done by the <A href="#The Introspect Framework">IntrospectFramework</A>)</LI>
+ 
+ TODO
+ Registering the service serves two purposes: &#8226; It makes the service's actions
+ available to the user &#8226; It instructs the Naked Objects framework to inject
+ that service into any domain object that needs access to it. See Dependency
+ Injection. A service may provide multiple methods any of which may appear as
+ user actions - following the same rules as for actions on a domain object.
  </UL>
  
  
- <H3>Presentation</H3> TODO menu items
- <BR>
+ <H3>Presentation</H3> TODO menu items <BR>
  <A name="Action Methods"><H2>Action Methods</H2></A> 
 
  
