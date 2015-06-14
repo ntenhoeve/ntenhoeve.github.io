@@ -554,7 +554,7 @@ Almost everyday new
  <H3>Action Methods Convention</H3>
  
  Any method in a <A href="#Domain Objects">DomainObject</A> or <A href="#Service Objects">ServiceObject</A> can be an
- Action method, provided that it complies with the following:
+ Action method, provided that it complies with the following convention:
  
  <UL>
  <LI>The method has no parameter or a single <A href="#Domain Objects">DomainObject</A> parameter</LI>
@@ -566,11 +566,16 @@ Almost everyday new
  <LI>The method is NOT static</LI>
  </UL>
  
- <H3>Action method parameter</H3> An action method either has no parameter or
- a single parameter (must be a <A href="#Domain Objects">DomainObject</A> type). If not, the
- Introspect Framework recognized a method as an Action method. <H3>Action
- method return value</H3> The <A href="#UserInterfaceController">UserInterfaceController</A> renders the
- output of a method, depending on type of the action method return value:
+ <H3>Action method parameter</H3>
+ 
+ An action method either has no parameter or a single <A href="#Domain Objects">DomainObject</A> as
+ a parameter. If not, the Introspect Framework will not recognize a method as
+ an <A>ActionMethod</A>.
+ 
+ <H3>Action method return value</H3>
+ 
+ The <A href="#UserInterfaceController">UserInterfaceController</A> renders the output of a method, depending
+ on type of the action method return value:
  <UL>
  <LI>No return value (void method): The <A href="#UserInterfaceController">UserInterfaceController</A> will
  display a short message when the method has been executed</LI>
@@ -590,6 +595,7 @@ Almost everyday new
  <LI>A <A>DownloadStream</A>: The <A href="#UserInterfaceController">UserInterfaceController</A> will open a
  "Save as" dialog" so that the file can be down loaded.</LI>
  </UL>
+ 
  <H3>Action execution modes</H3> <A>ActionMethod</A>s can be annotated, so
  that the <A href="#UserInterfaceController">UserInterfaceController</A> know how the <A>ActionMethod</A>
  needs to be invoked after the user has clicked on the corresponding menu
@@ -623,15 +629,10 @@ Almost everyday new
  
 
  
- The <A href="#The Service Layer">ServiceLayer</A> defines what the software is supposed to do. It is
- called upon by the <A href="#UserInterfaceController">UserInterfaceController</A> and directs the
- <A href="#Domain Objects">DomainObject</A>s and <A href="#Infrastructure Objects">InfrastructureObject</A>s to work out the
- complicated stuff.
- 
- 
- Because there is many debate on the naming within a layered architecture, the
- <A href="#The Service Layer">ServiceLayer</A> is sometimes also called application layer (e.g. by <A href="http://en.wikipedia.org/wiki/Domain-driven_design">Eric Evans in Domain
- Driven Design</A>).
+ The <A href="#The Service Layer">ServiceLayer</A> (sometimes also called application layer) defines
+ what the software is supposed to do. It is called upon by the
+ <A href="#UserInterfaceController">UserInterfaceController</A> and redirects the <A href="#Domain Objects">DomainObject</A>s and
+ <A href="#Infrastructure Objects">InfrastructureObject</A>s to work out the complicated stuff.
  
  <A>ServiceContainer</A> is an <A href="#Dependency Injection">IntrospectContainer</A> that represents
  the <A href="#The Service Layer">ServiceLayer</A> and holds and manages <A href="#Service Objects">ServiceObject</A>s.<BR>
@@ -645,34 +646,49 @@ Almost everyday new
 
  
  <A href="#Service Objects">ServiceObject</A>s contain <A href="#Action Methods">ServiceObjectActionMethod</A>s that are
- displayed and invoked by the <A href="#UserInterfaceController">UserInterfaceController</A>. The purpose of
- the <A href="#Action Methods">ServiceObjectActionMethod</A> is to delegate these actions on the
- <A href="#Domain Objects">DomainObject</A>s and <A href="#Infrastructure Objects">InfrastructureObject</A>s, to handle the
- complicated stuff such as handling a financial transaction, sending an E-mail
- and storing a picking order.
+ displayed and invoked by the <A href="#UserInterfaceController">UserInterfaceController</A>.
+ <A href="#Action Methods">ServiceObjectActionMethod</A>s create or retrieve <A href="#Domain Objects">DomainObject</A>s
+ where the user does not have an existing <A href="#Domain Objects">DomainObject</A> to navigate
+ from.
  
  
- <A href="#Service Objects">ServiceObject</A>s therefore do not have state and therefore do not have
- properties (no getter and setter methods). To me a <A href="#Service Objects">ServiceObject</A> with state
- is a good indicator for a <A href="http://en.wikipedia.org/wiki/Code_smell">code-smell</A>, which you can solve by moving the
- <A href="#Action Methods">ServiceObjectActionMethod</A>s that share state (fields) to an new or existing
- <A href="#Domain Objects">DomainObject</A>.
+ The <A href="#The Service Layer">ServiceLayer</A> needs to be kept thin (see Martin Fowlers article on
+ the <A href="http://martinfowler.com/bliki/AnemicDomainModel.html">Anemic
+ Domain Model</A> <A href="http://en.wikipedia.org/wiki/Anti-pattern">anti-pattern</A>). Therefore
+ <A href="#Service Objects">ServiceObject</A>s should not contain business rules/logic or validation
+ rules/logic, but delegate work to collaborations of domain objects in the
+ next layer down. Business logic and validation logic should be placed in
+ <A href="#Domain Objects">DomainObject</A>s as much as possible. If you put them in other places,
+ such as <A href="#Service Objects">ServiceObject</A>s, changes are that the business logic and
+ validation logic will be scattered over different locations, making extending
+ or de-buging code difficult and expensive.
+ 
+ 
+ A web shop example:
+ <UL>
+ <LI>The <A href="#UserInterfaceController">UserInterfaceController</A> class calls the
+ <A href="#Action Methods">ServiceObjectActionMethod</A> findProduct(searchCriteria) method on
+ <A href="#Service Objects">ServiceObject</A>: ProductService</LI>
+ <LI>This method will call the findProduct on <A href="#Infrastructure Objects">InfrastructureObject</A>:
+ ProductRepository</LI>
+ <LI>This method will return a list of <A href="#Domain Objects">DomainObject</A>s that meet the
+ search criteria</LI>
+ </UL>
+ 
+ 
+ <A href="#Service Objects">ServiceObject</A>s do not have state and therefore do not have properties
+ (no getter and setter methods). To me a <A href="#Service Objects">ServiceObject</A> with state is a
+ good indicator for a <A href="http://en.wikipedia.org/wiki/Code_smell">code-smell</A>, which you can
+ solve by moving the <A href="#Action Methods">ServiceObjectActionMethod</A>s that share state
+ (fields) to an new or existing <A href="#Domain Objects">DomainObject</A>.
  
  
  Service objects contain:
- 
  <UL>
  <LI><A href="#Action Methods">ServiceObjectActionMethod</A>s: that define user actions</LI>
  <LI>Methods: that define <A href="#Object behavior">ObjectBehavior</A></LI>
  <LI>Annotations: that define <A href="#Object behavior">ObjectBehavior</A></LI>
  </UL>
- 
- The <A href="#The Service Layer">ServiceLayer</A> needs to be kept thin (see Martin Fowlers article on
- the <A href="http://martinfowler.com/bliki/AnemicDomainModel.html">Anemic
- Domain Model</A> <A href="http://en.wikipedia.org/wiki/Anti-pattern">anti-pattern</A>). Therefore
- <A href="#Service Objects">ServiceObject</A>s should not contain business rules or knowledge, but
- only coordinate tasks and delegate work to collaborations of domain objects
- in the next layer down.
  
  
  
@@ -717,12 +733,12 @@ Almost everyday new
  the <A>DomainContainer</A> when it is created by the
  <A>ServiceContainer</A> (which is done by the <A href="#The Introspect Framework">IntrospectFramework</A>)</LI>
  
- TODO
- Registering the service serves two purposes: &#8226; It makes the service's actions
- available to the user &#8226; It instructs the Naked Objects framework to inject
- that service into any domain object that needs access to it. See Dependency
- Injection. A service may provide multiple methods any of which may appear as
- user actions - following the same rules as for actions on a domain object.
+ TODO Registering the service serves two purposes: &#8226; It makes the service's
+ actions available to the user &#8226; It instructs the Naked Objects framework to
+ inject that service into any domain object that needs access to it. See
+ Dependency Injection. A service may provide multiple methods any of which may
+ appear as user actions - following the same rules as for actions on a domain
+ object.
  </UL>
  
  
@@ -755,7 +771,7 @@ Almost everyday new
  <H3>Action Methods Convention</H3>
  
  Any method in a <A href="#Domain Objects">DomainObject</A> or <A href="#Service Objects">ServiceObject</A> can be an
- Action method, provided that it complies with the following:
+ Action method, provided that it complies with the following convention:
  
  <UL>
  <LI>The method has no parameter or a single <A href="#Domain Objects">DomainObject</A> parameter</LI>
@@ -767,11 +783,16 @@ Almost everyday new
  <LI>The method is NOT static</LI>
  </UL>
  
- <H3>Action method parameter</H3> An action method either has no parameter or
- a single parameter (must be a <A href="#Domain Objects">DomainObject</A> type). If not, the
- Introspect Framework recognized a method as an Action method. <H3>Action
- method return value</H3> The <A href="#UserInterfaceController">UserInterfaceController</A> renders the
- output of a method, depending on type of the action method return value:
+ <H3>Action method parameter</H3>
+ 
+ An action method either has no parameter or a single <A href="#Domain Objects">DomainObject</A> as
+ a parameter. If not, the Introspect Framework will not recognize a method as
+ an <A>ActionMethod</A>.
+ 
+ <H3>Action method return value</H3>
+ 
+ The <A href="#UserInterfaceController">UserInterfaceController</A> renders the output of a method, depending
+ on type of the action method return value:
  <UL>
  <LI>No return value (void method): The <A href="#UserInterfaceController">UserInterfaceController</A> will
  display a short message when the method has been executed</LI>
@@ -791,6 +812,7 @@ Almost everyday new
  <LI>A <A>DownloadStream</A>: The <A href="#UserInterfaceController">UserInterfaceController</A> will open a
  "Save as" dialog" so that the file can be down loaded.</LI>
  </UL>
+ 
  <H3>Action execution modes</H3> <A>ActionMethod</A>s can be annotated, so
  that the <A href="#UserInterfaceController">UserInterfaceController</A> know how the <A>ActionMethod</A>
  needs to be invoked after the user has clicked on the corresponding menu
