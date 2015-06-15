@@ -202,17 +202,17 @@ Almost everyday new
  <A name="Dependency Injection"><H2>Dependency Injection</H2></A> 
  
 
- 
+ <P>
  The <A href="#The Introspect Framework">IntrospectFramework</A> is a dependency injection framework and
  consists of several <A href="http://en.wikipedia.org/wiki/Dependency_injection">dependency
  injection</A> containers called <A href="#Dependency Injection">IntrospectContainer</A>s.
- 
- 
+ </P>
+ <P>
  Please read <A href="http://en.wikipedia.org/wiki/Martin_Fowler">Martin
  Fowler</A>'s easy to read <A href="http://martinfowler.com/articles/injection.html">article</A> in which
  he explains the basics dependency injection.
- 
- 
+ </P>
+ <P>
  Each <A href="#Dependency Injection">IntrospectContainer</A> is responsible for:
  <UL>
  <LI>Creating new instances of types that are registered to a
@@ -222,8 +222,8 @@ Almost everyday new
  <LI>Caching these new instances, if we only need one instance (like a
  singleton)</LI>
  </UL>
- 
- 
+ </P>
+ <P>
  The <A href="# Architecture of an introspect application">IntrospectArchitecture</A> consists of several layers. Each layer has
  its own <A href="#Dependency Injection">IntrospectContainer</A> that is responsible for creating new
  objects (and cashing them when needed) within that layer and if needed
@@ -245,13 +245,13 @@ Almost everyday new
  <LI><A href="#The Provider Layer">ProviderLayer</A>: <A href="#Provider Objects">Provider</A> object's are managed by a
  <A>ProviderContainer</A>.</LI>
  </UL>
- 
- 
+ </P>
+ <P>
  The <A href="#The Introspect Framework">IntrospectFramework</A> favours constructor injection (see <A href="http://en.wikipedia.org/wiki/Martin_Fowler">Martin Fowler</A>'s easy to
  read <A href="http://martinfowler.com/articles/injection.html">article</A>
  for the arguments why).
  TODO add example IntrospectArchitecture
-  
+ </P> 
    
  <A name="The Introspect Application"><H2>The Introspect Application</H2></A> 
  
@@ -272,8 +272,8 @@ Almost everyday new
  <A name="Starting a new Introspect Project"><H2>Starting a new Introspect Project</H2></A> 
  
 
- How you create a new Introspect application depends on the type of application type that you want to create.
- First select the type of application you want to create. Then look up the corresponding paragraph in the <A href="#Getting Started">IntrospectGettingStarted</A> chapter. There you will learn how to create a java project that contains an application class that extends the <A href="#The Introspect Application">IntrospectApplication</A> class. This class will initialize and start the <A href="#The Introspect Framework">IntrospectFramework</A>. This class also contains methods that you need to implement to provide the <A href="#Service Objects">ServiceObject</A> classes and <A href="#The Infrastructure Layer">InfrastructureLayer</A> classes that are required in the application.
+ <P>How you create a new Introspect application depends on the type of application type that you want to create.</P>
+ <P>First select the type of application you want to create. Then look up the corresponding paragraph in the <A href="#Getting Started">IntrospectGettingStarted</A> chapter. There you will learn how to create a java project that contains an application class that extends the <A href="#The Introspect Application">IntrospectApplication</A> class. This class will initialize and start the <A href="#The Introspect Framework">IntrospectFramework</A>. This class also contains methods that you need to implement to provide the <A href="#Service Objects">ServiceObject</A> classes and <A href="#The Infrastructure Layer">InfrastructureLayer</A> classes that are required in the application.</P>
  
  
  <A name="The Domain Layer"><H1>The Domain Layer</H1></A>
@@ -323,12 +323,12 @@ Almost everyday new
  application.
  
  <H3>Construction</H3>
- 
+ <P>
  The principle of &#8220;naked objects&#8221; is that any <A href="http://en.wikipedia.org/wiki/Plain_Old_Java_Object">'Plain Old Java
  Object' (POJO)</A> can function as a domain object. In other words: a domain
  class does not have to inherit from any special class, nor implement any
  particular interface, nor have any specific attributes.
- 
+ </P>
 
  <A href="#Domain Objects">DomainObject</A>s can be created by different objects e.g.:
  <UL>
@@ -432,12 +432,12 @@ Almost everyday new
  }
  </PRE>
  
- 
+ <P>
  Properties are a special type of class members and are an intermediate
  between <A href="http://en.wikipedia.org/wiki/Mutator_method">getter and
  setter methods</A> and a <A href="http://en.wikipedia.org/wiki/Field_(computer_science)">field</A>. The
  following 3 chapters will explain this in more detail.
- 
+ <P>
  
  <H3>Getter methods</H3>
  <UL>
@@ -509,21 +509,23 @@ Almost everyday new
  <H3>Property behavior</H3>
  You can specify certain things about both the behavior and presentation of
  properties by adding specific attributes or methods. See chapter
- <A href="#Object behavior">ObjectBehavior</A>.
+ <A href="#Object behavior">ObjectBehavior</A>. nilsth
+
+ </P></P>
  
  <A name="Action Methods"><H2>Action Methods</H2></A> 
 
- 
+ <P>
  An action is a method in a <A href="#Domain Objects">DomainObject</A> or <A href="#Service Objects">ServiceObject</A> is
  displayed by the <A href="#UserInterfaceController">UserInterfaceController</A> as a menu item. An Action
  method is invoked by the <A href="#UserInterfaceController">UserInterfaceController</A> when the user clicks
  on the menu item.
- 
+ </P>
  <H3>Action Methods for Domain Objects</H3>
- 
+ <P>
  <A href="#Domain Objects">DomainObject</A>s may have <A>ActionMethod</A>s that to do something with
  or for the given <A href="#Domain Objects">DomainObject</A>.
- 
+ </P>
  <UL>
  <LI>These <A>ActionMethod</A>s are displayed as menu options in a form tab
  that represents the <A href="#Domain Objects">DomainObject</A>.</LI>
@@ -531,7 +533,7 @@ Almost everyday new
  checkout().</LI>
  </UL>
  <H3>Action Methods for Domain Object Properties</H3>
- 
+ <P>
  <A href="#Domain Objects">DomainObject</A>s may have <A>ActionMethod</A>s to do something with the
  value of a property (e.g. manipulate it).
  <UL>
@@ -549,13 +551,14 @@ Almost everyday new
  </UL>
  
  
+ </P>
  
 
  <H3>Action Methods Convention</H3>
- 
+ <P>
  Any method in a <A href="#Domain Objects">DomainObject</A> or <A href="#Service Objects">ServiceObject</A> can be an
  Action method, provided that it complies with the following convention:
- 
+ </P>
  <UL>
  <LI>The method has no parameter or a single <A href="#Domain Objects">DomainObject</A> parameter</LI>
  <LI>Its return type (if any) are types recognized by the Introspect framework
@@ -567,13 +570,13 @@ Almost everyday new
  </UL>
  
  <H3>Action method parameter</H3>
- 
+ <P>
  An action method either has no parameter or a single <A href="#Domain Objects">DomainObject</A> as
  a parameter. If not, the Introspect Framework will not recognize a method as
  an <A>ActionMethod</A>.
- 
+ </P>
  <H3>Action method return value</H3>
- 
+ <P>
  The <A href="#UserInterfaceController">UserInterfaceController</A> renders the output of a method, depending
  on type of the action method return value:
  <UL>
@@ -595,7 +598,7 @@ Almost everyday new
  <LI>A <A>DownloadStream</A>: The <A href="#UserInterfaceController">UserInterfaceController</A> will open a
  "Save as" dialog" so that the file can be down loaded.</LI>
  </UL>
- 
+ </P>
  <H3>Action execution modes</H3> <A>ActionMethod</A>s can be annotated, so
  that the <A href="#UserInterfaceController">UserInterfaceController</A> know how the <A>ActionMethod</A>
  needs to be invoked after the user has clicked on the corresponding menu
@@ -628,30 +631,30 @@ Almost everyday new
  <A name="The Service Layer"><H1>The Service Layer</H1></A>
  
 
- 
+ <P>
  The <A href="#The Service Layer">ServiceLayer</A> (sometimes also called application layer) defines
  what the software is supposed to do. It is called upon by the
  <A href="#UserInterfaceController">UserInterfaceController</A> and redirects the <A href="#Domain Objects">DomainObject</A>s and
  <A href="#Infrastructure Objects">InfrastructureObject</A>s to work out the complicated stuff.
- 
+ </P>
  <A>ServiceContainer</A> is an <A href="#Dependency Injection">IntrospectContainer</A> that represents
  the <A href="#The Service Layer">ServiceLayer</A> and holds and manages <A href="#Service Objects">ServiceObject</A>s.<BR>
  
- 
+ <P>
  Note that this layer is a middle layer: the <A href="#Service Objects">ServiceObject</A>s have no
- knowledge of the <A href="#The UserInterface Layer">UserInterfaceLayer</A> , the <A href="#Service Objects">ServiceObject</A>s know
+ knowledge of the <A href="#The UserInterface Layer">UserInterfaceLayer</A>, the <A href="#Service Objects">ServiceObject</A>s know
  the objects in the lower layers but not visa versa!
- 
+ </P>
  <A name="Service Objects"><H2>Service Objects</H2></A> 
 
- 
+ <P>
  <A href="#Service Objects">ServiceObject</A>s contain <A href="#Action Methods">ServiceObjectActionMethod</A>s that are
  displayed and invoked by the <A href="#UserInterfaceController">UserInterfaceController</A>.
  <A href="#Action Methods">ServiceObjectActionMethod</A>s create or retrieve <A href="#Domain Objects">DomainObject</A>s
  where the user does not have an existing <A href="#Domain Objects">DomainObject</A> to navigate
  from.
- 
- 
+ </P>
+ <P>
  The <A href="#The Service Layer">ServiceLayer</A> needs to be kept thin (see Martin Fowlers article on
  the <A href="http://martinfowler.com/bliki/AnemicDomainModel.html">Anemic
  Domain Model</A> <A href="http://en.wikipedia.org/wiki/Anti-pattern">anti-pattern</A>). Therefore
@@ -662,8 +665,8 @@ Almost everyday new
  such as <A href="#Service Objects">ServiceObject</A>s, changes are that the business logic and
  validation logic will be scattered over different locations, making extending
  or de-buging code difficult and expensive.
- 
- 
+ </P>
+ <P>
  A web shop example:
  <UL>
  <LI>The <A href="#UserInterfaceController">UserInterfaceController</A> class calls the
@@ -674,22 +677,22 @@ Almost everyday new
  <LI>This method will return a list of <A href="#Domain Objects">DomainObject</A>s that meet the
  search criteria</LI>
  </UL>
- 
- 
+ </P>
+ <P>
  <A href="#Service Objects">ServiceObject</A>s do not have state and therefore do not have properties
  (no getter and setter methods). To me a <A href="#Service Objects">ServiceObject</A> with state is a
- good indicator for a <A href="http://en.wikipedia.org/wiki/Code_smell">code-smell</A>, which you can
+ good indicator of a <A href="http://en.wikipedia.org/wiki/Code_smell">code-smell</A>, which you can
  solve by moving the <A href="#Action Methods">ServiceObjectActionMethod</A>s that share state
  (fields) to an new or existing <A href="#Domain Objects">DomainObject</A>.
- 
- 
+ </P>
+ <P>
  Service objects contain:
  <UL>
  <LI><A href="#Action Methods">ServiceObjectActionMethod</A>s: that define user actions</LI>
  <LI>Methods: that define <A href="#Object behavior">ObjectBehavior</A></LI>
  <LI>Annotations: that define <A href="#Object behavior">ObjectBehavior</A></LI>
  </UL>
- 
+ </P>
  
  
  <H3>Naming</H3> <A href="#Service Objects">ServiceObject</A>s are normally named to the
@@ -697,12 +700,12 @@ Almost everyday new
  etc).
  
  <H3>Construction</H3>
- 
+ <P>
  The principle of &#8220;naked objects&#8221; is that any <A href="http://en.wikipedia.org/wiki/Plain_Old_Java_Object">'Plain Old Java
  Object' (POJO)</A> can function as a <A href="#Service Objects">ServiceObject</A>. In other words: a
  service class does not have to inherit from any special class, nor implement
  any particular interface, nor have any specific attributes.
- 
+ </P>
 
  TODO: Service objects need to be registred to the
  <A href="#The Introspect Application">IntrospectApplication.getServiceClasses()</A> method
@@ -745,16 +748,16 @@ Almost everyday new
  <H3>Presentation</H3> TODO menu items <BR>
  <A name="Action Methods"><H2>Action Methods</H2></A> 
 
- 
+ <P>
  An action is a method in a <A href="#Domain Objects">DomainObject</A> or <A href="#Service Objects">ServiceObject</A> is
  displayed by the <A href="#UserInterfaceController">UserInterfaceController</A> as a menu item. An Action
  method is invoked by the <A href="#UserInterfaceController">UserInterfaceController</A> when the user clicks
  on the menu item.
- 
+ </P>
  <H3>Action Methods for Service Objects</H3>
- 
+ <P>
  <A href="#Service Objects">ServiceObject</A>s always have one ore more <A>ActionMethod</A>s.
- 
+ </P>
  <UL>
  <LI>These <A>ActionMethod</A>s are displayed by the <A href="#UserInterfaceController">UserInterfaceController</A> as menu options in the main menu or in a form tab
  that represents the <A href="#Domain Objects">DomainObject</A>.</LI>
@@ -762,17 +765,17 @@ Almost everyday new
  findCustomer(CustomerSearchArgument searchArgument).</LI>
  </UL>
  
- 
+ <P>
  Note that business logic should be placed in <A href="#Domain Objects">DomainObject</A>s and therefore have no place in <A>ActionMethod</A>s in service objects! <A>ActionMethod</A>s in service objects should only give access to  
- 
+ </P>
  
  
 
  <H3>Action Methods Convention</H3>
- 
+ <P>
  Any method in a <A href="#Domain Objects">DomainObject</A> or <A href="#Service Objects">ServiceObject</A> can be an
  Action method, provided that it complies with the following convention:
- 
+ </P>
  <UL>
  <LI>The method has no parameter or a single <A href="#Domain Objects">DomainObject</A> parameter</LI>
  <LI>Its return type (if any) are types recognized by the Introspect framework
@@ -784,13 +787,13 @@ Almost everyday new
  </UL>
  
  <H3>Action method parameter</H3>
- 
+ <P>
  An action method either has no parameter or a single <A href="#Domain Objects">DomainObject</A> as
  a parameter. If not, the Introspect Framework will not recognize a method as
  an <A>ActionMethod</A>.
- 
+ </P>
  <H3>Action method return value</H3>
- 
+ <P>
  The <A href="#UserInterfaceController">UserInterfaceController</A> renders the output of a method, depending
  on type of the action method return value:
  <UL>
@@ -812,7 +815,7 @@ Almost everyday new
  <LI>A <A>DownloadStream</A>: The <A href="#UserInterfaceController">UserInterfaceController</A> will open a
  "Save as" dialog" so that the file can be down loaded.</LI>
  </UL>
- 
+ </P>
  <H3>Action execution modes</H3> <A>ActionMethod</A>s can be annotated, so
  that the <A href="#UserInterfaceController">UserInterfaceController</A> know how the <A>ActionMethod</A>
  needs to be invoked after the user has clicked on the corresponding menu
