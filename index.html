@@ -632,24 +632,32 @@ Almost everyday new
  
 
  <P>
- The <A href="#The Service Layer">ServiceLayer</A> (sometimes also called application layer) defines
- what the software is supposed to do. It is called upon by the
- <A href="#UserInterfaceController">UserInterfaceController</A> and redirects the <A href="#Domain Objects">DomainObject</A>s and
- <A href="#Infrastructure Objects">InfrastructureObject</A>s to work out the complicated stuff.
+ The <A href="#The Service Layer">ServiceLayer</A> (sometimes also called <A href="application layer">application layer</A>) defines what the software is
+ supposed to do. It is called upon by the <A href="#UserInterfaceController">UserInterfaceController</A> and
+ redirects the <A href="#Domain Objects">DomainObject</A>s and <A href="#Infrastructure Objects">InfrastructureObject</A>s to work
+ out the complicated stuff.
  </P>
- <A>ServiceContainer</A> is an <A href="#Dependency Injection">IntrospectContainer</A> that represents
- the <A href="#The Service Layer">ServiceLayer</A> and holds and manages <A href="#Service Objects">ServiceObject</A>s.<BR>
- 
  <P>
- Note that this layer is a middle layer: the <A href="#Service Objects">ServiceObject</A>s have no
- knowledge of the <A href="#The UserInterface Layer">UserInterfaceLayer</A>, the <A href="#Service Objects">ServiceObject</A>s know
- the objects in the lower layers but not visa versa!
+ The <A>ServiceContainer</A> is an <A href="#Dependency Injection">IntrospectContainer</A> that
+ represents the <A href="#The Service Layer">ServiceLayer</A> and holds and manages
+ <A href="#Service Objects">ServiceObject</A>s.<BR>
+ </P>
+ <P>
+ Note that the <A href="#The Service Layer">ServiceLayer</A> is a middle layer:
+ <UL>
+ <LI>
+ The <A href="#Service Objects">ServiceObject</A>s have NO references to objects in the
+ <A href="#The UserInterface Layer">UserInterfaceLayer</A></LI>
+ <LI>The <A href="#Service Objects">ServiceObject</A>s may have references to the objects in the
+ lower layers but not visa versa!</LI>
+ </UL>
  </P>
  <A name="Service Objects"><H2>Service Objects</H2></A> 
 
  <P>
- <A href="#Service Objects">ServiceObject</A>s contain <A href="#Action Methods">ServiceObjectActionMethod</A>s that are
- displayed and invoked by the <A href="#UserInterfaceController">UserInterfaceController</A>.
+ <A href="#Service Objects">ServiceObject</A>s contain <A href="#Action Methods">ServiceObjectActionMethod</A>s. The
+ <A href="#UserInterfaceController">UserInterfaceController</A> displays these methods as menu items and
+ invokes these methods once a user clicks on the menu item.
  <A href="#Action Methods">ServiceObjectActionMethod</A>s create or retrieve <A href="#Domain Objects">DomainObject</A>s
  where the user does not have an existing <A href="#Domain Objects">DomainObject</A> to navigate
  from.
@@ -844,36 +852,77 @@ Almost everyday new
  <A name="The Infrastructure Layer"><H1>The Infrastructure Layer</H1></A>
  
 
- The <A href="#The Infrastructure Layer">InfrastructureLayer</A> is part if the <A href="# Architecture of an introspect application">IntrospectArchitecture</A>. <BR>
- The <A href="#The Infrastructure Layer">InfrastructureLayer</A> is also know as:
- <UL><LI><A href="http://en.wikipedia.org/wiki/Data_access_layer">Data access layer</A></LI>
- <LI><A href="http://en.wikipedia.org/wiki/Persistence_layer">Persistence layer</A></LI>
+ <P>
+ The <A href="#The Infrastructure Layer">InfrastructureLayer</A> contains <A href="#Infrastructure Objects">InfrastructureObject</A>'s that
+ provide generic technical capabilities to support the higher layers.
+ </P>
+ <P> The <A href="#The Infrastructure Layer">InfrastructureLayer</A> is also know as:
+ <UL>
+ <LI><A href="http://en.wikipedia.org/wiki/Data_access_layer">Data access
+ layer</A></LI>
+ <LI><A href="http://en.wikipedia.org/wiki/Persistence_layer">Persistence
+ layer</A></LI>
  <LI>Logging Layer</LI>
  <LI>Networking Layer</LI>
- <LI>And other services which are required to support the <A href="#The Service Layer">ServiceLayer</A> or <A href="#The Domain Layer">DomainLayer</A></LI> 
+ <LI>And other services which are required to support the <A href="#The Service Layer">ServiceLayer</A>
+ or <A href="#The Domain Layer">DomainLayer</A></LI>
  </UL>
- The <A href="#The Infrastructure Layer">InfrastructureLayer</A> contains <A href="#Infrastructure Objects">InfrastructureObject</A>'s that provide generic technical capabilities to support the higher layers (see <A href="# Architecture of an introspect application">IntrospectArchitecture</A>)<BR>
- The <A href="#The Infrastructure Layer">InfrastructureLayer</A> is implemented by the <A>InfrastructureContainer</A><BR>
- Note that this layer is the bottom layer, which means that objects in the upper layers may know the objects in this layer but not visa versa! See <A href="# Architecture of an introspect application">IntrospectArchitecture</A>
- 
- <A name="Infrastructure Objects"><H2>Infrastructure Objects</H2></A>
- 
+ </P>
+ <P>
+ The <A>InfrastructureContainer</A> is an <A href="#Dependency Injection">IntrospectContainer</A> that
+ represents the <A href="#The Infrastructure Layer">InfrastructureLayer</A> and holds and manages
+ <A href="#Infrastructure Objects">InfrastructureObject</A>s.<BR>
+ </P>
 
- <A href="#Infrastructure Objects">InfrastructureObject</A>s do not need to implement any interface or
- superclass.<BR>
- <BR>
- <A href="#Infrastructure Objects">InfrastructureObject</A>s are placed in the <A href="#The Infrastructure Layer">InfrastructureLayer</A>
- and provide technical capabilities for the higher layers, such as:
+ Note that the <A href="#The Infrastructure Layer">InfrastructureLayer</A> is a middle layer (see
+ <A href="# Architecture of an introspect application">IntrospectArchitecture</A>):
  <UL>
- <LI>Communicating with an database (classes are named ...Repository, i.e:
- CustomerRepository, OrderRepository, etc)</LI>
- <LI>Communicating with an other system (classes are named ...Client, i.e:
- EmailClient, GoogleMapsClient, SOAPClient, etc)</LI>
- <LI>Logging (classes are named ...Logger)</LI>
- <LI>Creating value object (classes are named ...Factory, i.e: ReportFactory,
- etc)</LI>
+ <LI>
+ The <A href="#Infrastructure Objects">InfrastructureObject</A>s have NO references to objects in the upper
+ <A href="#The UserInterface Layer">UserInterfaceLayer</A>, <A href="#The Service Layer">ServiceLayer</A> nor <A href="#The Domain Layer">DomainLayer</A></LI>
+ <LI>The <A href="#Infrastructure Objects">InfrastructureObject</A>s may have references to the objects in
+ the lower <A href="#The Provider Layer">ProviderLayer</A> but not visa versa!</LI>
  </UL>
- <A href="#Infrastructure Objects">InfrastructureObject</A>s can be new classes that are being developed, classes in an existing application, or existing <A>Introspect</A> classes or <A href="#Infrastructure Objects">InfrastructureObject</A>s from other open source projects
+ <A name="Infrastructure Objects"><H2>Infrastructure Objects</H2></A> 
+
+ <A href="#Infrastructure Objects">InfrastructureObject</A>s 
+ provide generic technical capabilities to support the higher layers. <A href="#Infrastructure Objects">InfrastructureObject</A>s are often <A href="https://en.wikipedia.org/wiki/Utility_class">utility classes</A> (e.g. logging), or often communicate with other systems (such as databases, mail servers, SOAP servers, etc) or create objects (<A href="https://en.wikipedia.org/wiki/Factory_(object-oriented_programming)">factory classes</A>).  
+ <BR>
+ <H3>Naming</H3> The name of an <A href="#Infrastructure Objects">InfrastructureObject</A>s depends on what
+ it does. It is common practice to use the following naming:
+ <UL>
+ <LI>Communicating with an database:<BR>
+ classes are named ...Repository<BR>
+ e.g.: CustomerRepository, OrderRepository, etc)</LI>
+ <LI>Communicating with an other system:<BR>
+ classes are named ...Client<BR>
+ e.g.: EmailClient, GoogleMapsClient, SOAPClient, etc)</LI>
+ <LI>Logging:<BR>
+ classes are named ...Logger</LI>
+ <LI>Creating objects:<BR>
+ classes are named ...Factory<BR>
+ e.g.: ReportFactory, etc</LI>
+ </UL>
+ <H3>Construction</H3>
+ <P>
+ The principle of &#8220;naked objects&#8221; is that any <A href="http://en.wikipedia.org/wiki/Plain_Old_Java_Object">'Plain Old Java
+ Object' (POJO)</A> can function as a <A href="#Infrastructure Objects">InfrastructureObject</A>. In other
+ words: a service class does not have to inherit from any special class, nor
+ implement any particular interface, nor have any specific attributes.
+ </P>
+ <P>
+ You can:
+ <UL>
+ <LI>
+ write new <A href="#Infrastructure Objects">InfrastructureObject</A>s.</LI>
+ <LI>reuse <A href="#Infrastructure Objects">InfrastructureObject</A>s from existing projects</LI>
+ <LI>use or extend one of the <A href="#Infrastructure Objects">InfrastructureObject</A>s of one of the
+ <A>Introspect</A>Infrastructure projects. Open the type hierarchy of the <A href="#Infrastructure Objects">InfrastructureObject</A>, to see all these convenience classes</LI>
+ <LI>or use or extend <A href="#Infrastructure Objects">InfrastructureObject</A>s from other (open source)
+ projects</LI>
+ </UL>
+ TODO dependency injection
+ </P>
 
  
  
