@@ -284,32 +284,41 @@ Almost everyday new
  situation, and business rules. State that reflects the business situation is
  controlled and used here.<BR>
  <BR>
- Because there is many debate on the naming within a layered architecture,
- the domain layer is sometimes also called:
+ Because there is many debate on the naming within a layered architecture, the
+ domain layer is sometimes also called:
  <UL>
- <LI><A href="http://en.wikipedia.org/wiki/Business_logic">Business</A>  layer</LI>
- <LI><A href="http://en.wikipedia.org/wiki/Business_logic">Business logic</A> layer</LI>
- <LI><A href="http://en.wikipedia.org/wiki/Domain_model">Domain model</A> layer</LI>
+ <LI><A href="http://en.wikipedia.org/wiki/Business_logic">Business</A> layer</LI>
+ <LI><A href="http://en.wikipedia.org/wiki/Business_logic">Business logic</A>
+ layer</LI>
+ <LI><A href="http://en.wikipedia.org/wiki/Domain_model">Domain model</A>
+ layer</LI>
  </UL>
  The domain layer is basically where all the domain objects are. <BR>
  <BR>
- Note that this layer is a middle layer: the <A href="#Domain Objects">DomainObject</A>s have no
- knowledge of the objects in the higher layers (<A href="#The UserInterface Layer">UserInterfaceLayer</A> or
- <A href="#The Service Layer">ServiceLayer</A>). The <A href="#Domain Objects">DomainObject</A>s may know the objects in the
- lower <A href="#The Infrastructure Layer">InfrastructureLayer</A> but not visa versa!
+ Note that the <A href="#The Domain Layer">DomainLayer</A> is a middle layer (see
+ <A href="# Architecture of an introspect application">IntrospectArchitecture</A>):
+ <UL>
+ <LI>
+ The <A href="#Domain Objects">DomainObject</A>s have NO references to objects in the upper
+ <A href="#The UserInterface Layer">UserInterfaceLayer</A> nor <A href="#The Service Layer">ServiceLayer</A></LI>
+ <LI>The <A href="#Domain Objects">DomainObject</A>s may have references to the objects in the lower
+ <A href="#The Infrastructure Layer">InfrastructureLayer</A> or <A href="#The Provider Layer">ProviderLayer</A>, but not visa versa!</LI>
+ </UL>
  
  <A name="Domain Objects"><H2>Domain Objects</H2></A> 
- 
 
- Domain objects represent entities; the nouns of the domain. If your
+ <P>
+ <A href="#Domain Objects">DomainObject</A>s represent entities; the nouns of the domain. If your
  application domain is a sales application it&#8217;s likely that your domain model
- contains domain objects such as: customers, products and orders. <BR>
- <BR>
- Domain objects are created by a developer or are reused from an existing
+ contains domain objects such as: customers, products and orders.
+ </P>
+ <P>
+ <A href="#Domain Objects">DomainObject</A>s are created by a developer or are reused from an existing
  application that needs to be re-written. They can be created from scratch or
  generated from a schema (in example from a <A href="http://en.wikipedia.org/wiki/Database_schema">database schema</A>, <A href="http://nl.wikipedia.org/wiki/XML_Schema">XML schema</A> or <A href="http://en.wikipedia.org/wiki/Web_Services_Description_Language">web
- service</A>)<BR>
- <BR>
+ service</A>)
+ </P>
+ 
  Domain objects contain:
  <UL>
  <LI>Getter and setter methods (and possible fields): that define <A href="http://en.wikipedia.org/wiki/Property_(programming)">properties</A></LI>
@@ -318,9 +327,13 @@ Almost everyday new
  <LI>Annotations: that define <A href="#Object behavior">ObjectBehavior</A></LI>
  </UL>
  
- <H3>Naming</H3> Domain objects names are nouns, such as customer, product and
- order. They basically describe the things that are important in your
- application.
+ <H3>Naming</H3>
+ <P>
+ <A href="#Domain Objects">DomainObject</A>s names are nouns, such as customer, product and order.
+ They basically describe the things that are important in your application.
+ <A href="#Domain Objects">DomainObject</A>s names need to match the <A href="http://martinfowler.com/bliki/UbiquitousLanguage.html">Ubiquitous
+ Language</A> (in terms understood by both users and developers).
+ </P>
  
  <H3>Construction</H3>
  <P>
@@ -333,13 +346,13 @@ Almost everyday new
  <A href="#Domain Objects">DomainObject</A>s can be created by different objects e.g.:
  <UL>
  <LI>By a <A href="#Action Methods">ServiceObjectActionMethod</A> such as
- CustomerService.createNewCustomer()
+ customerService.createNewCustomer()
  <LI>By a <A href="#Action Methods">DomainObjectActionMethod</A></LI></LI>
  <LI>By a <A>DomainContainer</A> such as
  domainContainer.getObject(Customer.class)</LI>
  <LI>By a <A href="#Infrastructure Objects">InfrastructureObject</A> method such as
- OrderRepository.allOpenOrders() or
- ShoppingCartFactory.createForCustomer(Customer customer).</LI>
+ orderRepository.allOpenOrders() or
+ shoppingCartFactory.createForCustomer(Customer customer).</LI>
  </UL>
  <BR>
  There are 2 ways to create new <A href="#Domain Objects">DomainObject</A>s:
@@ -529,7 +542,7 @@ Almost everyday new
  <UL>
  <LI>These <A>ActionMethod</A>s are displayed as menu options in a form tab
  that represents the <A href="#Domain Objects">DomainObject</A>.</LI>
- <LI>Examples: an ShoppingCar object may have an <A>ActionMethod</A> such as
+ <LI>Example: an ShoppingCar object may have an <A>ActionMethod</A> such as
  checkout().</LI>
  </UL>
  <H3>Action Methods for Domain Object Properties</H3>
@@ -543,14 +556,15 @@ Almost everyday new
  <LI>The name of the <A>ActionMethod</A> for a <A href="#Properties">DomainObjectProperty</A>
  must begin with the name of the property, followed with a description of what
  is does.</LI>
- <LI>Examples:
+ </UL>
+ Examples:
  <UL>
- <LI>A ShoppingCar object may have </LI></UL></LI>
+ <LI>A ShoppingCar object may have <A>ActionMethod</A> such as
+ lineItemsAdd(LineItem lineItem) or lineItemsRemove(LineItem lineItem) or
+ lineItemsRemoveAll().</LI>
  <LI>A Customer object may have <A>ActionMethod</A> such as
  adressMoveToNewAddress(Address new Address).</LI>
  </UL>
- 
- 
  </P>
  
 
@@ -568,7 +582,16 @@ Almost everyday new
  <LI>The method is public (not private)</LI>
  <LI>The method is NOT static</LI>
  </UL>
- 
+ <H3>Action method names</H3>
+ <P>
+ The name of an <A>ActionMethod</A> should describe the action and match the
+ <A href="http://martinfowler.com/bliki/UbiquitousLanguage.html">Ubiquitous
+ Language</A> (in terms understood by both users and developers). Keep in mind
+ that the goal of a user is almost never to create, update or delete objects.
+ Method names like: createPerson, updatePerson and removePerson should
+ therefore be avoided where possible. Method names like registerNewBirth,
+ registerMarriage, registerPersonDeceased would be better names.
+ </P>
  <H3>Action method parameter</H3>
  <P>
  An action method either has no parameter or a single <A href="#Domain Objects">DomainObject</A> as
@@ -600,7 +623,7 @@ Almost everyday new
  </UL>
  </P>
  <H3>Action execution modes</H3> <A>ActionMethod</A>s can be annotated, so
- that the <A href="#UserInterfaceController">UserInterfaceController</A> know how the <A>ActionMethod</A>
+ that the <A href="#UserInterfaceController">UserInterfaceController</A> knows how the <A>ActionMethod</A>
  needs to be invoked after the user has clicked on the corresponding menu
  item.
  <UL>
@@ -643,13 +666,14 @@ Almost everyday new
  <A href="#Service Objects">ServiceObject</A>s.<BR>
  </P>
  <P>
- Note that the <A href="#The Service Layer">ServiceLayer</A> is a middle layer:
+ Note that the <A href="#The Service Layer">ServiceLayer</A> is a middle layer(see
+ <A href="# Architecture of an introspect application">IntrospectArchitecture</A>):
  <UL>
  <LI>
  The <A href="#Service Objects">ServiceObject</A>s have NO references to objects in the
  <A href="#The UserInterface Layer">UserInterfaceLayer</A></LI>
  <LI>The <A href="#Service Objects">ServiceObject</A>s may have references to the objects in the
- lower layers but not visa versa!</LI>
+ lower <A href="#The Domain Layer">DomainLayer</A>, <A href="#The Infrastructure Layer">InfrastructureLayer</A> and <A href="#The Provider Layer">ProviderLayer</A>, but not visa versa!</LI>
  </UL>
  </P>
  <A name="Service Objects"><H2>Service Objects</H2></A> 
@@ -663,16 +687,20 @@ Almost everyday new
  from.
  </P>
  <P>
- The <A href="#The Service Layer">ServiceLayer</A> needs to be kept thin (see Martin Fowlers article on
+ <A href="#Service Objects">ServiceObject</A>s basically provides the user (via the
+ <A href="#UserInterfaceController">UserInterfaceController</A>) access to <A href="#Domain Objects">DomainObject</A>s, so that the
+ user (via the <A href="#UserInterfaceController">UserInterfaceController</A>) can work on them.
+ </P>
+ <P>
+ <A href="https://en.wikipedia.org/?title=Object-oriented_programming"> Object
+ Orientated Programming</A> favors to put business logic and the validation
+ logic into the <A href="#Domain Objects">DomainObject</A>s (and sometimes
+ <A href="#Infrastructure Objects">InfrastructureObject</A>s) as much as possible.
+ <A href="#Action Methods">ServiceObjectActionMethod</A>s should therefore not contain business
+ logic or validation logic, but delegate the work to collaborations of
+ <A href="#Domain Objects">DomainObject</A>s and <A href="#Infrastructure Objects">InfrastructureObject</A>, in order to prevent
  the <A href="http://martinfowler.com/bliki/AnemicDomainModel.html">Anemic
- Domain Model</A> <A href="http://en.wikipedia.org/wiki/Anti-pattern">anti-pattern</A>). Therefore
- <A href="#Service Objects">ServiceObject</A>s should not contain business rules/logic or validation
- rules/logic, but delegate work to collaborations of domain objects in the
- next layer down. Business logic and validation logic should be placed in
- <A href="#Domain Objects">DomainObject</A>s as much as possible. If you put them in other places,
- such as <A href="#Service Objects">ServiceObject</A>s, changes are that the business logic and
- validation logic will be scattered over different locations, making extending
- or de-buging code difficult and expensive.
+ Domain Model</A> - <A href="http://en.wikipedia.org/wiki/Anti-pattern">anti-pattern</A>.
  </P>
  <P>
  A web shop example:
@@ -687,11 +715,13 @@ Almost everyday new
  </UL>
  </P>
  <P>
- <A href="#Service Objects">ServiceObject</A>s do not have state and therefore do not have properties
- (no getter and setter methods). To me a <A href="#Service Objects">ServiceObject</A> with state is a
- good indicator of a <A href="http://en.wikipedia.org/wiki/Code_smell">code-smell</A>, which you can
+ <A href="#Service Objects">ServiceObject</A>s do not need state and do not have properties (no
+ getter and setter methods), because <A href="#Action Methods">ServiceObjectActionMethod</A>s only
+ delegate the work to collaborations of <A href="#Domain Objects">DomainObject</A>s and
+ <A href="#Infrastructure Objects">InfrastructureObject</A>s. My personal opinion is that a
+ <A href="#Service Objects">ServiceObject</A> with state is a <A href="http://en.wikipedia.org/wiki/Code_smell">code-smell</A>, which you can
  solve by moving the <A href="#Action Methods">ServiceObjectActionMethod</A>s that share state
- (fields) to an new or existing <A href="#Domain Objects">DomainObject</A>.
+ (fields) to an new or existing <A href="#Domain Objects">DomainObject</A>s.
  </P>
  <P>
  Service objects contain:
@@ -701,6 +731,7 @@ Almost everyday new
  <LI>Annotations: that define <A href="#Object behavior">ObjectBehavior</A></LI>
  </UL>
  </P>
+ 
  
  
  <H3>Naming</H3> <A href="#Service Objects">ServiceObject</A>s are normally named to the
@@ -767,15 +798,26 @@ Almost everyday new
  <A href="#Service Objects">ServiceObject</A>s always have one ore more <A>ActionMethod</A>s.
  </P>
  <UL>
- <LI>These <A>ActionMethod</A>s are displayed by the <A href="#UserInterfaceController">UserInterfaceController</A> as menu options in the main menu or in a form tab
- that represents the <A href="#Domain Objects">DomainObject</A>.</LI>
- <LI>Examples: an CustomerService object may have an <A>ActionMethod</A> such as
- findCustomer(CustomerSearchArgument searchArgument).</LI>
+ <LI>These <A>ActionMethod</A>s are displayed by the
+ <A href="#UserInterfaceController">UserInterfaceController</A> as menu options in the main menu or in a form
+ tab that represents the <A href="#Domain Objects">DomainObject</A>.</LI>
+ <LI>Examples: an CustomerService object may have an <A>ActionMethod</A> such
+ as findCustomer(CustomerSearchArgument searchArgument).</LI>
  </UL>
  
  <P>
- Note that business logic should be placed in <A href="#Domain Objects">DomainObject</A>s and therefore have no place in <A>ActionMethod</A>s in service objects! <A>ActionMethod</A>s in service objects should only give access to  
+ <A href="https://en.wikipedia.org/?title=Object-oriented_programming"> Object
+ Orientated Programming</A> favors to put business logic and the validation
+ logic into the <A href="#Domain Objects">DomainObject</A>s (and sometimes
+ <A href="#Infrastructure Objects">InfrastructureObject</A>s) as much as possible.
+ <A href="#Action Methods">ServiceObjectActionMethod</A>s should therefore not contain business
+ logic or validation logic, but delegate the work to collaborations of
+ <A href="#Domain Objects">DomainObject</A>s and <A href="#Infrastructure Objects">InfrastructureObject</A>, in order to prevent
+ the <A href="http://martinfowler.com/bliki/AnemicDomainModel.html">Anemic
+ Domain Model</A> - <A href="http://en.wikipedia.org/wiki/Anti-pattern">anti-pattern</A>.
  </P>
+ 
+ 
  
  
 
@@ -793,7 +835,16 @@ Almost everyday new
  <LI>The method is public (not private)</LI>
  <LI>The method is NOT static</LI>
  </UL>
- 
+ <H3>Action method names</H3>
+ <P>
+ The name of an <A>ActionMethod</A> should describe the action and match the
+ <A href="http://martinfowler.com/bliki/UbiquitousLanguage.html">Ubiquitous
+ Language</A> (in terms understood by both users and developers). Keep in mind
+ that the goal of a user is almost never to create, update or delete objects.
+ Method names like: createPerson, updatePerson and removePerson should
+ therefore be avoided where possible. Method names like registerNewBirth,
+ registerMarriage, registerPersonDeceased would be better names.
+ </P>
  <H3>Action method parameter</H3>
  <P>
  An action method either has no parameter or a single <A href="#Domain Objects">DomainObject</A> as
@@ -825,7 +876,7 @@ Almost everyday new
  </UL>
  </P>
  <H3>Action execution modes</H3> <A>ActionMethod</A>s can be annotated, so
- that the <A href="#UserInterfaceController">UserInterfaceController</A> know how the <A>ActionMethod</A>
+ that the <A href="#UserInterfaceController">UserInterfaceController</A> knows how the <A>ActionMethod</A>
  needs to be invoked after the user has clicked on the corresponding menu
  item.
  <UL>
@@ -848,6 +899,7 @@ Almost everyday new
  behavior and presentation of actions methods, such as their display name,
  icon, visibility, enabled state, etc with help of annotations or behavior
  methods. See chapter on <A href="#Object behavior">ObjectBehavior</A>.
+ 
  
  <A name="The Infrastructure Layer"><H1>The Infrastructure Layer</H1></A>
  
@@ -881,7 +933,7 @@ Almost everyday new
  The <A href="#Infrastructure Objects">InfrastructureObject</A>s have NO references to objects in the upper
  <A href="#The UserInterface Layer">UserInterfaceLayer</A>, <A href="#The Service Layer">ServiceLayer</A> nor <A href="#The Domain Layer">DomainLayer</A></LI>
  <LI>The <A href="#Infrastructure Objects">InfrastructureObject</A>s may have references to the objects in
- the lower <A href="#The Provider Layer">ProviderLayer</A> but not visa versa!</LI>
+ the lower <A href="#The Provider Layer">ProviderLayer</A>, but not visa versa!</LI>
  </UL>
  <A name="Infrastructure Objects"><H2>Infrastructure Objects</H2></A> 
 
@@ -935,10 +987,11 @@ Almost everyday new
  technical capabilities to support the higher layers (see
  <A href="# Architecture of an introspect application">IntrospectArchitecture</A>)<BR>
  The <A href="#The Provider Layer">ProviderLayer</A> is implemented by the <A>ProviderContainer</A><BR>
- Note that this layer is the bottom layer, which means that objects in the
- upper layers may know the objects in this layer but not visa versa! See
- <A href="# Architecture of an introspect application">IntrospectArchitecture</A>
- 
+ <P>
+ Note that this layer is the bottom layer (see <A href="# Architecture of an introspect application">IntrospectArchitecture</A>
+ ), which means that objects in the upper layers may know the objects in this
+ layer but not visa versa!
+ </P>
  
  <A name="Provider Objects"><H2>Provider Objects</H2></A> 
 
@@ -994,12 +1047,12 @@ Almost everyday new
  <A name="Object behavior"><H1>Object behavior</H1></A>
  
 
- This section is concerned with adding to, or modifying, the behaviour of
+ This section is concerned with adding to, or modifying, the behavior of
  domain objects and service objects, in order to build a richer application.
  
  Behavior can be added with:
  <UL>
- <LI>methods that are recognized bin the introspect framework</LI>
+ <LI>methods that are recognized bin the Introspect framework</LI>
  <LI>methods that are recognized book the Introspect framework</LI>
  </UL>
  TO-DO RECOGNIZED METHODS (see naked objects doc)
