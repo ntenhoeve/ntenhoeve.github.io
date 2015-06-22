@@ -174,16 +174,23 @@ Almost everyday new
  <LI>Inbound external interface modules (eg web service handlers) should not
  contain business logic.</LI>
  </UL>
+ <P>
  These multi layer architecture design principles try to prevent <A href="http://en.wikipedia.org/wiki/Spaghetti_code"> spaghetti code</A>, which
  is hard to extend, hard to trouble shoot, hard to test, hard to keep <A href="http://en.wikipedia.org/wiki/Software_bug#Etymology">bug</A> free.<BR>
- <BR>
+ </P>
  
- There are many different opinions on how a multi layered architecture should
- <A href="https://www.google.nl/search?q=layered+architecture&tbm=isch">look
- like</A>. It really doesn&#8217;t matter what it should look like, as long as your
- multi layered architecture complies with the design principles above. <BR>
+ <P>
+ There are many different opinions and definitions on the number of layers,
+ the names of the layers and what each layer should do (see these <A href="https://www.google.nl/search?q=layered+architecture&tbm=isch">examples</A>). It would be nice if everyone would use the same model and
+ naming. I think that <A href="http://www.herrodius.com/blog/wp-content/uploads/2010/03/LayeredArchitecture.png">the definition of layers</A> from Eric Evans <A href="https://en.wikipedia.org/wiki/Domain-driven_design">Domain Driven Design approach</A> is the most commonly
+ used. The most important thing is that your multi layered architecture
+ complies with the design principles above.
+ </P>
  
- The <A href="# Architecture of an introspect application">IntrospectArchitecture</A> uses the following layer definition (you are free to use different layers or layer names): 
+ <P>
+ The <A href="# Architecture of an introspect application">IntrospectArchitecture</A> uses the following layer definition, which
+ is pretty close to <A href="https://en.wikipedia.org/wiki/Domain-driven_design">Eric Evans Domain
+ Driven Design</A> approach.:
  <UL>
  <LI><A href="#The UserInterface Layer">UserInterfaceLayer</A></LI>
  <LI><A href="#The Service Layer">ServiceLayer</A></LI>
@@ -191,10 +198,12 @@ Almost everyday new
  <LI><A href="#The Infrastructure Layer">InfrastructureLayer</A></LI>
  <LI><A href="#The Provider Layer">ProviderLayer</A></LI>
  </UL>
+ </P>
+ Each layer is implemented by an <A href="#Dependency Injection">IntrospectContainer</A><BR>
+ <BR>
  
- Each layer is implemented by an <A href="#Dependency Injection">IntrospectContainer</A><BR><BR>
- 
- <IMG src="IntrospectArchitecture.png"><BR><BR>
+ <IMG src="IntrospectArchitecture.png"><BR>
+ <BR>
  
  Red objects are provided by the Introspect framework<BR>
  Yellow objects need to be written or included by the developer. 
@@ -313,19 +322,11 @@ Almost everyday new
  contains domain objects such as: customers, products and orders.
  </P>
  <P>
- <A href="#Domain Objects">DomainObject</A>s are created by a developer or are reused from an existing
- application that needs to be re-written. They can be created from scratch or
- generated from a schema (in example from a <A href="http://en.wikipedia.org/wiki/Database_schema">database schema</A>, <A href="http://nl.wikipedia.org/wiki/XML_Schema">XML schema</A> or <A href="http://en.wikipedia.org/wiki/Web_Services_Description_Language">web
+ <A href="#Domain Objects">DomainObject</A>s are created by a developer or are reused from an
+ existing application that needs to be re-written. They can be created from
+ scratch or generated from a schema (in example from a <A href="http://en.wikipedia.org/wiki/Database_schema">database schema</A>, <A href="http://nl.wikipedia.org/wiki/XML_Schema">XML schema</A> or <A href="http://en.wikipedia.org/wiki/Web_Services_Description_Language">web
  service</A>)
  </P>
- 
- Domain objects contain:
- <UL>
- <LI>Getter and setter methods (and possible fields): that define <A href="http://en.wikipedia.org/wiki/Property_(programming)">properties</A></LI>
- <LI><A href="#Action Methods">DomainObjectActionMethod</A>s: that define user actions</LI>
- <LI>Methods: that define <A href="#Object behavior">ObjectBehavior</A></LI>
- <LI>Annotations: that define <A href="#Object behavior">ObjectBehavior</A></LI>
- </UL>
  
  <H3>Naming</H3>
  <P>
@@ -382,8 +383,9 @@ Almost everyday new
  <A>ServiceContainer</A> (which is done by the <A href="#The Introspect Framework">IntrospectFramework</A>)</LI></UL></UL>
  
  
- <H3>Presentation</H3> An <A href="#UserInterfaceController">UserInterfaceController</A> can display domain
- objects in 3 ways:<BR>
+ <H3>Presentation</H3>
+ <P>
+ An <A href="#UserInterfaceController">UserInterfaceController</A> can display domain objects in 3 ways:<BR>
  <UL>
  <LI>Domain object as form:<BR>
  <IMG src="ObjectAsForm.png"></LI>
@@ -392,7 +394,20 @@ Almost everyday new
  <LI>Domain object as a row in a table:<BR>
  <IMG src="ObjectAsTable.png"></LI>
  </UL>
- <BR>
+ </P>
+ 
+ <H3>Domain object members</H3>
+ <P>
+ Domain objects contain:
+ <UL>
+ <LI>Getter and setter methods (and possible fields): that define <A href="http://en.wikipedia.org/wiki/Property_(programming)">properties</A></LI>
+ <LI><A href="#Action Methods">DomainObjectActionMethod</A>s: that define user actions</LI>
+ <LI>Methods: that define <A href="#Object behavior">ObjectBehavior</A></LI>
+ <LI>Annotations: that define <A href="#Object behavior">ObjectBehavior</A></LI>
+ </UL>
+ These members are discussed in more detail in the following paragraphs.
+ </P>
+ 
  <A name="Properties"><H2>Properties</H2></A> 
 
  Domain objects have <A href="http://en.wikipedia.org/wiki/State_(computer_science)">state</A>. This
@@ -637,7 +652,7 @@ Almost everyday new
  <LI>@<A>ExecutionMode</A>(
  <A>ExecutionModeType.EXECUTE_METHOD_AFTER_CONFORMATION</A>): the
  <A href="#UserInterfaceController">UserInterfaceController</A> opens a confirmation dialog. The method is
- executed after the user has confirmed by the user. The method is NOT executed
+ executed after the user activates the confirmation button. The method is NOT executed
  when the user cancels the confirmation dialog.</LI>
  <LI>@<A>ExecutionMode</A>(
  <A>ExecutionModeType.EDIT_PARAMETER_THAN_EXECUTE_METHOD_OR_CANCEL</A>): the
@@ -683,6 +698,19 @@ Almost everyday new
  </P>
  <A name="Service Objects"><H2>Service Objects</H2></A> 
 
+ According to Eric Evans book Domain Driven design, a good
+ <A href="#Service Objects">ServiceObject</A> has three characteristics:
+ <UL>
+ <LI>
+ The operation relates to a domain concept that is not a natural part of an
+ <A href="#Domain Objects">DomainObject</A> (Entities or Value Objects).</LI>
+ <LI>The interface is defined in terms of other elements of the domain model.</LI>
+ <LI>The operation is state-less</LI>
+ </UL>
+ These characteristics are discussed in more detail in the following
+ paragraphs.
+ 
+ <H3>Service objects operations relate a domain concept</H3>
  <P>
  <A href="#Service Objects">ServiceObject</A>s contain <A href="#Action Methods">ServiceObjectActionMethod</A>s. The
  <A href="#UserInterfaceController">UserInterfaceController</A> displays these methods as menu items and
@@ -691,11 +719,31 @@ Almost everyday new
  where the user does not have an existing <A href="#Domain Objects">DomainObject</A> to navigate
  from.
  </P>
+ <H3>Service objects define an interface in terms of the domain model</H3>
  <P>
  <A href="#Service Objects">ServiceObject</A>s basically provides the user (via the
  <A href="#UserInterfaceController">UserInterfaceController</A>) access to <A href="#Domain Objects">DomainObject</A>s, so that the
- user (via the <A href="#UserInterfaceController">UserInterfaceController</A>) can work on them.
+ user can work on them (via the <A href="#UserInterfaceController">UserInterfaceController</A>).
  </P>
+ 
+ <H3>Service objects are state-less</H3>
+ <P>
+ According to Eric Evans: <A href="#Service Objects">ServiceObject</A>s should be state-less.
+ State-less here means that any client can use any instance of the
+ <A href="#Service Objects">ServiceObject</A>s without regard to the instance&#8217;s individual history.
+ The execution of the service will use information that is accessible
+ globally, and may even change that global information (have side-effects).
+ But it does not hold state of its own that affects its behavior, as most
+ domain objects do.
+ </P>
+ <P>
+ <A href="#Service Objects">ServiceObject</A>s do not have state and therefore should not have
+ properties (no getter and setter methods). My personal opinion is that a
+ <A href="#Service Objects">ServiceObject</A> with state is a <A href="http://en.wikipedia.org/wiki/Code_smell">code-smell</A>, which you can
+ solve by moving the <A href="#Action Methods">ServiceObjectActionMethod</A>s that share state
+ (fields) to an new or existing <A href="#Domain Objects">DomainObject</A>s.
+ </P>
+ <H3>Service Objects should be flat</H3>
  <P>
  <A href="https://en.wikipedia.org/?title=Object-oriented_programming"> Object
  Orientated Programming</A> favors to put business logic and the validation
@@ -717,31 +765,17 @@ Almost everyday new
  ProductRepository</LI>
  <LI>This method will return a list of <A href="#Domain Objects">DomainObject</A>s that meet the
  search criteria</LI>
- </UL>
- </P>
- <P>
- <A href="#Service Objects">ServiceObject</A>s do not need state and do not have properties (no
- getter and setter methods), because <A href="#Action Methods">ServiceObjectActionMethod</A>s only
- delegate the work to collaborations of <A href="#Domain Objects">DomainObject</A>s and
- <A href="#Infrastructure Objects">InfrastructureObject</A>s. My personal opinion is that a
- <A href="#Service Objects">ServiceObject</A> with state is a <A href="http://en.wikipedia.org/wiki/Code_smell">code-smell</A>, which you can
- solve by moving the <A href="#Action Methods">ServiceObjectActionMethod</A>s that share state
- (fields) to an new or existing <A href="#Domain Objects">DomainObject</A>s.
- </P>
- <P>
- Service objects contain:
- <UL>
- <LI><A href="#Action Methods">ServiceObjectActionMethod</A>s: that define user actions</LI>
- <LI>Methods: that define <A href="#Object behavior">ObjectBehavior</A></LI>
- <LI>Annotations: that define <A href="#Object behavior">ObjectBehavior</A></LI>
+ <LI>The <A href="#UserInterfaceController">UserInterfaceController</A> displays the found list of
+ <A href="#Domain Objects">DomainObject</A>s as a table in a new tab.</LI>
  </UL>
  </P>
  
- 
- 
- <H3>Naming</H3> <A href="#Service Objects">ServiceObject</A>s are normally named to the
- <A href="#Domain Objects">DomainObject</A>s that they service (e.g. CustomerService, OrderService,
- etc).
+ * <H3>Naming</H3>
+ <P>
+ <A href="#Service Objects">ServiceObject</A>s are normally named after the <A href="#Domain Objects">DomainObject</A>s
+ that they service and have the suffix 'Service' (e.g. CustomerService,
+ OrderService, etc).
+ </P>
  
  <H3>Construction</H3>
  <P>
@@ -790,6 +824,17 @@ Almost everyday new
  
  
  <H3>Presentation</H3> TODO menu items <BR>
+ 
+ <H3>Service object members</H3>
+ <P>
+ Service objects contain:
+ <UL>
+ <LI><A href="#Action Methods">ServiceObjectActionMethod</A>s: that define user actions</LI>
+ <LI>Methods: that define <A href="#Object behavior">ObjectBehavior</A></LI>
+ <LI>Annotations: that define <A href="#Object behavior">ObjectBehavior</A></LI>
+ </UL>
+ These members are discussed in more detail in the following paragraphs.
+ </P>
  <A name="Action Methods"><H2>Action Methods</H2></A> 
 
  <P>
@@ -890,7 +935,7 @@ Almost everyday new
  <LI>@<A>ExecutionMode</A>(
  <A>ExecutionModeType.EXECUTE_METHOD_AFTER_CONFORMATION</A>): the
  <A href="#UserInterfaceController">UserInterfaceController</A> opens a confirmation dialog. The method is
- executed after the user has confirmed by the user. The method is NOT executed
+ executed after the user activates the confirmation button. The method is NOT executed
  when the user cancels the confirmation dialog.</LI>
  <LI>@<A>ExecutionMode</A>(
  <A>ExecutionModeType.EDIT_PARAMETER_THAN_EXECUTE_METHOD_OR_CANCEL</A>): the
