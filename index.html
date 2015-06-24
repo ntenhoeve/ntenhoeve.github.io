@@ -698,11 +698,11 @@ Almost everyday new
  </P>
  <A name="Service Objects"><H2>Service Objects</H2></A> 
 
- According to Eric Evans book Domain Driven design, a good
- <A href="#Service Objects">ServiceObject</A> has three characteristics:
+ Eric Evans explains in his book <A href="https://en.wikipedia.org/wiki/Domain-driven_design">Domain Driven
+ Design</A>, that a good <A href="#Service Objects">ServiceObject</A> has three characteristics:
  <UL>
  <LI>
- The operation relates to a domain concept that is not a natural part of an
+ The operation relates to a domain concept that is not a natural part of a
  <A href="#Domain Objects">DomainObject</A> (Entities or Value Objects).</LI>
  <LI>The interface is defined in terms of other elements of the domain model.</LI>
  <LI>The operation is state-less</LI>
@@ -710,7 +710,8 @@ Almost everyday new
  These characteristics are discussed in more detail in the following
  paragraphs.
  
- <H3>Service objects operations relate a domain concept</H3>
+ <H3>Service objects operations relates to a domain concept that is not a
+ natural part of a DomainObject</H3>
  <P>
  <A href="#Service Objects">ServiceObject</A>s contain <A href="#Action Methods">ServiceObjectActionMethod</A>s. The
  <A href="#UserInterfaceController">UserInterfaceController</A> displays these methods as menu items and
@@ -770,7 +771,7 @@ Almost everyday new
  </UL>
  </P>
  
- * <H3>Naming</H3>
+ <H3>Naming</H3>
  <P>
  <A href="#Service Objects">ServiceObject</A>s are normally named after the <A href="#Domain Objects">DomainObject</A>s
  that they service and have the suffix 'Service' (e.g. CustomerService,
@@ -784,46 +785,82 @@ Almost everyday new
  service class does not have to inherit from any special class, nor implement
  any particular interface, nor have any specific attributes.
  </P>
-
- TODO: Service objects need to be registred to the
- <A href="#The Introspect Application">IntrospectApplication.getServiceClasses()</A> method
+ <P>
+ <A href="#Service Objects">ServiceObject</A>s are instiantated by the <A href="#The Introspect Framework">IntrospectFramework</A>,
+ and therefore need to be registered to the
+ <A href="#The Introspect Application">IntrospectApplication.getServiceClasses()</A> method.
+ </P>
+ In example:
  
- <BR>
- <A href="#Service Objects">ServiceObject</A>s are created by the <A>ServiceContainer</A>. TODO how
- objects are created with Dependency Injection by the
- <A href="#The Introspect Framework">IntrospectFramework</A>:<BR>
- 
+ <PRE>
+ public class WebShop extends IntrospectApplicationFor... {
+ 	&#64;Override
+ 	public List&lt;Class&lt;?&gt;&gt; getServiceClasses() {
+ 		List&lt;Class&lt;?&gt;&gt; serviceClasses = new ArrayList&lt;&gt;();
+ 		serviceClasses.add(ProductService.class);
+ 		serviceClasses.add(ShoppingCartService.class);
+ 		serviceClasses.add(OrderService.class);
+ 		return serviceClasses;
+ 	}
+ 	// etc...
+ }
+ </PRE>
+ <P>
  <A href="#Service Objects">ServiceObject</A>s can have references to other objects (being other
  <A href="#Service Objects">ServiceObject</A>s, <A href="#Domain Objects">DomainObject</A>s, <A href="#Infrastructure Objects">InfrastructureObject</A>s
- or <A href="#Provider Objects">Provider</A> objects). In example: TODO: A Customer object needs a
- references to a ShoppingCartFactory object. The Customer object can therefore
- be created by the <A>DomainContainer</A> with Customer customer=(Customer)
- domainContainer.getObject(Customer.class). The ShopingCart object will
- automatically be injected as a constructor parameter of the Customer class.
- In order to create <A href="#Domain Objects">DomainObject</A>s using dependency injection you need
- to:
+ or <A href="#Provider Objects">Provider</A> objects). These reference objects are injected into the
+ <A href="#Service Objects">ServiceObject</A> as constructor parameter during the creation of the
+ <A href="#Service Objects">ServiceObject</A> by the <A href="#The Introspect Framework">IntrospectFramework</A> (by the
+ <A>ServiceContainer</A>). This constructor can than be linked to a private
+ final field, so that it can be used throughout the class.
+ </P>
+ In example:
+ <PRE>
+ public class ProductService {
+ 
+ 	private final ProductRepository productRepository;
+ 
+ 	public ProductService(ProductRepository productRepository) {
+ 		this.productRepository = productRepository;
+ 	}
+ 
+ 	&#064;GenericReturnType(Product.class)
+ 	public List&lt;Product&gt; findProduct(ProductSearchCritiria searchCritiria) {
+ 		return productRepository.findProduct(searchCritiria);
+ 	}
+ 
+ 	// other action methods...
+ }
+ </PRE>
+ <P>
+ Note that you can only inject reference object types (use constructor
+ parameters types) that are known to the <A href="#The Introspect Framework">IntrospectFramework</A>.
+ <A href="#Service Objects">ServiceObject</A>s can be injected with the following types (see also
+ <A href="# Architecture of an introspect application">IntrospectArchitecture</A>):
  <UL>
- <LI>Add the reference object as a parameter in the constructor and link it to
- a private field, so that it can be used throughout the class. TODO what
- happens see above</LI>
- <LI>Override the <A href="#The Introspect Application">IntrospectApplication.getDomainClasses()</A> method and
- return a list of <A href="#Domain Objects">DomainObject</A>s that need to be created using
- Dependency Injection</LI>
- <LI>The object that creates the Customer objects needs to have a reference to
- the <A>DomainContainer</A>. A CustomerService object can get a reference to
- the <A>DomainContainer</A> when it is created by the
- <A>ServiceContainer</A> (which is done by the <A href="#The Introspect Framework">IntrospectFramework</A>)</LI>
- 
- TODO Registering the service serves two purposes: &#8226; It makes the service's
- actions available to the user &#8226; It instructs the Naked Objects framework to
- inject that service into any domain object that needs access to it. See
- Dependency Injection. A service may provide multiple methods any of which may
- appear as user actions - following the same rules as for actions on a domain
- object.
+ <LI>The <A href="#The Introspect Application">IntrospectApplication</A> class</LI>
+ <LI>Types registered to the <A href="#The Introspect Application">IntrospectApplication.getServiceClasses()</A>
+ method</LI>
+ <LI>Types registered to the <A href="#The Introspect Application">IntrospectApplication.getDomainClasses()</A>
+ method</LI>
+ <LI>Types registered to the
+ <A href="#The Introspect Application">IntrospectApplication.getInfrastructureClasses()</A> method</LI>
+ <LI>The <A href="#Provider Objects">Provider</A> classes</LI>
  </UL>
+ </P>
+ <P>
+ Note that it is good practice to link the constructor parameter (reference
+ object) to a <A href="https://en.wikibooks.org/wiki/Java_Programming/Keywords/private">private</A> <A href="https://en.wikipedia.org/wiki/Final_(Java)#Final_variables">final</A> field, so that it is encapsulated and 
+ immutable.
+ </P>
+ <P>
+ Note that that if your <A href="#Service Objects">ServiceObject</A> needs a lot of references to
+ other objects (to many constructor parameters), your <A href="#Service Objects">ServiceObject</A>
+ has most likely to many responsibilities, which could be solved by splitting
+ up a <A href="#Service Objects">ServiceObject</A>.
+ </P>
  
- 
- <H3>Presentation</H3> TODO menu items <BR>
+ <H3>Presentation</H3> TODO main menu's, object menu's, property menu's <BR>
  
  <H3>Service object members</H3>
  <P>
