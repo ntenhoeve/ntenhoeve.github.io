@@ -549,7 +549,7 @@ Almost everyday new
  <A name="Action Methods"><H2>Action Methods</H2></A> 
 
  <P>
- An action is a method in a <A href="#Domain Objects">DomainObject</A> or <A href="#Service Objects">ServiceObject</A> is
+ An action is a method in a <A href="#Domain Objects">DomainObject</A> or <A href="#Service Objects">ServiceObject</A> that is
  displayed by the <A href="#UserInterfaceController">UserInterfaceController</A> as a menu item. An Action
  method is invoked by the <A href="#UserInterfaceController">UserInterfaceController</A> when the user clicks
  on the menu item.
@@ -806,15 +806,15 @@ Almost everyday new
  }
  </PRE>
  <P>
- <A href="#Service Objects">ServiceObject</A>s can have references to other objects (being other
- <A href="#Service Objects">ServiceObject</A>s, <A href="#Domain Objects">DomainObject</A>s, <A href="#Infrastructure Objects">InfrastructureObject</A>s
- or <A href="#Provider Objects">Provider</A> objects). These reference objects are injected into the
- <A href="#Service Objects">ServiceObject</A> as constructor parameter during the creation of the
- <A href="#Service Objects">ServiceObject</A> by the <A href="#The Introspect Framework">IntrospectFramework</A> (by the
- <A>ServiceContainer</A>). This constructor can than be linked to a private
- final field, so that it can be used throughout the class.
+ <A href="#Service Objects">ServiceObject</A>s can have references to other objects. These reference
+ objects are injected into the <A href="#Service Objects">ServiceObject</A> as constructor parameter
+ during the creation of the <A href="#Service Objects">ServiceObject</A> by the
+ <A href="#The Introspect Framework">IntrospectFramework</A> (by the <A>ServiceContainer</A>). This
+ constructor can than be linked to a private final field, so that it can be
+ used throughout the <A href="#Service Objects">ServiceObject</A>.
  </P>
  In example:
+ 
  <PRE>
  public class ProductService {
  
@@ -850,12 +850,12 @@ Almost everyday new
  </P>
  <P>
  Note that it is good practice to link the constructor parameter (reference
- object) to a <A href="https://en.wikibooks.org/wiki/Java_Programming/Keywords/private">private</A> <A href="https://en.wikipedia.org/wiki/Final_(Java)#Final_variables">final</A> field, so that it is encapsulated and 
- immutable.
+ object) to a <A href="https://en.wikibooks.org/wiki/Java_Programming/Keywords/private">private</A> <A href="https://en.wikipedia.org/wiki/Final_(Java)#Final_variables">final</A>
+ field, so that it is encapsulated and immutable.
  </P>
  <P>
  Note that that if your <A href="#Service Objects">ServiceObject</A> needs a lot of references to
- other objects (to many constructor parameters), your <A href="#Service Objects">ServiceObject</A>
+ other objects (too many constructor parameters), your <A href="#Service Objects">ServiceObject</A>
  has most likely to many responsibilities, which could be solved by splitting
  up a <A href="#Service Objects">ServiceObject</A>.
  </P>
@@ -875,10 +875,10 @@ Almost everyday new
  <A name="Action Methods"><H2>Action Methods</H2></A> 
 
  <P>
- An action is a method in a <A href="#Domain Objects">DomainObject</A> or <A href="#Service Objects">ServiceObject</A> is
- displayed by the <A href="#UserInterfaceController">UserInterfaceController</A> as a menu item. An Action
- method is invoked by the <A href="#UserInterfaceController">UserInterfaceController</A> when the user clicks
- on the menu item.
+ An action is a method in a <A href="#Domain Objects">DomainObject</A> or <A href="#Service Objects">ServiceObject</A> that
+ is displayed by the <A href="#UserInterfaceController">UserInterfaceController</A> as a menu item. An
+ <A>ActionMethod</A> is invoked by the <A href="#UserInterfaceController">UserInterfaceController</A> when
+ the user clicks on the menu item.
  </P>
  <H3>Action Methods for Service Objects</H3>
  <P>
@@ -1024,31 +1024,36 @@ Almost everyday new
  </UL>
  <A name="Infrastructure Objects"><H2>Infrastructure Objects</H2></A> 
 
+ <P>
  <A href="#Infrastructure Objects">InfrastructureObject</A>s provide generic technical capabilities to
- support the higher layers. <A href="#Infrastructure Objects">InfrastructureObject</A>s are often <A href="https://en.wikipedia.org/wiki/Utility_class">utility classes</A> (e.g.
- logging), or often communicate with other systems (such as databases, mail
- servers, SOAP servers, etc) or create objects (<A href="https://en.wikipedia.org/wiki/Factory_(object-oriented_programming)">factory classes</A>). <BR>
- <H3>Naming</H3> The name of an <A href="#Infrastructure Objects">InfrastructureObject</A>s depends on what
- it does. It is common practice to use the following naming:
+ support the higher layers. <A href="#Infrastructure Objects">InfrastructureObject</A>s communicate with
+ other systems such as external hardware (like disks), databases,
+ web-services, etc...
+ </P>
+ <H3>Function and naming of InfrastructureObjects</H3>
+ <P>
+ The name of an <A href="#Infrastructure Objects">InfrastructureObject</A>s depends on what it does. It is
+ common practice to use the following naming:
  <UL>
- <LI>Communicating with an database:<BR>
- classes are named ...Repository<BR>
- e.g.: CustomerRepository, OrderRepository, etc)</LI>
- <LI>Communicating with an other system:<BR>
- classes are named ...Client<BR>
- e.g.: EmailClient, GoogleMapsClient, SOAPClient, etc)</LI>
- <LI>Logging:<BR>
- classes are named ...Logger</LI>
- <LI>Creating objects:<BR>
- classes are named ...Factory<BR>
- e.g.: ReportFactory, etc</LI>
+ <LI>Communicating with a <A href="https://en.wikipedia.org/wiki/Database">database</A>:<BR>
+ class names end with 'Repository', e.g.: CustomerRepository, OrderRepository,
+ etc...</LI>
+ <LI>Communicating with a <A href="null">web-service</A>:<BR>
+ class names end with 'Client', e.g.: EmailClient, GoogleMapsClient,
+ SOAPClient, etc..</LI>
+ <LI>Creating objects with a <A href="https://en.wikipedia.org/wiki/Factory_(object-oriented_programming)">factory</A> class:<BR>
+ class names end with 'Factory', e.g.: ReportFactory, etc..</LI>
+ <LI><A href="https://en.wikipedia.org/wiki/Logfile">Logging</A>:<BR>
+ class names end with 'Logger'</LI>
  </UL>
+ </P>
  <H3>Construction</H3>
  <P>
  The principle of &#8220;naked objects&#8221; is that any <A href="http://en.wikipedia.org/wiki/Plain_Old_Java_Object">'Plain Old Java
  Object' (POJO)</A> can function as a <A href="#Infrastructure Objects">InfrastructureObject</A>. In other
- words: a <A href="#Infrastructure Objects">InfrastructureObject</A> class does not have to inherit from any special class, nor
- implement any particular interface, nor have any specific attributes.
+ words: a <A href="#Infrastructure Objects">InfrastructureObject</A> class does not have to inherit from any
+ special class, nor implement any particular interface, nor have any specific
+ attributes.
  </P>
  <P>
  You can:
@@ -1062,7 +1067,7 @@ Almost everyday new
  <LI>or use or extend <A href="#Infrastructure Objects">InfrastructureObject</A>s from other (open source)
  projects</LI>
  </UL>
- TODO dependency injection
+ TODO dependency injection (see <A href="#Service Objects">ServiceObject</A>)
  </P>
 
  
