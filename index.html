@@ -685,9 +685,9 @@ Almost everyday new
  The <A href="#The Service Layer">ServiceLayer</A> (sometimes also called <A href="application layer">application layer</A>) gives the user access to the
  <A href="#s">DomainObject</A>s so that the user can work on them.
  </P>
- The <A>ServiceContainer</A> is an <A href="#Dependency Injection">IntrospectContainer</A> that
+ <P>The <A>ServiceContainer</A> is an <A href="#Dependency Injection">IntrospectContainer</A> that
  represents the <A href="#The Service Layer">ServiceLayer</A> and holds and manages
- <A href="#Service Objects">ServiceObject</A>s. 
+ <A href="#Service Objects">ServiceObject</A>s. </P>
  <P>
  Note that the <A href="#The Service Layer">ServiceLayer</A> is a middle layer(see
  <A href="# Architecture of an introspect application">IntrospectArchitecture</A>):
@@ -1248,15 +1248,23 @@ Almost everyday new
  <A name="The UserInterface Layer"><H1>The UserInterface Layer</H1></A>
  
 
- The <A href="#The UserInterface Layer">UserInterfaceLayer</A> is part if the <A href="# Architecture of an introspect application">IntrospectArchitecture</A>. <BR>
- The <A href="#The UserInterface Layer">UserInterfaceLayer</A> is also know as presentation layer (but that wouldn't really do it justice)
- The <A href="#The UserInterface Layer">UserInterfaceLayer</A> contains the <A href="#UserInterfaceController">UserInterfaceController</A>, which is responsible for displaying and controlling the user interface<BR>
- The <A href="#The UserInterface Layer">UserInterfaceLayer</A> is implemented by the <A>UserInterfaceContainer</A><BR>
+ 
+ The <A href="#The UserInterface Layer">UserInterfaceLayer</A> is also know as presentation layer (although I
+ think that 'presentation layer' is a poor name, because it is responsible for
+ so much more). The <A href="#The UserInterface Layer">UserInterfaceLayer</A> contains the
+ <A href="#UserInterfaceController">UserInterfaceController</A>, which is responsible for displaying and
+ controlling the user interface<BR>
+ <P>
+ The <A>UserInterfaceContainer</A> is an <A href="#Dependency Injection">IntrospectContainer</A> that
+ represents the <A href="#The UserInterface Layer">UserInterfaceLayer</A> and holds and manages the
+ <A href="#UserInterfaceController">UserInterfaceController</A>.
+ </P>
 
- Note that this layer is the top layer, which means it may know all the objects in the lower layers but not visa versa! See <A href="# Architecture of an introspect application">IntrospectArchitecture</A>
+ Note that this layer is the top layer, which means it may know all the
+ objects in the lower layers but not visa versa! See
+ <A href="# Architecture of an introspect application">IntrospectArchitecture</A>
  
- <A name="UserInterfaceController"><H2>UserInterfaceController</H2></A>
- 
+ <A name="UserInterfaceController"><H2>UserInterfaceController</H2></A> 
 
  The <A href="#UserInterfaceController">UserInterfaceController</A> is responsible for displaying and
  controlling the user interface. An user interface could be any type of user
