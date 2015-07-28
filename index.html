@@ -1,19 +1,24 @@
-<IMG src="IntrospectDocumentation.png"><H1>Contents</H1><H3><A href="#The Introspect Framework">The Introspect Framework</A></H3><UL><LI><A href="#Why the Introspect framework was developed">Why the Introspect framework was developed</A></LI><LI><A href="#Introspect Core Values">Introspect Core Values</A></LI><LI><A href="#Introspect License">Introspect License</A></LI><LI><A href="# Architecture of an introspect application"> Architecture of an introspect application</A></LI><LI><A href="#Dependency Injection">Dependency Injection</A></LI><LI><A href="#The Introspect Application">The Introspect Application</A></LI><LI><A href="#Starting a new Introspect Project">Starting a new Introspect Project</A></LI></UL><H3><A href="#The Domain Layer">The Domain Layer</A></H3><UL><LI><A href="#Domain Objects">Domain Objects</A></LI><LI><A href="#Properties">Properties</A></LI><LI><A href="#Action Methods">Action Methods</A></LI></UL><H3><A href="#The Service Layer">The Service Layer</A></H3><UL><LI><A href="#Service Objects">Service Objects</A></LI><LI><A href="#Action Methods">Action Methods</A></LI></UL><H3><A href="#The Infrastructure Layer">The Infrastructure Layer</A></H3><UL><LI><A href="#Infrastructure Objects">Infrastructure Objects</A></LI></UL><H3><A href="#The Provider Layer">The Provider Layer</A></H3><UL><LI><A href="#Provider Objects">Provider Objects</A></LI></UL><H3><A href="#The UserInterface Layer">The UserInterface Layer</A></H3><UL><LI><A href="#UserInterfaceController">UserInterfaceController</A></LI></UL><H3><A href="#Object behavior">Object behavior</A></H3><UL><LI><A href="#Title">Title</A></LI><LI><A href="#Description">Description</A></LI><LI><A href="#Icon">Icon</A></LI><LI><A href="#Visible">Visible</A></LI><LI><A href="#Visible In Form">Visible In Form</A></LI><LI><A href="#Visible In Table">Visible In Table</A></LI><LI><A href="#Enabled">Enabled</A></LI><LI><A href="#Order in Form">Order in Form</A></LI><LI><A href="#Order in Table">Order in Table</A></LI><LI><A href="#Method Execution Mode">Method Execution Mode</A></LI><LI><A href="#Parameter Factory">Parameter Factory</A></LI><LI><A href="#FieldMode">FieldMode</A></LI><LI><A href="#Validation">Validation</A></LI><LI><A href="#MultiLanguage">MultiLanguage</A></LI><LI><A href="#Formatting">Formatting</A></LI></UL><H3><A href="#Getting Started">Getting Started</A></H3><UL><LI><A href="#Integrated Development Environment(IDE)">Integrated Development Environment(IDE)</A></LI><LI><A href="#Create your domain object's">Create your domain object's</A></LI><LI><A href="#Creating your Introspect application">Creating your Introspect application</A></LI><LI><A href="#Create a command line application">Create a command line application</A></LI><LI><A href="#Create a desktop application">Create a desktop application</A></LI><LI><A href="#Create a mobile application ">Create a mobile application </A></LI><LI><A href="#Create a web application">Create a web application</A></LI><LI><A href="#Create a soap application">Create a soap application</A></LI><LI><A href="#Create a restfull XML application">Create a restfull XML application</A></LI><LI><A href="#Create multiple application types with the same domain model">Create multiple application types with the same domain model</A></LI><LI><A href="#Create a JUnit application">Create a JUnit application</A></LI><LI><A href="#Icons">Icons</A></LI><LI><A href="#Language">Language</A></LI><LI><A href="#Validation">Validation</A></LI><LI><A href="#Authorization">Authorization</A></LI><LI><A href="#Reports">Reports</A></LI></UL><H3><A href="#Demo's">Demo's</A></H3><UL></UL><H3><A href="#Downloads">Downloads</A></H3><UL></UL><H3><A href="#Documentation">Documentation</A></H3><UL></UL><H3><A href="#Development">Development</A></H3><UL></UL>
+<IMG src="IntrospectDocumentation.png"><H1>Contents</H1><H3><A href="#The Introspect Framework">The Introspect Framework</A></H3><UL><LI><A href="#Why the Introspect framework was developed">Why the Introspect framework was developed</A></LI><LI><A href="#Introspect Core Values">Introspect Core Values</A></LI><LI><A href="#Introspect License">Introspect License</A></LI><LI><A href="#Architecture of an introspect application">Architecture of an introspect application</A></LI><LI><A href="#Dependency Injection Container">Dependency Injection Container</A></LI><LI><A href="#The Introspect Application">The Introspect Application</A></LI><LI><A href="#Starting a new Introspect Project">Starting a new Introspect Project</A></LI></UL><H3><A href="#The Domain Layer">The Domain Layer</A></H3><UL><LI><A href="#Domain Objects">Domain Objects</A></LI><LI><A href="#Properties">Properties</A></LI><LI><A href="#Action Methods">Action Methods</A></LI></UL><H3><A href="#The Service Layer">The Service Layer</A></H3><UL><LI><A href="#Service Objects">Service Objects</A></LI><LI><A href="#Action Methods">Action Methods</A></LI></UL><H3><A href="#The Infrastructure Layer">The Infrastructure Layer</A></H3><UL><LI><A href="#Infrastructure Objects">Infrastructure Objects</A></LI></UL><H3><A href="#The Provider Layer">The Provider Layer</A></H3><UL><LI><A href="#Provider Objects">Provider Objects</A></LI></UL><H3><A href="#The UserInterface Layer">The UserInterface Layer</A></H3><UL><LI><A href="#UserInterfaceController">UserInterfaceController</A></LI></UL><H3><A href="#Object behavior">Object behavior</A></H3><UL><LI><A href="#Title">Title</A></LI><LI><A href="#Description">Description</A></LI><LI><A href="#Icon">Icon</A></LI><LI><A href="#Visible">Visible</A></LI><LI><A href="#Visible In Form">Visible In Form</A></LI><LI><A href="#Visible In Table">Visible In Table</A></LI><LI><A href="#Enabled">Enabled</A></LI><LI><A href="#Order in Form">Order in Form</A></LI><LI><A href="#Order in Table">Order in Table</A></LI><LI><A href="#Method Execution Mode">Method Execution Mode</A></LI><LI><A href="#Parameter Factory">Parameter Factory</A></LI><LI><A href="#FieldMode">FieldMode</A></LI><LI><A href="#Validation">Validation</A></LI><LI><A href="#MultiLanguage">MultiLanguage</A></LI><LI><A href="#Formatting">Formatting</A></LI></UL><H3><A href="#Getting Started">Getting Started</A></H3><UL><LI><A href="#Integrated Development Environment(IDE)">Integrated Development Environment(IDE)</A></LI><LI><A href="#Create your domain object's">Create your domain object's</A></LI><LI><A href="#Creating your Introspect application">Creating your Introspect application</A></LI><LI><A href="#Create a command line application">Create a command line application</A></LI><LI><A href="#Create a desktop application">Create a desktop application</A></LI><LI><A href="#Create a mobile application ">Create a mobile application </A></LI><LI><A href="#Create a web application">Create a web application</A></LI><LI><A href="#Create a soap application">Create a soap application</A></LI><LI><A href="#Create a restfull XML application">Create a restfull XML application</A></LI><LI><A href="#Create multiple application types with the same domain model">Create multiple application types with the same domain model</A></LI><LI><A href="#Create a JUnit application">Create a JUnit application</A></LI><LI><A href="#Icons">Icons</A></LI><LI><A href="#Language">Language</A></LI><LI><A href="#Validation">Validation</A></LI><LI><A href="#Authorization">Authorization</A></LI><LI><A href="#Reports">Reports</A></LI></UL><H3><A href="#Demo's">Demo's</A></H3><UL></UL><H3><A href="#Downloads">Downloads</A></H3><UL></UL><H3><A href="#Documentation">Documentation</A></H3><UL></UL><H3><A href="#Development">Development</A></H3><UL></UL>
 
  <A name="The Introspect Framework"><H1>The Introspect Framework</H1></A> 
  
 
- 
+ <P>
  Introspect is a light weight <A href="http://en.wikipedia.org/wiki/Java_(programming_language)">Java</A> <A href="http://en.wikipedia.org/wiki/Application_framework">Application
  Framework</A>. It provides a framework for writing business like applications
  for viewing and editing information in forms and tables (not for graphical
- application such as games)<BR>
- <BR>
+ applications such as games)
+ </P>
+ <P>
  With the introspect framework you only need to create domain classes.
  Introspect provides you the user interface, without writing any user
- interface code. This means is that the Introspect Framework is ideal to learn
- programming (e.g. at schools), rapid prototyping or rapid development.<BR>
- <BR>
+ interface code. This means is that the Introspect Framework is ideal for
+ rapid prototyping, rapid development or to learn programming (e.g. at schools
+ to teach: <A href="https://en.wikipedia.org/wiki/Object-oriented_programming">Object
+ Oriented Programming</A> or <A href="https://en.wikipedia.org/wiki/Domain-driven_design">Domain Driven
+ Design</A>).
+ </P>
+ <P>
  The Introspect framework provides different user interface implementations
  that you can use for:
  <UL>
@@ -24,33 +29,38 @@
  line</A></LI>
  <LI>And others</LI>
  </UL>
+ </P>
+ <P>
  If you want to start coding right now (even if you are a beginner) please go
- to <A href="#Getting Started">IntrospectGettingStarted</A>. If you want to know more about the
- Introspect Framework continue reading....
+ to the <A href="#Getting Started">IntrospectGettingStarted</A> section. If you want to know more about the
+ Introspect Framework keep reading....
+ </P>
+ <A name="Why the Introspect framework was developed"><H2>Why the Introspect framework was developed</H2></A> 
 
- <A name="Why the Introspect framework was developed"><H2>Why the Introspect framework was developed</H2></A>
- 
-
- 
-Almost everyday new
- libraries, frameworks and tools are being released by the developer
- community, many of which reinvent the wheel.<BR>
- <BR>
+ <P>
+ Almost everyday new libraries, frameworks and tools are being released by the
+ developer community, many of which reinvent the wheel.
+ </P>
+ <P>
  This is called the "Yet Another Framework Syndrome" (YAFS), or in more
  general terms "Not Invented Here" (NIH). While innovation is something we
  should all welcome, YAFS can lead to confusion and frustration for users
  because there's a big risk of it introducing more noise than value.<BR>
- <BR>
+ </P>
+ <P>
  So why did I develop a new framework while there are so many Java application
- frameworks out there? <H3>Reason 1: Because its fun</H3> Probably the best
- reason ever! <H3>Reason 2: Because I wanted to learn</H3> The journey of
- developing yet another framework has thought me more than I could have
- learned implementing an existing framework. Specifically on how other
- frameworks solved issues that I run into. <H3>Reason 3: Because I wanted to
- do it better</H3> I love the thoughts behind the <A href="http://nakedobjects.codeplex.com/">Naked Objects Framework</A> (for <A href="http://en.wikipedia.org/wiki/.NET_Framework">.net</A>) and the <A href="http://isis.apache.org/">Apache Isis Framework</A> (for <A href="http://en.wikipedia.org/wiki/Java_(programming_language)">Java</A>).
+ frameworks out there?
+ </P>
+ <H3>Reason 1: Because its fun</H3> Probably the best reason ever!
+ <H3>Reason 2: Because I wanted to learn</H3> The journey of developing yet
+ another framework has thought me more than I could have learned implementing
+ an existing framework. Specifically on how other frameworks solved issues
+ that I run into.
+ <H3>Reason 3: Because I wanted to do it different</H3> I love the thoughts
+ behind the <A href="http://nakedobjects.codeplex.com/">Naked Objects
+ Framework</A> (for <A href="http://en.wikipedia.org/wiki/.NET_Framework">.net</A>) and the <A href="http://isis.apache.org/">Apache Isis Framework</A> (for <A href="http://en.wikipedia.org/wiki/Java_(programming_language)">Java</A>).
  But looking at the Apache Isis Framework, there are several things I
- personally dislike which I tried to do better in the Introspect framework.
- Note that what I dislike does not mean its wrong!
+ wanted to do it different in the <A href="#The Introspect Framework">IntrospectFramework</A> (good or bad is all open for debate):
  <UL>
  <LI>The <A href="http://en.wikipedia.org/wiki/Business_logic">domain
  objects</A> and service objects (often repository objects) usually extend a
@@ -76,10 +86,10 @@ Almost everyday new
  framework that provides an out of the box User Interface for both desktop,
  mobile devices, web interface, command line interface, etc. They are probably
  out there (Naked Objects and Isis coming close) but I haven't found one (or
- one that I liked).  
+ one that I liked).
+ 
  
  <A name="Introspect Core Values"><H2>Introspect Core Values</H2></A> 
- 
 
  Introspect is designed around the following core values: <H3>Based on the
  Naked Objects Design Pattern</H3> See the Wiki page on the <A href="http://en.wikipedia.org/wiki/Naked_objects">Naked Objects Design
@@ -96,22 +106,24 @@ Almost everyday new
  those objects. This principle is also not unique to naked objects: it is just
  a specific interpretation of an <A href="http://en.wikipedia.org/wiki/Object-oriented_user_interface">object-oriented user interface (OOUI)</A>.</LI>
  <LI>The user interface should be created 100% automatically from the
- definition of the domain objects. Introspect uses <A href="http://en.wikipedia.org/wiki/Reflection_(computer_science)">reflection</A> instead of code generation.</LI>
+ definition of the domain objects. Introspect uses <A href="http://en.wikipedia.org/wiki/Reflection_(computer_science)">reflection</A> instead of code generation (hence the name of the
+ <A href="#The Introspect Framework">IntrospectFramework</A>).</LI>
  </UL>
  <H3>Provide a good structure for applications</H3>
  <UL>
  <LI>Enforce <A href="http://en.wikipedia.org/wiki/Separation_of_concerns">separation of
- concerns</A> (see <A href="# Architecture of an introspect application">IntrospectArchitecture</A>).</LI>
+ concerns</A> (see <A href="#Architecture of an introspect application">IntrospectArchitecture</A>).</LI>
  <LI>Facilitate <A href="http://en.wikipedia.org/wiki/Domain-driven_design">domain driven
  design</A>.</LI>
  <LI>The Introspect Framework should not create a <A href="http://en.wikipedia.org/wiki/Vendor_lock-in">vendor lock-in</A> (not
  that there is such a thing as an Introspect Framework Vendor, since it is
  open source). <A href="#Domain Objects">DomainObject</A>'s, <A href="#Service Objects">ServiceObject</A>'s and
- <A href="#Infrastructure Objects">InfrastructureObject</A>'s should have no (are almost no) dependencies
+ <A href="#Infrastructure Objects">InfrastructureObject</A>'s should have no (or almost no) dependencies
  with the Introspect Framework so that the Introspect Framework could easily
  (within a few hours) be replaced with another dependency injection framework
  (such as <A href="http://en.wikipedia.org/wiki/Spring_Framework">Spring</A>,
- <A href="http://en.wikipedia.org/wiki/Google_Guice">Guice</A> or <A href="http://picocontainer.codehaus.org/">Pico container</A>) or visa versa.</LI>
+ <A href="http://en.wikipedia.org/wiki/Google_Guice">Guice</A> or <A href="http://picocontainer.codehaus.org/">Pico container</A>, etc...) or visa
+ versa.</LI>
  <LI>The introspect framework exists of a few basic interfaces like
  <A href="#UserInterfaceController">UserInterfaceController</A> and <A href="#Provider Objects">Provider</A>s that can have multiple
  different implementations.</LI>
@@ -121,22 +133,25 @@ Almost everyday new
  <LI>The Introspect framework should only be a few kilobytes in size.</LI>
  </UL>
  <H3>Simple to configure</H3> The Introspect framework has no configuration
- files (see <A href="null">&#8220;Code or configuration files&#8221;</A> chapter in Martin Fowlers article for the
+ files (see <A href="null">&#8220;Code or configuration files&#8221;</A> section in Martin Fowlers article for the
  arguments why).<BR>
  <BR>
  There are 3 things that need to be configured:
  <UL>
  <LI>Which implementations of the <A href="#UserInterfaceController">UserInterfaceController</A> and
- <A href="#Provider Objects">Provider</A>'s are going to be used by the framework.</LI>
+ <A href="#Provider Objects">Provider</A>'s are going to be used by the <A href="#The Introspect Application">IntrospectApplication</A>.
+ </LI>
  <LI>Which <A href="#Service Objects">ServiceObject</A> classes and <A href="#Infrastructure Objects">InfrastructureObject</A>
- classes are going to be used by the framework.</LI>
+ classes are going to be used by the <A href="#The Introspect Application">IntrospectApplication</A>.</LI>
  <LI>The <A>Behavior</A> of <A href="#Domain Objects">DomainObject</A>'s and <A href="#Service Objects">ServiceObject</A>
- 's (how the domain needs to handled by Introspect framework)</LI>
+ 's (how the domain needs to handled by the <A href="#The Introspect Application">IntrospectApplication</A>)</LI>
  </UL>
+ <P>
  Furthermore the Introspect framework prefers &#8220;Configure by Exception&#8221;. This
  means that the Introspect framework uses reasonable defaults wherever
- possible. These default values can be overridden by the developer. <H3>No
- dependencies with tools</H3>
+ possible. These default values can be overridden by the developer.
+ </P>
+ <H3>No dependencies with tools</H3>
  <UL>
  <LI>No dependencies with an Integrated Development Environment or build tool.
  </LI>
@@ -144,15 +159,13 @@ Almost everyday new
  
  
  <A name="Introspect License"><H2>Introspect License</H2></A> 
- 
 
  Introspect is an <A href="http://en.wikipedia.org/wiki/Open_source">open
  source</A> project under the <A href="http://en.wikipedia.org/wiki/GNU_Lesser_General_Public_License">GNU
  Lesser General Public License</A>. The license can be found <A href="null">here</A>.
  
  
- <A name=" Architecture of an introspect application"><H2> Architecture of an introspect application</H2></A> 
- 
+ <A name="Architecture of an introspect application"><H2>Architecture of an introspect application</H2></A> 
 
  The Introspect Framework helps you to create a <A href="http://en.wikipedia.org/wiki/Multilayered_architecture">multi layer
  architecture</A> for your application. A multi layer architecture has several
@@ -176,45 +189,45 @@ Almost everyday new
  </UL>
  <P>
  These multi layer architecture design principles try to prevent <A href="http://en.wikipedia.org/wiki/Spaghetti_code"> spaghetti code</A>, which
- is hard to extend, hard to trouble shoot, hard to test, hard to keep <A href="http://en.wikipedia.org/wiki/Software_bug#Etymology">bug</A> free.<BR>
+ is hard to extend, hard to trouble shoot, hard to test and hard to keep <A href="http://en.wikipedia.org/wiki/Software_bug#Etymology">bug</A> free.<BR>
  </P>
  
  <P>
  There are many different opinions and definitions on the number of layers,
  the names of the layers and what each layer should do (see these <A href="https://www.google.nl/search?q=layered+architecture&tbm=isch">examples</A>). It would be nice if everyone would use the same model and
- naming. I think that <A href="http://www.herrodius.com/blog/wp-content/uploads/2010/03/LayeredArchitecture.png">the definition of layers</A> from Eric Evans <A href="https://en.wikipedia.org/wiki/Domain-driven_design">Domain Driven Design approach</A> is the most commonly
- used. The most important thing is that your multi layered architecture
- complies with the design principles above.
+ naming. The <A href="null">definition of layers</A> from Eric Evans <A href="https://en.wikipedia.org/wiki/Domain-driven_design">Domain Driven
+ Design approach</A> is likely the most commonly used. The most important thing is
+ that your multi layered architecture complies with the design principles
+ above.
  </P>
  
  <P>
- The <A href="# Architecture of an introspect application">IntrospectArchitecture</A> uses the following layer definition, which
+ The <A href="#Architecture of an introspect application">IntrospectArchitecture</A> uses the following layer definition, which
  is pretty close to <A href="https://en.wikipedia.org/wiki/Domain-driven_design">Eric Evans Domain
  Driven Design</A> approach.:
  <UL>
  <LI><A href="#The UserInterface Layer">UserInterfaceLayer</A></LI>
- <LI><A href="#The Service Layer">ServiceLayer</A></LI>
+ <LI><A href="#The Service Layer">ServiceLayer</A> (called "application layer" by Eric Evans)</LI>
  <LI><A href="#The Domain Layer">DomainLayer</A></LI>
  <LI><A href="#The Infrastructure Layer">InfrastructureLayer</A></LI>
- <LI><A href="#The Provider Layer">ProviderLayer</A></LI>
+ <LI><A href="#The Provider Layer">ProviderLayer</A> (extra layer for <A href="https://en.wikipedia.org/wiki/Cross-cutting_concern">cross cutting concerns</A>)</LI>
  </UL>
  </P>
- Each layer is implemented by an <A href="#Dependency Injection">IntrospectContainer</A><BR>
+ Each layer is implemented by an <A href="#Dependency Injection Container">DependencyInjectionContainer</A><BR>
  <BR>
  
  <IMG src="IntrospectArchitecture.png"><BR>
  <BR>
  
  Red objects are provided by the Introspect framework<BR>
- Yellow objects need to be written or included by the developer. 
+ Yellow objects need to be written or included by the developer.
  
- <A name="Dependency Injection"><H2>Dependency Injection</H2></A> 
- 
+ <A name="Dependency Injection Container"><H2>Dependency Injection Container</H2></A> 
 
  <P>
  The <A href="#The Introspect Framework">IntrospectFramework</A> is a dependency injection framework and
  consists of several <A href="http://en.wikipedia.org/wiki/Dependency_injection">dependency
- injection</A> containers called <A href="#Dependency Injection">IntrospectContainer</A>s.
+ injection containters</A>.
  </P>
  <P>
  Please read <A href="http://en.wikipedia.org/wiki/Martin_Fowler">Martin
@@ -222,10 +235,10 @@ Almost everyday new
  he explains the basics dependency injection.
  </P>
  <P>
- Each <A href="#Dependency Injection">IntrospectContainer</A> is responsible for:
+ Each <A href="#Dependency Injection Container">DependencyInjectionContainer</A> is responsible for:
  <UL>
  <LI>Creating new instances of types that are registered to a
- <A href="#Dependency Injection">IntrospectContainer</A></LI>
+ <A href="#Dependency Injection Container">DependencyInjectionContainer</A> with the <A href="#The Introspect Application">IntrospectApplication</A>.get...Class() or .get...Classes() methods</LI>
  <LI>Linking dependencies (references to other objects) to these new instances
  (using constructor injection)</LI>
  <LI>Caching these new instances, if we only need one instance (like a
@@ -233,8 +246,8 @@ Almost everyday new
  </UL>
  </P>
  <P>
- The <A href="# Architecture of an introspect application">IntrospectArchitecture</A> consists of several layers. Each layer has
- its own <A href="#Dependency Injection">IntrospectContainer</A> that is for managing the objects in the
+ The <A href="#Architecture of an introspect application">IntrospectArchitecture</A> consists of several layers. Each layer has
+ its own <A href="#Dependency Injection Container">DependencyInjectionContainer</A> that is for managing the objects in the
  same layer:
  <UL>
  <LI><A href="#The UserInterface Layer">UserInterfaceLayer</A>: <A href="#UserInterfaceController">UserInterfaceController</A> object is
@@ -258,17 +271,67 @@ Almost everyday new
  <P>
  
 
- <P>The <A href="#The Introspect Framework">IntrospectFramework</A> favors constructor injection (see <A href="http://en.wikipedia.org/wiki/Martin_Fowler">Martin Fowler</A>'s easy to
- read <A href="http://martinfowler.com/articles/injection.html#ConstructorVersusSetterInjection">article</A></P> for the arguments why).
+ <P>
+ The <A href="#The Introspect Framework">IntrospectFramework</A> favors constructor injection (see <A href="http://en.wikipedia.org/wiki/Martin_Fowler">Martin Fowler</A>'s easy to
+ read <A href="null">article</A></P> for the arguments why).
+ </P>
+ <P>
+ All objects within an <A href="#The Introspect Application">IntrospectApplication</A> can have references to
+ (may know) other objects. These reference objects are injected into an object
+ as constructor parameter during the creation of the object by the
+ <A href="#Dependency Injection Container">DependencyInjectionContainer</A> of that specific layer. This constructor
+ parameter can than be linked to a private final field, so that it can be used
+ throughout the object.
+ </P>
+ In example:
+ 
+ <PRE>
+ public class ProductService {
+ 
+ 	private final ProductRepository productRepository;
+ 
+ 	public ProductService(ProductRepository productRepository) {
+ 		this.productRepository = productRepository;
+ 	}
+ 
+ 	&#064;GenericReturnType(Product.class)
+ 	public List&lt;Product&gt; findProduct(ProductSearchCritiria searchCritiria) {
+ 		return productRepository.findProduct(searchCritiria);
+ 	}
+ 
+ 	// other action methods...
+ }
+ </PRE>
+ 
+ <P>
+ It is good practice to link the constructor parameter (reference object) to a
+ <A href="https://en.wikibooks.org/wiki/Java_Programming/Keywords/private">private</A> <A href="https://en.wikipedia.org/wiki/Final_(Java)#Final_variables">final</A>
+ field, so that it is <A href="https://en.wikipedia.org/wiki/Encapsulation_(computer_programming)">encapsulated</A> and <A href="https://en.wikipedia.org/wiki/Immutable_object">immutable</A>.
  </P>
  
- TODO example 
- TODO explain that references are injected as constructor parameter and that only known types are supported and linking constructor parameters to a field (see service object)
-  IntrospectArchitecture
-  
-   
- <A name="The Introspect Application"><H2>The Introspect Application</H2></A> 
+ <P>
+ If your object needs a lot of references to other objects (too many
+ constructor parameters), your object has most likely to many
+ responsibilities, which could be solved by splitting up this object.
+ </P>
  
+ Note that you can only inject reference object types (use constructor
+ parameters types) that are known to the that specific layer:
+ <UL>
+ <LI>The IntrospectApplication class can be injected in all layers</LI>
+ <LI>You can only inject objects of the same layer or lower layers (see
+ <A href="#Architecture of an introspect application">IntrospectArchitecture</A>). The <A href="#The Introspect Framework">IntrospectFramework</A> tries to
+ prevent that objects in the lower layer know (have references to) objects in
+ the higher layers because this is against several design principles of an
+ layered architecture</LI>
+ <LI>You can only inject objects that are registered to the
+ <A href="#The Introspect Application">IntrospectApplication</A> by overriding the get...Classes() or
+ get...Class() methods.</LI>
+ </UL>
+  IntrospectArchitecture
+ 
+ 
+ <A name="The Introspect Application"><H2>The Introspect Application</H2></A> 
 
  <A href="#The Introspect Application">IntrospectApplication</A> is used as initialization parameter for the
  <A>Introspect</A> framework.<BR>
@@ -304,30 +367,73 @@ Almost everyday new
  framework. See the type hierarchy of <A href="#The Introspect Application">IntrospectApplication</A> to learn
  which classes can be used and view their java doc to learn how to use them.
  </P>
+ 
  <P>
  If you create a new application you will be extending one of these classes.
  You will only need to implement some of the methods mentioned above (at least
  the <A href="#The Introspect Application">IntrospectApplication.getServiceClasses()</A> method).
  </P>
+ 
+ An example of a desktop application:
+ 
+ <PRE>
+ public class AcmeWebShop extends IntrospectApplicationForSwing {
+ 
+ 	// constructor not displayed
+ 
+ 	// main method
+ 
+ 	&#064;Override
+ 	public List&lt;Class&lt;?&gt;&gt; getServiceClasses() {
+ 		List&lt;Class&lt;?&gt;&gt; serviceClasses = new ArrayList&lt;Class&lt;?&gt;&gt;();
+ 		serviceClasses.add(ShoppingCartService.class);
+ 		serviceClasses.add(ProductService.class);
+ 		return serviceClasses;
+ 	}
+ 
+ 	&#064;Override
+ 	public List&lt;Class&lt;?&gt;&gt; getInfrastructureClasses() {
+ 		List&lt;Class&lt;?&gt;&gt; infrastructureClasses = new ArrayList&lt;Class&lt;?&gt;&gt;();
+ 		infrastructureClasses.add(ProductRepository.class);
+ 		infrastructureClasses.add(EmailClient.class);
+ 		infrastructureClasses.add(PaymentClient.class);
+ 		return infrastructureClasses;
+ 	}
+ 
+ }
+ </PRE>
  <P>
- For examples see the <A href="#Getting Started">IntrospectGettingStarted</A> section.
+ For more (detailed) examples see the <A href="#Getting Started">IntrospectGettingStarted</A> section.
  </P>
  
  <A name="Starting a new Introspect Project"><H2>Starting a new Introspect Project</H2></A> 
- 
 
- <P>How you create a new Introspect application depends on the type of application type that you want to create.</P>
- <P>First select the type of application you want to create. Then look up the corresponding paragraph in the <A href="#Getting Started">IntrospectGettingStarted</A> chapter. There you will learn how to create a java project that contains an application class that extends the <A href="#The Introspect Application">IntrospectApplication</A> class. This class will initialize and start the <A href="#The Introspect Framework">IntrospectFramework</A>. This class also contains methods that you need to implement to provide the <A href="#Service Objects">ServiceObject</A> classes and <A href="#The Infrastructure Layer">InfrastructureLayer</A> classes that are required in the application.</P>
+ <P>
+ How you create a new Introspect application depends on the type of
+ application type that you want to create.
+ </P>
+ <P>
+ First decide on the type of application you want to create. Then look up the
+ corresponding paragraph in the <A href="#Getting Started">IntrospectGettingStarted</A> section.
+ There you will learn how to create a java project that contains an
+ application class that extends the <A href="#The Introspect Application">IntrospectApplication</A> class. This
+ class will initialize and start the <A href="#The Introspect Framework">IntrospectFramework</A>. This class
+ also contains methods that you need to implement to provide the
+ <A href="#Service Objects">ServiceObject</A> classes and <A href="#The Infrastructure Layer">InfrastructureLayer</A> classes that
+ are required in the application.
+ </P>
  
  
  <A name="The Domain Layer"><H1>The Domain Layer</H1></A>
  
 
- The Domain layer is the hart of any Introspect application. The domain layer
- represents concepts of the business, information about the business
- situation, and business rules. State that reflects the business situation is
- controlled and used here.<BR>
- <BR>
+ The Domain layer is the heart of any Introspect application. The domain layer
+ represents:
+ <UL>
+ <LI>The concepts of the business</LI>
+ <LI>The business rules</LI>
+ <LI>The state that reflects the business situation</LI>
+ </UL>
  Because there is many debate on the naming within a layered architecture, the
  domain layer is sometimes also called:
  <UL>
@@ -338,11 +444,13 @@ Almost everyday new
  layer</LI>
  </UL>
  <P>
- The domain layer is basically where all the domain objects are. The <A>DomainContainer</A> is an <A href="#Dependency Injection">IntrospectContainer</A> that
- that can be used to create and hold <A href="#Domain Objects">DomainObject</A>'s that need dependency injection.
+ The domain layer is basically where all the domain objects are. The
+ <A>DomainContainer</A> is an <A href="#Dependency Injection Container">DependencyInjectionContainer</A> that can
+ be used to create and hold <A href="#Domain Objects">DomainObject</A>'s that need dependency
+ injection.
  </P>
  Note that the <A href="#The Domain Layer">DomainLayer</A> is a middle layer (see
- <A href="# Architecture of an introspect application">IntrospectArchitecture</A>):
+ <A href="#Architecture of an introspect application">IntrospectArchitecture</A>):
  <UL>
  <LI>
  The <A href="#Domain Objects">DomainObject</A>s have NO references to objects in the upper
@@ -385,7 +493,7 @@ Almost everyday new
  <UL>
  <LI>By a <A href="#Action Methods">ServiceObjectActionMethod</A> such as
  customerService.createNewCustomer()
- <LI>By a <A href="#Action Methods">DomainObjectActionMethod</A></LI></LI>
+ <LI>By a <A>DomainObjectActionMethod</A></LI></LI>
  <LI>By a <A>DomainContainer</A> such as
  domainContainer.getObject(Customer.class)</LI>
  <LI>By a <A href="#Infrastructure Objects">InfrastructureObject</A> method such as
@@ -438,7 +546,7 @@ Almost everyday new
  Domain objects contain:
  <UL>
  <LI>Getter and setter methods (and possible fields): that define <A href="http://en.wikipedia.org/wiki/Property_(programming)">properties</A></LI>
- <LI><A href="#Action Methods">DomainObjectActionMethod</A>s: that define user actions</LI>
+ <LI><A>DomainObjectActionMethod</A>s: that define user actions</LI>
  <LI>Methods: that define <A href="#Object behavior">ObjectBehavior</A></LI>
  <LI>Annotations: that define <A href="#Object behavior">ObjectBehavior</A></LI>
  </UL>
@@ -447,7 +555,7 @@ Almost everyday new
  
  <A name="Properties"><H2>Properties</H2></A> 
 
- Domain objects have <A href="http://en.wikipedia.org/wiki/State_(computer_science)">state</A>. This
+ <A href="#Domain Objects">DomainObject</A>s have <A href="http://en.wikipedia.org/wiki/State_(computer_science)">state</A>. This
  means the domain objects contain information that may change over time. This
  information is represented by <A href="http://en.wikipedia.org/wiki/Property_(programming)">properties</A>.
   Here is an example of a domain class customer that has the following
@@ -456,7 +564,7 @@ Almost everyday new
  <LI>givenName</LI>
  <LI>familyName</LI>
  <LI>fullName</LI>
- <LI>male</LI>
+ <LI>bonusMember</LI>
  </UL>
  
  
@@ -464,7 +572,7 @@ Almost everyday new
  public class Customer {
  	private String givenName;
  	private String familyName;
- 	private boolean male;
+ 	private boolean bonusMember;
  
  	public String getGivenName() {
  		return givenName;
@@ -487,12 +595,12 @@ Almost everyday new
  				.toString();
  	}
  
- 	public boolean isMale() {
- 		return male;
+ 	public boolean isBonusMember() {
+ 		return bonusMember;
  	}
  
- 	public void setMale(boolean male) {
- 		this.male = male;
+ 	public void setBonusMember(boolean bonusMember) {
+ 		this.bonusMember = bonusMember;
  	}
  }
  </PRE>
@@ -501,7 +609,7 @@ Almost everyday new
  Properties are a special type of class members and are an intermediate
  between <A href="http://en.wikipedia.org/wiki/Mutator_method">getter and
  setter methods</A> and a <A href="http://en.wikipedia.org/wiki/Field_(computer_science)">field</A>. The
- following 3 chapters will explain this in more detail.
+ following 3 sections will explain this in more detail.
  <P>
  
  <H3>Getter methods</H3>
@@ -514,7 +622,7 @@ Almost everyday new
  above)</LI>
  <LI>The getter method name starts with is, followed by the property name in
  <A href="http://en.wikipedia.org/wiki/CamelCase">CamelCase</A> when the
- property type IS a boolean (See the isMale() method in the example above)</LI>
+ property type IS a boolean (See the isBonusMember() method in the example above)</LI>
  <LI>The getter methods are always public (accessible by other objects)</LI>
  </UL>
  <H3>Setter methods</H3>
@@ -545,8 +653,8 @@ Almost everyday new
  <H3>Property types</H3>
  Property types can be divided into 3 groups:
  <UL>
- <LI>Value property: A char, string, boolean, number, date, or other <A href="null">primitive data type</A>. The <A href="#UserInterfaceController">UserInterfaceController</A> will display
- these types as as a <A href="http://en.wikipedia.org/wiki/Text_box">textbox</A>. Assuming that the
+ <LI>Value property: A char, string, boolean, number, date, or other <A href="null">primitive data types</A>. The <A href="#UserInterfaceController">UserInterfaceController</A> will display
+ these types as a <A href="http://en.wikipedia.org/wiki/Text_box">textbox</A>. Assuming that the
  user is allowed to modify that property, they may enter the value by typing
  in text, which will be validated and formatted according to the value type.
  Certainly value types may provide alternative mechanisms for user input, such
@@ -578,132 +686,15 @@ Almost everyday new
  
  <H3>Property behavior</H3>
  You can specify certain things about both the behavior and presentation of
- properties by adding specific attributes or methods. See chapter
- <A href="#Object behavior">ObjectBehavior</A>. nilsth
+ properties by adding specific attributes or methods. See section
+ <A href="#Object behavior">ObjectBehavior</A>.
 
  </P></P>
  
  <A name="Action Methods"><H2>Action Methods</H2></A> 
-
  <P>
- An action is a method in a <A href="#Domain Objects">DomainObject</A> or <A href="#Service Objects">ServiceObject</A> that is
- displayed by the <A href="#UserInterfaceController">UserInterfaceController</A> as a menu item. An Action
- method is invoked by the <A href="#UserInterfaceController">UserInterfaceController</A> when the user clicks
- on the menu item.
- </P>
- <H3>Action Methods for Domain Objects</H3>
- <P>
- <A href="#Domain Objects">DomainObject</A>s may have <A>ActionMethod</A>s that to do something with
- or for the given <A href="#Domain Objects">DomainObject</A>.
- </P>
- <UL>
- <LI>These <A>ActionMethod</A>s are displayed as menu options in a form tab
- that represents the <A href="#Domain Objects">DomainObject</A>.</LI>
- <LI>Example: an ShoppingCar object may have an <A>ActionMethod</A> such as
- checkout().</LI>
- </UL>
- <H3>Action Methods for Domain Object Properties</H3>
- <P>
- <A href="#Domain Objects">DomainObject</A>s may have <A>ActionMethod</A>s to do something with the
- value of a property (e.g. manipulate it).
- <UL>
- <LI>These <A>ActionMethod</A>s are displayed as menu options of a
- <A href="#Properties">DomainObjectProperty</A> in a form tab that represents the
- <A href="#Domain Objects">DomainObject</A>.</LI>
- <LI>The name of the <A>ActionMethod</A> for a <A href="#Properties">DomainObjectProperty</A>
- must begin with the name of the property, followed with a description of what
- is does.</LI>
- </UL>
- Examples:
- <UL>
- <LI>A ShoppingCar object may have <A>ActionMethod</A> such as
- lineItemsAdd(LineItem lineItem) or lineItemsRemove(LineItem lineItem) or
- lineItemsRemoveAll().</LI>
- <LI>A Customer object may have <A>ActionMethod</A> such as
- adressMoveToNewAddress(Address new Address).</LI>
- </UL>
- </P>
- 
-
- <H3>Action Methods Convention</H3>
- <P>
- Any method in a <A href="#Domain Objects">DomainObject</A> or <A href="#Service Objects">ServiceObject</A> can be an
- Action method, provided that it complies with the following convention:
- </P>
- <UL>
- <LI>The method has no parameter or a single <A href="#Domain Objects">DomainObject</A> parameter</LI>
- <LI>Its return type (if any) are types recognized by the Introspect framework
- (see below)</LI>
- <LI>The method is not a getter method or a setter method (see
- <A href="#Properties">DomainObjectProperty</A>)</LI>
- <LI>The method is public (not private)</LI>
- <LI>The method is NOT static</LI>
- </UL>
- <H3>Action method names</H3>
- <P>
- The name of an <A>ActionMethod</A> should describe the action and match the
- <A href="http://martinfowler.com/bliki/UbiquitousLanguage.html">Ubiquitous
- Language</A> (in terms understood by both users and developers). Keep in mind
- that the goal of a user is almost never to create, update or delete objects.
- Method names like: createPerson, updatePerson and removePerson should
- therefore be avoided where possible. Method names like registerNewBirth,
- registerMarriage, registerPersonDeceased would be better names.
- </P>
- <H3>Action method parameter</H3>
- <P>
- An action method either has no parameter or a single <A href="#Domain Objects">DomainObject</A> as
- a parameter. If not, the Introspect Framework will not recognize a method as
- an <A>ActionMethod</A>.
- </P>
- <H3>Action method return value</H3>
- <P>
- The <A href="#UserInterfaceController">UserInterfaceController</A> renders the output of a method, depending
- on the type of the action method return value:
- <UL>
- <LI>No return value (void method): The <A href="#UserInterfaceController">UserInterfaceController</A> will
- display a short message when the method has been executed</LI>
- <LI><A href="null">A
- primitive data type</A>: The <A href="#UserInterfaceController">UserInterfaceController</A> will display a
- message dialog that displays the return value after the method is been
- executed</LI>
- <LI>A <A href="#Domain Objects">DomainObject</A>: The <A href="#UserInterfaceController">UserInterfaceController</A> displays the
- <A href="#Domain Objects">DomainObject</A> in a form on a new tab.</LI>
- <LI>A <A href="http://en.wikipedia.org/wiki/Java_collections_framework">collection</A>
- of <A href="#Domain Objects">DomainObject</A>s: The <A href="#UserInterfaceController">UserInterfaceController</A> displays the
- <A href="#Domain Objects">DomainObject</A>s in table on a new tab. Note that you will need to annotate the
- Action method with a @<A>GenericReturnType</A> annotation in which you need
- to define the <A href="#Domain Objects">DomainObject</A> type.</LI>
- <LI>A URI: The <A href="#UserInterfaceController">UserInterfaceController</A> displays the contents of the
- URI on a new tab.</LI>
- <LI>A <A>DownloadStream</A>: The <A href="#UserInterfaceController">UserInterfaceController</A> will open a
- "Save as" dialog" so that the file can be down loaded.</LI>
- </UL>
- </P>
- <H3>Action execution modes</H3> <A>ActionMethod</A>s can be annotated, so
- that the <A href="#UserInterfaceController">UserInterfaceController</A> knows how the <A>ActionMethod</A>
- needs to be invoked after the user has clicked on the corresponding menu
- item.
- <UL>
- <LI>@<A>ExecutionMode</A>(<A>ExecutionModeType.EXECUTE_METHOD_DIRECTLY</A>
- ): executes the method directly without user intervention</LI>
- <LI>@<A>ExecutionMode</A>(
- <A>ExecutionModeType.EXECUTE_METHOD_AFTER_CONFORMATION</A>): the
- <A href="#UserInterfaceController">UserInterfaceController</A> opens a confirmation dialog. The method is
- executed after the user activates the confirmation button. The method is NOT executed
- when the user cancels the confirmation dialog.</LI>
- <LI>@<A>ExecutionMode</A>(
- <A>ExecutionModeType.EDIT_PARAMETER_THAN_EXECUTE_METHOD_OR_CANCEL</A>): the
- <A href="#UserInterfaceController">UserInterfaceController</A> opens a form on a new tab, so that the user
- can modify (edit) the <A href="#Domain Objects">DomainObject</A>. The method is executed with the
- edited <A href="#Domain Objects">DomainObject</A> as the method parameter, when the user clicks the
- confirmation button on the button bar. The method is NOT executed when the
- user clicks on cancel in the bottom bar.</LI>
- </UL>
- <H3>Action behavior</H3> You can specify certain things about both the
- behavior and presentation of actions methods, such as their display name,
- icon, visibility, enabled state, etc with help of annotations or behavior
- methods. See chapter on <A href="#Object behavior">ObjectBehavior</A>.
-  DomainLayer
+ Domain objects can contain action methods (see <A>DomainObjectActionMethod</A> section)
+ </P> DomainLayer
  
   IntrospectArchitecture
  
@@ -715,12 +706,12 @@ Almost everyday new
  The <A href="#The Service Layer">ServiceLayer</A> (sometimes also called <A href="application layer">application layer</A>) gives the user access to the
  <A href="#Domain Objects">DomainObject</A>s so that the user can work on them.
  </P>
- <P>The <A>ServiceContainer</A> is an <A href="#Dependency Injection">IntrospectContainer</A> that
+ <P>The <A>ServiceContainer</A> is an <A href="#Dependency Injection Container">DependencyInjectionContainer</A> that
  represents the <A href="#The Service Layer">ServiceLayer</A> and holds and manages
  <A href="#Service Objects">ServiceObject</A>s. </P>
  <P>
  Note that the <A href="#The Service Layer">ServiceLayer</A> is a middle layer(see
- <A href="# Architecture of an introspect application">IntrospectArchitecture</A>):
+ <A href="#Architecture of an introspect application">IntrospectArchitecture</A>):
  <UL>
  <LI>
  The <A href="#Service Objects">ServiceObject</A>s have NO references to objects in the
@@ -856,54 +847,6 @@ Almost everyday new
  constructor can than be linked to a private final field, so that it can be
  used throughout the <A href="#Service Objects">ServiceObject</A>.
  </P>
- In example:
- 
- <PRE>
- public class ProductService {
- 
- 	private final ProductRepository productRepository;
- 
- 	public ProductService(ProductRepository productRepository) {
- 		this.productRepository = productRepository;
- 	}
- 
- 	&#064;GenericReturnType(Product.class)
- 	public List&lt;Product&gt; findProduct(ProductSearchCritiria searchCritiria) {
- 		return productRepository.findProduct(searchCritiria);
- 	}
- 
- 	// other action methods...
- }
- </PRE>
- <P>
- Note that you can only inject reference object types (use constructor
- parameters types) that are known to the <A href="#The Introspect Framework">IntrospectFramework</A>.
- <A href="#Service Objects">ServiceObject</A>s can be injected with the following types (see also
- <A href="# Architecture of an introspect application">IntrospectArchitecture</A>):
- <UL>
- <LI>The <A href="#The Introspect Application">IntrospectApplication</A> class</LI>
- <LI>Types registered to the <A href="#The Introspect Application">IntrospectApplication.getServiceClasses()</A>
- method</LI>
- <LI>Types registered to the <A href="#The Introspect Application">IntrospectApplication.getDomainClasses()</A>
- method</LI>
- <LI>Types registered to the
- <A href="#The Introspect Application">IntrospectApplication.getInfrastructureClasses()</A> method</LI>
- <LI>The <A href="#Provider Objects">Provider</A> classes</LI>
- </UL>
- </P>
- <P>
- Note that it is good practice to link the constructor parameter (reference
- object) to a <A href="https://en.wikibooks.org/wiki/Java_Programming/Keywords/private">private</A> <A href="https://en.wikipedia.org/wiki/Final_(Java)#Final_variables">final</A>
- field, so that it is encapsulated and immutable.
- </P>
- <P>
- Note that that if your <A href="#Service Objects">ServiceObject</A> needs a lot of references to
- other objects (too many constructor parameters), your <A href="#Service Objects">ServiceObject</A>
- has most likely to many responsibilities, which could be solved by splitting
- up a <A href="#Service Objects">ServiceObject</A>.
- </P>
- 
- <H3>Presentation</H3> TODO main menu's, object menu's, property menu's <BR>
  
  <H3>Service object members</H3>
  <P>
@@ -1051,13 +994,13 @@ Almost everyday new
  </UL>
  </P>
  <P>
- The <A>InfrastructureContainer</A> is an <A href="#Dependency Injection">IntrospectContainer</A> that
+ The <A>InfrastructureContainer</A> is an <A href="#Dependency Injection Container">DependencyInjectionContainer</A> that
  represents the <A href="#The Infrastructure Layer">InfrastructureLayer</A> and holds and manages
  <A href="#Infrastructure Objects">InfrastructureObject</A>s.<BR>
  </P>
 
  Note that the <A href="#The Infrastructure Layer">InfrastructureLayer</A> is a middle layer (see
- <A href="# Architecture of an introspect application">IntrospectArchitecture</A>):
+ <A href="#Architecture of an introspect application">IntrospectArchitecture</A>):
  <UL>
  <LI>
  The <A href="#Infrastructure Objects">InfrastructureObject</A>s have NO references to objects in the upper
@@ -1124,13 +1067,13 @@ Almost everyday new
 
  <P>The <A href="#The Provider Layer">ProviderLayer</A> contains <A href="#Provider Objects">Provider</A> objects that provide generic
  <A href="#The Introspect Framework">IntrospectFramework</A> capabilities (<A href="cross cutting concerns">cross cutting concerns</A>) to support the higher layers (see
- <A href="# Architecture of an introspect application">IntrospectArchitecture</A>)</P>
- <P>The <A>ProviderContainer</A> is an <A href="#Dependency Injection">IntrospectContainer</A> that
+ <A href="#Architecture of an introspect application">IntrospectArchitecture</A>)</P>
+ <P>The <A>ProviderContainer</A> is an <A href="#Dependency Injection Container">DependencyInjectionContainer</A> that
  represents the <A href="#The Provider Layer">ProviderLayer</A> and holds and manages
  <A href="#Provider Objects">Provider</A>Objects.</P>
  
  <P>
- Note that this layer is the bottom layer (see <A href="# Architecture of an introspect application">IntrospectArchitecture</A>
+ Note that this layer is the bottom layer (see <A href="#Architecture of an introspect application">IntrospectArchitecture</A>
  ), which means that objects in the upper layers may haved references to <A href="#Provider Objects">Provider</A>Objects, but not visa versa!
  </P>
  
@@ -1144,7 +1087,7 @@ Almost everyday new
  <LI>Multi language (see <A>LanguageProvider</A>)</LI>
  <LI>Notifications (see <A>NotificationProvider</A>)</LI>
  <LI>File path information (see <A>PathProvider</A>)</LI>
- <LI>Domain object information (see <A>DomainProvider</A>)</LI>
+ <LI>Object meta information (see <A>ReflectionProvider</A>)</LI>
  <LI>Version information (see <A>AboutProvider</A>)</LI>
  </UL>
  <P>
@@ -1272,7 +1215,7 @@ Almost everyday new
  <P>
  
  </P>
- <H3>Domain Provider</H3>
+ <H3>Reflection Provider</H3>
  <P>
  
  </P>
@@ -1284,7 +1227,7 @@ Almost everyday new
  <H3>Provider Construction</H3>
  <P>
  <A href="#Provider Objects">Provider</A>'s are instantiated by the <A href="#The Introspect Framework">IntrospectFramework</A> with
- the <A href="#Dependency Injection">IntrospectContainer</A>. <A href="#Provider Objects">Provider</A>'s may have references to
+ the <A href="#Dependency Injection Container">DependencyInjectionContainer</A>. <A href="#Provider Objects">Provider</A>'s may have references to
  other providers by adding the reference providers as a constructor parameter.
  These providers are passed to the constructor as a parameter when the
  provider is instantiated.
@@ -1303,23 +1246,23 @@ Almost everyday new
  The <A href="#The UserInterface Layer">UserInterfaceLayer</A> is also know as presentation layer (although I
  think that 'presentation layer' is a poor name, because it is responsible for
  so much more). The <A href="#The UserInterface Layer">UserInterfaceLayer</A> contains the
- <A href="#UserInterfaceController">UserInterfaceController</A>, which is responsible for showing information to the user and processing the information from the user using the objects in the lower layers (see <A href="# Architecture of an introspect application">IntrospectArchitecture</A>).
+ <A href="#UserInterfaceController">UserInterfaceController</A>, which is responsible for showing information to the user and processing the information from the user using the objects in the lower layers (see <A href="#Architecture of an introspect application">IntrospectArchitecture</A>).
  <P>
- The <A>UserInterfaceContainer</A> is an <A href="#Dependency Injection">IntrospectContainer</A> that
+ The <A>UserInterfaceContainer</A> is an <A href="#Dependency Injection Container">DependencyInjectionContainer</A> that
  represents the <A href="#The UserInterface Layer">UserInterfaceLayer</A> and holds and manages the
  <A href="#UserInterfaceController">UserInterfaceController</A>.
  </P>
 
  Note that this layer is the top layer, which means it may know all the
  objects in the lower layers but not visa versa! See
- <A href="# Architecture of an introspect application">IntrospectArchitecture</A>
+ <A href="#Architecture of an introspect application">IntrospectArchitecture</A>
  
  <A name="UserInterfaceController"><H2>UserInterfaceController</H2></A> 
 
  <P>
  The <A href="#UserInterfaceController">UserInterfaceController</A> is responsible for showing information to
  the user and processing the information from the user using the objects in
- the lower layers (see <A href="# Architecture of an introspect application">IntrospectArchitecture</A>).
+ the lower layers (see <A href="#Architecture of an introspect application">IntrospectArchitecture</A>).
  </P>
  <P>
  An user interface could be any type of user interface, in example:
@@ -1397,7 +1340,7 @@ Almost everyday new
  
  <H3>JUnit interface</H3> 
  <UL>
- <LI>The JUnit interface is an interface to test objects in te lower layers (see <A href="# Architecture of an introspect application">IntrospectArchitecture</A>), using the <A href="https://en.wikipedia.org/wiki/JUnit">JUnit test framework</A></LI>
+ <LI>The JUnit interface is an interface to test objects in te lower layers (see <A href="#Architecture of an introspect application">IntrospectArchitecture</A>), using the <A href="https://en.wikipedia.org/wiki/JUnit">JUnit test framework</A></LI>
  <LI>The user is the JUnit test framework</LI>
  <LI>See <A>IntrospectApplicationForJUnit</A>.</LI>
  </UL>
