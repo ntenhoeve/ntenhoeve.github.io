@@ -1610,6 +1610,37 @@
  (TODO example with Customer toString and TitleBuilder)
  
  
+<H3>Title builder</H3>
+ <P>
+ 
+
+ <P>
+ Often a <A href="#Domain Objects">DomainObject</A></P> can be identified by a single property. The
+ toString() method can than simply return this property value to return the
+ title.
+ </P>
+ <P>
+ In other cases a DomainObject is identified by multiple property values. In
+ this case it is recommended to use the StringBuilder (see the example above).
+ The TitleBuilder is an extension of the StringBuilder, but has some
+ additional functionality such as:
+ <UL>
+ <LI>The &#8220;append&#8221; methods will append a separator and a given value. You can
+ use the default separator (a space) or use an &#8220;append&#8221; method where you give
+ the separator as a first parameter followed by the value.</LI>
+ <LI>The &#8220;contact&#8221; methods will append a given value without a separator</LI>
+ <LI>Both &#8220;append&#8221; and &#8220;contact&#8221; methods will ignore null values or reference
+ objects that do not have a toString implementation</LI>
+ <LI>Both &#8220;append&#8221; and &#8220;contact&#8221; methods have methods where you can specify
+ format values (e.g. date, time and numbers)</LI>
+ </UL>
+ </P>
+ 
+ TODO example
+ 
+ TODO implement naked object style
+ 
+ 
  
  
  The Application object, domain objects and service objects
