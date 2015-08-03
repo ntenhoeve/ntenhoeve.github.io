@@ -1,7 +1,18 @@
-<IMG src="IntrospectDocumentation.png"><H1>Contents</H1><H3><A href="#The Introspect Framework">The Introspect Framework</A></H3><UL><LI><A href="#Why the Introspect framework was developed">Why the Introspect framework was developed</A></LI><LI><A href="#Introspect Core Values">Introspect Core Values</A></LI><LI><A href="#Introspect License">Introspect License</A></LI><LI><A href="#Architecture of an introspect application">Architecture of an introspect application</A></LI><LI><A href="#Dependency Injection Container">Dependency Injection Container</A></LI><LI><A href="#The Introspect Application">The Introspect Application</A></LI><LI><A href="#Starting a new Introspect Project">Starting a new Introspect Project</A></LI></UL><H3><A href="#The Domain Layer">The Domain Layer</A></H3><UL><LI><A href="#Domain Objects">Domain Objects</A></LI><LI><A href="#Properties">Properties</A></LI><LI><A href="#Action Methods">Action Methods</A></LI></UL><H3><A href="#The Service Layer">The Service Layer</A></H3><UL><LI><A href="#Service Objects">Service Objects</A></LI><LI><A href="#Action Methods">Action Methods</A></LI></UL><H3><A href="#The Infrastructure Layer">The Infrastructure Layer</A></H3><UL><LI><A href="#Infrastructure Objects">Infrastructure Objects</A></LI></UL><H3><A href="#The Provider Layer">The Provider Layer</A></H3><UL><LI><A href="#Provider Objects">Provider Objects</A></LI><LI><A href="#Authorization Provider">Authorization Provider</A></LI><LI><A href="#Validation Provider">Validation Provider</A></LI><LI><A href="#Language Provider">Language Provider</A></LI><LI><A href="#Notification Provider">Notification Provider</A></LI><LI><A href="#Path Provider">Path Provider</A></LI><LI><A href="#Reflection Provider">Reflection Provider</A></LI><LI><A href="#About Provider">About Provider</A></LI></UL><H3><A href="#The UserInterface Layer">The UserInterface Layer</A></H3><UL><LI><A href="#UserInterfaceController">UserInterfaceController</A></LI></UL><H3><A href="#Action Methods">Action Methods</A></H3><UL><LI><A href="#Action Methods for Domain Objects">Action Methods for Domain Objects</A></LI><LI><A href="#Action Methods for Domain Object Properties">Action Methods for Domain Object Properties</A></LI><LI><A href="#Action Methods for Service Objects">Action Methods for Service Objects</A></LI><LI><A href="#Action Methods Convention">Action Methods Convention</A></LI><LI><A href="#Action method names">Action method names</A></LI><LI><A href="#Action method parameter">Action method parameter</A></LI><LI><A href="#Action method return value">Action method return value</A></LI><LI><A href="#Action execution modes">Action execution modes</A></LI><LI><A href="#Action behavior">Action behavior</A></LI></UL><H3><A href="#Object behavior">Object behavior</A></H3><UL><LI><A href="#Display Name">Display Name</A></LI><LI><A href="#Title">Title</A></LI><LI><A href="#Description">Description</A></LI><LI><A href="#Icon">Icon</A></LI></UL><H3><A href="#Getting Started">Getting Started</A></H3><UL><LI><A href="#Integrated Development Environment(IDE)">Integrated Development Environment(IDE)</A></LI><LI><A href="#Create your domain object's">Create your domain object's</A></LI><LI><A href="#Creating your Introspect application">Creating your Introspect application</A></LI><LI><A href="#Create a command line application">Create a command line application</A></LI><LI><A href="#Create a desktop application">Create a desktop application</A></LI><LI><A href="#Create a mobile application ">Create a mobile application </A></LI><LI><A href="#Create a web application">Create a web application</A></LI><LI><A href="#Create a soap application">Create a soap application</A></LI><LI><A href="#Create a restfull XML application">Create a restfull XML application</A></LI><LI><A href="#Create multiple application types with the same domain model">Create multiple application types with the same domain model</A></LI><LI><A href="#Create a JUnit application">Create a JUnit application</A></LI><LI><A href="#Icons">Icons</A></LI><LI><A href="#Language">Language</A></LI><LI><A href="#Validation">Validation</A></LI><LI><A href="#Authorization">Authorization</A></LI><LI><A href="#Reports">Reports</A></LI></UL><H3><A href="#Demo's">Demo's</A></H3><UL></UL><H3><A href="#Downloads">Downloads</A></H3><UL></UL><H3><A href="#Documentation">Documentation</A></H3><UL></UL><H3><A href="#Development">Development</A></H3><UL></UL>
+<IMG src="IntrospectDocumentation.png"><H1>Contents</H1><H3><A href="#The Introspect Framework">The Introspect Framework</A></H3><UL><LI><A href="#Why the Introspect framework was developed">Why the Introspect framework was developed</A></LI><LI><A href="#Introspect Core Values">Introspect Core Values</A></LI><LI><A href="#Introspect License">Introspect License</A></LI><LI><A href="#Architecture of an introspect application">Architecture of an introspect application</A></LI><LI><A href="#Dependency Injection Container">Dependency Injection Container</A></LI><LI><A href="#The Introspect Application">The Introspect Application</A></LI><LI><A href="#Starting a new Introspect Project">Starting a new Introspect Project</A></LI></UL><H3><A href="#The Domain Layer">The Domain Layer</A></H3><UL><LI><A href="#Domain Objects">Domain Objects</A></LI><LI><A href="#Properties">Properties</A></LI><LI><A href="#Action Methods">Action Methods</A></LI></UL><H3><A href="#The Service Layer">The Service Layer</A></H3><UL><LI><A href="#Service Objects">Service Objects</A></LI><LI><A href="#Action Methods">Action Methods</A></LI></UL><H3><A href="#The Infrastructure Layer">The Infrastructure Layer</A></H3><UL><LI><A href="#Infrastructure Objects">Infrastructure Objects</A></LI></UL><H3><A href="#The Provider Layer">The Provider Layer</A></H3><UL><LI><A href="#Provider Objects">Provider Objects</A></LI><LI><A href="#Authorization Provider">Authorization Provider</A></LI><LI><A href="#Validation Provider">Validation Provider</A></LI><LI><A href="#Language Provider">Language Provider</A></LI><LI><A href="#Notification Provider">Notification Provider</A></LI><LI><A href="#Path Provider">Path Provider</A></LI><LI><A href="#Reflection Provider">Reflection Provider</A></LI><LI><A href="#About Provider">About Provider</A></LI></UL><H3><A href="#The UserInterface Layer">The UserInterface Layer</A></H3><UL><LI><A href="#UserInterfaceController">UserInterfaceController</A></LI></UL><H3><A href="#Action Methods">Action Methods</A></H3><UL><LI><A href="#Action Methods for Domain Objects">Action Methods for Domain Objects</A></LI><LI><A href="#Action Methods for Domain Object Properties">Action Methods for Domain Object Properties</A></LI><LI><A href="#Action Methods for Service Objects">Action Methods for Service Objects</A></LI><LI><A href="#Action Methods Convention">Action Methods Convention</A></LI><LI><A href="#Action method names">Action method names</A></LI><LI><A href="#Action method parameter">Action method parameter</A></LI><LI><A href="#Action method return value">Action method return value</A></LI><LI><A href="#Action execution modes">Action execution modes</A></LI><LI><A href="#Action behavior">Action behavior</A></LI></UL><H3><A href="#Object behavior">Object behavior</A></H3><UL><LI><A href="#Behavioral Annotations">Behavioral Annotations</A></LI><LI><A href="#Behavioral Methods">Behavioral Methods</A></LI><LI><A href="#Behavioral Method Convention">Behavioral Method Convention</A></LI><LI><A href="#Display Name">Display Name</A></LI><LI><A href="#Title">Title</A></LI><LI><A href="#Description">Description</A></LI><LI><A href="#Icon">Icon</A></LI><LI><A href="#Hidden">Hidden</A></LI><LI><A href="#Disabled">Disabled</A></LI><LI><A href="#Order">Order</A></LI><LI><A href="#Format">Format</A></LI><LI><A href="#Field Mode">Field Mode</A></LI><LI><A href="#Execution Mode">Execution Mode</A></LI><LI><A href="#Parameter Factory">Parameter Factory</A></LI><LI><A href="#Validation">Validation</A></LI><LI><A href="#Validation methods">Validation methods</A></LI></UL><H3><A href="#Getting Started">Getting Started</A></H3><UL><LI><A href="#Integrated Development Environment(IDE)">Integrated Development Environment(IDE)</A></LI><LI><A href="#Create your domain object's">Create your domain object's</A></LI><LI><A href="#Creating your Introspect
+ application">Creating your Introspect
+ application</A></LI><LI><A href="#Create a
+ command line application">Create a
+ command line application</A></LI><LI><A href="#Create a desktop
+ application">Create a desktop
+ application</A></LI><LI><A href="#Create a mobile application">Create a mobile application</A></LI><LI><A href="#Create a web application">Create a web application</A></LI><LI><A href="#Create a soap application">Create a soap application</A></LI><LI><A href="#Create a restfull
+ XML application">Create a restfull
+ XML application</A></LI><LI><A href="#Create multiple application
+ types with the same domain model">Create multiple application
+ types with the same domain model</A></LI><LI><A href="#Create a JUnit
+ application">Create a JUnit
+ application</A></LI><LI><A href="#Icons">Icons</A></LI><LI><A href="#Language">Language</A></LI><LI><A href="#Validation">Validation</A></LI><LI><A href="#Authorization">Authorization</A></LI></UL><H3><A href="#Demo's">Demo's</A></H3><UL></UL><H3><A href="#Downloads">Downloads</A></H3><UL></UL><H3><A href="#Documentation">Documentation</A></H3><UL></UL><H3><A href="#Development">Development</A></H3><UL></UL>
 
  <A name="The Introspect Framework"><H1>The Introspect Framework</H1></A> 
- 
 
  <P>
  Introspect is a light weight <A href="http://en.wikipedia.org/wiki/Java_(programming_language)">Java</A> <A href="http://en.wikipedia.org/wiki/Application_framework">Application
@@ -421,8 +432,7 @@
  </P>
  
  
- <A name="The Domain Layer"><H1>The Domain Layer</H1></A>
- 
+ <A name="The Domain Layer"><H1>The Domain Layer</H1></A> 
 
  The Domain layer is the heart of any Introspect application. The domain layer
  represents:
@@ -696,8 +706,7 @@
   IntrospectArchitecture
  
  
- <A name="The Service Layer"><H1>The Service Layer</H1></A>
- 
+ <A name="The Service Layer"><H1>The Service Layer</H1></A> 
 
  <P>
  The <A href="#The Service Layer">ServiceLayer</A> (sometimes also called <A href="application layer">application layer</A>) gives the user access to the
@@ -859,8 +868,7 @@
 <P><A href="#Service Objects">ServiceObject</A>s are all about <A href="#Action Methods">ActionMethod</A>s that represent the main menu items (see section <A>ServiceObjectActionMethod</A>)
 </P>
  
- <A name="The Infrastructure Layer"><H1>The Infrastructure Layer</H1></A>
- 
+ <A name="The Infrastructure Layer"><H1>The Infrastructure Layer</H1></A> 
 
  <P>
  The <A href="#The Infrastructure Layer">InfrastructureLayer</A> contains <A href="#Infrastructure Objects">InfrastructureObject</A>'s that
@@ -949,8 +957,7 @@
 
  
  
- <A name="The Provider Layer"><H1>The Provider Layer</H1></A>
- 
+ <A name="The Provider Layer"><H1>The Provider Layer</H1></A> 
 
  <P>The <A href="#The Provider Layer">ProviderLayer</A> contains <A href="#Provider Objects">Provider</A> objects that provide generic
  <A href="#The Introspect Framework">IntrospectFramework</A> capabilities (<A href="cross cutting concerns">cross cutting concerns</A>) to support the higher layers (see
@@ -1214,8 +1221,7 @@
  This about information can be displayed on a graphical user interface.
  </P>
  
- <A name="The UserInterface Layer"><H1>The UserInterface Layer</H1></A>
- 
+ <A name="The UserInterface Layer"><H1>The UserInterface Layer</H1></A> 
 
  
  The <A href="#The UserInterface Layer">UserInterfaceLayer</A> is also know as presentation layer (although I
@@ -1321,8 +1327,7 @@
  Please see the class hierarchy of the <A href="#The Introspect Application">IntrospectApplication</A> class to find all the different user interface
  implementations. See the <A href="#Getting Started">IntrospectGettingStarted</A> section with specific instructions for each type of <A href="#The Introspect Application">IntrospectApplication</A>
  
- <A name="Action Methods"><H1>Action Methods</H1></A>
- 
+ <A name="Action Methods"><H1>Action Methods</H1></A> 
 
  <P>
  An <A href="#Action Methods">ActionMethod</A> is a method in a <A href="#Domain Objects">DomainObject</A> or
@@ -1425,11 +1430,11 @@
  again using the main toolbar. The main menu provides the user access to the
  <A href="#Domain Objects">DomainObject</A>s so that the user can work on them. The <A>MainMenu</A> contains all
  <A href="#Action Methods">ActionMethod</A>s of <A href="#Service Objects">ServiceObject</A>s that either have no method parameter or have
- an parameterFactory_TODO_LINK.
+ an <A>ParameterFactory</A>.
  </P>
  <P>
  <A href="#Action Methods">ActionMethod</A>s of <A href="#Service Objects">ServiceObject</A>s that take a <A href="#Domain Objects">DomainObject</A> as a parameter and
- have no parameterFactory_TODO_LINK are displayed in <A>DomainObjectMenu</A>s and
+ have no <A>ParameterFactory</A> are displayed in <A>DomainObjectMenu</A>s and
  propertyMenus.
  </P>
  Each <A href="#Service Objects">ServiceObject</A> is always displayed as a sub menu
@@ -1507,19 +1512,72 @@
  <A href="#Object behavior">ObjectBehavior</A>.
  </P>
  
- <A name="Object behavior"><H1>Object behavior</H1></A>
- 
+ <A name="Object behavior"><H1>Object behavior</H1></A> 
 
  The <A href="#The Introspect Application">IntrospectApplication</A>, <A href="#Service Objects">ServiceObject</A>s and
  <A href="#Domain Objects">DomainObject</A>s can have behavior that defines how the objects act or
  how they are displayed. Behavior can be defined with:
  <UL>
- <LI>methods that are recognized by the <A href="#The Introspect Framework">IntrospectFramework</A></LI>
- <LI>annotations that are recognized by the <A href="#The Introspect Framework">IntrospectFramework</A></LI>
+ <LI><A>BehavioralAnnotation</A>s</LI>
+ <LI><A>BehavioralMethod</A>s</LI>
  </UL>
- TODO RECOGNIZED METHODS (see naked objects doc) TODO RECOGNIZED ANNOTATIONS
- TODO verify if we missed a chapter by inspecting ClassInfo and MethodInfo and
- PropertyInfo
+ 
+ <H3>Behavioral Annotations</H3>
+ <P>
+ 
+
+ <P>
+ <A>BehavioralAnnotation</A>s are recognized by the <A href="#The Introspect Framework">IntrospectFramework</A>
+ and define how objects <A href="#Domain Objects">DomainObject</A>s, <A href="#Properties">DomainObjectProperty</A>s or
+ <A href="#Action Methods">ActionMethod</A></P>s behave (how they act and how they displayed).
+ </P>
+ <A>BehavioralAnnotation</A>s are normally located before the declaration of
+ the member:
+ <UL>
+ <LI><A>BehavioralAnnotation</A>s for classes: are located before the class key word
+ </LI>
+ <LI><A>BehavioralAnnotation</A>s for <A href="#Properties">DomainObjectProperty</A>: are located
+ before the getter method of a <A href="#Properties">DomainObjectProperty</A></LI>
+ <LI><A>BehavioralAnnotation</A>s for <A href="#Action Methods">ActionMethod</A>: are located before the
+ <A href="#Action Methods">ActionMethod</A></LI>
+ </UL>
+ 
+ 
+ 
+ <H3>Behavioral Methods</H3>
+ <P>
+ 
+
+ <P>
+ <A>BehavioralMethod</A>s are recognized by the <A href="#The Introspect Framework">IntrospectFramework</A>
+ and dynamically define how <A href="#Domain Objects">DomainObject</A>s, <A href="#Properties">DomainObjectProperty</A>s or
+ <A href="#Action Methods">ActionMethod</A></P>s behave (how they act and how they displayed). Dynamic
+ means that the behavior can change over time, depending on the state of the
+ object (property values).
+ </P>
+ 
+ <H3>Behavioral Method Convention</H3>
+ <UL>
+ <LI>Syntax: &ltbehaviourName&gt;&ltmemberName&gt;<BR>
+ &ltbehaviourName&gt;= A behavior like Icon, Hidden, Disabled, etc)<BR>
+ &ltmemberName&gt;= can be a <A>Class</A>Name, <A href="#Properties">DomainObjectProperty</A>
+ Name, or a <A href="#Action Methods">ActionMethod</A>Name</LI>
+ <LI><A>BehavioralMethod</A>s do NOT have any parameters</LI>
+ <LI><A>BehavioralMethod</A>s ALWAYS return a value (see
+ <A>BehavioralMethod.returnType()</A> of the different implementations</LI>
+ <LI><A>BehavioralMethod</A>s are public</LI>
+ <LI><A>BehavioralMethod</A>s are not static</LI>
+ <LI><A>BehavioralMethod</A>s are normally located after the declaration of
+ the member:</LI>
+ <UL>
+ <LI><A>BehavioralMethod</A>s for classes: are located after the constructors
+ </LI>
+ <LI><A>BehavioralMethod</A>s for <A href="#Properties">DomainObjectProperty</A>: are located
+ after the getter and setter methods of the properties</LI>
+ <LI><A>BehavioralMethod</A>s for <A href="#Action Methods">ActionMethod</A>: are located after the
+ <A href="#Action Methods">ActionMethod</A></LI></UL></UL>
+ 
+ 
  
  <A name="Display Name"><H2>Display Name</H2></A>
  <P>
@@ -1552,8 +1610,6 @@
  <A>LanguageProvider</A>.
  </P>
  <P>
- TODO IMPLEMENT:
- 
  It is recommended that the Description of <A href="#Service Objects">ServiceObject</A>s is the
  plural form of the <A href="#Domain Objects">DomainObject</A> that the <A href="#Service Objects">ServiceObject</A>
  represents. In example: The displayName of CustomerService is &#8220;Customers&#8221;.
@@ -1567,20 +1623,26 @@
  <P>
  
 
+ In some cases the default <A>DisplayName</A> does not suffice, in example when:
+ <UL>
+ <LI>A different use of capital case is needed</LI>
+ <LI>Special characters are needed that can not be used in the code</LI>
+ <LI>The plural form of the default displayName of a ServiceObject is
+ incorrect</LI>
+ </UL>
  <P>
- You can override the default description value for the English language, by
- putting the <A>Description</A> annotation before the getter method of a
- <A href="#Properties">DomainObjectProperty</A> or before an <A href="#Action Methods">ActionMethod</A></P>
+ In these cases you can use the <A>Description</A></P> annotation before the class
+ keyword, before the getter method of a property or before the ActionMethod.
  </P>
- TODO EXAMPLE
+ TODO EXAMPLE ACMEWebShop
  <P>
- Note that the <A>Description</A> annotation is intended for the English
- language only. Use the Description default if you want to use multiple
- languages
+ Note that the <A>DisplayName</A> annotation is intended for the English language only.
+ Use the Description default if you want to use multiple languages
  </P>
  
  
- <A name="Title"><H2>Title</H2></A> 
+ 
+ <A name="Title"><H2>Title</H2></A>
  <P>
  
 
@@ -1649,7 +1711,8 @@
  TODO implement naked object style
  
  
- <A name="Description"><H2>Description</H2></A> 
+ 
+ <A name="Description"><H2>Description</H2></A>
  <P>
  
 
@@ -1676,116 +1739,524 @@
  <P>
  
 
- See <A>Description</A> annotation
+ <P>
+ You can override the default description value for the English language, by
+ putting the <A>Description</A> annotation before the getter method of a
+ <A href="#Properties">DomainObjectProperty</A> or before an <A href="#Action Methods">ActionMethod</A></P>
+ </P>
+ TODO EXAMPLE
+ <P>
+ Note that the <A>Description</A> annotation is intended for the English
+ language only. Use the Description default if you want to use multiple
+ languages
  </P>
  
- <A name="Icon"><H2>Icon</H2></A> 
+ 
+ 
+ <A name="Icon"><H2>Icon</H2></A>
  <P>
  
+
+ <P><A href="#The Introspect Application">IntrospectApplication</A> objects, <A href="#Service Objects">ServiceObject</A>s and
+ <A href="#Domain Objects">DomainObject</A></P>s can have icons that are displayed in graphical user
+ interfaces. These icons help the user to quickly identify what they are
+ looking at.</P>
+ 
+ <H3>Icon Default</H3>
+ <P>
+ 
+
+ The <A href="#The Introspect Framework">IntrospectFramework</A> will try to find an image with the same
+ <A>Class</A>Name or <A href="#Action Methods">ActionMethod</A>Name but with the &#8220;.png&#8221; extension
+ in the same package.
+ <UL>
+ <LI>Filename signature for object icon: &lt;package&gt;/&lt;className&gt;.png (e.g.
+ c:/MyProject/bin/com/acme/web/shop/customer/CustomerService.png)</LI>
+ <LI>Filename signature for ActionMethod icon:
+ &lt;package&gt;/&lt;className&gt;_&lt;actionMethodName&gt;.png (e.g.
+ c:/MyProject/bin/com/acme/web/shop/customer/CustomerService_findCustomer.png)
+ </LI>
+ </UL>
+ <P></P>
+ No icon will be displayed when the icon file can not be found.
  </P>
- <H3>Visible</H3> (TODO description what this does) (TODO annotation) (TODO
- method)
+ <P>
+ Currently the PNG image format is the only format that is supported. Adding
+ more image types will slow down lookup performance.
+ </P>
  
  
- <H3>Visible In Form</H3> (TODO specific on form)Public properties and methods
- are visible by default but they can be hidden.
+ <H3>Icon Annotation</H3>
+ <P>
  
- Methods that are not public are not visible or access able. (TODO visible
- annotation) (TODO visible method)
+
+ <P>
+ If you do not want to use the default icon, you can define an alternative
+ icon by placing an Icon annotation before the &#8220;class&#8221; key word or before the
+ <A href="#Action Methods">ActionMethod</A></P>.
+ </P>
  
- <H3>Visible In Table</H3> (TODO specific on table)Public properties and
- methods are visible by default but they can be hidden. (TODO properties of
- type collection are not displayed in a table)
+ <P>
+ Syntax: <A>Icon</A>(String iconURI)
+ </P>
+ <P>
+ Parameter iconURI: image file to be used as an icon
+ </P>
+ The iconURI can be a:
+ <UL>
+ <LI>
+ &lt;fileName&gt; e.g. Cut.jpg that will be located in the
+ &lt;imageFolder&gt;/Cut.jpg</LI>
+ <LI>&lt;relativePath&gt;/&lt;fileName&gt; e.g. /edit/Cut.jpg that will be
+ located in the &lt;imageFolder&gt;/edit/Cut.jpg</LI>
+ <LI>&lt;absolutePath&gt;/&lt;fileName&gt; e.g.
+ file://c:/MyProject/images/Cut.jpg, or you can use the IntrospectIconUri
+ class to give you an absolute URI to one of the standard icons.</LI>
+ </UL>
  
- Methods that are not public are not visible or access able. (TODO visible
- annotation) (TODO visible method) (TODO refer to Authorization Provider)
  
- <H3>Enabled</H3> Properties and methods are enabled by default but they can
- be disabled. &#8226; Public properties that are disabled are visible to the user
- but can&#8217;t be edited. &#8226; Public methods that are disabled are visible to the
- user but can&#8217;t be executed. (TODO annotation) (TODO method) (TODO refer to
- Authorization Provider)
+ <H3>Icon Method</H3>
+ <P>
  
- <H3>Order in Form</H3> (TODO description what this does) (TODO annotation)
- (TODO method)
+
+ <P>Instead of the <A>Icon</A> annotation you can also define the icon with a
+ method recognized by the <A href="#The Introspect Framework">IntrospectFramework</A>. This allows you to
+ change the icon dynamically during runtime, based on state (e.g. when the
+ <A href="#Domain Objects">DomainObject</A></P> Person is a male or female).</P>
+ <P>
+ Syntax: public string icon&lt;className or actionMethodName&gt;()</P>
  
- <H3>Order in Table</H3> (TODO description what this does) (TODO annotation)
- (TODO method) <H3>Method Execution Mode</H3> (TODO description what this
- does) (TODO annotation) <H3>Parameter Factory</H3> (TODO description what
- this does) (TODO annotation) (TODO method)
+ The return value must be an iconURI, which can be a:
+ <UL>
+ <LI>
+ &lt;fileName&gt; e.g. Cut.jpg that will be located in the
+ &lt;imageFolder&gt;/Cut.jpg</LI>
+ <LI>&lt;relativePath&gt;/&lt;fileName&gt; e.g. /edit/Cut.jpg that will be
+ located in the &lt;imageFolder&gt;/edit/Cut.jpg</LI>
+ <LI>&lt;absolutePath&gt;/&lt;fileName&gt; e.g.
+ file://c:/MyProject/images/Cut.jpg, or you can use the IntrospectIconUri
+ class to give you an absolute URI to one of the standard icons.</LI>
+ </UL>
  
- <H3>FieldMode</H3> (TODO description what this does) (TODO annotation) (TODO
- method)
  
- <H3>Validation</H3> Domain objects are validated before a method is executed.
- There is a separate section on validation (see <A>ValidationProvider</A>)
+ TODO EXAMPLE customer male or female icon
  
- <H3>MultiLanguage</H3> Sometimes applications need to support multiple
- languages. There is as separate section on multi language (see
- <A>LanguageProvider</A>)
  
+ 
+ <A name="Hidden"><H2>Hidden</H2></A>
+ <P>
+ 
+
+ A <A href="#Properties">DomainObjectProperty</A> or <A href="#Action Methods">ActionMethod</A> is visible on
+ the user interface by default,but in some cases you may want to hide them,
+ e.g.:
+ <UL>
+ <LI>Because not all information needs to be displayed in the user interface
+ (e.g. a database id key or version number for optimistic locking)</LI>
+ <LI>Because you want to limit the number of visible properties in a table
+ (e.g. to limit the number of columns in a table to prevent the table to
+ become cluttered with to much information)</LI>
+ <LI>Depending on the state of a <A href="#Domain Objects">DomainObject</A> you do not want to display
+ Irrelevant information</LI>
+ <LI>Depending on the state of a domain object you do not want a user to
+ activate an action method (e.g. hide an <A href="#Action Methods">ActionMethod</A> &#8220;submit&#8221; once the
+ domainObject already is submitted)</LI>
+ <LI>Because a user is not authorized to see a property value</LI>
+ <LI>Because a user is not authorized to activate an <A href="#Action Methods">ActionMethod</A></LI>
+ </UL>
+ 
+ <H3>Hidden Annotation</H3>
+ <P>
+ 
+
+ <P>
+ You can hide a <A href="#Properties">DomainObjectProperty</A> by putting the <A>Hidden</A>
+ annotation before the getter method or you can hide an <A href="#Action Methods">ActionMethod</A>
+ by putting the <A>Hidden</A></P> annotation before the </P><A href="#Action Methods">ActionMethod</A>.
+ </P>
+ <P>
+ Syntax: @Hidden(hiddenFor, exceptForUsers, exceptForRoles)
+ </P>
+ <P>
+ Parameters:
+ <UL>
+ <LI>hiddenFor: optional and for properties only: to indicate if the property
+ should be hidden in <A>FormView</A>s, <A>TableView</A>s or both.</LI>
+ <LI>ExceptForUsers: optional comma separated string of users names that are
+ allowed to see the <A href="#Properties">DomainObjectProperty</A> or <A href="#Action Methods">ActionMethod</A></LI>
+ <LI>exceptForRoles: optional comma separated string of user roles that are
+ allowed to see the <A href="#Properties">DomainObjectProperty</A> or <A href="#Action Methods">ActionMethod</A></LI>
+ </UL>
+ </P>
+ TODO EXAMPLE
+ 
+ 
+ <H3>Hidden Annotation</H3>
+ <P>
+ 
+
+ <P>
+ You can hide a <A href="#Properties">DomainObjectProperty</A> or
+ <A>DomainObjectActionMethod</A> depending on the <A href="#Domain Objects">DomainObject</A> state
+ (the value of its properties). If you have a <A>Hidden</A> annotation and a
+ hidden method, both need to be true in order to hide the
+ <A href="#Properties">DomainObjectProperty</A> or <A href="#Action Methods">ActionMethod</A></P>.
+ </P>
+ <P>
+ Syntax: public boolean hidden&lt;property name or actionMethodName&gt;()
+ </P>
+ <P>
+ ReturnValue: a boolean that is true if the <A href="#Properties">DomainObjectProperty</A> or
+ <A href="#Action Methods">ActionMethod</A> needs to be hidden
+ </P>
+ 
+ 
+ 
+ <A name="Disabled"><H2>Disabled</H2></A>
+ <P>
+ 
+
+ <P>
+ A <A href="#Properties">DomainObjectProperty</A> or <A href="#Action Methods">ActionMethod</A> is enabled on the user
+ interface by default, but in some cases you may want to disable them. If
+ something is disabled they are grayed out on the user interface. Disabled
+ properties can not be edited (read only) and disabled <A href="#Action Methods">ActionMethod</A></P>s
+ can not be invoked.
+ </P>
+ <P>
+ You may want to disable items when:
+ <UL>
+ <LI>Not all properties need to be editable on the user interface but the code
+ might need a setter method to set the <A href="#Properties">DomainObjectProperty</A>value when
+ the <A href="#Domain Objects">DomainObject</A> is created from the database</LI>
+ <LI>Depending on the state of a <A href="#Domain Objects">DomainObject</A> you do not want the user
+ to edit certain <A href="#Properties">DomainObjectProperty</A></LI>
+ <LI>Depending on the state of a <A href="#Domain Objects">DomainObject</A> you do not want a user
+ to invoke an <A href="#Action Methods">ActionMethod</A> (e.g. prevent invoking <A href="#Action Methods">ActionMethod</A>
+ &#8220;submit&#8221; once the <A href="#Domain Objects">DomainObject</A> already is submitted)</LI>
+ <LI>Because a user is not authorized to edit a <A href="#Properties">DomainObjectProperty</A>
+ Value</LI>
+ <LI>Because a user is not authorized to invoke an <A href="#Action Methods">ActionMethod</A></LI>
+ </UL>
+ </P>
+ <P>
+ Note that if an user is not authorized to change a
+ <A href="#Properties">DomainObjectProperty</A> or call an <A href="#Action Methods">ActionMethod</A> it is best to
+ hide the method or property instead of disabling it. In general you do not
+ want to confuse users (clutter the user interface) with options that they are
+ not allowed to use anyway.
+ </P>
+ 
+ <H3>Disabled Annotation</H3>
+ <P>
+ 
+
+ <P>
+ You can disable a <A href="#Properties">DomainObjectProperty</A> by putting the
+ <A>Disabled</A> annotation before the getter method or you can disable an
+ <A href="#Action Methods">ActionMethod</A> by putting the <A>Disabled</A> annotation before the
+ <A href="#Action Methods">ActionMethod</A></P>.
+ </P>
+ <P>
+ Syntax: @Disabled(exceptForUsers, exceptForRoles)
+ </P>
+ <P>
+ Parameters:
+ <UL>
+ <LI>ExceptForUsers: optional comma separated string of users names that are
+ allowed to edit the <A href="#Properties">DomainObjectProperty</A> or invoke
+ <A href="#Action Methods">ActionMethod</A></LI>
+ <LI>exceptForRoles: optional comma separated string of user roles that are
+ allowed to edit the <A href="#Properties">DomainObjectProperty</A> or invoke
+ <A href="#Action Methods">ActionMethod</A></LI>
+ </UL>
+ </P>
+ TODO EXAMPLE
+ 
+ 
+ <H3>Disabled Annotation</H3>
+ <P>
+ 
+
+ <P>
+ You can disable a <A href="#Properties">DomainObjectProperty</A> or
+ <A>DomainObjectActionMethod</A> depending on the <A href="#Domain Objects">DomainObject</A> state
+ (the value of its properties). If you have a <A>Disabled</A> annotation and a
+ disabled method, both need to be true in order to hide the
+ <A href="#Properties">DomainObjectProperty</A> or <A href="#Action Methods">ActionMethod</A></P>.
+ </P>
+ <P>
+ Syntax: public boolean disabled&lt;property name or actionMethodName&gt;()
+ </P>
+ <P>
+ ReturnValue: a boolean that is true if the <A href="#Properties">DomainObjectProperty</A> or
+ <A href="#Action Methods">ActionMethod</A> needs to be disabled
+ </P>
+ 
+ 
+ 
+ <A name="Order"><H2>Order</H2></A>
+ <P>
+ 
+
+ <P>
+ The order in which the class members (<A href="#Properties">DomainObjectProperty</A> and
+ <A href="#Action Methods">ActionMethod</A>) are displayed is defined with the <A>Order</A></P>
+ annotation. Note that the order of class members can not be changed during
+ runtime.
+ </P>
+ <P>
+ The <A>Order</A> annotation can be added before the getter method of a
+ <A href="#Properties">DomainObjectProperty</A> or before an <A href="#Action Methods">ActionMethod</A>. Both
+ <A href="#Properties">DomainObjectProperty</A> and <A href="#Action Methods">ActionMethod</A>s are ordered separately
+ but use the same annotation.
+ </P>
+ <P>
+ Syntax: @Order(double sequenceNumber)
+ </P>
+ <P>
+ The sequenceNumber of the <A>Order</A> annotation determines the position of
+ the class member. The class member with the lowest sequenceNumber will be
+ shown first, a higher sequenceNumber later. Class members that are not
+ annotated will be shown last.
+ </P>
+ It is recommended to use an interval (of let's say 10) between the
+ sequenceNumbers so that you do not have to renumber all the existing <A>Order</A>
+ annotations every time you add a new class member in between. Otherwise you
+ can always fall back on using decimals (e.g. 1.5 or 10.25). 
+ 
+ 
+ <A name="Format"><H2>Format</H2></A>
+ <P>
+ 
+
+ <P>
+ Some property types such as <A>Date</A>, time, <A>Number</A> can be
+ formatted with help of the <A>Format</A></P> annotation. Note that the format
+ can NOT be changed during runtime.
+ </P>
+ The <A>Format</A> annotation can be added before the getter method of a
+ <A href="#Properties">DomainObjectProperty</A>. 
+ <P>
+ Syntax: @Format(string pattern)
+ </P>
+ <P>
+ Please see the JavaDoc of the <A>SimpleDateFormat</A> and
+ <A>DecimalFormat</A> formatters to learn more about the patterns that can be
+ used. See the <A>PropertyInfoFormatFactory</A> to learn how the formating
+ works for the different <A href="#Properties">DomainObjectProperty</A> types.
+ 
+ </P>
  TODO example
  
- <H3>Formatting</H3> TODO explain + example
  
- <A name="Getting Started"><H1>Getting Started</H1></A>
+ <A name="Field Mode"><H2>Field Mode</H2></A>
+ <P>
  
 
-
-This section is a how-to guide and explains all you need to know to create and deploy your own applications.
-
-<A name="Integrated Development Environment(IDE)"><H2>Integrated Development Environment(IDE)</H2></A> 
-Get your favourite IDE installed on your computer. If you are a newby in developing applications, you could try and install Eclipse. It is a great free IDE that you can download from the internet. Any other IDE will do just fine.  (TODO youtube video)
-
-Download the Introspect Libraries from GIT into your IDE (TODO youtube video)
-<A name="Create your domain object's"><H2>Create your domain object's</H2></A> 
-TODO
-<A name="Creating your Introspect application"><H2>Creating your Introspect application</H2></A>
-With introspect you can create different types of applications right out of the box:
-&#8226;	Create a command line application
-&#8226;	Create a desktop application 
-&#8226;	TODO Create a mobile application 
-&#8226;	TODO Create a web application 
-&#8226;	TODO Create a soap application 
-&#8226;	TODO Create a restfull XML application
-
-TODO Each application type has it&#8217;s own &#8220;getting started&#8221; video.
-<A name="Create a command line application"><H2>Create a command line application</H2></A>
- (TODO youtube video)
-<A name="Create a desktop application"><H2>Create a desktop application</H2></A> 
-(TODO youtube video)
-<A name="Create a mobile application "><H2>Create a mobile application </H2></A>
-(TODO youtube video)
-<A name="Create a web application"><H2>Create a web application</H2></A> 
-(TODO youtube video)
-<A name="Create a soap application"><H2>Create a soap application</H2></A> 
-(TODO youtube video)
-<A name="Create a restfull XML application"><H2>Create a restfull XML application</H2></A> 
-(TODO youtube video)
-<A name="Create multiple application types with the same domain model"><H2>Create multiple application types with the same domain model</H2></A> 
-(TODO youtube video)
-<A name="Create a JUnit application"><H2>Create a JUnit application</H2></A>
-See IntrospectApplicationForAndroid 
-(TODO youtube video)
-
-<A name="Icons"><H2>Icons</H2></A> 
-The Introspect user interface supports icons (see section on icons) or see the following tutorial video (TODO youtube video)
-<A name="Language"><H2>Language</H2></A> 
-The Introspect user interface supports multi languages (see section on LanguageProvider) or see the following tutorial video (TODO youtube video)
-<A name="Validation"><H2>Validation</H2></A> 
-The Introspect user interface supports multi languages (see section on LanguageProvider) or see the following tutorial video (TODO youtube video)
-<A name="Authorization"><H2>Authorization</H2></A> 
-(TODO youtube video)
-<A name="Reports"><H2>Reports</H2></A>
-(TODO youtube video)
+ <P><A href="#Domain Objects">DomainObject</A>s are rendered by the user interface layer as fields when a <A href="#Domain Objects">DomainObject</A> is displayed in a form view. The <A>FormView</A> will determine in what type of field these <A href="#Properties">DomainObjectProperty</A>s are displayed (textbox, combobox, etc). In some cases you can select an alternative field type using the <A>FieldMode</A> annotation. The <A>FieldMode</A> annotation needs to be put before the getter method of a <A href="#Properties">DomainObjectProperty</A></P>. Note that the format can not be changed during runtime.
+</P><P>
+Syntax: @FieldMode(FieldModeType mode)
+</P><P>
+Examples of alternative <A>FieldModeType</A>s:
+<UL><LI><A>FieldModeType.TEXT_AREA</A>: renders a text field to edit a string with multiple lines</LI><LI><A>FieldModeType.PASSWORD</A>: renders a field to edit a password string (obscuring the input so that other viewers can not read the secret password)</LI><LI><A>FieldModeType.RICH_TEXT_AREA</A>: renders a field to edit a string, with formatting options such as bold, underline, italic,etc...)</LI></UL></P><P>
  
- <A name="Demo's"><H1>Demo's</H1></A>
+ </P>
  
+ <A name="Execution Mode"><H2>Execution Mode</H2></A>
+ <P>
+ 
+
+ <P>
+ <A href="#Action Methods">ActionMethod</A>s can be annotated, so that the
+ <A href="#UserInterfaceController">UserInterfaceController</A> knows how the <A href="#Action Methods">ActionMethod</A> needs to
+ be invoked after the user has clicked on the corresponding menu item. Note
+ that the <A>ExecutionMode</A></P> can not be changed during runtime.
+ </P>
+ <P>
+ Syntax: @ExecutionMode(<A>ExecutionModeType</A> mode)
+ </P>
+ <P>
+ <A>ExecutionModeType</A>:
+ </P>
+ <P>
+ 
+
+ <UL>
+ <LI><A>ExecutionModeType.EXECUTE_METHOD_DIRECTLY</A> : executes the method
+ directly without user intervention</LI>
+ <LI><A>ExecutionModeType.EXECUTE_METHOD_AFTER_CONFORMATION</A>: the
+ <A href="#UserInterfaceController">UserInterfaceController</A> opens a confirmation dialog. The method is
+ executed after the user activates the confirmation button. The method is NOT
+ executed when the user cancels the confirmation dialog.</LI>
+ <LI>
+ <A>ExecutionModeType.EDIT_PARAMETER_THAN_EXECUTE_METHOD_OR_CANCEL</A>: the
+ <A href="#UserInterfaceController">UserInterfaceController</A> opens a form on a new tab, so that the user
+ can modify (edit) the <A href="#Domain Objects">DomainObject</A>. The method is executed with the
+ edited <A href="#Domain Objects">DomainObject</A> as the method parameter, when the user clicks the
+ confirmation button on the button bar. The method is NOT executed when the
+ user clicks on cancel in the bottom bar.</LI>
+ </UL>
+ </P>
+ 
+ 
+ <A name="Parameter Factory"><H2>Parameter Factory</H2></A>
+ <P>
+ 
+
+ <P>
+ The parameter factory allows you to create an object for an
+ <A href="#Action Methods">ActionMethod</A>. This object can then be edited by the user (depending
+ how the <A href="#Action Methods">ActionMethod</A> is annotated, see <A>ExecutionMode</A>
+ annotation) after which it is passed as method parameter when the
+ <A href="#Action Methods">ActionMethod</A></P> is invoked.
+ </P>
+ <P>
+ The <A>MainMenu</A> will display all <A href="#Action Methods">ActionMethod</A>s of all registered
+ <A href="#Service Objects">ServiceObject</A>s that can directly be executed (without the need of an
+ opened <A href="#Domain Objects">DomainObject</A>). This means that only <A href="#Action Methods">ActionMethod</A>s that
+ either have no method parameter or have an <A>ParameterFactory</A> are
+ displayed as menu items in the <A>MainMenu</A>.
+ <P>
+ 
+ <H3>ParameterFactory Annotation</H3>
+ <P>
+ 
+
+ <P>
+ When adding the <A>ParameterFactory</A> Annotation before an
+ <A href="#Action Methods">ActionMethod</A>, the <A href="#UserInterfaceController">UserInterfaceController</A> know's it is
+ allowed to try to instantiate a new DomainObject. This <A href="#Domain Objects">DomainObject</A>
+ can then be edited by the user (depending how the <A href="#Action Methods">ActionMethod</A> is
+ annotated, see </P><A>ExecutionMode</A></P>) after which it is passed as method
+ parameter when the <A href="#Action Methods">ActionMethod</A></P> is invoked.
+ </P>
+ <P>
+ Syntax:</P>
+ <P>
+ TODO EXAMPLE find customer with paramfactory annotation
+ </P>
+ 
+ 
+ 
+ <H3>ParameterFactory Method</H3>
+ <P>
+ 
+
+ <P>
+ When adding the <A>ParameterFactory</A> method (normally located after an
+ <A href="#Action Methods">ActionMethod</A>), the <A href="#UserInterfaceController">UserInterfaceController</A> will first get a
+ new <A href="#Domain Objects">DomainObject</A> from the <A>ParameterFactoryMethodModel</A>. This
+ object can then be edited by the user (depending how the <A href="#Action Methods">ActionMethod</A>
+ is annotated, see <A>ExecutionMode</A>) after which it is passed as method
+ parameter when the <A href="#Action Methods">ActionMethod</A></P> is invoked.
+ </P>
+ <P>
+ Syntax: public&lt;domainObject type&gt;
+ prameterFactory&lt;actionMethodName&gt;()
+ </P>
+ <P>
+ TODO EXAMPLE OF ordersWithinPeriod METHOD
+ </P>
+ 
+ 
+ <A name="Validation"><H2>Validation</H2></A>
+ <P>
+ 
+
+ <P>
+ The <A href="#UserInterfaceController">UserInterfaceController</A> sometimes let&#8217;s the user edit an
+ <A href="#Domain Objects">DomainObject</A> before it is passed as an <A href="#Action Methods">ActionMethod</A> parameter
+ (depending on how the <A href="#Action Methods">ActionMethod</A> is annotated, see
+ <A>ExecutionMode</A>). The <A href="#UserInterfaceController">UserInterfaceController</A> then validates
+ the edited <A href="#Domain Objects">DomainObject</A> using the <A>ValidationProvider</A> before
+ the <A href="#Action Methods">ActionMethod</A> is called.The <A>ValidationProvider</A> will use
+ validation annotations and validation methods that are located in the
+ <A href="#Domain Objects">DomainObject</A>s them selves to validate the <A href="#Domain Objects">DomainObject</A></P>s.
+ </P>
+ 
+ <H3>Validation annotations</H3><P>A <A href="#Properties">DomainObjectProperty</A> can be validated by putting validation annotations before the getter method of a property. Validation annotations are often used for the more basic validations. The following sections will explain the specific validation annotations that can be used.</P><A name="Validation methods"><H2>Validation methods</H2></A><P>Properties and DomainObjects can also be validated with validation methods located in the domain class so that you can do more complicated validation using code. 
+</P><P>
+ValidationMethods conventions:
+<UL><LI>Syntax: validate&lt;<A href="#Properties">DomainObjectProperty</A>Name or businessRuleName&gt;. E.g. for a <A href="#Properties">DomainObjectProperty</A>: validateStartDate() or for business rule: validateCustommerAlreadyExists()</LI><LI>Method may not have a method parameter</LI><LI>Method must return a ValidationResult</LI><LI>Method must be public</LI><LI>Method may not be static</LI><LI>May not change the state of the <A href="#Domain Objects">DomainObject</A></LI> 
+</UL></P><P>
+The following sections will explain the specific ValidationMethods that can be used.
+</P><H3>Types of validations</H3><P>
+There are different types of validation
+<LI>Is the property mandatory?</LI><LI>Has the property the correct format?</LI><LI>Is the property within the correct range?</LI><LI>Does the <A href="#Domain Objects">DomainObject</A> comply to the defined business rules?</LI></P><H3>Validating mandatory properties</H3><P>
+If a property is mandatory (must have a value) you can add one of the following annotations:</P><UL><LI>&#64;NotNull</LI><LI>&#64;NotEmpty</LI></UL>
+TODO EXAMPLE
+<H3>Validating correct format</H3><P>Some properties require a certain format (such as property types: date, time and currency). This format can be defined by adding the following annotations:</P><UL><LI>&#64;Regexp</LI><LI>&#64;Mask</LI></UL>
+TODO EXAMPLE
+
+<H3>Validating Range</H3><P>
+Add one of the following annotations if a property needs to be within a predefined range:</P>
+&#64;GreatherThan
+TODO SEE JSR??? TO FIND ALL ANNOTATIONS
+TODO EXAMPLE
+
+<H3>Validating business rules</H3><P>Business rules are needed when:</P><UL><LI>Validation is more complex and can not be handled with ValidationAnnotations, but needs to be done with code.</LI><LI>Validation requires multiple property values (e.g. start date must be before end date)</LI><LI>Validation requires a different source in order to validate (e.g. check a repository if a name if unique, or ask the LanguageProvider for the localised format)</LI></UL>
+BusinessRules are defined by ValidationMethods. 
+
+TODO EXAMPLE
+
+TODO SEE JSR AND SEE IF WE ARE MISSING ANNOTATIONS
+
+TODO EXPLAIN VALIDATION RESULT
+ 
+ 
+ <A name="Getting Started"><H1>Getting Started</H1></A> 
+
+ This section is a how-to guide and explains all you need to know to create
+ and deploy your own applications.
+ 
+ <A name="Integrated Development Environment(IDE)"><H2>Integrated Development Environment(IDE)</H2></A>
+ <P>
+ Get your favorite <A href="null">Integrated
+ Development Environment (EDI)</A> installed on your computer. If you are a
+ new in developing applications, I recommend to install <A href="http://www.eclipse.org/">Eclipse</A> (open source) since it has been
+ used in all the instruction video's. There are also other free IDE&#8217;s
+ available that will do just fine. Next step is to download the Introspect
+ Libraries from GIT into your IDE with the following link: <A href="https://github.com/ntenhoeve/Introspect-Framework/archive/master.zip">https://github.com/ntenhoeve/Introspect-Framework/archive/master.zip</A>
+ </P>
+ TODO youtube video
+ 
+ <A name="Create your domain object's"><H2>Create your domain object's</H2></A> TODO <A name="Creating your Introspect
+ application"><H2>Creating your Introspect
+ application</H2></A> With introspect you can create different types of
+ applications right out of the box: &#8226; Create a command line application &#8226;
+ Create a desktop application &#8226; TODO Create a mobile application &#8226; TODO Create
+ a web application &#8226; TODO Create a soap application &#8226; TODO Create a restfull
+ XML application
+ 
+ TODO Each application type has it&#8217;s own &#8220;getting started&#8221; video. <A name="Create a
+ command line application"><H2>Create a
+ command line application</H2></A> (TODO youtube video) <A name="Create a desktop
+ application"><H2>Create a desktop
+ application</H2></A> (TODO youtube video) <A name="Create a mobile application"><H2>Create a mobile application</H2></A>
+ (TODO youtube video) <A name="Create a web application"><H2>Create a web application</H2></A> (TODO youtube video)
+ <A name="Create a soap application"><H2>Create a soap application</H2></A> (TODO youtube video) <A name="Create a restfull
+ XML application"><H2>Create a restfull
+ XML application</H2></A> (TODO youtube video) <A name="Create multiple application
+ types with the same domain model"><H2>Create multiple application
+ types with the same domain model</H2></A> (TODO youtube video) <A name="Create a JUnit
+ application"><H2>Create a JUnit
+ application</H2></A> See IntrospectApplicationForAndroid (TODO youtube video)
+ 
+ 
+ <A name="Icons"><H2>Icons</H2></A> The Introspect user interface supports icons (see section on
+ icons) or see the following tutorial video (TODO youtube video) <A name="Language"><H2>Language</H2></A>
+ The Introspect user interface supports multi languages (see section on
+ LanguageProvider) or see the following tutorial video (TODO youtube video)
+ <A name="Validation"><H2>Validation</H2></A> The Introspect user interface supports multi languages
+ (see section on LanguageProvider) or see the following tutorial video (TODO
+ youtube video) <A name="Authorization"><H2>Authorization</H2></A> (TODO youtube video)
+ 
+ <A name="Demo's"><H1>Demo's</H1></A> 
 
  TODO
  
- <A name="Downloads"><H1>Downloads</H1></A>
- 
+ <A name="Downloads"><H1>Downloads</H1></A> 
 
  Source Code:
  <UL>
@@ -1794,14 +2265,19 @@ The Introspect user interface supports multi languages (see section on LanguageP
  </UL>
  
  <A name="Documentation"><H1>Documentation</H1></A>
-   <UL>
- <LI><A href="https://github.com/ntenhoeve/Introspect-Framework/wiki">Documentation as Git Hub Wiki</A></LI>
+ <P>
+ The documentation of the <A href="#The Introspect Framework">IntrospectFramework</A> is generated from its JavaDoc
+ (starting with the <A>IntrospectDocumentation</A> file) and released in different
+ formats and different location with help of the SoftwareDocumentationGenerator:
+ </P>
+ <UL>
+ <LI><A href="https://github.com/ntenhoeve/Introspect-Framework/wiki">Documentation
+ as Git Hub Wiki</A></LI>
  <LI><A href="http://ntenhoeve.github.io">Documentation as Web Page</A></LI>
  </UL>
  
  
- <A name="Development"><H1>Development</H1></A>
- 
+ <A name="Development"><H1>Development</H1></A> 
 
  <UL>
  <LI><A href="https://github.com/ntenhoeve/Introspect-Framework/issues">Issue Tracker</A></LI>
