@@ -1634,9 +1634,9 @@
  <A href="#Action Methods">ActionMethod</A>Names in the <A href="https://en.wikipedia.org/wiki/Codebase">codebase</A> use names such as
  OrderService, orderLines, addOrderLine (using no spaces, <A href="https://nl.wikipedia.org/wiki/CamelCase">camelCase</A> and no special
  characters). If the user is a an human, more user friendly names are needed
- such as &#8220;Orders&#8221; &#8220;Order lines&#8221; and &#8220;Add order line&#8221;. The
- <A href="#The Introspect Framework">IntrospectFramework</A> will therefore convert these names to a human
- readable format when needed.
+ such as &#8220;Orders&#8221; &#8220;Order lines&#8221; and &#8220;Add order line&#8221;. This format is called the <A>DisplayName</A>. The
+ <A href="#The Introspect Framework">IntrospectFramework</A> will automatically convert the names used in the code  to a human
+ readable format (<A>DisplayName</A>) when needed.
  </P>
  <P>
  The <A href="#The Introspect Framework">IntrospectFramework</A> supports DisplayNames for multiple languages.
@@ -1747,7 +1747,7 @@
  
  <H3>Description Default</H3>
  <P>
- By default the description is the same as the Description, therefore it is
+ By default the description is the same as the default <A>DisplayName</A>, therefore it is
  recommended to override the default value where needed. You can override the
  default value by defining the description in the language property files (see
  <A>LanguageProvider</A>) or by adding a description annotation.
@@ -1865,15 +1865,159 @@
  <P>
  
 
- See <A>HiddenModelFactory</A>
+ A <A href="#Properties">DomainObjectProperty</A> or <A href="#Action Methods">ActionMethod</A> is visible on the user
+ interface by default,but in some cases you may want to hide them, e.g.:
+ <UL>
+ <LI>Because not all information needs to be displayed in the user interface
+ (e.g. a database id key or version number for optimistic locking)</LI>
+ <LI>Because you want to limit the number of visible properties in a table
+ (e.g. to limit the number of columns in a table to prevent the table to
+ become cluttered with to much information)</LI>
+ <LI>Depending on the state of a <A href="#Domain Objects">DomainObject</A> you do not want to
+ display Irrelevant information</LI>
+ <LI>Depending on the state of a domain object you do not want a user to
+ activate an action method (e.g. hide an <A href="#Action Methods">ActionMethod</A> &#8220;submit&#8221; once
+ the domainObject already is submitted)</LI>
+ <LI>Because a user is not authorized to see a property value</LI>
+ <LI>Because a user is not authorized to activate an <A href="#Action Methods">ActionMethod</A></LI>
+ </UL>
+ 
+ <H3>Hidden Annotation</H3>
+ <P>
+ 
+
+ <P>
+ You can hide a <A href="#Properties">DomainObjectProperty</A> by putting the <A>Hidden</A>
+ annotation before the getter method or you can hide an <A href="#Action Methods">ActionMethod</A>
+ by putting the <A>Hidden</A></P> annotation before the </P><A href="#Action Methods">ActionMethod</A>.
  </P>
+ <P>
+ Syntax: @Hidden(propertyHiddenFor, exceptForUsers, exceptForRoles)
+ </P>
+ <P>
+ Parameters:
+ <UL>
+ <LI><A>.propertyHiddenFor()</A>: optional and for properties only: to indicate if
+ the property should be hidden in <A>FormView</A>s, <A>TableView</A>s or
+ both (hidden for both is default).</LI>
+ <LI><A>.exceptForRoleNames()</A> : optional comma separated string of user
+ roles that are allowed to see the <A href="#Properties">DomainObjectProperty</A> or
+ <A href="#Action Methods">ActionMethod</A></LI>
+ </UL>
+ </P>
+ TODO EXAMPLE
+ 
+ 
+ <H3>Hidden Method</H3>
+ <P>
+ 
+
+ <P>
+ You can hide a <A href="#Properties">DomainObjectProperty</A> or
+ <A>DomainObjectActionMethod</A> depending on the <A href="#Domain Objects">DomainObject</A> state
+ (the value of its properties), with an  ...Hidden method. If you have a <A>Hidden</A> annotation and a
+ ...Hidden method, both need to be true in order to hide the
+ <A href="#Properties">DomainObjectProperty</A> or <A href="#Action Methods">ActionMethod</A></P>. 
+ </P>
+ <P>
+ Note that you can not change the visibility with a ...Hidden method for <A href="#Properties">DomainObjectProperty</A> in a <A>TableView</A>!
+ </P>
+ <P>
+ Syntax: public boolean hidden&lt;property name or actionMethodName&gt;()
+ </P>
+ <P>
+ ReturnValue: a boolean that is true if the <A href="#Properties">DomainObjectProperty</A> or
+ <A href="#Action Methods">ActionMethod</A> needs to be hidden
+ </P>
+ 
+ 
  
  <A name="Disabled"><H2>Disabled</H2></A>
  <P>
  
 
- See <A>DisabledModelFactory</A>
+ <P>
+ A <A href="#Properties">DomainObjectProperty</A> or <A href="#Action Methods">ActionMethod</A> is enabled on the user
+ interface by default, but in some cases you may want to disable them. If
+ something is disabled they are grayed out on the user interface. Disabled
+ properties can not be edited (read only) and disabled <A href="#Action Methods">ActionMethod</A></P>s
+ can not be invoked.
  </P>
+ <P>
+ You may want to disable items when:
+ <UL>
+ <LI>Not all properties need to be editable on the user interface but the code
+ might need a setter method to set the <A href="#Properties">DomainObjectProperty</A>value when
+ the <A href="#Domain Objects">DomainObject</A> is created from the database</LI>
+ <LI>Depending on the state of a <A href="#Domain Objects">DomainObject</A> you do not want the user
+ to edit certain <A href="#Properties">DomainObjectProperty</A></LI>
+ <LI>Depending on the state of a <A href="#Domain Objects">DomainObject</A> you do not want a user
+ to invoke an <A href="#Action Methods">ActionMethod</A> (e.g. prevent invoking <A href="#Action Methods">ActionMethod</A>
+ &#8220;submit&#8221; once the <A href="#Domain Objects">DomainObject</A> already is submitted)</LI>
+ <LI>Because a user is not authorized to edit a <A href="#Properties">DomainObjectProperty</A>
+ Value</LI>
+ <LI>Because a user is not authorized to invoke an <A href="#Action Methods">ActionMethod</A></LI>
+ </UL>
+ </P>
+ <P>
+ Note that if an user is not authorized to change a
+ <A href="#Properties">DomainObjectProperty</A> or call an <A href="#Action Methods">ActionMethod</A> it is best to
+ hide the method or property instead of disabling it. In general you do not
+ want to confuse users (clutter the user interface) with options that they are
+ not allowed to use anyway.
+ </P>
+ 
+ <H3>Disabled Annotation</H3>
+ <P>
+ 
+
+ <P>
+ You can disable a <A href="#Properties">DomainObjectProperty</A> by putting the
+ <A>Disabled</A> annotation before the getter method or you can disable an
+ <A href="#Action Methods">ActionMethod</A> by putting the <A>Disabled</A> annotation before the
+ <A href="#Action Methods">ActionMethod</A></P>.
+ </P>
+ <P>
+ Syntax: @Disabled(exceptForRoles)
+ </P>
+ <P>
+ Parameter: <A>.exceptForRoleNames()</A>: optional comma separated string of
+ user roles that are allowed to edit the <A href="#Properties">DomainObjectProperty</A> or
+ invoke a <A href="#Action Methods">ActionMethod</A>
+ </P>
+ TODO EXAMPLE
+ 
+ 
+ <H3>Disabled Method</H3>
+ <P>
+ 
+
+ <P>
+ You can disable a <A href="#Properties">DomainObjectProperty</A> or
+ <A>DomainObjectActionMethod</A> depending on the <A href="#Domain Objects">DomainObject</A> state
+ (the value of its properties). If you have a <A>Disabled</A> annotation and a
+ disabled method, both need to be true in order to hide the
+ <A href="#Properties">DomainObjectProperty</A> or <A href="#Action Methods">ActionMethod</A></P>.
+ </P>
+ <P>
+ Syntax: public boolean disabled&lt;property name or actionMethodName&gt;()
+ </P>
+ <P>
+ ReturnValue: a boolean that is true if the <A href="#Properties">DomainObjectProperty</A> or
+ <A href="#Action Methods">ActionMethod</A> needs to be disabled
+ </P>
+ 
+ 
+ <H3>Disabled Annotation and Disabled Method</H3>
+ <P>
+ 
+
+ If the code has both a "disabled annotation" and a "disabled method", the
+ <A href="#The Introspect Framework">IntrospectFramework</A> work will disable the item when on of them is true (if the user is not
+ authorized by the definition of the <A>Disabled</A> annotation OR if the
+ disabled method returns true).
+ </P>
+ 
  
  <A name="Order"><H2>Order</H2></A>
  <P>
