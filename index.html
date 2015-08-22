@@ -304,7 +304,6 @@
  		this.productRepository = productRepository;
  	}
  
- 	&#064;GenericReturnType(Product.class)
  	public List&lt;Product&gt; findProduct(ProductSearchCritiria searchCritiria) {
  		return productRepository.findProduct(searchCritiria);
  	}
@@ -629,7 +628,8 @@
  above)</LI>
  <LI>The getter method name starts with is, followed by the property name in
  <A href="http://en.wikipedia.org/wiki/CamelCase">CamelCase</A> when the
- property type IS a boolean (See the isBonusMember() method in the example above)</LI>
+ property type IS a boolean (See the isBonusMember() method in the example
+ above)</LI>
  <LI>The getter methods are always public (accessible by other objects)</LI>
  </UL>
  <H3>Setter methods</H3>
@@ -661,11 +661,11 @@
  Property types can be divided into 3 groups:
  <UL>
  <LI>Value property: A char, string, boolean, number, date, or other <A href="null">primitive data types</A>. The <A href="#UserInterfaceController">UserInterfaceController</A> will display
- these types as a <A href="http://en.wikipedia.org/wiki/Text_box">textbox</A>. Assuming that the
- user is allowed to modify that property, they may enter the value by typing
- in text, which will be validated and formatted according to the value type.
- Certainly value types may provide alternative mechanisms for user input, such
- as a calendar-selector for a date field.</LI>
+ these types as a <A href="http://en.wikipedia.org/wiki/Text_box">textbox</A>.
+ Assuming that the user is allowed to modify that property, they may enter the
+ value by typing in text, which will be validated and formatted according to
+ the value type. Certainly value types may provide alternative mechanisms for
+ user input, such as a calendar-selector for a date field.</LI>
  <LI>Enumeration property: The <A href="#UserInterfaceController">UserInterfaceController</A> will display
  these types as as a <A href="http://en.wikipedia.org/wiki/Combo_box">combo-box</A>, containing the
  different enumeration values as text.</LI>
@@ -681,14 +681,12 @@
  an collection of either value properties (<A href="null">primitive data type</A>) or reference properties (<A href="#Domain Objects">DomainObject</A>s).
  The <A href="#UserInterfaceController">UserInterfaceController</A> will display these types as a table. If
  the user clicks on a row a <A href="http://en.wikipedia.org/wiki/Context_menu">context menu</A> opens,
- containing <A href="#Action Methods">ActionMethod</A>s to manipulate the property value. Note that
- you will need to annotate the getter method with a @<A>GenericReturnType</A>
- annotation in which you need to define the property type. Collections must be
- initialized (collection properties should never return null). Collection
- properties should not contain large collections. If you have a big collection
- associated with a <A href="#Domain Objects">DomainObject</A> it is better to return the collection
- from an <A href="#Action Methods">ActionMethod</A> in the <A href="#Domain Objects">DomainObject</A>, so that the table
- is displayed on a new tab.</LI>
+ containing <A href="#Action Methods">ActionMethod</A>s to manipulate the property value.
+ Collections must be initialized (collection properties should never return
+ null). Collection properties should not contain large collections. If you
+ have a big collection associated with a <A href="#Domain Objects">DomainObject</A> it is better to
+ return the collection from an <A href="#Action Methods">ActionMethod</A> in the
+ <A href="#Domain Objects">DomainObject</A>, so that the table is displayed on a new tab.</LI>
  </UL>
  
  <H3>Property behavior</H3>
@@ -1524,9 +1522,7 @@
  <A href="#Domain Objects">DomainObject</A> in a form on a new tab.</LI>
  <LI>A <A href="http://en.wikipedia.org/wiki/Java_collections_framework">collection</A>
  of <A href="#Domain Objects">DomainObject</A>s: The <A href="#UserInterfaceController">UserInterfaceController</A> displays the
- <A href="#Domain Objects">DomainObject</A>s in table on a new tab. Note that you will need to
- annotate the Action method with a @<A>GenericReturnType</A> annotation in
- which you need to define the <A href="#Domain Objects">DomainObject</A> type.</LI>
+ <A href="#Domain Objects">DomainObject</A>s in table on a new tab.</LI>
  <LI>A URI: The <A href="#UserInterfaceController">UserInterfaceController</A> displays the contents of the
  URI on a new tab.</LI>
  <LI>A <A>DownloadStream</A>: The <A href="#UserInterfaceController">UserInterfaceController</A> will open a
@@ -1565,17 +1561,17 @@
 
  <P>
  <A>BehavioralAnnotation</A>s are recognized by the <A href="#The Introspect Framework">IntrospectFramework</A>
- and define how objects <A href="#Domain Objects">DomainObject</A>s, <A href="#Properties">DomainObjectProperty</A>s or
+ and define how <A href="#Domain Objects">DomainObject</A>s, <A href="#Properties">DomainObjectProperty</A>s or
  <A href="#Action Methods">ActionMethod</A></P>s behave (how they act and how they displayed).
  </P>
  <A>BehavioralAnnotation</A>s are normally located before the declaration of
  the member:
  <UL>
- <LI><A>BehavioralAnnotation</A>s for classes: are located before the class key word
+ <LI><A>BehavioralAnnotation</A>s for a class: is located before the class key word
  </LI>
- <LI><A>BehavioralAnnotation</A>s for <A href="#Properties">DomainObjectProperty</A>: are located
+ <LI><A>BehavioralAnnotation</A>s for a <A href="#Properties">DomainObjectProperty</A>: is located
  before the getter method of a <A href="#Properties">DomainObjectProperty</A></LI>
- <LI><A>BehavioralAnnotation</A>s for <A href="#Action Methods">ActionMethod</A>: are located before the
+ <LI><A>BehavioralAnnotation</A>s for an <A href="#Action Methods">ActionMethod</A>: is located before the
  <A href="#Action Methods">ActionMethod</A></LI>
  </UL>
  
@@ -1750,24 +1746,22 @@
  </P>
  <P>
  In other cases a DomainObject is identified by multiple property values. In
- this case it is recommended to use the StringBuilder (see the example above).
- The TitleBuilder is an extension of the StringBuilder, but has some
- additional functionality such as:
+ this case it is recommended to use the TitleBuilder. The TitleBuilder can be
+ compared with a StringBuilder, but has some additional functionality such as:
  <UL>
  <LI>The &#8220;append&#8221; methods will append a separator and a given value. You can
- use the default separator (a space) or use an &#8220;append&#8221; method where you give
+ use the default separator (a space) or use an &#8220;append&#8221; method where you pass
  the separator as a first parameter followed by the value.</LI>
  <LI>The &#8220;contact&#8221; methods will append a given value without a separator</LI>
  <LI>Both &#8220;append&#8221; and &#8220;contact&#8221; methods will ignore null values or reference
  objects that do not have a toString implementation</LI>
  <LI>Both &#8220;append&#8221; and &#8220;contact&#8221; methods have methods where you can specify
  format values (e.g. date, time and numbers)</LI>
+ <LI>Enumeration values will be translated to a readable format</LI>
  </UL>
  </P>
  
  TODO example
- 
- TODO implement naked object style
  
  
  
