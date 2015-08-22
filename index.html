@@ -204,9 +204,8 @@
  </P>
  
  <P>
- There are many different opinions and definitions on the number of layers,
- the names of the layers and what each layer should do (see these <A href="https://www.google.nl/search?q=layered+architecture&tbm=isch">examples</A>). It would be nice if everyone would use the same model and
- naming. The <A href="null">definition of layers</A> from Eric Evans <A href="https://en.wikipedia.org/wiki/Domain-driven_design">Domain Driven
+ There are many different opinions on the number of layers,
+ the names of the layers and what each layer should do (see these <A href="https://www.google.nl/search?q=layered+software+architecture&tbm=isch">examples</A>). The <A href="null">definition of layers</A> from Eric Evans <A href="https://en.wikipedia.org/wiki/Domain-driven_design">Domain Driven
  Design approach</A> is likely the most commonly used. The most important thing is
  that your multi layered architecture complies with the design principles
  above.
@@ -241,8 +240,7 @@
  containers</A>.
  </P>
  <P>
- Please read <A href="http://en.wikipedia.org/wiki/Martin_Fowler">Martin
- Fowler</A>'s easy to read <A href="http://martinfowler.com/articles/injection.html">article</A> in which
+ If you new to Dependency Injection I recommend reading <A href="http://en.wikipedia.org/wiki/Martin_Fowler">Martin Fowler</A>'s <A href="http://martinfowler.com/articles/injection.html">article</A> in which
  he explains the basics dependency injection.
  </P>
  <P>
@@ -432,6 +430,26 @@
  
  
  <A name="The Domain Layer"><H1>The Domain Layer</H1></A> 
+
+ The Domain layer is the heart of any Introspect application. The domain layer
+ represents:
+ <UL>
+ <LI>The concepts of the business</LI>
+ <LI>The business rules</LI>
+ <LI>The state that reflects the business situation</LI>
+ </UL>
+ Because there is many debate on the naming within a layered architecture, the
+ domain layer is sometimes also called:
+ <UL>
+ <LI><A href="http://en.wikipedia.org/wiki/Business_logic">Business</A> layer</LI>
+ <LI><A href="http://en.wikipedia.org/wiki/Business_logic">Business logic</A>
+ layer</LI>
+ <LI><A href="http://en.wikipedia.org/wiki/Domain_model">Domain model</A>
+ layer</LI>
+ </UL>
+ <P>
+ The domain layer is basically where all the domain objects are. The
+  
 
  The Domain layer is the heart of any Introspect application. The domain layer
  represents:
@@ -699,9 +717,7 @@
  <A name="Action Methods"><H2>Action Methods</H2></A> 
  <P>
  Domain objects can contain action methods (see <A>DomainObjectActionMethod</A> section)
- </P> DomainLayer
- 
-  IntrospectArchitecture
+ </P> IntrospectArchitecture
  
  
  <A name="The Service Layer"><H1>The Service Layer</H1></A> 
@@ -849,7 +865,7 @@
  <P>
  <A href="#Service Objects">ServiceObject</A>s can have references to other objects. These objects
  are injected into the ServiceObject (see the
- <A>ConstructionInjection</A> section)
+ <A href="#Constructor Injection">ConstructionInjection</A> section)
  </P>
  
  <H3>Service object members</H3>
@@ -945,7 +961,7 @@
  projects</LI>
  </UL>
  <A href="#Infrastructure Objects">InfrastructureObject</A>s can have references to other objects. These objects are
- injected into the InfrastructureObjects (see the <A>ConstructionInjection</A>
+ injected into the InfrastructureObjects (see the <A href="#Constructor Injection">ConstructionInjection</A>
  section.)
  </P>
  <H3>Infrastructure Object Presentation</H3>
@@ -999,7 +1015,7 @@
  <A href="#Provider Objects">Provider</A>'s are instantiated by the <A>ProviderContainer</A> (see
  <A href="#Dependency Injection Container">DependencyInjectionContainer</A>) <A href="#Provider Objects">Provider</A>Objects can have
  references to other <A href="#Provider Objects">Provider</A>Objects. These objects are injected into
- the <A href="#Provider Objects">Provider</A>Objects (see the <A>ConstructionInjection</A> section.
+ the <A href="#Provider Objects">Provider</A>Objects (see the <A href="#Constructor Injection">ConstructionInjection</A> section.
  </P>
  <H3>Provider Presentation</H3>
  <P>
@@ -1094,7 +1110,7 @@
  The <A>AuthorizationProvider</A> is used by the @Hidden and @Disabled
  annotations (see <A href="#Object behavior">ObjectBehavior</A>). If you want to use the
  <A>AuthorizationProvider</A> in your code you need to inject it into your
- object (see <A>ConstructionInjection</A>)
+ object (see <A href="#Constructor Injection">ConstructionInjection</A>)
  </P>
  <A name="Validation Provider"><H2>Validation Provider</H2></A>
  <P>
@@ -1180,7 +1196,7 @@
  <P>
  An other way to get a translated text is to inject the
  <A>LanguageProvider</A> into the object that needs it and use it in your
- code (see <A>ConstructionInjection</A>)
+ code (see <A href="#Constructor Injection">ConstructionInjection</A>)
  </P>
  <UL>
  <LI>TODO CODE EXAMPLE OF VALIDATION TEXTS OR EXCEPTION TEXTS</LI>
@@ -1237,7 +1253,7 @@
  know how the user interface should look like and behave.
  
  You can use the <A>ReflectionProvider</A> in your code when you need meta
- information (See <A>ConstructionInjection</A>)
+ information (See <A href="#Constructor Injection">ConstructionInjection</A>)
  
  TODO Code example
  </P>
@@ -1448,22 +1464,22 @@
  <P>
  <A href="#Service Objects">ServiceObject</A>s exist because they always have one ore more
  <A href="#Action Methods">ActionMethod</A>s. ActionMethods of serviceObjects can appear as menu
- items in the <A>MainMenu</A>, <A>DomainObjectMenu</A>, or
+ items in the <A href="#Main menu">MainMenu</A>, <A>DomainObjectMenu</A>, or
  <A>DomainObjectPropertyMenu</A></P>
  </P>
  <P>
  In Example: a CustomerService object may have an <A href="#Action Methods">ActionMethod</A> such as
  findCustomer(CustomerSearchArgument searchArgument) that is displayed in the
- <A>MainMenu</A>.
+ <A href="#Main menu">MainMenu</A>.
  </P>
  <H3>Main menu</H3> 
 
  TODO PICTURE MAIN MENU
  <P>
- The <A>MainMenu</A> is displayed on a panel on the left hand side of the user
+ The <A href="#Main menu">MainMenu</A> is displayed on a panel on the left hand side of the user
  interface (sometimes this panel is hidden but it can always be made visible
  again using the main toolbar. The main menu provides the user access to the
- <A href="#Domain Objects">DomainObject</A>s so that the user can work on them. The <A>MainMenu</A> contains all
+ <A href="#Domain Objects">DomainObject</A>s so that the user can work on them. The <A href="#Main menu">MainMenu</A> contains all
  <A href="#Action Methods">ActionMethod</A>s of <A href="#Service Objects">ServiceObject</A>s that either have no method parameter or have
  an <A>ParameterFactory</A>.
  </P>
@@ -2048,11 +2064,11 @@ Examples of alternative <A>FieldModeType</A>s:
  <A href="#Action Methods">ActionMethod</A></P> is invoked.
  </P>
  <P>
- The <A>MainMenu</A> will display all <A href="#Action Methods">ActionMethod</A>s of all registered
+ The <A href="#Main menu">MainMenu</A> will display all <A href="#Action Methods">ActionMethod</A>s of all registered
  <A href="#Service Objects">ServiceObject</A>s that can directly be executed (without the need of an
  opened <A href="#Domain Objects">DomainObject</A>). This means that only <A href="#Action Methods">ActionMethod</A>s that
  either have no method parameter or have an <A>ParameterFactory</A> are
- displayed as menu items in the <A>MainMenu</A>.
+ displayed as menu items in the <A href="#Main menu">MainMenu</A>.
  <P>
  
  <H3>ParameterFactory Annotation</H3>
