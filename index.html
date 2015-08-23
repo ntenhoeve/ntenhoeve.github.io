@@ -53,8 +53,8 @@
  developer community, many of which reinvent the wheel.
  </P>
  <P>
- This is called the "Yet Another Framework Syndrome" (YAFS), or in more
- general terms "Not Invented Here" (NIH). While innovation is something we
+ This is called the &quot;Yet Another Framework Syndrome&quot; (YAFS), or in more
+ general terms &quot;Not Invented Here&quot; (NIH). While innovation is something we
  should all welcome, YAFS can lead to confusion and frustration for users
  because there's a big risk of it introducing more noise than value.<BR>
  </P>
@@ -78,7 +78,7 @@
  convenience class that contains methods to interact with the Apache Isis
  framework/ object container. Extending such a class is not mandatory, because
  you can implement these methods in your objects, but to me this still ignores
- the principle of "Naked objects" or <A href="http://en.wikipedia.org/wiki/Plain_Old_Java_Object">POJO&#8217;s</A> .</LI>
+ the principle of &quot;Naked objects&quot; or <A href="http://en.wikipedia.org/wiki/Plain_Old_Java_Object">POJO&rsquo;s</A> .</LI>
  <LI><A href="http://isis.apache.org/">Apache Isis</A> uses (depends on) <A href="http://en.wikipedia.org/wiki/Apache_Maven">Maven</A>. Maven has its
  pros (managing dependencies, and standardizing the build process), but is
  also famous for its cons (difficult to configure, steep learning curve, etc,
@@ -144,7 +144,7 @@
  <LI>The Introspect framework should only be a few kilobytes in size.</LI>
  </UL>
  <H3>Simple to configure</H3> The Introspect framework has no configuration
- files (see <A href="null">&#8220;Code or configuration files&#8221;</A> section in Martin Fowlers article for the
+ files (see <A href="null">&ldquo;Code or configuration files&rdquo;</A> section in Martin Fowlers article for the
  arguments why).<BR>
  <BR>
  There are 3 things that need to be configured:
@@ -158,7 +158,7 @@
  's (how the domain needs to handled by the <A href="#The Introspect Application">IntrospectApplication</A>)</LI>
  </UL>
  <P>
- Furthermore the Introspect framework prefers &#8220;Configure by Exception&#8221;. This
+ Furthermore the Introspect framework prefers &ldquo;Configure by Exception&rdquo;. This
  means that the Introspect framework uses reasonable defaults wherever
  possible. These default values can be overridden by the developer.
  </P>
@@ -217,7 +217,7 @@
  Driven Design</A> approach.:
  <UL>
  <LI><A href="#The UserInterface Layer">UserInterfaceLayer</A></LI>
- <LI><A href="#The Service Layer">ServiceLayer</A> (called "application layer" by Eric Evans)</LI>
+ <LI><A href="#The Service Layer">ServiceLayer</A> (called &quot;application layer&quot; by Eric Evans)</LI>
  <LI><A href="#The Domain Layer">DomainLayer</A></LI>
  <LI><A href="#The Infrastructure Layer">InfrastructureLayer</A></LI>
  <LI><A href="#The Provider Layer">ProviderLayer</A> (extra layer for <A href="https://en.wikipedia.org/wiki/Cross-cutting_concern">cross cutting concerns</A>)</LI>
@@ -302,7 +302,7 @@
  		this.productRepository = productRepository;
  	}
  
- 	public List&lt;Product&gt; findProduct(ProductSearchCritiria searchCritiria) {
+ 	public List&amp;lt;Product&amp;gt; findProduct(ProductSearchCritiria searchCritiria) {
  		return productRepository.findProduct(searchCritiria);
  	}
  
@@ -388,17 +388,17 @@
  
  	// main method
  
- 	&#064;Override
- 	public List&lt;Class&lt;?&gt;&gt; getServiceClasses() {
- 		List&lt;Class&lt;?&gt;&gt; serviceClasses = new ArrayList&lt;Class&lt;?&gt;&gt;();
+ 	&amp;#064;Override
+ 	public List&amp;lt;Class&amp;lt;?&amp;gt;&amp;gt; getServiceClasses() {
+ 		List&amp;lt;Class&amp;lt;?&amp;gt;&amp;gt; serviceClasses = new ArrayList&amp;lt;Class&amp;lt;?&amp;gt;&amp;gt;();
  		serviceClasses.add(ShoppingCartService.class);
  		serviceClasses.add(ProductService.class);
  		return serviceClasses;
  	}
  
- 	&#064;Override
- 	public List&lt;Class&lt;?&gt;&gt; getInfrastructureClasses() {
- 		List&lt;Class&lt;?&gt;&gt; infrastructureClasses = new ArrayList&lt;Class&lt;?&gt;&gt;();
+ 	&amp;#064;Override
+ 	public List&amp;lt;Class&amp;lt;?&amp;gt;&amp;gt; getInfrastructureClasses() {
+ 		List&amp;lt;Class&amp;lt;?&amp;gt;&amp;gt; infrastructureClasses = new ArrayList&amp;lt;Class&amp;lt;?&amp;gt;&amp;gt;();
  		infrastructureClasses.add(ProductRepository.class);
  		infrastructureClasses.add(EmailClient.class);
  		infrastructureClasses.add(PaymentClient.class);
@@ -467,7 +467,7 @@
 
  <P>
  <A href="#Domain Objects">DomainObject</A>s represent entities; the nouns of the domain. If your
- application domain is a sales application it&#8217;s likely that your domain model
+ application domain is a sales application it&rsquo;s likely that your domain model
  contains <A href="#Domain Objects">DomainObject</A>s such as: customers, products and orders.
  </P>
  <P>
@@ -487,7 +487,7 @@
  
  <H3>Construction</H3>
  <P>
- The principle of &#8220;naked objects&#8221; is that any <A href="http://en.wikipedia.org/wiki/Plain_Old_Java_Object">'Plain Old Java
+ The principle of &ldquo;naked objects&rdquo; is that any <A href="http://en.wikipedia.org/wiki/Plain_Old_Java_Object">'Plain Old Java
  Object' (POJO)</A> can function as a domain object. In other words: a domain
  class does not have to inherit from any special class, nor implement any
  particular interface, nor have any specific attributes.
@@ -767,12 +767,12 @@
  
  <H3>Service objects are state-less</H3>
  <P>
- Quoting Eric Evans: &#8220;<A href="#Service Objects">ServiceObject</A>s should be state-less. State-less
+ Quoting Eric Evans: &ldquo;<A href="#Service Objects">ServiceObject</A>s should be state-less. State-less
  here means that any client can use any instance of the <A href="#Service Objects">ServiceObject</A>s
- without regard to the instance&#8217;s individual history. The execution of the
+ without regard to the instance&rsquo;s individual history. The execution of the
  service will use information that is accessible globally, and may even change
  that global information (have side-effects). But it does not hold state of
- its own that affects its behavior, as most domain objects do."
+ its own that affects its behavior, as most domain objects do.&quot;
  </P>
  <P>
  <A href="#Service Objects">ServiceObject</A>s do not have state and therefore should not have
@@ -817,7 +817,7 @@
  
  <H3>Construction</H3>
  <P>
- The principle of &#8220;naked objects&#8221; is that any <A href="http://en.wikipedia.org/wiki/Plain_Old_Java_Object">'Plain Old Java
+ The principle of &ldquo;naked objects&rdquo; is that any <A href="http://en.wikipedia.org/wiki/Plain_Old_Java_Object">'Plain Old Java
  Object' (POJO)</A> can function as a <A href="#Service Objects">ServiceObject</A>. In other words: a
  service class does not have to inherit from any special class, nor implement
  any particular interface, nor have any specific attributes.
@@ -831,7 +831,7 @@
  
  <PRE>
  public class WebShop extends IntrospectApplicationFor... {
- 	&#64;Override
+ 	&amp;#64;Override
  	public List&lt;Class&lt;?&gt;&gt; getServiceClasses() {
  		List&lt;Class&lt;?&gt;&gt; serviceClasses = new ArrayList&lt;&gt;();
  		serviceClasses.add(ProductService.class);
@@ -922,7 +922,7 @@
  </P>
  <H3>Construction</H3>
  <P>
- The principle of &#8220;naked objects&#8221; is that any <A href="http://en.wikipedia.org/wiki/Plain_Old_Java_Object">'Plain Old Java
+ The principle of &ldquo;naked objects&rdquo; is that any <A href="http://en.wikipedia.org/wiki/Plain_Old_Java_Object">'Plain Old Java
  Object' (POJO)</A> can function as a <A href="#Infrastructure Objects">InfrastructureObject</A>. In other
  words: a <A href="#Infrastructure Objects">InfrastructureObject</A> class does not have to inherit from any
  special class, nor implement any particular interface, nor have any specific
@@ -1041,13 +1041,13 @@
  <PRE>
  public class AcmeAuthorizationProvider implements AuthorizationProvider {
  
- 	private final List&lt;User&gt; users;
+ 	private final List&amp;lt;User&amp;gt; users;
  	private User currentUser;
  
  	public AcmeAuthorizationProvider() {
- 		users = new ArrayList&lt;&gt;();
- 		users.add(new User(&quot;carla&quot;, &quot;pasword1&quot;, &quot;salesmanager&quot;));
- 		users.add(new User(&quot;john&quot;, &quot;pasword2&quot;, &quot;customer&quot;));
+ 		users = new ArrayList&amp;lt;&amp;gt;();
+ 		users.add(new User(&amp;quot;carla&amp;quot;, &amp;quot;pasword1&amp;quot;, &amp;quot;salesmanager&amp;quot;));
+ 		users.add(new User(&amp;quot;john&amp;quot;, &amp;quot;pasword2&amp;quot;, &amp;quot;customer&amp;quot;));
  	}
  
  	public void login(String userName, String password)
@@ -1061,12 +1061,12 @@
  		throw new InvalidNameOrPasswordException();
  	}
  
- 	&#064;Override
+ 	&amp;#064;Override
  	public String getCurrentUserName() {
- 		return currentUser == null ? &quot;&quot; : currentUser.getName();
+ 		return currentUser == null ? &amp;quot;&amp;quot; : currentUser.getName();
  	}
  
- 	&#064;Override
+ 	&amp;#064;Override
  	public boolean userInRole(String role) {
  		return currentUser == null ? false : currentUser.inRole(role);
  	}
@@ -1097,7 +1097,7 @@
  
 
  <P>
- The <A href="#UserInterfaceController">UserInterfaceController</A> sometimes let&#8217;s the user edit an
+ The <A href="#UserInterfaceController">UserInterfaceController</A> sometimes let&rsquo;s the user edit an
  <A href="#Domain Objects">DomainObject</A> before it is passed as an <A href="#Action Methods">ActionMethod</A> parameter
  (depending on how the ActionMethod is annotated, see <A href="#Execution Mode">ExecutionMode</A> ).
  The <A href="#UserInterfaceController">UserInterfaceController</A> then validates the edited
@@ -1131,16 +1131,16 @@
  <H3>Language property files</H3>
  <P>
  Texts for other languages are stored in property files. The name of the need
- to have the following file name: TODO VERIFY FORMAT &lt;application
- configuration folder&gt;/Resources_&lt;Language_code&gt;.properties
+ to have the following file name: TODO VERIFY FORMAT &amp;lt;application
+ configuration folder&amp;gt;/Resources_&amp;lt;Language_code&amp;gt;.properties
  </P>
  Where:
  <UL>
  <LI>
- &lt;application configuration folder&gt; These files need to be located at
+ &amp;lt;application configuration folder&amp;gt; These files need to be located at
  the configuration folder of the application. See PathProvider for more
  information</LI>
- <LI>&lt;Language_code&gt; two letter language code (see java <A>Locale</A>)</LI>
+ <LI>&amp;lt;Language_code&amp;gt; two letter language code (see java <A>Locale</A>)</LI>
  </UL>
  
  <P>
@@ -1149,12 +1149,12 @@
  <UL>
  <LI>
  The key is an reference to part of the code. Keys have the following format:
- &lt;packageName&gt;.&lt;classname&gt; or
- &lt;packageName&gt;.&lt;classname&gt;.&lt;propertyName&gt; or
- &lt;packageName&gt;.&lt;classname&gt;.&lt;actionMethodName&gt;, followed by
+ &amp;lt;packageName&amp;gt;.&amp;lt;classname&amp;gt; or
+ &amp;lt;packageName&amp;gt;.&amp;lt;classname&amp;gt;.&amp;lt;propertyName&amp;gt; or
+ &amp;lt;packageName&amp;gt;.&amp;lt;classname&amp;gt;.&amp;lt;actionMethodName&amp;gt;, followed by
  .displayname or.description (see examples below)</LI>
  <LI>The value is the translated text. Special characters are supported with
- Unicode (&#92;u&lt;number&gt; e.g. &#92;u20AC=&#8364;). There are several free tools
+ Unicode (&amp;#92;u&lt;number&gt; e.g. &amp;#92;u20AC=&euro;). There are several free tools
  available to edit .properties file with good Unicode support.</LI>
  </UL>
  </P>
@@ -1170,7 +1170,7 @@
  <P>
  The <A href="#UserInterfaceController">UserInterfaceController</A> will call the <A href="#Language Provider">LanguageProvider</A> to
  try and get the appropriate text from the language property files (depending
- on the selected language in the graphical user interface). If it can&#8217;t find
+ on the selected language in the graphical user interface). If it can&rsquo;t find
  this value it will display the default values (in English)
  </P>
  <P>
@@ -1522,7 +1522,7 @@
  <LI>A URI: The <A href="#UserInterfaceController">UserInterfaceController</A> displays the contents of the
  URI on a new tab.</LI>
  <LI>A <A>DownloadStream</A>: The <A href="#UserInterfaceController">UserInterfaceController</A> will open a
- "Save as" dialog" so that the file can be down loaded.</LI>
+ &quot;Save as&quot; dialog&quot; so that the file can be down loaded.</LI>
  </UL>
  </P>
  <A name="Action execution modes"><H2>Action execution modes</H2></A>
@@ -1587,10 +1587,10 @@
  
  <H3>Behavioral Method Convention</H3>
  <UL>
- <LI>Syntax: &ltmemberName&gt;&ltbehaviourName&gt;<BR>
- &ltmemberName&gt;= can be a <A>Class</A>Name, a <A href="#Properties">DomainObjectProperty</A>
+ <LI>Syntax: &amp;ltmemberName&amp;gt;&amp;ltbehaviourName&amp;gt;<BR>
+ &amp;ltmemberName&amp;gt;= can be a <A>Class</A>Name, a <A href="#Properties">DomainObjectProperty</A>
  Name or a <A href="#Action Methods">ActionMethod</A>Name<BR>
- &ltbehaviourName&gt;= A behavior like Icon, Hidden, Disabled, Validation, etc
+ &amp;ltbehaviourName&amp;gt;= A behavior like Icon, Hidden, Disabled, Validation, etc
  </LI>
  <LI><A href="#Behavioral Methods">BehavioralMethod</A>s do NOT have any parameters</LI>
  <LI><A href="#Behavioral Methods">BehavioralMethod</A>s ALWAYS return a value (see
@@ -1626,7 +1626,7 @@
  <A href="#Action Methods">ActionMethod</A>Names in the <A href="https://en.wikipedia.org/wiki/Codebase">codebase</A> use names such as
  OrderService, orderLines, addOrderLine (using no spaces, <A href="https://nl.wikipedia.org/wiki/CamelCase">camelCase</A> and no special
  characters). If the user is a an human, more user friendly names are needed
- such as &#8220;Orders&#8221; &#8220;Order lines&#8221; and &#8220;Add order line&#8221;. This format is called the <A href="#DisplayName Annotation">DisplayName</A>. The
+ such as &ldquo;Orders&rdquo; &ldquo;Order lines&rdquo; and &ldquo;Add order line&rdquo;. This format is called the <A href="#DisplayName Annotation">DisplayName</A>. The
  <A href="#The Introspect Framework">IntrospectFramework</A> will automatically convert the names used in the code  to a human
  readable format (<A href="#DisplayName Annotation">DisplayName</A>) when needed.
  </P>
@@ -1704,14 +1704,14 @@
  <P>
  <A href="#Domain Objects">DomainObject</A></P>s that have identity (entities) need to have a dynamic
  title that help users to distinguish objects of the same type (e.g. Type
- customer versus &#8220;John Doe&#8221;). This title should exist of all the properties
+ customer versus &ldquo;John Doe&rdquo;). This title should exist of all the properties
  that identify the object. The title is therefore dynamic: it changes when the
  value of these properties change.
  </P>
  
  <P>
  In example: The title of a customer could be a customer number, followed by
- the given name, followed by the family name. If the customer changes it&#8217;s
+ the given name, followed by the family name. If the customer changes it&rsquo;s
  name, than so does the title (but not its identity)
  </P>
  
@@ -1745,13 +1745,13 @@
  this case it is recommended to use the TitleBuilder. The TitleBuilder can be
  compared with a StringBuilder, but has some additional functionality such as:
  <UL>
- <LI>The &#8220;append&#8221; methods will append a separator and a given value. You can
- use the default separator (a space) or use an &#8220;append&#8221; method where you pass
+ <LI>The &ldquo;append&rdquo; methods will append a separator and a given value. You can
+ use the default separator (a space) or use an &ldquo;append&rdquo; method where you pass
  the separator as a first parameter followed by the value.</LI>
- <LI>The &#8220;contact&#8221; methods will append a given value without a separator</LI>
- <LI>Both &#8220;append&#8221; and &#8220;contact&#8221; methods will ignore null values or reference
+ <LI>The &ldquo;contact&rdquo; methods will append a given value without a separator</LI>
+ <LI>Both &ldquo;append&rdquo; and &ldquo;contact&rdquo; methods will ignore null values or reference
  objects that do not have a toString implementation</LI>
- <LI>Both &#8220;append&#8221; and &#8220;contact&#8221; methods have methods where you can specify
+ <LI>Both &ldquo;append&rdquo; and &ldquo;contact&rdquo; methods have methods where you can specify
  format values (e.g. date, time and numbers)</LI>
  <LI>Enumeration values will be translated to a readable format</LI>
  </UL>
@@ -1781,7 +1781,7 @@
  <LI>Depending on the state of a <A href="#Domain Objects">DomainObject</A> you do not want to
  display Irrelevant information</LI>
  <LI>Depending on the state of a domain object you do not want a user to
- activate an action method (e.g. hide an <A href="#Action Methods">ActionMethod</A> &#8220;submit&#8221; once
+ activate an action method (e.g. hide an <A href="#Action Methods">ActionMethod</A> &ldquo;submit&rdquo; once
  the domainObject already is submitted)</LI>
  <LI>Because a user is not authorized to see a property value</LI>
  <LI>Because a user is not authorized to activate an <A href="#Action Methods">ActionMethod</A></LI>
@@ -1828,7 +1828,7 @@
  Note that you can not change the visibility with a ...Hidden method for <A href="#Properties">DomainObjectProperty</A> in a <A>TableView</A>!
  </P>
  <P>
- Syntax: public boolean &lt;property name or actionMethodName&gtHidden;()
+ Syntax: public boolean &amp;lt;property name or actionMethodName&amp;gtHidden;()
  </P>
  <P>
  ReturnValue: a boolean that is true if the <A href="#Properties">DomainObjectProperty</A> or
@@ -1858,7 +1858,7 @@
  to edit certain <A href="#Properties">DomainObjectProperty</A></LI>
  <LI>Depending on the state of a <A href="#Domain Objects">DomainObject</A> you do not want a user
  to invoke an <A href="#Action Methods">ActionMethod</A> (e.g. prevent invoking <A href="#Action Methods">ActionMethod</A>
- &#8220;submit&#8221; once the <A href="#Domain Objects">DomainObject</A> already is submitted)</LI>
+ &ldquo;submit&rdquo; once the <A href="#Domain Objects">DomainObject</A> already is submitted)</LI>
  <LI>Because a user is not authorized to edit a <A href="#Properties">DomainObjectProperty</A>
  Value</LI>
  <LI>Because a user is not authorized to invoke an <A href="#Action Methods">ActionMethod</A></LI>
@@ -1908,7 +1908,7 @@
  <A href="#Properties">DomainObjectProperty</A> or <A href="#Action Methods">ActionMethod</A>.
  </P>
  <P>
- Syntax: public boolean &lt;property name or actionMethodName&gt;Disabled()
+ Syntax: public boolean &amp;lt;property name or actionMethodName&amp;gt;Disabled()
  </P>
  <P>
  ReturnValue: a boolean that is true if the <A href="#Properties">DomainObjectProperty</A> or
@@ -1920,7 +1920,7 @@
  <P>
  
 
- If the code has both a "disabled annotation" and a "disabled method", the
+ If the code has both a &quot;disabled annotation&quot; and a &quot;disabled method&quot;, the
  <A href="#The Introspect Framework">IntrospectFramework</A> work will disable the item when on of them is true (if the user is not
  authorized by the definition of the <A href="#Disabled Annotation">Disabled</A> annotation OR if the
  disabled method returns true).
@@ -2089,8 +2089,8 @@ Examples of alternative <A>FieldModeType</A>s:
  parameter when the <A href="#Action Methods">ActionMethod</A></P> is invoked.
  </P>
  <P>
- Syntax: public&lt;domainObject type&gt;
- prameterFactory&lt;actionMethodName&gt;()
+ Syntax: public&amp;lt;domainObject type&amp;gt;
+ prameterFactory&amp;lt;actionMethodName&amp;gt;()
  </P>
  <P>
  TODO EXAMPLE OF ordersWithinPeriod METHOD
@@ -2102,7 +2102,7 @@ Examples of alternative <A>FieldModeType</A>s:
  
 
  <P>
- The <A href="#UserInterfaceController">UserInterfaceController</A> sometimes let&#8217;s the user edit an
+ The <A href="#UserInterfaceController">UserInterfaceController</A> sometimes let&rsquo;s the user edit an
  <A href="#Domain Objects">DomainObject</A> before it is passed as an <A href="#Action Methods">ActionMethod</A> parameter
  (depending on how the <A href="#Action Methods">ActionMethod</A> is annotated, see
  <A href="#Execution Mode">ExecutionMode</A>). The <A href="#UserInterfaceController">UserInterfaceController</A> then validates
@@ -2131,8 +2131,8 @@ Examples of alternative <A>FieldModeType</A>s:
  <P>
  ValidationMethods conventions:
  <UL>
- <LI>Syntax: public ValidationResult &lt;<A href="#Properties">DomainObjectProperty</A>Name or
- businessRuleName&gt;Validation.<BR>
+ <LI>Syntax: public ValidationResult &amp;lt;<A href="#Properties">DomainObjectProperty</A>Name or
+ businessRuleName&amp;gt;Validation.<BR>
  E.g. for a <A href="#Properties">DomainObjectProperty</A> startDate: public ValidationResult
  startDateValidation()<BR>
  E.g. for business rule custommerUnique: public ValidationResult
@@ -2161,8 +2161,8 @@ Examples of alternative <A>FieldModeType</A>s:
  following annotations:
  </P>
  <UL>
- <LI>&#64;NotNull</LI>
- <LI>&#64;NotEmpty</LI>
+ <LI>&amp;#64;NotNull</LI>
+ <LI>&amp;#64;NotEmpty</LI>
  </UL>
  TODO EXAMPLE <H3>Validating correct format</H3>
  <P>
@@ -2171,8 +2171,8 @@ Examples of alternative <A>FieldModeType</A>s:
  annotations:
  </P>
  <UL>
- <LI>&#64;Regexp</LI>
- <LI>&#64;Mask</LI>
+ <LI>&amp;#64;Regexp</LI>
+ <LI>&amp;#64;Mask</LI>
  </UL>
  TODO EXAMPLE
  
@@ -2181,7 +2181,7 @@ Examples of alternative <A>FieldModeType</A>s:
  Add one of the following annotations if a property needs to be within a
  predefined range:
  </P>
- &#64;GreatherThan TODO SEE JSR??? TO FIND ALL ANNOTATIONS TODO EXAMPLE
+ &amp;#64;GreatherThan TODO SEE JSR??? TO FIND ALL ANNOTATIONS TODO EXAMPLE
  
  <H3>Validating business rules</H3>
  <P>
@@ -2215,7 +2215,7 @@ Examples of alternative <A>FieldModeType</A>s:
  Get your favorite <A href="null">Integrated
  Development Environment (EDI)</A> installed on your computer. If you are a
  new in developing applications, I recommend to install <A href="http://www.eclipse.org/">Eclipse</A> (open source) since it has been
- used in all the instruction video's. There are also other free IDE&#8217;s
+ used in all the instruction video's. There are also other free IDE&rsquo;s
  available that will do just fine. Next step is to download the Introspect
  Libraries from GIT into your IDE with the following link: <A href="https://github.com/ntenhoeve/Introspect-Framework/archive/master.zip">https://github.com/ntenhoeve/Introspect-Framework/archive/master.zip</A>
  </P>
@@ -2224,12 +2224,12 @@ Examples of alternative <A>FieldModeType</A>s:
  <A name="Create your domain object's"><H2>Create your domain object's</H2></A> TODO <A name="Creating your Introspect
  application"><H2>Creating your Introspect
  application</H2></A> With introspect you can create different types of
- applications right out of the box: &#8226; Create a command line application &#8226;
- Create a desktop application &#8226; TODO Create a mobile application &#8226; TODO Create
- a web application &#8226; TODO Create a soap application &#8226; TODO Create a restfull
+ applications right out of the box: &bull; Create a command line application &bull;
+ Create a desktop application &bull; TODO Create a mobile application &bull; TODO Create
+ a web application &bull; TODO Create a soap application &bull; TODO Create a restfull
  XML application
  
- TODO Each application type has it&#8217;s own &#8220;getting started&#8221; video. <A name="Create a
+ TODO Each application type has it&rsquo;s own &ldquo;getting started&rdquo; video. <A name="Create a
  command line application"><H2>Create a
  command line application</H2></A> (TODO youtube video) <A name="Create a desktop
  application"><H2>Create a desktop
