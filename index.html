@@ -1111,8 +1111,8 @@
  <H3>ValidationProvider implementation</H3>
  <P>
  There are many validation libraries and frameworks available. The
- IntrospectFramework complies with the JSR303 by using the TODO!!!! library,
- combined with its own BehaviouralMethods_TODO_LINK. You are free to implement or extend
+ IntrospectFramework complies with the JSR303 by using the <A href="http://bval.apache.org/">Apache Bean Validator (BVal)</A> library,
+ combined with <A href="#Validation methods">ValidationMethod</A>s. You are free to implement or extend
  your own implementation and register it to your <A href="#The Introspect Application">IntrospectApplication</A> by
  overriding the <A href="#The Introspect Application">IntrospectApplication.getValidationProviderClass()</A> method
  </P>
@@ -1124,15 +1124,16 @@
  <P>
  The <A href="#Language Provider">LanguageProvider</A> makes multilingual support possible. The
  <A href="#The Introspect Framework">IntrospectFramework</A> supports the English language by default because
- these texts are embedded in the code as part of the <A href="http://martinfowler.com/bliki/UbiquitousLanguage.html">Ubiquitous
+ it uses the ClassNames, <A href="#Properties">DomainObjectProperty</A>Names and
+ <A href="#Action Methods">ActionMethod</A>names that are used in the code as part of the <A href="http://martinfowler.com/bliki/UbiquitousLanguage.html">Ubiquitous
  Language</A></P> (it does not make sense to mix an other language into your
  code).
  </P>
  <H3>Language property files</H3>
  <P>
- Texts for other languages are stored in property files. The name of the need
- to have the following file name: TODO VERIFY FORMAT &amp;lt;application
- configuration folder&amp;gt;/Resources_&amp;lt;Language_code&amp;gt;.properties
+ Texts for other languages are stored in property files. The name of these files need
+ to be: &amp;lt;application
+ configuration folder&amp;gt;/language_&amp;lt;language_code&amp;gt;.properties
  </P>
  Where:
  <UL>
@@ -1746,7 +1747,7 @@
  compared with a StringBuilder, but has some additional functionality such as:
  <UL>
  <LI>The &ldquo;append&rdquo; methods will append a separator and a given value. You can
- use the default separator (a space) or use an &ldquo;append&rdquo; method where you pass
+ use the default separator (a comma and a space) or use an &ldquo;append&rdquo; method where you pass
  the separator as a first parameter followed by the value.</LI>
  <LI>The &ldquo;contact&rdquo; methods will append a given value without a separator</LI>
  <LI>Both &ldquo;append&rdquo; and &ldquo;contact&rdquo; methods will ignore null values or reference
@@ -2083,7 +2084,7 @@ Examples of alternative <A>FieldModeType</A>s:
  <P>
  When adding the <A>ParameterFactory</A> method (normally located after an
  <A href="#Action Methods">ActionMethod</A>), the <A href="#UserInterfaceController">UserInterfaceController</A> will first get a
- new <A href="#Domain Objects">DomainObject</A> from the <A href="#ParameterFactory Method">ParameterFactoryMethodModel</A>. This
+ new <A href="#Domain Objects">DomainObject</A> from the <A href="#ParameterFactory Method">ParameterFactoryMethod</A>. This
  object can then be edited by the user (depending how the <A href="#Action Methods">ActionMethod</A>
  is annotated, see <A href="#Execution Mode">ExecutionMode</A>) after which it is passed as method
  parameter when the <A href="#Action Methods">ActionMethod</A></P> is invoked.
@@ -2114,10 +2115,11 @@ Examples of alternative <A>FieldModeType</A>s:
  
  <H3>Validation annotations</H3>
  <P>
- A <A href="#Properties">DomainObjectProperty</A> can be validated by putting validation
- annotations before the getter method of a property. Validation annotations
- are often used for the more basic validations. The following sections will
- explain the specific validation annotations that can be used.
+ A <A href="#Properties">DomainObjectProperty</A>s can be validated by putting validation
+ annotations before the getter method of a property. The
+ <A href="#The Introspect Framework">IntrospectFramework</A> uses the JSR303 complient Apache BVal library for
+ validation. Please read the BVal documentation on how to annotate the getter
+ methods of the properties.
  </P>
  <H3>Validation methods</H3>
  <P>
@@ -2131,78 +2133,24 @@ Examples of alternative <A>FieldModeType</A>s:
  <P>
  ValidationMethods conventions:
  <UL>
- <LI>Syntax: public ValidationResult &amp;lt;<A href="#Properties">DomainObjectProperty</A>Name or
- businessRuleName&amp;gt;Validation.<BR>
- E.g. for a <A href="#Properties">DomainObjectProperty</A> startDate: public ValidationResult
- startDateValidation()<BR>
- E.g. for business rule custommerUnique: public ValidationResult
- custommerUniqueValidation()</LI>
+ <LI>Syntax: public <A>ValidationViolations</A> &amp;lt;<A href="#Properties">DomainObjectProperty</A>Name&amp;gt;&amp;lt;constraint name&amp;gt;Validation.<BR>
+ E.g. for a <A href="#Properties">DomainObjectProperty</A> startDate: public <A>ValidationViolations</A>
+ startDateAfterTodayValidation()<BR>
+ E.g. for business rule custommerUnique: public <A>ValidationViolations</A>
+ customerUniqueValidation()</LI>
  <LI>Method may not have a method parameter</LI>
- <LI>Method must return a ValidationResult</LI>
+ <LI>Method must return a ValidationViolation</LI>
  <LI>Method must be public</LI>
  <LI>Method may not be static</LI>
  <LI>May not change the state of the <A href="#Domain Objects">DomainObject</A></LI>
  </UL>
+ 
+ TODO code example
+ 
+ TODO EXPLAIN <A>ValidationViolations</A>
  </P>
  
  
- The following sections will explain the specific ValidationMethods that can
- be used.  <H3>Types of validations</H3>
- <P>
- There are different types of validation
- <LI>Is the property mandatory?</LI>
- <LI>Has the property the correct format?</LI>
- <LI>Is the property within the correct range?</LI>
- <LI>Does the <A href="#Domain Objects">DomainObject</A> comply to the defined business rules?</LI>
- </P>
- <H3>Validating mandatory properties</H3>
- <P>
- If a property is mandatory (must have a value) you can add one of the
- following annotations:
- </P>
- <UL>
- <LI>&amp;#64;NotNull</LI>
- <LI>&amp;#64;NotEmpty</LI>
- </UL>
- TODO EXAMPLE <H3>Validating correct format</H3>
- <P>
- Some properties require a certain format (such as property types: date, time
- and currency). This format can be defined by adding the following
- annotations:
- </P>
- <UL>
- <LI>&amp;#64;Regexp</LI>
- <LI>&amp;#64;Mask</LI>
- </UL>
- TODO EXAMPLE
- 
- <H3>Validating Range</H3>
- <P>
- Add one of the following annotations if a property needs to be within a
- predefined range:
- </P>
- &amp;#64;GreatherThan TODO SEE JSR??? TO FIND ALL ANNOTATIONS TODO EXAMPLE
- 
- <H3>Validating business rules</H3>
- <P>
- Business rules are needed when:
- </P>
- <UL>
- <LI>Validation is more complex and can not be handled with
- ValidationAnnotations, but needs to be done with code.</LI>
- <LI>Validation requires multiple property values (e.g. start date must be
- before end date)</LI>
- <LI>Validation requires a different source in order to validate (e.g. check a
- repository if a name if unique, or ask the LanguageProvider for the localised
- format)</LI>
- </UL>
- BusinessRules are defined by ValidationMethods.
- 
- TODO EXAMPLE
- 
- TODO SEE JSR AND SEE IF WE ARE MISSING ANNOTATIONS
- 
- TODO EXPLAIN VALIDATION RESULT
  
  
  <A name="Getting Started"><H1>Getting Started</H1></A> 
