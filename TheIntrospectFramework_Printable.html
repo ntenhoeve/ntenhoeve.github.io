@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>The Introspect Framework</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=yes" />
+ </head>
+ <body>
+  <div id="frontCover">
+   <a id="Reference_IntrospectDocumentation"></a> 
+   <img src="IntrospectDocumentation.png" /> 
+   <title>The Introspect Framework</title> 
+  </div>
+  <div id="tableOfContents">
+   <h1>Contents</h1>
+   <h3><a href="#TheIntrospectFramework">The Introspect Framework</a></h3>
+   <ul>
+    <li><a href="#TheIntrospectFramework_WhyTheIntrospectFrameworkWasDeveloped">Why the Introspect framework was developed</a></li>
+    <li><a href="#TheIntrospectFramework_IntrospectCoreValues">Introspect Core Values</a></li>
+    <li><a href="#TheIntrospectFramework_IntrospectLicense">Introspect License</a></li>
+    <li><a href="#TheIntrospectFramework_ArchitectureOfAnIntrospectApplication">Architecture of an introspect application</a></li>
+    <li><a href="#TheIntrospectFramework_DependencyInjectionContainer">Dependency Injection Container</a></li>
+    <li><a href="#TheIntrospectFramework_TheIntrospectApplication">The Introspect Application</a></li>
+    <li><a href="#TheIntrospectFramework_StartingANewIntrospectProject">Starting a new Introspect Project</a></li>
+   </ul>
+   <h3><a href="#TheDomainLayer">The Domain Layer</a></h3>
+   <ul>
+    <li><a href="#TheDomainLayer_DomainObjects">Domain Objects</a></li>
+    <li><a href="#TheDomainLayer_Properties">Properties</a></li>
+    <li><a href="#TheDomainLayer_ActionMethods">Action Methods</a></li>
+   </ul>
+   <h3><a href="#TheServiceLayer">The Service Layer</a></h3>
+   <ul>
+    <li><a href="#TheServiceLayer_ServiceObjects">Service Objects</a></li>
+    <li><a href="#TheServiceLayer_ActionMethods">Action Methods</a></li>
+   </ul>
+   <h3><a href="#TheInfrastructureLayer">The Infrastructure Layer</a></h3>
+   <ul>
+    <li><a href="#TheInfrastructureLayer_InfrastructureObjects">Infrastructure Objects</a></li>
+   </ul>
+   <h3><a href="#TheProviderLayer">The Provider Layer</a></h3>
+   <ul>
+    <li><a href="#TheProviderLayer_ProviderObjects">Provider Objects</a></li>
+    <li><a href="#TheProviderLayer_AuthorizationProvider">Authorization Provider</a></li>
+    <li><a href="#TheProviderLayer_ValidationProvider">Validation Provider</a></li>
+    <li><a href="#TheProviderLayer_LanguageProvider">Language Provider</a></li>
+    <li><a href="#TheProviderLayer_NotificationProvider">Notification Provider</a></li>
+    <li><a href="#TheProviderLayer_PathProvider">Path Provider</a></li>
+    <li><a href="#TheProviderLayer_ReflectionProvider">Reflection Provider</a></li>
+    <li><a href="#TheProviderLayer_AboutProvider">About Provider</a></li>
+   </ul>
+   <h3><a href="#TheUserInterfaceLayer">The UserInterface Layer</a></h3>
+   <ul>
+    <li><a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a></li>
+   </ul>
+   <h3><a href="#ActionMethods">Action Methods</a></h3>
+   <ul>
+    <li><a href="#ActionMethods_ActionMethodsForDomainObjects">Action Methods for Domain Objects</a></li>
+    <li><a href="#ActionMethods_ActionMethodsForDomainObjectProperties">Action Methods for Domain Object Properties</a></li>
+    <li><a href="#ActionMethods_ActionMethodsForServiceObjects">Action Methods for Service Objects</a></li>
+    <li><a href="#ActionMethods_ActionMethodsConvention">Action Methods Convention</a></li>
+    <li><a href="#ActionMethods_ActionMethodNames">Action method names</a></li>
+    <li><a href="#ActionMethods_ActionMethodParameter">Action method parameter</a></li>
+    <li><a href="#ActionMethods_ActionMethodReturnValue">Action method return value</a></li>
+    <li><a href="#ActionMethods_ActionExecutionModes">Action execution modes</a></li>
+    <li><a href="#ActionMethods_ActionBehavior">Action behavior</a></li>
+   </ul>
+   <h3><a href="#ObjectBehavior">Object behavior</a></h3>
+   <ul>
+    <li><a href="#ObjectBehavior_DisplayName">Display Name</a></li>
+    <li><a href="#ObjectBehavior_Description">Description</a></li>
+    <li><a href="#ObjectBehavior_Title">Title</a></li>
+    <li><a href="#ObjectBehavior_Icon">Icon</a></li>
+    <li><a href="#ObjectBehavior_Hidden">Hidden</a></li>
+    <li><a href="#ObjectBehavior_Disabled">Disabled</a></li>
+    <li><a href="#ObjectBehavior_Order">Order</a></li>
+    <li><a href="#ObjectBehavior_Format">Format</a></li>
+    <li><a href="#ObjectBehavior_FieldMode">Field Mode</a></li>
+    <li><a href="#ObjectBehavior_ExecutionMode">Execution Mode</a></li>
+    <li><a href="#ObjectBehavior_ParameterFactory">Parameter Factory</a></li>
+    <li><a href="#ObjectBehavior_Validation">Validation</a></li>
+   </ul>
+   <h3><a href="#IntrospectApplicationProjects">Introspect Application Projects</a></h3>
+   <ul>
+    <li><a href="#IntrospectApplicationProjects_IntrospectForCommandLine">Introspect for CommandLine</a></li>
+    <li><a href="#IntrospectApplicationProjects_IntrospectForSwing">Introspect for Swing</a></li>
+    <li><a href="#IntrospectApplicationProjects_IntrospectForJUnit">Introspect for JUnit</a></li>
+   </ul>
+   <h3><a href="#IntrospectProviderProjects">Introspect Provider Projects</a></h3>
+   <ul>
+    <li><a href="#IntrospectProviderProjects_IntrospectProviderTomcatAuthorization">IntrospectProviderTomcatAuthorization</a></li>
+   </ul>
+   <h3><a href="#IntrospectInfrastructureProjects">Introspect Infrastructure Projects</a></h3>
+   <ul>
+    <li><a href="#IntrospectInfrastructureProjects_TODO">TODO</a></li>
+   </ul>
+   <h3><a href="#Downloads">Downloads</a></h3>
+   <ul></ul>
+   <h3><a href="#Documentation">Documentation</a></h3>
+   <ul></ul>
+   <h3><a href="#Development">Development</a></h3>
+   <ul></ul>
+  </div>
+  <div id="content">
+   <h1 id="TheIntrospectFramework">The Introspect Framework</h1> 
+   <p><a id="Reference_IntrospectFramework"></a> </p>
+   <p> Introspect is a light weight <a href="http://en.wikipedia.org/wiki/Java_(programming_language)">Java</a> <a href="http://en.wikipedia.org/wiki/Application_framework">Application Framework</a>. It provides a framework for writing business like applications for viewing and editing information in forms and tables (not for graphical applications such as games) </p> 
+   <p> With the introspect framework you only need to create domain classes. Introspect provides you the user interface, without writing any user interface code. This means is that the Introspect Framework is ideal for rapid prototyping, rapid development or to learn programming (e.g. at schools to teach: <a href="https://en.wikipedia.org/wiki/Object-oriented_programming">Object Oriented Programming</a> or <a href="https://en.wikipedia.org/wiki/Domain-driven_design">Domain Driven Design</a>). </p> 
+   <p> The Introspect framework provides different user interface implementations that you can use for: </p> 
+   <ul> 
+    <li>The desktop (based on <a href="http://en.wikipedia.org/wiki/Swing_(Java)">Swing</a>)</li> 
+    <li>Mobile devices (based on <a href="http://en.wikipedia.org/wiki/Android_(operating_system)">Android</a>)</li> 
+    <li>The web (based on <a href="http://en.wikipedia.org/wiki/Vaadin">Vaadin</a>)</li> 
+    <li><a href="http://en.wikipedia.org/wiki/Command-line_interface">Command line</a></li> 
+    <li>And others</li> 
+   </ul> 
+   <p></p> 
+   <p> If you want to start coding right now (even if you are a beginner) please go to the <a>IntrospectGettingStarted</a> section. If you want to know more about the Introspect Framework keep reading.... </p> 
+   <h2 id="TheIntrospectFramework_WhyTheIntrospectFrameworkWasDeveloped">Why the Introspect framework was developed</h2> 
+   <p><a id="Reference_IntrospectWhyItWasDeveloped"></a> </p>
+   <p> Almost everyday new libraries, frameworks and tools are being released by the developer community, many of which reinvent the wheel. </p> 
+   <p> This is called the &quot;Yet Another Framework Syndrome&quot; (YAFS), or in more general terms &quot;Not Invented Here&quot; (NIH). While innovation is something we should all welcome, YAFS can lead to confusion and frustration for users because there's a big risk of it introducing more noise than value.<br /> </p> 
+   <p> So why did I develop a new framework while there are so many Java application frameworks out there? </p> 
+   <h3 id="TheIntrospectFramework_WhyTheIntrospectFrameworkWasDeveloped_Reason1BecauseItsFun">Reason 1: Because its fun</h3> Probably the best reason ever! 
+   <h3 id="TheIntrospectFramework_WhyTheIntrospectFrameworkWasDeveloped_Reason2BecauseIWantedToLearn">Reason 2: Because I wanted to learn</h3> The journey of developing yet another framework has thought me more than I could have learned implementing an existing framework. Specifically on how other frameworks solved issues that I run into. 
+   <h3 id="TheIntrospectFramework_WhyTheIntrospectFrameworkWasDeveloped_Reason3BecauseIWantedToDoItDifferent">Reason 3: Because I wanted to do it different</h3> I love the thoughts behind the 
+   <a href="http://nakedobjects.codeplex.com/">Naked Objects Framework</a> (for 
+   <a href="http://en.wikipedia.org/wiki/.NET_Framework">.net</a>) and the 
+   <a href="http://isis.apache.org/">Apache Isis Framework</a> (for 
+   <a href="http://en.wikipedia.org/wiki/Java_(programming_language)">Java</a>). But looking at the Apache Isis Framework, there are several things I wanted to do it different in the 
+   <a href="#TheIntrospectFramework">IntrospectFramework</a> (good or bad is all open for debate): 
+   <ul> 
+    <li>The <a href="http://en.wikipedia.org/wiki/Business_logic">domain objects</a> and service objects (often repository objects) usually extend a convenience class that contains methods to interact with the Apache Isis framework/ object container. Extending such a class is not mandatory, because you can implement these methods in your objects, but to me this still ignores the principle of &quot;Naked objects&quot; or <a href="http://en.wikipedia.org/wiki/Plain_Old_Java_Object">POJO’s</a> .</li> 
+    <li><a href="http://isis.apache.org/">Apache Isis</a> uses (depends on) <a href="http://en.wikipedia.org/wiki/Apache_Maven">Maven</a>. Maven has its pros (managing dependencies, and standardizing the build process), but is also famous for its cons (difficult to configure, steep learning curve, etc, etc).</li> 
+    <li>I personally dislike the way Apache Isis manages the editing of objects. This is very tightly linked to its <a href="http://en.wikipedia.org/wiki/Persistence_framework">persistence framework</a>. I however believe that objects do not necessarily need to be persisted after its been edited. I prefer a different approach: domain objects can be passed to a method as a method parameter. This method parameter can be edited by a user before a method is executed (depending on how the method is annotated). The domain object/ method parameter may then be handled by a <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a> like a persistence service (or not at all).</li> 
+   </ul> 
+   <h3 id="TheIntrospectFramework_WhyTheIntrospectFrameworkWasDeveloped_Reason4ICouldNotFindWhatINeeded">Reason 4: I could not find what I needed.</h3> I have not found an framework that provides an out of the box User Interface for both desktop, mobile devices, web interface, command line interface, etc. They are probably out there (Naked Objects and Isis coming close) but I haven't found one (or one that I liked). 
+   <p></p> 
+   <h2 id="TheIntrospectFramework_IntrospectCoreValues">Introspect Core Values</h2> 
+   <p><a id="Reference_IntrospectCoreValues"></a> Introspect is designed around the following core values: </p>
+   <h3 id="TheIntrospectFramework_IntrospectCoreValues_BasedOnTheNakedObjectsDesignPattern">Based on the Naked Objects Design Pattern</h3> See the Wiki page on the 
+   <a href="http://en.wikipedia.org/wiki/Naked_objects">Naked Objects Design Pattern</a>: 
+   <ul> 
+    <li>All <a href="http://en.wikipedia.org/wiki/Business_logic">business logic</a> should be encapsulated onto the <a href="http://en.wikipedia.org/wiki/Business_object_(computer_science)">domain objects</a>. This principle is not unique to naked objects: it is just a strong commitment to <a href="http://en.wikipedia.org/wiki/Encapsulation_%28object-oriented_programming%29">encapsulation</a>.</li> 
+    <li>The <a href="http://en.wikipedia.org/wiki/User_interface">user interface</a> should be a direct representation of the domain objects, with all user actions consisting, explicitly, of creating or retrieving domain objects and/or invoking <a href="http://en.wikipedia.org/wiki/Method_(computer_science)">methods</a> on those objects. This principle is also not unique to naked objects: it is just a specific interpretation of an <a href="http://en.wikipedia.org/wiki/Object-oriented_user_interface">object-oriented user interface (OOUI)</a>.</li> 
+    <li>The user interface should be created 100% automatically from the definition of the domain objects. Introspect uses <a href="http://en.wikipedia.org/wiki/Reflection_(computer_science)">reflection</a> instead of code generation (hence the name of the <a href="#TheIntrospectFramework">IntrospectFramework</a>).</li> 
+   </ul> 
+   <h3 id="TheIntrospectFramework_IntrospectCoreValues_ProvideAGoodStructureForApplications">Provide a good structure for applications</h3> 
+   <ul> 
+    <li>Enforce <a href="http://en.wikipedia.org/wiki/Separation_of_concerns">separation of concerns</a> (see <a href="#TheIntrospectFramework_ArchitectureOfAnIntrospectApplication">IntrospectArchitecture</a>).</li> 
+    <li>Facilitate <a href="http://en.wikipedia.org/wiki/Domain-driven_design">domain driven design</a>.</li> 
+    <li>The Introspect Framework should not create a <a href="http://en.wikipedia.org/wiki/Vendor_lock-in">vendor lock-in</a> (not that there is such a thing as an Introspect Framework Vendor, since it is open source). <a href="#TheDomainLayer_DomainObjects">DomainObject</a>'s, <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>'s and <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a>'s should have no (or almost no) dependencies with the Introspect Framework so that the Introspect Framework could easily (within a few hours) be replaced with another dependency injection framework (such as <a href="http://en.wikipedia.org/wiki/Spring_Framework">Spring</a>, <a href="http://en.wikipedia.org/wiki/Google_Guice">Guice</a> or <a href="http://picocontainer.codehaus.org/">Pico container</a>, etc...) or visa versa.</li> 
+    <li>The introspect framework exists of a few basic interfaces like <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> and <a href="#TheProviderLayer_ProviderObjects">Provider</a>s that can have multiple different implementations.</li> 
+   </ul> 
+   <h3 id="TheIntrospectFramework_IntrospectCoreValues_Lightweight">Lightweight</h3> 
+   <ul> 
+    <li>The Introspect framework should only be a few kilobytes in size.</li> 
+   </ul> 
+   <h3 id="TheIntrospectFramework_IntrospectCoreValues_SimpleToConfigure">Simple to configure</h3> The Introspect framework has no configuration files (see 
+   <a href="http://www.martinfowler.com/articles/injection.html#CodeOrConfigurationFiles">“Code or configuration files”</a> section in Martin Fowlers article for the arguments why).
+   <br /> 
+   <br /> There are 3 things that need to be configured: 
+   <ul> 
+    <li>Which implementations of the <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> and <a href="#TheProviderLayer_ProviderObjects">Provider</a>'s are going to be used by the <a href="#TheIntrospectFramework_TheIntrospectApplication">IntrospectApplication</a>. </li> 
+    <li>Which <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> classes and <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a> classes are going to be used by the <a href="#TheIntrospectFramework_TheIntrospectApplication">IntrospectApplication</a>.</li> 
+    <li>The <a href="#ObjectBehavior">ObjectBehavior</a> of <a href="#TheDomainLayer_DomainObjects">DomainObject</a>'s and <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> 's (how the domain needs to handled by the <a href="#TheIntrospectFramework_TheIntrospectApplication">IntrospectApplication</a>)</li> 
+   </ul> 
+   <p> Furthermore the Introspect framework prefers “Configure by Exception”. This means that the Introspect framework uses reasonable defaults wherever possible. These default values can be overridden by the developer. </p> 
+   <p></p> 
+   <h2 id="TheIntrospectFramework_IntrospectLicense">Introspect License</h2> 
+   <p><a id="Reference_IntrospectLicense"></a> Introspect is an <a href="http://en.wikipedia.org/wiki/Open_source">open source</a> project under the <a href="http://en.wikipedia.org/wiki/GNU_Lesser_General_Public_License">GNU Lesser General Public License</a>. The license can be found <a href="https://github.com/ntenhoeve/Introspect-Framework/blob/master/LICENSE">here</a>. </p> 
+   <h2 id="TheIntrospectFramework_ArchitectureOfAnIntrospectApplication">Architecture of an introspect application</h2> 
+   <p><a id="Reference_IntrospectArchitecture"></a> The Introspect Framework helps you to create a <a href="http://en.wikipedia.org/wiki/Multilayered_architecture">multi layer architecture</a> for your application. A multi layer architecture has several <a href="http://martinfowler.com/bliki/LayeringPrinciples.html"> design principles</a>: </p>
+   <ul> 
+    <li>Separation of concerns (separate responsibilities within the application into different layers).</li> 
+    <li>Low coupling between layers, high cohesion within them.</li> 
+    <li>User interface modules should contain no business logic.</li> 
+    <li>Layers should be testable individual.</li> 
+    <li>Business logic layers contain no user interface and don't refer to user interface modules.</li> 
+    <li>No circular references between layers.</li> 
+    <li>Business layer only uses abstractions of technological services.</li> 
+    <li>Lower layers should not depend on upper layers.</li> 
+    <li>Layers should be shy about their internals.</li> 
+    <li>Layers may share infrastructural aspects (eg security)</li> 
+    <li>Inbound external interface modules (eg web service handlers) should not contain business logic.</li> 
+   </ul> 
+   <p> These multi layer architecture design principles try to prevent <a href="http://en.wikipedia.org/wiki/Spaghetti_code"> spaghetti code</a>, which is hard to extend, hard to trouble shoot, hard to test and hard to keep <a href="http://en.wikipedia.org/wiki/Software_bug#Etymology">bug</a> free.<br /> </p> 
+   <p> There are many different opinions on the number of layers, the names of the layers and what each layer should do (see these <a href="https://www.google.nl/search?q=layered+software+architecture&amp;tbm=isch">examples</a>). The <a href="http://www.herrodius.com/blog/wp-content/uploads/2010/03/LayeredArchitecture.png">definition of layers</a> from Eric Evans <a href="https://en.wikipedia.org/wiki/Domain-driven_design">Domain Driven Design approach</a> is likely the most commonly used. The most important thing is that your multi layered architecture complies with the design principles above. </p> 
+   <p> The <a href="#TheIntrospectFramework_ArchitectureOfAnIntrospectApplication">IntrospectArchitecture</a> uses the following layer definition, which is pretty close to <a href="https://en.wikipedia.org/wiki/Domain-driven_design">Eric Evans Domain Driven Design</a> approach.: </p> 
+   <ul> 
+    <li><a href="#TheUserInterfaceLayer">UserInterfaceLayer</a></li> 
+    <li><a href="#TheServiceLayer">ServiceLayer</a> (called &quot;application layer&quot; by Eric Evans)</li> 
+    <li><a href="#TheDomainLayer">DomainLayer</a></li> 
+    <li><a href="#TheInfrastructureLayer">InfrastructureLayer</a></li> 
+    <li><a href="#TheProviderLayer">ProviderLayer</a> (extra layer for <a href="https://en.wikipedia.org/wiki/Cross-cutting_concern">cross cutting concerns</a>)</li> 
+   </ul> 
+   <p></p> Each layer is implemented by an 
+   <a href="#TheIntrospectFramework_DependencyInjectionContainer">DependencyInjectionContainer</a>
+   <br /> 
+   <br /> 
+   <img src="IntrospectArchitecture.png" />
+   <br /> 
+   <br /> Red objects are provided by the Introspect framework
+   <br /> Yellow objects need to be written or included by the developer. 
+   <p></p> 
+   <h2 id="TheIntrospectFramework_DependencyInjectionContainer">Dependency Injection Container</h2> 
+   <p><a id="Reference_DependencyInjectionContainer"></a> </p>
+   <p> The <a href="#TheIntrospectFramework">IntrospectFramework</a> is a dependency injection framework and consists of several <a href="http://en.wikipedia.org/wiki/Dependency_injection">dependency injection containers</a>. </p> 
+   <p> If you new to Dependency Injection I recommend reading <a href="http://en.wikipedia.org/wiki/Martin_Fowler">Martin Fowler</a>'s <a href="http://martinfowler.com/articles/injection.html">article</a> in which he explains the basics dependency injection. </p> 
+   <p> Each <a href="#TheIntrospectFramework_DependencyInjectionContainer">DependencyInjectionContainer</a> is responsible for: </p> 
+   <ul> 
+    <li>Creating new instances of types that are registered to a <a href="#TheIntrospectFramework_DependencyInjectionContainer">DependencyInjectionContainer</a> with the <a href="#TheIntrospectFramework_TheIntrospectApplication">IntrospectApplication</a> .get...Class() or .get...Classes() methods</li> 
+    <li>Linking dependencies (references to other objects) to these new instances (using constructor injection)</li> 
+    <li>Caching these new instances, if we only need one instance (like a singleton)</li> 
+   </ul> 
+   <p></p> 
+   <p> The <a href="#TheIntrospectFramework_ArchitectureOfAnIntrospectApplication">IntrospectArchitecture</a> consists of several layers. Each layer has its own <a href="#TheIntrospectFramework_DependencyInjectionContainer">DependencyInjectionContainer</a> that is for managing the objects in the same layer: </p> 
+   <ul> 
+    <li><a href="#TheUserInterfaceLayer">UserInterfaceLayer</a>: <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> object is managed by a <a>UserInterfaceContainer</a>. The <a>UserInterfaceContainer</a> knows the <a>ServiceContainer</a></li> 
+    <li><a href="#TheServiceLayer">ServiceLayer</a>: <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>'s are managed by a <a>ServiceContainer</a>. The <a>ServiceContainer</a> knows the <a>DomainContainer</a></li> 
+    <li><a href="#TheDomainLayer">DomainLayer</a>: <a href="#TheDomainLayer_DomainObjects">DomainObject</a>'s are managed by a <a>DomainContainer</a>. The <a>DomainContainer</a> knows the <a>InfrastructureContainer</a></li> 
+    <li><a href="#TheInfrastructureLayer">InfrastructureLayer</a>: <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a>'s are managed by a <a>InfrastructureContainer</a>. The <a>DomainContainer</a> knows the <a>ProviderContainer</a></li> 
+    <li><a href="#TheProviderLayer">ProviderLayer</a>: <a href="#TheProviderLayer_ProviderObjects">Provider</a> object's are managed by a <a>ProviderContainer</a>.</li> 
+   </ul> 
+   <p></p> 
+   <h3 id="TheIntrospectFramework_DependencyInjectionContainer_ConstructorInjection">Constructor Injection</h3> 
+   <p><a id="Reference_ConstructionInjection"></a> </p>
+   <p> The <a href="#TheIntrospectFramework">IntrospectFramework</a> favors constructor injection (see <a href="http://en.wikipedia.org/wiki/Martin_Fowler">Martin Fowler</a>'s easy to read <a href="http://martinfowler.com/articles/injection.html#ConstructorVersusSetterInjection">article</a> for the arguments why). </p> 
+   <p> All objects within an <a href="#TheIntrospectFramework_TheIntrospectApplication">IntrospectApplication</a> can have references to (may know) other objects. These reference objects are injected into an object as constructor parameter during the creation of the object by the <a href="#TheIntrospectFramework_DependencyInjectionContainer">DependencyInjectionContainer</a> of that specific layer. This constructor parameter can than be linked to a private final field, so that it can be used throughout the object. </p> In example: 
+   <pre>
+ public class ProductService {
+ 
+ 	private final ProductRepository productRepository;
+ 
+ 	public ProductService(ProductRepository productRepository) {
+ 		this.productRepository = productRepository;
+ 	}
+ 
+ 	public List&lt;Product&gt; findProduct(ProductSearchCritiria searchCritiria) {
+ 		return productRepository.findProduct(searchCritiria);
+ 	}
+ 
+ 	// other action methods...
+ }
+ </pre> 
+   <p> It is good practice to link the constructor parameter (reference object) to a <a href="https://en.wikibooks.org/wiki/Java_Programming/Keywords/private">private</a> <a href="https://en.wikipedia.org/wiki/Final_(Java)#Final_variables">final</a> field, so that it is <a href="https://en.wikipedia.org/wiki/Encapsulation_(computer_programming)">encapsulated</a> and <a href="https://en.wikipedia.org/wiki/Immutable_object">immutable</a>. </p> 
+   <p> If your object needs a lot of references to other objects (too many constructor parameters), your object has most likely to many responsibilities, which could be solved by splitting up this object. </p> Note that you can only inject reference object types (use constructor parameters types) that are known to the that specific layer: 
+   <ul> 
+    <li>The IntrospectApplication class can be injected in all layers</li> 
+    <li>You can only inject objects of the same layer or lower layers (see <a href="#TheIntrospectFramework_ArchitectureOfAnIntrospectApplication">IntrospectArchitecture</a>). The <a href="#TheIntrospectFramework">IntrospectFramework</a> tries to prevent that objects in the lower layer know (have references to) objects in the higher layers because this is against several design principles of an layered architecture</li> 
+    <li>You can only inject objects that are registered to the <a href="#TheIntrospectFramework_TheIntrospectApplication">IntrospectApplication</a> by overriding the get...Classes() or get...Class() methods.</li> 
+   </ul> 
+   <p></p> 
+   <p></p> 
+   <h2 id="TheIntrospectFramework_TheIntrospectApplication">The Introspect Application</h2> 
+   <p><a id="Reference_IntrospectApplication"></a> <a href="#TheIntrospectFramework_TheIntrospectApplication">IntrospectApplication</a> is used as initialization parameter for the <a>Introspect</a> framework.<br /> An Introspect application has several purposes: </p>
+   <ul> 
+    <li>It provides the name, icon and description of the application (see <a href="#ObjectBehavior">ObjectBehavior</a>)</li> 
+    <li>It provides the location of the distribution package (jar, war)</li> 
+    <li>It provides the <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> type, needed for the application with the <a href="#TheIntrospectFramework_TheIntrospectApplication">IntrospectApplication.getUserInterfaceControllerClass()</a> method. Each application type (commandline, swing, vaadin) requires different implementations of the <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a></li> 
+    <li>It provides a list of <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> types with the <a href="#TheIntrospectFramework_TheIntrospectApplication">IntrospectApplication.getServiceClasses()</a> method. <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s basically provide the actionable/menu items</li> 
+    <li>It provides a list of <a href="#TheDomainLayer_DomainObjects">DomainObject</a> types that need to be created using dependency injection, with the <a href="#TheIntrospectFramework_TheIntrospectApplication">IntrospectApplication.getDomainClasses()</a> method.</li> 
+    <li>It provides a list of <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a> types with the <a href="#TheIntrospectFramework_TheIntrospectApplication">IntrospectApplication.getInfrastructureClasses()</a> method. <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a>s basically communicate to the outside world (i.e. data base access objects, email clients, soap clients, etc)</li> 
+    <li>It provides the <a href="#TheProviderLayer_ProviderObjects">Provider</a> types with the <a href="#TheIntrospectFramework_TheIntrospectApplication">IntrospectApplication.get...ProviderClass()</a> methods. <a href="#TheProviderLayer_ProviderObjects">Provider</a> Objects help with <a href="https://en.wikipedia.org/wiki/Cross-cutting_concern">cross cutting concerns</a>. Each application type (commandline, swing, vaadin) requires different implementations of the providers</li> 
+   </ul> 
+   <p> Each application type (command line, Android, Vaadin, etc..) has its own implementation of <a href="#TheIntrospectFramework_TheIntrospectApplication">IntrospectApplication</a> to help initializing the framework. See the type hierarchy of <a href="#TheIntrospectFramework_TheIntrospectApplication">IntrospectApplication</a> to learn which classes can be used and view their java doc to learn how to use them. </p> 
+   <p> If you create a new application you will be extending one of these classes. You will only need to implement some of the methods mentioned above (at least the <a href="#TheIntrospectFramework_TheIntrospectApplication">IntrospectApplication.getServiceClasses()</a> method). </p> An example of a desktop application: 
+   <pre>
+ public class AcmeWebShop extends IntrospectApplicationForSwing {
+ 
+ 	// constructor not displayed
+ 
+ 	// main method
+ 
+ 	@Override
+ 	public List&lt;Class&lt;?&gt;&gt; getServiceClasses() {
+ 		List&lt;Class&lt;?&gt;&gt; serviceClasses = new ArrayList&lt;Class&lt;?&gt;&gt;();
+ 		serviceClasses.add(ShoppingCartService.class);
+ 		serviceClasses.add(ProductService.class);
+ 		return serviceClasses;
+ 	}
+ 
+ 	@Override
+ 	public List&lt;Class&lt;?&gt;&gt; getInfrastructureClasses() {
+ 		List&lt;Class&lt;?&gt;&gt; infrastructureClasses = new ArrayList&lt;Class&lt;?&gt;&gt;();
+ 		infrastructureClasses.add(ProductRepository.class);
+ 		infrastructureClasses.add(EmailClient.class);
+ 		infrastructureClasses.add(PaymentClient.class);
+ 		return infrastructureClasses;
+ 	}
+ 
+ }
+ </pre> 
+   <p> For more (detailed) examples see the <a>IntrospectGettingStarted</a> section. </p> 
+   <p></p> 
+   <h2 id="TheIntrospectFramework_StartingANewIntrospectProject">Starting a new Introspect Project</h2> 
+   <p><a id="Reference_IntrospectStartingANewProject"></a> </p>
+   <p> How you create a new Introspect application depends on the type of application type that you want to create. </p> 
+   <p> First decide on the type of application you want to create. Then look up the corresponding paragraph in the <a>IntrospectGettingStarted</a> section. There you will learn how to create a java project that contains an application class that extends the <a href="#TheIntrospectFramework_TheIntrospectApplication">IntrospectApplication</a> class. This class will initialize and start the <a href="#TheIntrospectFramework">IntrospectFramework</a>. This class also contains methods that you need to implement to provide the <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> classes and <a href="#TheInfrastructureLayer">InfrastructureLayer</a> classes that are required in the application. </p> 
+   <p></p> 
+   <p></p> 
+   <h1 id="TheDomainLayer">The Domain Layer</h1> 
+   <p><a id="Reference_DomainLayer"></a> The Domain layer is the heart of any Introspect application. The domain layer represents: </p>
+   <ul> 
+    <li>The concepts of the business</li> 
+    <li>The business rules</li> 
+    <li>The state that reflects the business situation</li> 
+   </ul> Because there is many debate on the naming within a layered architecture, the domain layer is sometimes also called: 
+   <ul> 
+    <li><a href="http://en.wikipedia.org/wiki/Business_logic">Business</a> layer</li> 
+    <li><a href="http://en.wikipedia.org/wiki/Business_logic">Business logic</a> layer</li> 
+    <li><a href="http://en.wikipedia.org/wiki/Domain_model">Domain model</a> layer</li> 
+   </ul> 
+   <p> The domain layer is basically where all the domain objects are. The <a>DomainContainer</a> is an <a href="#TheIntrospectFramework_DependencyInjectionContainer">DependencyInjectionContainer</a> that can be used to create and hold <a href="#TheDomainLayer_DomainObjects">DomainObject</a>'s that need dependency injection. </p> Note that the 
+   <a href="#TheDomainLayer">DomainLayer</a> is a middle layer (see 
+   <a href="#TheIntrospectFramework_ArchitectureOfAnIntrospectApplication">IntrospectArchitecture</a>): 
+   <ul> 
+    <li> The <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s have NO references to objects in the upper <a href="#TheUserInterfaceLayer">UserInterfaceLayer</a> nor <a href="#TheServiceLayer">ServiceLayer</a></li> 
+    <li>The <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s may have references to the objects in the lower <a href="#TheInfrastructureLayer">InfrastructureLayer</a> or <a href="#TheProviderLayer">ProviderLayer</a>, but not visa versa!</li> 
+   </ul> 
+   <h2 id="TheDomainLayer_DomainObjects">Domain Objects</h2> 
+   <p><a id="Reference_DomainObject"></a> </p>
+   <p> <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s represent entities; the nouns of the domain. If your application domain is a sales application it’s likely that your domain model contains <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s such as: customers, products and orders. </p> 
+   <p> <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s are created by a developer or are reused from an existing application that needs to be re-written. They can be created from scratch or generated from a schema (in example from a <a href="http://en.wikipedia.org/wiki/Database_schema">database schema</a>, <a href="http://nl.wikipedia.org/wiki/XML_Schema">XML schema</a> or <a href="http://en.wikipedia.org/wiki/Web_Services_Description_Language">web service</a>) </p> 
+   <h3 id="TheDomainLayer_DomainObjects_Naming">Naming</h3> 
+   <p> <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s names are nouns, such as customer, product and order. They basically describe the things that are important in your application. <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s names need to match the <a href="http://martinfowler.com/bliki/UbiquitousLanguage.html">Ubiquitous Language</a> (in terms understood by both users and developers). </p> 
+   <h3 id="TheDomainLayer_DomainObjects_Construction">Construction</h3> 
+   <p> The principle of “naked objects” is that any <a href="http://en.wikipedia.org/wiki/Plain_Old_Java_Object">'Plain Old Java Object' (POJO)</a> can function as a domain object. In other words: a domain class does not have to inherit from any special class, nor implement any particular interface, nor have any specific attributes. </p> 
+   <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s can be created by different objects e.g.: 
+   <ul> 
+    <li>By a <a href="#ActionMethods_ActionMethodsForServiceObjects">ServiceObjectActionMethod</a> such as customerService.createNewCustomer() </li> 
+    <li>By a <a href="#ActionMethods_ActionMethodsForDomainObjects">DomainObjectActionMethod</a> such as shoppingCart.lineItemCreate(LineItem lineItem)</li> 
+    <li>By a <a>DomainContainer</a> such as domainContainer.getObject(Customer.class)</li> 
+    <li>By a <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a> method such as orderRepository.allOpenOrders() or shoppingCartFactory.createForCustomer(Customer customer).</li> 
+   </ul> 
+   <br /> There are 2 ways to create new 
+   <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s: 
+   <ul> 
+    <li>Creating a new <a href="#TheDomainLayer_DomainObjects">DomainObject</a> with the new keyword:<br /> In example: Order order=new OrderLine()</li> 
+    <li>Creating a domain object using Dependency Injection:<br /> Sometimes you want a new <a href="#TheDomainLayer_DomainObjects">DomainObject</a> to have references to other objects (being other <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s, <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a>s or <a href="#TheProviderLayer_ProviderObjects">Provider</a>Objects). In example: A Customer object needs a references to a ShoppingCartFactory object. The Customer object can therefore be created by the <a>DomainContainer</a> with Customer customer=(Customer) domainContainer.getObject(Customer.class). The ShopingCart object will automatically be injected as a constructor parameter of the Customer class. In order to create <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s using dependency injection you need to:</li> 
+    <ul> 
+     <li>Add the reference object as a parameter in the constructor and link it to a private field, so that it can be used throughout the class. TODO what happens see above</li> 
+     <li>Override the <a href="#TheIntrospectFramework_TheIntrospectApplication">IntrospectApplication.getDomainClasses()</a> method and return a list of <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s that need to be created using Dependency Injection</li> 
+     <li>The object that creates the Customer objects needs to have a reference to the <a>DomainContainer</a>. A CustomerService object can get a reference to the <a>DomainContainer</a> when it is created by the <a>ServiceContainer</a> (which is done by the <a href="#TheIntrospectFramework">IntrospectFramework</a>)</li> 
+    </ul> 
+   </ul> 
+   <h3 id="TheDomainLayer_DomainObjects_Presentation">Presentation</h3> 
+   <p> An <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> can display domain objects in 3 ways:<br /> </p> 
+   <ul> 
+    <li>Domain object as form:<br /> <img src="ObjectAsForm.png" /></li> 
+    <li>Domain object as a field in a form:<br /> <img src="ObjectAsField.png" /></li> 
+    <li>Domain object as a row in a table:<br /> <img src="ObjectAsTable.png" /></li> 
+   </ul> 
+   <p></p> 
+   <h3 id="TheDomainLayer_DomainObjects_DomainObjectMembers">Domain object members</h3> 
+   <p> Domain objects contain: </p> 
+   <ul> 
+    <li>Getter and setter methods (and possible fields): that define <a href="http://en.wikipedia.org/wiki/Property_(programming)">properties</a></li> 
+    <li><a href="#ActionMethods_ActionMethodsForDomainObjects">DomainObjectActionMethod</a>s: that define user actions</li> 
+    <li>Methods: that define <a href="#ObjectBehavior">ObjectBehavior</a></li> 
+    <li>Annotations: that define <a href="#ObjectBehavior">ObjectBehavior</a></li> 
+   </ul> These members are discussed in more detail in the following paragraphs. 
+   <p></p> 
+   <h2 id="TheDomainLayer_Properties">Properties</h2> 
+   <p><a id="Reference_DomainObjectProperty"></a> <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s have <a href="http://en.wikipedia.org/wiki/State_(computer_science)">state</a>. This means the domain objects contain information that may change over time. This information is represented by <a href="http://en.wikipedia.org/wiki/Property_(programming)">properties</a>. </p>
+   <p></p> Here is an example of a domain class customer that has the following properties: 
+   <ul> 
+    <li>givenName</li> 
+    <li>familyName</li> 
+    <li>fullName</li> 
+    <li>bonusMember</li> 
+   </ul> 
+   <pre>
+ public class Customer {
+ 	private String givenName;
+ 	private String familyName;
+ 	private boolean bonusMember;
+ 
+ 	public String getGivenName() {
+ 		return givenName;
+ 	}
+ 
+ 	public void setGivenName(String givenName) {
+ 		this.givenName = givenName;
+ 	}
+ 
+ 	public String getFamilyName() {
+ 		return familyName;
+ 	}
+ 
+ 	public void setFamilyName(String familyName) {
+ 		this.familyName = familyName;
+ 	}
+ 
+ 	public String getFullName() {
+ 		return new TitleBuilder().append(givenName).append(familyName)
+ 				.toString();
+ 	}
+ 
+ 	public boolean isBonusMember() {
+ 		return bonusMember;
+ 	}
+ 
+ 	public void setBonusMember(boolean bonusMember) {
+ 		this.bonusMember = bonusMember;
+ 	}
+ }
+ </pre> 
+   <p> Properties are a special type of class members and are an intermediate between <a href="http://en.wikipedia.org/wiki/Mutator_method">getter and setter methods</a> and a <a href="http://en.wikipedia.org/wiki/Field_(computer_science)">field</a>. The following 3 sections will explain this in more detail. </p>
+   <p> </p>
+   <h3 id="TheDomainLayer_Properties_GetterMethods">Getter methods</h3> 
+   <ul> 
+    <li>A property always has a getter method, so that other objects can read its value</li> 
+    <li>The getter method name starts with get, followed by the property name in <a href="http://en.wikipedia.org/wiki/CamelCase">CamelCase</a> when the property type is NOT a boolean (See the getGivenName() method in the example above)</li> 
+    <li>The getter method name starts with is, followed by the property name in <a href="http://en.wikipedia.org/wiki/CamelCase">CamelCase</a> when the property type IS a boolean (See the isBonusMember() method in the example above)</li> 
+    <li>The getter methods are always public (accessible by other objects)</li> 
+   </ul> 
+   <h3 id="TheDomainLayer_Properties_SetterMethods">Setter methods</h3> 
+   <ul> 
+    <li>A property might have a setter method, so that other objects can change its value. The property is read-only when it does not have a setter method</li> 
+    <li>The setter method name starts with set, followed by the property name in <a href="http://en.wikipedia.org/wiki/CamelCase">CamelCase</a> (See the setFamilyName() method in the example above)</li> 
+    <li>The setter methods are always public (accessible by other objects)</li> 
+    <li>The setter methods are commonly placed after the corresponding getter method</li> 
+   </ul> 
+   <h3 id="TheDomainLayer_Properties_Fields">Fields</h3> 
+   <ul> 
+    <li>Properties can use <a href="http://en.wikipedia.org/wiki/Field_%28computer_science%29">fields</a> to hold information in the domain object. These fields need to be private (not accessible by other objects) to ensure <a href="http://en.wikipedia.org/wiki/Encapsulation_(computer_science)"> encapsulation</a> (See private fields givenName, familyName and male in the example above)</li> 
+    <li>A property does not need to have a field. The value can be a computation of fields of other properties (such as the fullName property in the example above), or maybe even a value from an <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a> or a <a href="#TheProviderLayer_ProviderObjects">Provider</a>.</li> 
+    <li>Fields are commonly defined at the beginning of the class</li> 
+   </ul> 
+   <h3 id="TheDomainLayer_Properties_PropertyTypes">Property types</h3> Property types can be divided into 3 groups: 
+   <ul> 
+    <li>Value property: A char, string, boolean, number, date, or other <a href="http://en.wikipedia.org/wiki/Primitive_data_type#Specific_primitive_data_types">primitive data types</a>. The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> will display these types as a <a href="http://en.wikipedia.org/wiki/Text_box">textbox</a>. Assuming that the user is allowed to modify that property, they may enter the value by typing in text, which will be validated and formatted according to the value type. Certainly value types may provide alternative mechanisms for user input, such as a calendar-selector for a date field.</li> 
+    <li>Enumeration property: The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> will display these types as as a <a href="http://en.wikipedia.org/wiki/Combo_box">combo-box</a>, containing the different enumeration values as text.</li> 
+    <li>Reference Property: A 'reference property' or 'entity' is one where the type is another <a href="#TheDomainLayer_DomainObjects">DomainObject</a>. Reference properties are thus sometimes referred to as 'associations'. The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> will display a <a href="#TheDomainLayer_DomainObjects">DomainObject</a> property as a <a href="http://en.wikipedia.org/wiki/Text_box">textbox</a>, containing the referenced object (as an icon and title) and a menu button. The menu button will open a <a href="http://en.wikipedia.org/wiki/Context_menu">context menu</a>, that contains <a href="#ActionMethods">ActionMethod</a>s to manipulate the property value.</li> 
+    <li>Collection Property: A 'collection property' is a property that returns an collection of either value properties (<a href="http://en.wikipedia.org/wiki/Primitive_data_type#Specific_primitive_data_types">primitive data type</a>) or reference properties (<a href="#TheDomainLayer_DomainObjects">DomainObject</a>s). The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> will display these types as a table. If the user clicks on a row a <a href="http://en.wikipedia.org/wiki/Context_menu">context menu</a> opens, containing <a href="#ActionMethods">ActionMethod</a>s to manipulate the property value. Collections must be initialized (collection properties should never return null). Collection properties should not contain large collections. If you have a big collection associated with a <a href="#TheDomainLayer_DomainObjects">DomainObject</a> it is better to return the collection from an <a href="#ActionMethods">ActionMethod</a> in the <a href="#TheDomainLayer_DomainObjects">DomainObject</a>, so that the table is displayed on a new tab.</li> 
+   </ul> 
+   <h3 id="TheDomainLayer_Properties_PropertyBehavior">Property behavior</h3> You can specify certain things about both the behavior and presentation of properties by adding specific attributes or methods. See section 
+   <a href="#ObjectBehavior">ObjectBehavior</a>. 
+   <p></p> 
+   <h2 id="TheDomainLayer_ActionMethods">Action Methods</h2> 
+   <p> Domain objects can contain action methods (see <a href="#ActionMethods_ActionMethodsForDomainObjects">DomainObjectActionMethod</a> section) </p> 
+   <p></p> 
+   <p></p> 
+   <h1 id="TheServiceLayer">The Service Layer</h1> 
+   <p><a id="Reference_ServiceLayer"></a> </p>
+   <p> The <a href="#TheServiceLayer">ServiceLayer</a> (sometimes also called <a href="application layer">application layer</a>) gives the user access to the <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s so that the user can work on them. </p> 
+   <p>The <a>ServiceContainer</a> is an <a href="#TheIntrospectFramework_DependencyInjectionContainer">DependencyInjectionContainer</a> that represents the <a href="#TheServiceLayer">ServiceLayer</a> and holds and manages <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s. </p> 
+   <p> Note that the <a href="#TheServiceLayer">ServiceLayer</a> is a middle layer (see <a href="#TheIntrospectFramework_ArchitectureOfAnIntrospectApplication">IntrospectArchitecture</a>): </p> 
+   <ul> 
+    <li> The <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s have NO references to objects in the <a href="#TheUserInterfaceLayer">UserInterfaceLayer</a></li> 
+    <li>The <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s may have references to the objects in the lower <a href="#TheDomainLayer">DomainLayer</a>, <a href="#TheInfrastructureLayer">InfrastructureLayer</a> and <a href="#TheProviderLayer">ProviderLayer</a>, but not visa versa!</li> 
+   </ul> 
+   <p></p> 
+   <h2 id="TheServiceLayer_ServiceObjects">Service Objects</h2> 
+   <p><a id="Reference_ServiceObject"></a> </p>
+   <p> The word 'service' implies: </p> 
+   <ul> 
+    <li> There is a client that needs to be served. For the IntrospectFramework this is the user, trough the <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a></li> 
+    <li>There are activities\ operations. For the IntrospectFramework these are defined as <a href="#ActionMethods">ActionMethod</a>'s</li> 
+    <li>An activity\ operation is done with other things. For the IntrospectFramework these operations are done with or on <a href="#TheDomainLayer_DomainObjects">DomainObject</a> s trough <a href="#ActionMethods">ActionMethod</a> parameters and return values</li> 
+   </ul> 
+   <p></p> Eric Evans explains in his book 
+   <a href="https://en.wikipedia.org/wiki/Domain-driven_design">Domain Driven Design</a>, that a good 
+   <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> has three characteristics: 
+   <ul> 
+    <li> The operation relates to a domain concept that is not a natural part of a <a href="#TheDomainLayer_DomainObjects">DomainObject</a> (Entities or Value Objects).</li> 
+    <li>The interface is defined in terms of other elements of the domain model.</li> 
+    <li>The operation is state-less</li> 
+   </ul> These characteristics are discussed in more detail in the following paragraphs. 
+   <h3 id="TheServiceLayer_ServiceObjects_ServiceObjectsOperationsRelatesToADomainConceptThatIsNotANaturalPartOfADomainObject">Service objects operations relates to a domain concept that is not a natural part of a DomainObject</h3> 
+   <p> <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s contain <a href="#ActionMethods_ActionMethodsForServiceObjects">ServiceObjectActionMethod</a>s. The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> displays these methods as menu items and invokes these methods once a user clicks on the menu item. <a href="#ActionMethods_ActionMethodsForServiceObjects">ServiceObjectActionMethod</a>s create or retrieve <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s where the user does not have an existing <a href="#TheDomainLayer_DomainObjects">DomainObject</a> to navigate from. </p> 
+   <h3 id="TheServiceLayer_ServiceObjects_ServiceObjectsDefineAnInterfaceInTermsOfTheDomainModel">Service objects define an interface in terms of the domain model</h3> 
+   <p> <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s basically provides the user (via the <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a>) access to <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s, so that the user can work on them (via the <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a>). </p> 
+   <h3 id="TheServiceLayer_ServiceObjects_ServiceObjectsAreStateless">Service objects are state-less</h3> 
+   <p> Quoting Eric Evans: “<a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s should be state-less. State-less here means that any client can use any instance of the <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s without regard to the instance’s individual history. The execution of the service will use information that is accessible globally, and may even change that global information (have side-effects). But it does not hold state of its own that affects its behavior, as most domain objects do.&quot; </p> 
+   <p> <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s do not have state and therefore should not have properties (no getter and setter methods). My personal opinion is that a <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> with state is a <a href="http://en.wikipedia.org/wiki/Code_smell">code-smell</a>, which you can solve by moving the <a href="#ActionMethods_ActionMethodsForServiceObjects">ServiceObjectActionMethod</a>s that share state (fields) to new or existing <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s. </p> 
+   <h3 id="TheServiceLayer_ServiceObjects_ServiceObjectsShouldBeFlat">Service Objects should be flat</h3> 
+   <p> <a href="https://en.wikipedia.org/?title=Object-oriented_programming"> Object Orientated Programming</a> favors to put business logic and the validation logic into the <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s (and sometimes <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a>s) as much as possible. <a href="#ActionMethods_ActionMethodsForServiceObjects">ServiceObjectActionMethod</a>s should therefore not contain business logic or validation logic, but delegate the work to collaborations of <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s and <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a>s, in order to prevent the <a href="http://martinfowler.com/bliki/AnemicDomainModel.html">Anemic Domain Model</a> - <a href="http://en.wikipedia.org/wiki/Anti-pattern">anti-pattern</a>. </p> 
+   <p> </p>
+   <h3 id="TheServiceLayer_ServiceObjects_AWebShopExample">A web shop example</h3> 
+   <ul> 
+    <li>The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> class calls the <a href="#ActionMethods_ActionMethodsForServiceObjects">ServiceObjectActionMethod</a> findProduct(searchCriteria) method on <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>: ProductService</li> 
+    <li>This method will call the findProduct on the <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a> : ProductRepository</li> 
+    <li>This method will return a list of <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s that meet the search criteria</li> 
+    <li>The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> displays the found list of <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s as a table in a new tab.</li> 
+   </ul> 
+   <p></p> 
+   <h3 id="TheServiceLayer_ServiceObjects_Naming">Naming</h3> 
+   <p> <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s are normally named after the <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s that they service and have the suffix 'Service' (e.g. CustomerService, OrderService, etc). </p> 
+   <h3 id="TheServiceLayer_ServiceObjects_Construction">Construction</h3> 
+   <p> The principle of “naked objects” is that any <a href="http://en.wikipedia.org/wiki/Plain_Old_Java_Object">'Plain Old Java Object' (POJO)</a> can function as a <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>. In other words: a service class does not have to inherit from any special class, nor implement any particular interface, nor have any specific attributes. </p> 
+   <p> <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s are instiantated by the <a href="#TheIntrospectFramework">IntrospectFramework</a>, and therefore need to be registered to the <a href="#TheIntrospectFramework_TheIntrospectApplication">IntrospectApplication.getServiceClasses()</a> method. </p> In example: 
+   <pre>
+ public class WebShop extends IntrospectApplicationFor... {
+ 	@Override
+ 	public List
+  
+    <class<?>
+     
+   &gt; getServiceClasses() {
+ 		List
+   
+     <class<?>
+       &gt; serviceClasses = new ArrayList&lt;&gt;(); serviceClasses.add(ProductService.class); serviceClasses.add(ShoppingCartService.class); serviceClasses.add(OrderService.class); return serviceClasses; } // etc... } 
+     </class<?>
+  
+    </class<?></pre> 
+   <p> <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s can have references to other objects. These objects are injected into the ServiceObject (see the <a href="#TheIntrospectFramework_DependencyInjectionContainer_ConstructorInjection">ConstructionInjection</a> section) </p> 
+   <h3 id="TheServiceLayer_ServiceObjects_ServiceObjectMembers">Service object members</h3> 
+   <p> Service objects contain: </p> 
+   <ul> 
+    <li><a href="#ActionMethods_ActionMethodsForServiceObjects">ServiceObjectActionMethod</a>s: that define user actions</li> 
+    <li>Methods: that define <a href="#ObjectBehavior">ObjectBehavior</a></li> 
+    <li>Annotations: that define <a href="#ObjectBehavior">ObjectBehavior</a></li> 
+   </ul> These members are discussed in more detail in the following paragraphs. 
+   <p></p> 
+   <h2 id="TheServiceLayer_ActionMethods">Action Methods</h2> 
+   <p> <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s are all about <a href="#ActionMethods">ActionMethod</a>s that represent the main menu items (see section <a href="#ActionMethods_ActionMethodsForServiceObjects">ServiceObjectActionMethod</a>) </p> 
+   <p></p> 
+   <p></p> 
+   <h1 id="TheInfrastructureLayer">The Infrastructure Layer</h1> 
+   <p><a id="Reference_InfrastructureLayer"></a> </p>
+   <p> The <a href="#TheInfrastructureLayer">InfrastructureLayer</a> contains <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a>'s that provide generic technical capabilities to support the higher layers. </p> 
+   <p> The <a href="#TheInfrastructureLayer">InfrastructureLayer</a> is also know as: </p> 
+   <ul> 
+    <li><a href="http://en.wikipedia.org/wiki/Data_access_layer">Data access layer</a></li> 
+    <li><a href="http://en.wikipedia.org/wiki/Persistence_layer">Persistence layer</a></li> 
+    <li>Logging Layer</li> 
+    <li>Networking Layer</li> 
+    <li>And other services which are required to support the <a href="#TheServiceLayer">ServiceLayer</a> or <a href="#TheDomainLayer">DomainLayer</a></li> 
+   </ul> 
+   <p></p> 
+   <p> The <a>InfrastructureContainer</a> is an <a href="#TheIntrospectFramework_DependencyInjectionContainer">DependencyInjectionContainer</a> that represents the <a href="#TheInfrastructureLayer">InfrastructureLayer</a> and holds and manages <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a>s.<br /> </p> Note that the 
+   <a href="#TheInfrastructureLayer">InfrastructureLayer</a> is a middle layer (see 
+   <a href="#TheIntrospectFramework_ArchitectureOfAnIntrospectApplication">IntrospectArchitecture</a>): 
+   <ul> 
+    <li> The <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a>s have NO references to objects in the upper <a href="#TheUserInterfaceLayer">UserInterfaceLayer</a>, <a href="#TheServiceLayer">ServiceLayer</a> nor <a href="#TheDomainLayer">DomainLayer</a></li> 
+    <li>The <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a>s may have references to the objects in the lower <a href="#TheProviderLayer">ProviderLayer</a>, but not visa versa!</li> 
+   </ul> 
+   <h2 id="TheInfrastructureLayer_InfrastructureObjects">Infrastructure Objects</h2> 
+   <p><a id="Reference_InfrastructureObject"></a> </p>
+   <p> <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a>s provide generic technical capabilities to support the higher layers. <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a>s communicate with other systems such as external hardware (like disks), databases, web-services, etc... </p> 
+   <h3 id="TheInfrastructureLayer_InfrastructureObjects_FunctionAndNamingOfInfrastructureObjects">Function and naming of InfrastructureObjects</h3> 
+   <p> The name of an <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a>s depends on what it does. It is common practice to use the following naming: </p> 
+   <ul> 
+    <li>Communicating with a <a href="https://en.wikipedia.org/wiki/Database">database</a>:<br /> class names end with 'Repository', e.g.: CustomerRepository, OrderRepository, etc...</li> 
+    <li>Communicating with a <a href="https://en.wikipedia.org/?title=Web_servicehttps://en.wikipedia.org/?title=Web_service">web-service</a>:<br /> class names end with 'Client', e.g.: EmailClient, GoogleMapsClient, SOAPClient, etc..</li> 
+    <li>Creating objects with a <a href="https://en.wikipedia.org/wiki/Factory_(object-oriented_programming)">factory</a> class:<br /> class names end with 'Factory', e.g.: ReportFactory, etc..</li> 
+    <li><a href="https://en.wikipedia.org/wiki/Logfile">Logging</a>:<br /> class names end with 'Logger'</li> 
+   </ul> 
+   <p></p> 
+   <h3 id="TheInfrastructureLayer_InfrastructureObjects_Construction">Construction</h3> 
+   <p> The principle of “naked objects” is that any <a href="http://en.wikipedia.org/wiki/Plain_Old_Java_Object">'Plain Old Java Object' (POJO)</a> can function as a <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a>. In other words: a <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a> class does not have to inherit from any special class, nor implement any particular interface, nor have any specific attributes. </p> 
+   <p> You can: </p> 
+   <ul> 
+    <li> write new <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a>s.</li> 
+    <li>reuse <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a>s from existing projects</li> 
+    <li>use or extend one of the <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a>s of one of the <a>Introspect</a>Infrastructure projects. Open the type hierarchy of the <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a>, to see all these convenience classes</li> 
+    <li>or use or extend <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a>s from other (open source) projects</li> 
+   </ul> 
+   <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a>s can have references to other objects. These objects are injected into the InfrastructureObjects (see the 
+   <a href="#TheIntrospectFramework_DependencyInjectionContainer_ConstructorInjection">ConstructionInjection</a> section.) 
+   <p></p> 
+   <h3 id="TheInfrastructureLayer_InfrastructureObjects_InfrastructureObjectPresentation">Infrastructure Object Presentation</h3> 
+   <p> The methods of infrastructure object are unknown to the <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> and are not displayed on the <a href="https://en.wikipedia.org/wiki/User_interface">User Interface</a>. </p>
+   <p></p> 
+   <p></p> 
+   <h1 id="TheProviderLayer">The Provider Layer</h1> 
+   <p><a id="Reference_ProviderLayer"></a> </p>
+   <p> The <a href="#TheProviderLayer">ProviderLayer</a> contains <a href="#TheProviderLayer_ProviderObjects">Provider</a> objects that provide generic <a href="#TheIntrospectFramework">IntrospectFramework</a> capabilities (<a href="cross cutting concerns">cross cutting concerns</a>) to support the higher layers (see <a href="#TheIntrospectFramework_ArchitectureOfAnIntrospectApplication">IntrospectArchitecture</a>) </p> 
+   <p> The <a>ProviderContainer</a> is an <a href="#TheIntrospectFramework_DependencyInjectionContainer">DependencyInjectionContainer</a> that represents the <a href="#TheProviderLayer">ProviderLayer</a> and holds and manages <a href="#TheProviderLayer_ProviderObjects">Provider</a> Objects. </p> 
+   <p></p> 
+   <p> Note that this layer is the bottom layer (see <a href="#TheIntrospectFramework_ArchitectureOfAnIntrospectApplication">IntrospectArchitecture</a> ), which means that objects in the upper layers may haved references to <a href="#TheProviderLayer_ProviderObjects">Provider</a>Objects, but not visa versa! </p> 
+   <h2 id="TheProviderLayer_ProviderObjects">Provider Objects</h2> 
+   <p><a id="Reference_Provider"></a> <a href="#TheProviderLayer_ProviderObjects">Provider</a>s are responsible for different <a href="cross cutting concerns">cross cutting concerns</a> within an <a href="#TheIntrospectFramework_TheIntrospectApplication">IntrospectApplication</a> such as: </p>
+   <ul> 
+    <li>Authorization (see <a href="#TheProviderLayer_AuthorizationProvider">AuthorizationProvider</a>)</li> 
+    <li>Validation (see <a href="#TheProviderLayer_ValidationProvider">ValidationProvider</a>)</li> 
+    <li>Multi language (see <a href="#TheProviderLayer_LanguageProvider">LanguageProvider</a>)</li> 
+    <li>Notifications (see <a href="#TheProviderLayer_NotificationProvider">NotificationProvider</a>)</li> 
+    <li>File path information (see <a href="#TheProviderLayer_PathProvider">PathProvider</a>)</li> 
+    <li>Object meta information (see <a href="#TheProviderLayer_ReflectionProvider">ReflectionProvider</a>)</li> 
+    <li>Version information (see <a href="#TheProviderLayer_AboutProvider">AboutProvider</a>)</li> 
+   </ul> 
+   <p> <a href="#TheProviderLayer_ProviderObjects">Provider</a>s may be used by any class within an application. </p> 
+   <p> Providers are interfaces and can have multiple implementations (depending on what type of application you are using/writing). Which implementation of each provider needs to be used within an application is defined in the <a href="#TheIntrospectFramework_TheIntrospectApplication">IntrospectApplication</a> class. You are free to implement your own <a href="#TheProviderLayer_ProviderObjects">Provider</a> implementation and register it by overwriting one of the <a href="#TheIntrospectFramework_TheIntrospectApplication">IntrospectApplication.get...ProviderClass()</a> methods </p> 
+   <h3 id="TheProviderLayer_ProviderObjects_ProviderConstruction">Provider Construction</h3> 
+   <p> <a href="#TheProviderLayer_ProviderObjects">Provider</a>'s are instantiated by the <a>ProviderContainer</a> (see <a href="#TheIntrospectFramework_DependencyInjectionContainer">DependencyInjectionContainer</a>) <a href="#TheProviderLayer_ProviderObjects">Provider</a>Objects can have references to other <a href="#TheProviderLayer_ProviderObjects">Provider</a>Objects. These objects are injected into the <a href="#TheProviderLayer_ProviderObjects">Provider</a>Objects (see the <a href="#TheIntrospectFramework_DependencyInjectionContainer_ConstructorInjection">ConstructionInjection</a> section. </p> 
+   <h3 id="TheProviderLayer_ProviderObjects_ProviderPresentation">Provider Presentation</h3> 
+   <p> The methods of <a href="#TheProviderLayer_ProviderObjects">Provider</a>Objects are not displayed by the <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a>. </p> 
+   <h2 id="TheProviderLayer_AuthorizationProvider">Authorization Provider</h2> 
+   <p> </p>
+   <p><a id="Reference_AuthorizationProvider"></a> </p>
+   <p> <a href="https://en.wikipedia.org/wiki/Authorization_(computer_access_control)">Authorization</a>, means the ability to control what an individual user can see and do within an application, based upon their identity and the role(s) assigned to them. </p> The 
+   <a href="#TheProviderLayer_AuthorizationProvider">AuthorizationProvider</a> facilitates this with methods: 
+   <ul> 
+    <li> <a href="#TheProviderLayer_AuthorizationProvider">AuthorizationProvider.getCurrentUserName()</a></li> 
+    <li> <a href="#TheProviderLayer_AuthorizationProvider">AuthorizationProvider.userInRole(String userRole)</a></li> 
+   </ul> 
+   <h3 id="TheProviderLayer_AuthorizationProvider_TypesOfAuthorizationProvider">Types of AuthorizationProvider</h3> There can be different types of 
+   <a href="#TheProviderLayer_AuthorizationProvider">AuthorizationProvider</a> implementations, depending on the authorization mechanism you prefer. In example: you could write an implementation that uses: 
+   <ul> 
+    <li>hard coded authorization</li> 
+    <li>file based authorization</li> 
+    <li>database authorization</li> 
+    <li>web container authorization (e.g. <a href="https://tomcat.apache.org/tomcat-7.0-doc/realm-howto.html">Apache Tomcat Realm</a>)</li> 
+    <li><a href="https://nl.wikipedia.org/wiki/Lightweight_Directory_Access_Protocol">LDAP</a></li> 
+    <li><a href="https://nl.wikipedia.org/wiki/Active_Directory">Active directory</a></li> 
+    <li>or other</li> 
+   </ul> An example of a basic hard coded validation 
+   <pre>
+ public class AcmeAuthorizationProvider implements AuthorizationProvider {
+ 
+ 	private final List&lt;User&gt; users;
+ 	private User currentUser;
+ 
+ 	public AcmeAuthorizationProvider() {
+ 		users = new ArrayList&lt;&gt;();
+ 		users.add(new User(&quot;carla&quot;, &quot;pasword1&quot;, &quot;salesmanager&quot;));
+ 		users.add(new User(&quot;john&quot;, &quot;pasword2&quot;, &quot;customer&quot;));
+ 	}
+ 
+ 	public void login(String userName, String password)
+ 			throws InvalidNameOrPasswordException {
+ 		for (User user : users) {
+ 			if (user.isValid(userName, password)) {
+ 				currentUser = user;
+ 				return;
+ 			}
+ 		}
+ 		throw new InvalidNameOrPasswordException();
+ 	}
+ 
+ 	@Override
+ 	public String getCurrentUserName() {
+ 		return currentUser == null ? &quot;&quot; : currentUser.getName();
+ 	}
+ 
+ 	@Override
+ 	public boolean userInRole(String role) {
+ 		return currentUser == null ? false : currentUser.inRole(role);
+ 	}
+ 
+ }
+ 
+ </pre> 
+   <h3 id="TheProviderLayer_AuthorizationProvider_RegisteringAnAuthorizationProvider">Registering an AuthorizationProvider</h3> 
+   <p> The <a href="#TheProviderLayer_AuthorizationProvider">AuthorizationProvider</a> is registered to the framework with the <a href="#TheIntrospectFramework_TheIntrospectApplication">IntrospectApplication.getAuthorizationProviderClass()</a> method. By default it returns the <a>DefaultAuthorizationProvider</a>, which always returns true on the <a>userInRole(String)</a> method. You can register another <a href="#TheProviderLayer_AuthorizationProvider">AuthorizationProvider</a> implementation by overriding the <a href="#TheIntrospectFramework_TheIntrospectApplication">IntrospectApplication.getAuthorizationProviderClass()</a> method. </p> 
+   <h3 id="TheProviderLayer_AuthorizationProvider_UsingAnAuthorizationProvider">Using an AuthorizationProvider</h3> 
+   <p> The <a href="#TheProviderLayer_AuthorizationProvider">AuthorizationProvider</a> is used by the @Hidden and @Disabled annotations (see <a href="#ObjectBehavior">ObjectBehavior</a>). If you want to use the <a href="#TheProviderLayer_AuthorizationProvider">AuthorizationProvider</a> in your code you need to inject it into your object (see <a href="#TheIntrospectFramework_DependencyInjectionContainer_ConstructorInjection">ConstructionInjection</a>) </p>
+   <p></p> 
+   <p></p> 
+   <h2 id="TheProviderLayer_ValidationProvider">Validation Provider</h2> 
+   <p> </p>
+   <p><a id="Reference_ValidationProvider"></a> </p>
+   <p> The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> sometimes let’s the user edit an <a href="#TheDomainLayer_DomainObjects">DomainObject</a> before it is passed as an <a href="#ActionMethods">ActionMethod</a> parameter (depending on how the ActionMethod is annotated, see <a href="#ObjectBehavior_ExecutionMode">ExecutionMode</a> ). The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> then validates the edited <a href="#TheDomainLayer_DomainObjects">DomainObject</a> using the <a href="#TheProviderLayer_ValidationProvider">ValidationProvider</a> before the <a href="#ActionMethods">ActionMethod</a> is called.The <a href="#TheProviderLayer_ValidationProvider">ValidationProvider</a> will use ValidationAnnotationsTODO_LINK and ValidationMethods_TODO_LINK that are located in the <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s them selves so that they can be validated. </p> 
+   <h3 id="TheProviderLayer_ValidationProvider_ValidationProviderImplementation">ValidationProvider implementation</h3> 
+   <p> There are many validation libraries and frameworks available. The IntrospectFramework complies with the JSR303 by using the <a href="http://bval.apache.org/">Apache Bean Validator (BVal)</a> library, combined with <a href="#ObjectBehavior_Validation_ValidationMethods">ValidationMethod</a>s. You are free to implement or extend your own implementation and register it to your <a href="#TheIntrospectFramework_TheIntrospectApplication">IntrospectApplication</a> by overriding the <a href="#TheIntrospectFramework_TheIntrospectApplication">IntrospectApplication.getValidationProviderClass()</a> method </p> 
+   <p></p> 
+   <p></p> 
+   <h2 id="TheProviderLayer_LanguageProvider">Language Provider</h2> 
+   <p> </p>
+   <p><a id="Reference_LanguageProvider"></a> </p>
+   <p> The <a href="#TheProviderLayer_LanguageProvider">LanguageProvider</a> makes multilingual support possible. The <a href="#TheIntrospectFramework">IntrospectFramework</a> supports the English language by default because it uses the ClassNames, <a href="#TheDomainLayer_Properties">DomainObjectProperty</a>Names and <a href="#ActionMethods">ActionMethod</a>names that are used in the code as part of the <a href="http://martinfowler.com/bliki/UbiquitousLanguage.html">Ubiquitous Language</a> (it does not make sense to mix an other language into your code). </p> 
+   <h3 id="TheProviderLayer_LanguageProvider_LanguagePropertyFiles">Language property files</h3> 
+   <p> Texts for other languages are stored in property files. The name of these files need to be: &lt;application configuration folder&gt;/language_&lt;language_code&gt;.properties </p> Where: 
+   <ul> 
+    <li> &lt;application configuration folder&gt; These files need to be located at the configuration folder of the application. See PathProvider for more information</li> 
+    <li>&lt;Language_code&gt; two letter language code (see java <a>Locale</a>)</li> 
+   </ul> 
+   <p> The language property files comply to the Java <a href="https://en.wikipedia.org/wiki/.properties">.properties</a> standard and thus contain key value pairs. </p> 
+   <ul> 
+    <li> The key is an reference to part of the code. Keys have the following format: &lt;packageName&gt;.&lt;classname&gt; or &lt;packageName&gt;.&lt;classname&gt;.&lt;propertyName&gt; or &lt;packageName&gt;.&lt;classname&gt;.&lt;actionMethodName&gt;, followed by .displayname or.description (see examples below)</li> 
+    <li>The value is the translated text. Special characters are supported with Unicode (\u 
+     <number>
+       e.g. \u20AC=€). There are several free tools available to edit .properties file with good Unicode support. 
+     </number></li> 
+   </ul> 
+   <p></p> 
+   <p> Examples of key value lines in property files: </p> 
+   <ul> 
+    <li> com.acme.order.ShoppingCart.displayname=Winkel wagen</li> 
+    <li>com.acme.product.ProductService.displayname=Producten</li> 
+   </ul> 
+   <h3 id="TheProviderLayer_LanguageProvider_GettingTheTranslatedText">Getting the translated text</h3> 
+   <p> The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> will call the <a href="#TheProviderLayer_LanguageProvider">LanguageProvider</a> to try and get the appropriate text from the language property files (depending on the selected language in the graphical user interface). If it can’t find this value it will display the default values (in English) </p> 
+   <p> An other way to get a translated text is to inject the <a href="#TheProviderLayer_LanguageProvider">LanguageProvider</a> into the object that needs it and use it in your code (see <a href="#TheIntrospectFramework_DependencyInjectionContainer_ConstructorInjection">ConstructionInjection</a>) </p> 
+   <ul> 
+    <li>TODO CODE EXAMPLE OF VALIDATION TEXTS OR EXCEPTION TEXTS</li> 
+    <li>TODO EXPLAIN HOW THE LANGUAGE IS SELECTED</li> 
+    <li>TODO HOW TO SET DEFAULT TEXT OTHER THAN DEFAULT</li> 
+    <li>TODO EXPLAIN HOW TO GENERATE OR UPDATE LANGUAGE PROPERTY FILES WITH A SPECIAL INTROSPECT APPLICATION</li> 
+   </ul> 
+   <p></p> 
+   <p></p> 
+   <h2 id="TheProviderLayer_NotificationProvider">Notification Provider</h2> 
+   <p> </p>
+   <p><a id="Reference_NotificationProvider"></a> </p>
+   <ul> 
+    <li>TODO What it does</li> 
+    <li>TODO How you can use it (or explain who uses it)</li> 
+    <li>TODO Code example</li> 
+    <li>TODO How to register a custom ... provider</li> 
+   </ul> 
+   <p></p> 
+   <p></p> 
+   <h2 id="TheProviderLayer_PathProvider">Path Provider</h2> 
+   <p> </p>
+   <p><a id="Reference_PathProvider"></a> </p>
+   <p> The PathProvider provides the locations of files that are needed within an IntrospectApplication. </p> 
+   <p> The actual file location depends on the type of introspectApplication used. </p> 
+   <ul> 
+    <li>TODO explain interface</li> 
+    <li>TODO explain the different file locations for swing, android, vaadin</li> 
+   </ul> The 
+   <a href="#TheProviderLayer_PathProvider">PathProvider</a> is used by the user interfaceController and can also be used in other objects: TODO Code example file path to database in 
+   <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a> 
+   <p> You can provide your own implementation of the <a href="#TheProviderLayer_PathProvider">PathProvider</a>. You can register your customizer <a href="#TheProviderLayer_PathProvider">PathProvider</a> implementation by overriding the <a href="#TheIntrospectFramework_TheIntrospectApplication">IntrospectApplication.getPathProviderClass()</a> method. </p> 
+   <p></p> 
+   <p></p> 
+   <h2 id="TheProviderLayer_ReflectionProvider">Reflection Provider</h2> 
+   <p> </p>
+   <p><a id="Reference_ReflectionProvider"></a> The <a href="#TheProviderLayer_ReflectionProvider">ReflectionProvider</a> provides information on objects ( <a>ClassInfo</a>), properties (<a>PropertyInfo</a>) of <a href="#ActionMethods">ActionMethod</a> (<a>ActionMethodInfo</a>) using <a href="https://en.wikipedia.org/wiki/Reflection_(computer_programming)">reflection</a>. The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> uses this information to know how the user interface should look like and behave. You can use the <a href="#TheProviderLayer_ReflectionProvider">ReflectionProvider</a> in your code when you need meta information (See <a href="#TheIntrospectFramework_DependencyInjectionContainer_ConstructorInjection">ConstructionInjection</a>) TODO Code example </p> 
+   <p></p> 
+   <h2 id="TheProviderLayer_AboutProvider">About Provider</h2> 
+   <p> </p>
+   <p><a id="Reference_AboutProvider"></a> The <a href="#TheProviderLayer_AboutProvider">AboutProvider</a> provides the following information on all objects used in an <a href="#TheIntrospectFramework_TheIntrospectApplication">IntrospectApplication</a>: </p>
+   <ul> 
+    <li>The class name</li> 
+    <li>The package name (jar,war,etc...)</li> 
+    <li>The version of the jar file (from the meta info file)</li> 
+    <li>The authors of the jar file (from the meta info file)</li> 
+   </ul> This about information can be displayed on a graphical user interface. 
+   <p></p> 
+   <p></p> 
+   <p></p> 
+   <p></p> 
+   <h1 id="TheUserInterfaceLayer">The UserInterface Layer</h1> 
+   <p><a id="Reference_UserInterfaceLayer"></a> The <a href="#TheUserInterfaceLayer">UserInterfaceLayer</a> is also know as presentation layer (although I think that 'presentation layer' is a poor name, because it is responsible for so much more). The <a href="#TheUserInterfaceLayer">UserInterfaceLayer</a> contains the <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a>, which is responsible for showing information to the user and processing the information from the user using the objects in the lower layers (see <a href="#TheIntrospectFramework_ArchitectureOfAnIntrospectApplication">IntrospectArchitecture</a>). </p>
+   <p> The <a>UserInterfaceContainer</a> is an <a href="#TheIntrospectFramework_DependencyInjectionContainer">DependencyInjectionContainer</a> that represents the <a href="#TheUserInterfaceLayer">UserInterfaceLayer</a> and holds and manages the <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a>. </p> Note that this layer is the top layer, which means it may know all the objects in the lower layers but not visa versa! See 
+   <a href="#TheIntrospectFramework_ArchitectureOfAnIntrospectApplication">IntrospectArchitecture</a> 
+   <h2 id="TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</h2> 
+   <p><a id="Reference_UserInterfaceController"></a> </p>
+   <p> The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> is responsible for showing information to the user and processing the information from the user using the objects in the lower layers (see <a href="#TheIntrospectFramework_ArchitectureOfAnIntrospectApplication">IntrospectArchitecture</a>). </p> 
+   <p> See the <a href="#IntrospectApplicationProjects">IntrospectApplicationProjects</a> section to learn what types of user interfaces are available, or download all the sources of the <a href="#TheIntrospectFramework">IntrospectFramework</a> projects and see the class hierarchy of the <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> class to find all the different user interface implementations. </p> TODO make reference to IntrospectProjectsDemosAndDownloads and move the sub parts to the javadoc IntrospectApplication inplementations, containting a description of the type of application, How to download a demo, How to create a new project 
+   <p> An user interface could be any type of user interface, in example: </p> 
+   <h3 id="TheUserInterfaceLayer_UserInterfaceController_CommandLineInterface"> Command line interface</h3> 
+   <ul> 
+    <li><a href="http://en.wikipedia.org/wiki/Command-line_interface">Command line interface</a> is a text-based user interface where the user (or client) issues commands in the form of successive lines of text (command lines).</li> 
+    <li>The user can be a person or another computer application (using a shell). </li> 
+    <li>See <a>IntrospectApplicationForCommandLine</a>.</li> 
+   </ul> 
+   <h3 id="TheUserInterfaceLayer_UserInterfaceController_DesktopInterface">Desktop interface</h3> 
+   <ul> 
+    <li>A desktop interface is a <a href="http://en.wikipedia.org/wiki/Graphical_user_interface"> graphical user interface</a> for a computer with an <a href="https://en.wikipedia.org/wiki/Desktop_environment">desktop environment</a></li> 
+    <li>The user is likely to be a person</li> 
+    <li>Introspect has an desktop implementation based on <a href="">Swing</a>. See <a>IntrospectApplicationForSwing</a></li> 
+   </ul> 
+   <h3 id="TheUserInterfaceLayer_UserInterfaceController_MobileInterface">Mobile interface</h3> 
+   <ul> 
+    <li> A mobile interface is a <a href="http://en.wikipedia.org/wiki/Graphical_user_interface"> graphical user interface</a> for mobile devices such as smart phones and tablets.</li> 
+    <li>The user is likely to be a person</li> 
+    <li>Introspect will have a mobile implementation using Android. See <a>IntrospectApplicationForAndroid</a></li> 
+   </ul> 
+   <h3 id="TheUserInterfaceLayer_UserInterfaceController_WebInterface">Web interface</h3> 
+   <ul> 
+    <li> A <a href="https://en.wikipedia.org/wiki/Web_application">web application</a> is a <a href="http://en.wikipedia.org/wiki/Graphical_user_interface">graphical user interface</a> for <a href="https://en.wikipedia.org/wiki/Web_browser">web browsers</a></li> 
+    <li>The user is likely to be a person</li> 
+    <li> Introspect will have a mobile implementation using Vaadin. See <a>IntrospectApplicationForVaadin</a></li> 
+   </ul> 
+   <h3 id="TheUserInterfaceLayer_UserInterfaceController_SOAPInterface">SOAP interface</h3> 
+   <ul> 
+    <li>The SOAP interface is a <a href="https://en.wikipedia.org/wiki/Web_service">web service</a> that allows other computer applications to interact via the <a href="http://en.wikipedia.org/wiki/SOAP">Simple Object Access Protocol (SOAP)</a></li> 
+    <li>The user is likely to be another computer application</li> 
+    <li>Introspect might have a SOAP implementation in the future</li> 
+   </ul> 
+   <h3 id="TheUserInterfaceLayer_UserInterfaceController_RESTfullXMLInterface">RESTfull XML interface</h3> 
+   <ul> 
+    <li>The RESTfull XML interface is a <a href="https://en.wikipedia.org/wiki/Web_service">web service</a> that allows other computer applications to interact using <a href="http://en.wikipedia.org/wiki/Representational_state_transfer">Representational State Transfer (RESTfull)</a> with <a href="https://en.wikipedia.org/wiki/XML">XML</a></li> 
+    <li>The user is likely to be another computer application</li> 
+    <li>Introspect might have a RESTfull XML implementation in the future</li> 
+   </ul> 
+   <h3 id="TheUserInterfaceLayer_UserInterfaceController_RESTfullJSONInterface">RESTfull JSON interface</h3> 
+   <ul> 
+    <li>The RESTfull SJON interface is a <a href="https://en.wikipedia.org/wiki/Web_service">web service</a> that allows other computer applications to interact using <a href="http://en.wikipedia.org/wiki/Representational_state_transfer">Representational State Transfer (RESTfull)</a> with <a href="https://en.wikipedia.org/wiki/JSON">JSON</a></li> 
+    <li>The user is likely to be another computer application</li> 
+    <li>Introspect might have a RESTfull XML implementation in the future</li> 
+   </ul> 
+   <h3 id="TheUserInterfaceLayer_UserInterfaceController_JUnitInterface">JUnit interface</h3> 
+   <ul> 
+    <li>The JUnit interface is an interface to test objects in the lower layers (see <a href="#TheIntrospectFramework_ArchitectureOfAnIntrospectApplication">IntrospectArchitecture</a>), using the <a href="https://en.wikipedia.org/wiki/JUnit">JUnit test framework</a></li> 
+    <li>The user is the JUnit test framework</li> 
+    <li>See <a>IntrospectApplicationForJUnit</a>.</li> 
+   </ul> 
+   <p></p> 
+   <p></p> 
+   <h1 id="ActionMethods">Action Methods</h1> 
+   <p><a id="Reference_ActionMethod"></a> </p>
+   <p> An <a href="#ActionMethods">ActionMethod</a> is a method in a <a href="#TheDomainLayer_DomainObjects">DomainObject</a> or <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> that is displayed by the <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> as a menu item. An <a href="#ActionMethods">ActionMethod</a> is invoked by the <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> when the user clicks on the menu item. </p> 
+   <h2 id="ActionMethods_ActionMethodsForDomainObjects">Action Methods for Domain Objects</h2> 
+   <p> </p>
+   <p><a id="Reference_DomainObjectActionMethod"></a> </p>
+   <p> <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s may have <a href="#ActionMethods">ActionMethod</a>s that to do something with or for the given <a href="#TheDomainLayer_DomainObjects">DomainObject</a>. In example: an ShoppingCart object may have an ActionMethod such as checkout(). </p> 
+   <h3 id="ActionMethods_ActionMethodsForDomainObjects_DomainObjectMenu">Domain Object Menu</h3> 
+   <p> </p>
+   <p><a id="Reference_DomainObjectMenu"></a> TODO PICTURE Domain object MENU and table row context menu </p>
+   <p> <a href="#ActionMethods">ActionMethod</a>s of <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s are displayed as menu items in the <a href="#ActionMethods_ActionMethodsForDomainObjects_DomainObjectMenu">DomainObjectMenu</a>. </p> 
+   <p> The <a href="#ActionMethods_ActionMethodsForDomainObjects_DomainObjectMenu">DomainObjectMenu</a> is displayed on the <a href="https://en.wikipedia.org/wiki/Toolbar">toolbar</a> of a <a>FormView</a> (that displays a <a href="#TheDomainLayer_DomainObjects">DomainObject</a>) or as a <a href="">context menu</a> when the user clicks on a row of a table view. The <a href="#ActionMethods_ActionMethodsForDomainObjects_DomainObjectMenu">DomainObjectMenu</a> allows a user to perform an action on or with a <a href="#TheDomainLayer_DomainObjects">DomainObject</a>. An <a href="#ActionMethods_ActionMethodsForDomainObjects_DomainObjectMenu">DomainObjectMenu</a> contains all the <a href="#ActionMethods">ActionMethod</a>s of the <a href="#TheDomainLayer_DomainObjects">DomainObject</a> and all <a href="#ActionMethods">ActionMethod</a> s of <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s that take the <a href="#TheDomainLayer_DomainObjects">DomainObject</a> as a parameter. Each <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> is displayed as a sub menu. </p> 
+   <p></p> 
+   <p></p>
+   <p></p> 
+   <p></p> 
+   <h2 id="ActionMethods_ActionMethodsForDomainObjectProperties">Action Methods for Domain Object Properties</h2> 
+   <p> </p>
+   <p><a id="Reference_DomainObjectPropertyActionMethod"></a> </p>
+   <p> <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s may have <a href="#ActionMethods">ActionMethod</a>s that do something with the value of a <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> (e.g. manipulate it). </p> 
+   <p> The name of the ActionMethod for a <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> must begin with the action name, followed by its property name </p> Examples: 
+   <ul> 
+    <li>A ShoppingCar object may have an property lineItems that has a <a href="#ActionMethods_ActionMethodsForDomainObjectProperties">DomainObjectPropertyActionMethod</a>s such as addLineItems(LineItem lineItem) or removeLineItem(LineItem lineItem) or removeAllLineItems().</li> 
+    <li>A Customer object may have an property address that has a PropertyActionMethod such as moveToNewAddress(Address new Address)</li> 
+   </ul> 
+   <a href="#ActionMethods">ActionMethod</a>s of 
+   <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s are displayed as menu items in the PropertyMenu. 
+   <h3 id="ActionMethods_ActionMethodsForDomainObjectProperties_DomainObjectPropertyMenu">Domain Object Property Menu</h3> 
+   <p> </p>
+   <p><a id="Reference_DomainObjectPropertyMenu"></a> TODO PICTURE property context MENU and field table row context menu </p>
+   <p> The <a href="#ActionMethods_ActionMethodsForDomainObjectProperties_DomainObjectPropertyMenu">DomainObjectPropertyMenu</a> is displayed as a <a href="https://en.wikipedia.org/wiki/Context_menu">context menu</a> in a formview when the menu button of a referenceProperty or a row of a collectionproperty is clicked. The propertyMenu allows a user to manipulate a <a href="#TheDomainLayer_Properties">DomainObjectProperty</a>. It contains all <a href="#ActionMethods_ActionMethodsForDomainObjectProperties">DomainObjectPropertyActionMethod</a>s of and all <a href="#ActionMethods">ActionMethod</a>s of <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s that take the <a href="#TheDomainLayer_DomainObjects">DomainObject</a> as a parameter. Each <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> is displayed as a sub menu. </p> 
+   <p></p> 
+   <p></p> 
+   <p></p> 
+   <p></p> 
+   <h2 id="ActionMethods_ActionMethodsForServiceObjects">Action Methods for Service Objects</h2> 
+   <p> </p>
+   <p><a id="Reference_ServiceObjectActionMethod"></a> </p>
+   <p> <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s exist because they always have one ore more <a href="#ActionMethods">ActionMethod</a>s. ActionMethods of serviceObjects can appear as menu items in the <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a>, <a href="#ActionMethods_ActionMethodsForDomainObjects_DomainObjectMenu">DomainObjectMenu</a>, or <a href="#ActionMethods_ActionMethodsForDomainObjectProperties_DomainObjectPropertyMenu">DomainObjectPropertyMenu</a> </p> 
+   <p> In Example: a CustomerService object may have an <a href="#ActionMethods">ActionMethod</a> such as findCustomer(CustomerSearchArgument searchArgument) that is displayed in the <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a>. </p> 
+   <h3 id="ActionMethods_ActionMethodsForServiceObjects_MainMenu">Main menu</h3> 
+   <p><a id="Reference_MainMenu"></a> TODO PICTURE MAIN MENU </p>
+   <p> The <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a> is displayed on a panel on the left hand side of the user interface (sometimes this panel is hidden but it can always be made visible again using the main toolbar. The main menu provides the user access to the <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s so that the user can work on them. The <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a> contains all <a href="#ActionMethods">ActionMethod</a>s of <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s that either have no method parameter or have an <a href="#ObjectBehavior_ParameterFactory_ParameterFactoryAnnotation">ParameterFactory</a>. </p> 
+   <p> <a href="#ActionMethods">ActionMethod</a>s of <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s that take a <a href="#TheDomainLayer_DomainObjects">DomainObject</a> as a parameter and have no <a href="#ObjectBehavior_ParameterFactory_ParameterFactoryAnnotation">ParameterFactory</a> are displayed in <a href="#ActionMethods_ActionMethodsForDomainObjects_DomainObjectMenu">DomainObjectMenu</a>s and propertyMenus. </p> Each 
+   <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> is always displayed as a sub menu 
+   <p></p> 
+   <p></p> 
+   <p></p> 
+   <h2 id="ActionMethods_ActionMethodsConvention">Action Methods Convention</h2> 
+   <p> Any method in a <a href="#TheDomainLayer_DomainObjects">DomainObject</a> or <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> can be an Action method, provided that it complies with the following convention: </p> 
+   <ul> 
+    <li>The method has no parameter or a single <a href="#TheDomainLayer_DomainObjects">DomainObject</a> parameter</li> 
+    <li>Its return type (if any) are types recognized by the Introspect framework (see below)</li> 
+    <li>The method is not a getter method or a setter method (see <a href="#TheDomainLayer_Properties">DomainObjectProperty</a>)</li> 
+    <li>The method is not a <a href="#ObjectBehavior_BehavioralMethods">BehavioralMethod</a></li> 
+    <li>The method is public (not private)</li> 
+    <li>The method is NOT static</li> 
+   </ul> 
+   <h2 id="ActionMethods_ActionMethodNames">Action method names</h2> 
+   <p> The name of an <a href="#ActionMethods">ActionMethod</a> should describe the action and match the <a href="http://martinfowler.com/bliki/UbiquitousLanguage.html">Ubiquitous Language</a> (in terms understood by both users and developers). Keep in mind that the goal of a user is almost never to create, update or delete objects. Method names like: createPerson, updatePerson and removePerson should therefore be avoided where possible. Method names like registerNewBirth, registerMarriage, registerPersonDeceased would be better names. </p> 
+   <h2 id="ActionMethods_ActionMethodParameter">Action method parameter</h2> 
+   <p> An action method either has no parameter or a single <a href="#TheDomainLayer_DomainObjects">DomainObject</a> as a parameter. If not, the Introspect Framework will not recognize a method as an <a href="#ActionMethods">ActionMethod</a>. </p> 
+   <h2 id="ActionMethods_ActionMethodReturnValue">Action method return value</h2> 
+   <p> The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> renders the output of a method, depending on the type of the action method return value: </p> 
+   <ul> 
+    <li>No return value (void method): The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> will display a short message when the method has been executed</li> 
+    <li><a href="https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html">A primitive data type</a>: The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> will display a message dialog that displays the return value after the method is been executed</li> 
+    <li>A <a href="#TheDomainLayer_DomainObjects">DomainObject</a>: The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> displays the <a href="#TheDomainLayer_DomainObjects">DomainObject</a> in a form on a new tab.</li> 
+    <li>A <a href="http://en.wikipedia.org/wiki/Java_collections_framework">collection</a> of <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s: The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> displays the <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s in table on a new tab.</li> 
+    <li>A URI: The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> displays the contents of the URI on a new tab.</li> 
+    <li>A <a>DownloadStream</a>: The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> will open a &quot;Save as&quot; dialog&quot; so that the file can be down loaded.</li> 
+   </ul> 
+   <p></p> 
+   <h2 id="ActionMethods_ActionExecutionModes">Action execution modes</h2> 
+   <p> <a href="#ActionMethods">ActionMethod</a>s can be annotated, so that the <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> knows how the <a href="#ActionMethods">ActionMethod</a> needs to be invoked after the user has clicked on the corresponding menu item. For more information see <a href="#ObjectBehavior_ExecutionMode">ExecutionMode</a> </p> 
+   <h2 id="ActionMethods_ActionBehavior">Action behavior</h2> 
+   <p> You can specify certain things about both the behavior and presentation of actions methods, such as their display name, icon, visibility, enabled state, etc with help of annotations or behavior methods. See the sections on <a href="#ObjectBehavior">ObjectBehavior</a>. </p> 
+   <p></p> 
+   <h1 id="ObjectBehavior">Object behavior</h1> 
+   <p><a id="Reference_ObjectBehavior"></a> The <a href="#TheIntrospectFramework_TheIntrospectApplication">IntrospectApplication</a>, <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s and <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s can have behavior that defines how the objects act or how they are displayed. Behavior can be defined with: </p>
+   <ul> 
+    <li><a href="#ObjectBehavior_BehavioralAnnotations">BehavioralAnnotation</a>s</li> 
+    <li><a href="#ObjectBehavior_BehavioralMethods">BehavioralMethod</a>s</li> 
+   </ul> 
+   <h3 id="ObjectBehavior_BehavioralAnnotations">Behavioral Annotations</h3> 
+   <p> </p>
+   <p><a id="Reference_BehavioralAnnotation"></a> </p>
+   <p> <a href="#ObjectBehavior_BehavioralAnnotations">BehavioralAnnotation</a>s are recognized by the <a href="#TheIntrospectFramework">IntrospectFramework</a> and define how <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s, <a href="#TheDomainLayer_Properties">DomainObjectProperty</a>s or <a href="#ActionMethods">ActionMethod</a>s behave (how they act and how they displayed). </p> 
+   <a href="#ObjectBehavior_BehavioralAnnotations">BehavioralAnnotation</a>s are normally located before the declaration of the member: 
+   <ul> 
+    <li><a href="#ObjectBehavior_BehavioralAnnotations">BehavioralAnnotation</a>s for a class: is located before the class key word </li> 
+    <li><a href="#ObjectBehavior_BehavioralAnnotations">BehavioralAnnotation</a>s for a <a href="#TheDomainLayer_Properties">DomainObjectProperty</a>: is located before the getter method of a <a href="#TheDomainLayer_Properties">DomainObjectProperty</a></li> 
+    <li><a href="#ObjectBehavior_BehavioralAnnotations">BehavioralAnnotation</a>s for an <a href="#ActionMethods">ActionMethod</a>: is located before the <a href="#ActionMethods">ActionMethod</a></li> 
+   </ul> 
+   <p></p> 
+   <p></p> 
+   <h3 id="ObjectBehavior_BehavioralMethods">Behavioral Methods</h3> 
+   <p> </p>
+   <p><a id="Reference_BehavioralMethod"></a> </p>
+   <p> <a href="#ObjectBehavior_BehavioralMethods">BehavioralMethod</a>s are recognized by the <a href="#TheIntrospectFramework">IntrospectFramework</a> and dynamically define how <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s, <a href="#TheDomainLayer_Properties">DomainObjectProperty</a>s or <a href="#ActionMethods">ActionMethod</a>s behave (how they act and how they displayed). Dynamic means that the behavior can change over time, depending on the state of the object (property values). </p> 
+   <h3 id="ObjectBehavior_BehavioralMethodConvention">Behavioral Method Convention</h3> 
+   <ul> 
+    <li>Syntax: &lt;memberName&gt;&lt;behaviourName&gt;<br /> &lt;memberName&gt;= can be a <a>Class</a>Name, a <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> Name or a <a href="#ActionMethods">ActionMethod</a>Name<br /> &lt;behaviourName&gt;= A behavior like Icon, Hidden, Disabled, Validation, etc </li> 
+    <li><a href="#ObjectBehavior_BehavioralMethods">BehavioralMethod</a>s do NOT have any parameters</li> 
+    <li><a href="#ObjectBehavior_BehavioralMethods">BehavioralMethod</a>s ALWAYS return a value (see <a href="#ObjectBehavior_BehavioralMethods">BehavioralMethod.returnType()</a> of the different implementations</li> 
+    <li><a href="#ObjectBehavior_BehavioralMethods">BehavioralMethod</a>s are public</li> 
+    <li><a href="#ObjectBehavior_BehavioralMethods">BehavioralMethod</a>s are not static</li> 
+    <li><a href="#ObjectBehavior_BehavioralMethods">BehavioralMethod</a>s are normally located after the declaration of the member:</li> 
+    <ul> 
+     <li><a href="#ObjectBehavior_BehavioralMethods">BehavioralMethod</a>s for classes: are located after the constructors </li> 
+     <li><a href="#ObjectBehavior_BehavioralMethods">BehavioralMethod</a>s for <a href="#TheDomainLayer_Properties">DomainObjectProperty</a>: are located after the getter and setter methods of the properties</li> 
+     <li><a href="#ObjectBehavior_BehavioralMethods">BehavioralMethod</a>s for <a href="#ActionMethods">ActionMethod</a>: are located after the <a href="#ActionMethods">ActionMethod</a></li> 
+    </ul> 
+   </ul> 
+   <p></p> 
+   <p></p> 
+   <h2 id="ObjectBehavior_DisplayName">Display Name</h2> 
+   <p> </p>
+   <p><a id="Reference_DisplayNameModel"></a> </p>
+   <p> The <a>Class</a>Names, <a href="#TheDomainLayer_Properties">DomainObjectProperty</a>Names and <a href="#ActionMethods">ActionMethod</a>Names are part of the <a href="http://martinfowler.com/bliki/UbiquitousLanguage.html">ubiquitous language</a> (in terms both understand by users and developers) and should therefore match both the code and user interface. </p> 
+   <h3 id="ObjectBehavior_DisplayName_DisplayNameDefault">DisplayName Default</h3> 
+   <p> <a>Class</a>Names, <a href="#TheDomainLayer_Properties">DomainObjectProperty</a>Names and <a href="#ActionMethods">ActionMethod</a>Names in the <a href="https://en.wikipedia.org/wiki/Codebase">codebase</a> use names such as OrderService, orderLines, addOrderLine (using no spaces, <a href="https://nl.wikipedia.org/wiki/CamelCase">camelCase</a> and no special characters). If the user is a an human, more user friendly names are needed such as “Orders” “Order lines” and “Add order line”. This format is called the <a href="#ObjectBehavior_DisplayName_DisplayNameAnnotation">DisplayName</a>. The <a href="#TheIntrospectFramework">IntrospectFramework</a> will automatically convert the names used in the code to a human readable format (<a href="#ObjectBehavior_DisplayName_DisplayNameAnnotation">DisplayName</a>) when needed. </p> 
+   <p> The <a href="#TheIntrospectFramework">IntrospectFramework</a> supports DisplayNames for multiple languages. The <a href="#TheProviderLayer_LanguageProvider">LanguageProvider</a> is used to get the default displayNames from a language specific property files. For more information see <a href="#TheProviderLayer_LanguageProvider">LanguageProvider</a>. </p> 
+   <h3 id="ObjectBehavior_DisplayName_DisplayNameAnnotation">DisplayName Annotation</h3> 
+   <p> </p>
+   <p><a id="Reference_DisplayName"></a> In some cases the default <a href="#ObjectBehavior_DisplayName_DisplayNameAnnotation">DisplayName</a> does not suffice, in example when: </p>
+   <ul> 
+    <li>A different use of capital case is needed</li> 
+    <li>Special characters are needed that can not be used in the code</li> 
+    <li>The plural form of the default displayName of a ServiceObject is incorrect</li> 
+   </ul> 
+   <p> In these cases you can use the <a href="#ObjectBehavior_DisplayName_DisplayNameAnnotation">DisplayName</a> annotation before the class keyword, before the getter method of a property or before the ActionMethod. </p> TODO EXAMPLE ACMEWebShop 
+   <p> Note that the <a href="#ObjectBehavior_DisplayName_DisplayNameAnnotation">DisplayName</a> annotation is intended for the English language only. Use the Description default if you want to use multiple languages </p> 
+   <p></p> 
+   <p></p> 
+   <p></p> 
+   <p></p> 
+   <h2 id="ObjectBehavior_Description">Description</h2> 
+   <p> </p>
+   <p><a id="Reference_DescriptionModel"></a> </p>
+   <p> Each <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> or <a href="#ActionMethods">ActionMethod</a> can have a text to explain the class member in more detail. This description is often displayed in a graphical user interface when the user hovers over the property or action menu. </p> 
+   <h3 id="ObjectBehavior_Description_DescriptionDefault">Description Default</h3> 
+   <p> By default the description is the same as the default <a href="#ObjectBehavior_DisplayName_DisplayNameAnnotation">DisplayName</a>, therefore it is recommended to override the default value where needed. You can override the default value by defining the description in the language property files (see <a href="#TheProviderLayer_LanguageProvider">LanguageProvider</a>) or by adding a description annotation. </p> 
+   <h3 id="ObjectBehavior_Description_DescriptionAnnotation">Description Annotation</h3> 
+   <p> </p>
+   <p><a id="Reference_Description"></a> </p>
+   <p> You can override the default description value for the English language, by putting the <a href="#ObjectBehavior_Description_DescriptionAnnotation">Description</a> annotation before the getter method of a <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> or before an <a href="#ActionMethods">ActionMethod</a> </p> TODO EXAMPLE 
+   <p> Note that the <a href="#ObjectBehavior_Description_DescriptionAnnotation">Description</a> annotation is intended for the English language only. Use the Description default if you want to use multiple languages </p> 
+   <p></p> 
+   <p></p> 
+   <p></p> 
+   <p></p> 
+   <h2 id="ObjectBehavior_Title">Title</h2> 
+   <p> </p>
+   <p><a id="Reference_TitleModel"></a> </p>
+   <p> <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s that have identity (entities) need to have a dynamic title that help users to distinguish objects of the same type (e.g. Type customer versus “John Doe”). This title should exist of all the properties that identify the object. The title is therefore dynamic: it changes when the value of these properties change. </p> 
+   <p> In example: The title of a customer could be a customer number, followed by the given name, followed by the family name. If the customer changes it’s name, than so does the title (but not its identity) </p> 
+   <h3 id="ObjectBehavior_Title_TitleDefault">Title Default</h3> 
+   <p> The <a href="#TheIntrospectFramework">IntrospectFramework</a> provides a default title based on the properties that are normally displayed in tables. This is a best guess. It is therefore recommended to always implement the toString method. </p> 
+   <h3 id="ObjectBehavior_Title_TitletoStringMethod">Title (toString) method</h3> 
+   <p> You can define the title by overriding the the toString() method of your <a href="#TheDomainLayer_DomainObjects">DomainObject</a> </p> 
+   <p> (TODO example with Customer toString and TitleBuilder) </p> 
+   <h3 id="ObjectBehavior_Title_TitleBuilder">Title builder</h3> 
+   <p> </p>
+   <p><a id="Reference_TitleBuilder"></a> </p>
+   <p> Often a <a href="#TheDomainLayer_DomainObjects">DomainObject</a> can be identified by a single property. The toString() method can than simply return this property value to return the title. </p> 
+   <p> In other cases a DomainObject is identified by multiple property values. In this case it is recommended to use the TitleBuilder. The TitleBuilder can be compared with a StringBuilder, but has some additional functionality such as: </p> 
+   <ul> 
+    <li>The “append” methods will append a separator and a given value. You can use the default separator (a comma and a space) or use an “append” method where you pass the separator as a first parameter followed by the value.</li> 
+    <li>The “contact” methods will append a given value without a separator</li> 
+    <li>Both “append” and “contact” methods will ignore null values or reference objects that do not have a toString implementation</li> 
+    <li>Both “append” and “contact” methods have methods where you can specify format values (e.g. date, time and numbers)</li> 
+    <li>Enumeration values will be translated to a readable format</li> 
+   </ul> 
+   <p></p> TODO example 
+   <p></p> 
+   <p></p> 
+   <p></p> 
+   <p></p> 
+   <h2 id="ObjectBehavior_Icon">Icon</h2> 
+   <p> </p>
+   <p></p> 
+   <p></p> 
+   <h2 id="ObjectBehavior_Hidden">Hidden</h2> 
+   <p> </p>
+   <p><a id="Reference_HiddenModelFactory"></a> A <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> or <a href="#ActionMethods">ActionMethod</a> is visible on the user interface by default,but in some cases you may want to hide them, e.g.: </p>
+   <ul> 
+    <li>Because not all information needs to be displayed in the user interface (e.g. a database id key or version number for optimistic locking)</li> 
+    <li>Because you want to limit the number of visible properties in a table (e.g. to limit the number of columns in a table to prevent the table to become cluttered with to much information)</li> 
+    <li>Depending on the state of a <a href="#TheDomainLayer_DomainObjects">DomainObject</a> you do not want to display Irrelevant information</li> 
+    <li>Depending on the state of a domain object you do not want a user to activate an action method (e.g. hide an <a href="#ActionMethods">ActionMethod</a> “submit” once the domainObject already is submitted)</li> 
+    <li>Because a user is not authorized to see a property value</li> 
+    <li>Because a user is not authorized to activate an <a href="#ActionMethods">ActionMethod</a></li> 
+   </ul> 
+   <h3 id="ObjectBehavior_Hidden_HiddenAnnotation">Hidden Annotation</h3> 
+   <p> </p>
+   <p><a id="Reference_Hidden"></a> </p>
+   <p> You can hide a <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> by putting the <a href="#ObjectBehavior_Hidden_HiddenAnnotation">Hidden</a> annotation before the getter method or you can hide an <a href="#ActionMethods">ActionMethod</a> by putting the <a href="#ObjectBehavior_Hidden_HiddenAnnotation">Hidden</a> annotation before the <a href="#ActionMethods">ActionMethod</a>. </p> 
+   <p> Syntax: @Hidden(propertyHiddenFor, exceptForRoles) </p> 
+   <p> Parameters: </p> 
+   <ul> 
+    <li><a>propertyHiddenFor()</a>: optional and for properties only: to indicate if the property should be hidden in <a>FormView</a>s, <a>TableView</a>s or both (hidden for both is default).</li> 
+    <li><a>exceptForRoleNames()</a> : optional comma separated string of user roles that are allowed to see the <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> or <a href="#ActionMethods">ActionMethod</a></li> 
+   </ul> 
+   <p></p> TODO EXAMPLE 
+   <p></p> 
+   <p></p> 
+   <h3 id="ObjectBehavior_Hidden_HiddenMethod">Hidden Method</h3> 
+   <p> </p>
+   <p><a id="Reference_HiddenMethod"></a> </p>
+   <p> You can hide a <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> or <a href="#ActionMethods_ActionMethodsForDomainObjects">DomainObjectActionMethod</a> depending on the <a href="#TheDomainLayer_DomainObjects">DomainObject</a> state (the value of its properties), with an ...Hidden method. If you have a <a href="#ObjectBehavior_Hidden_HiddenAnnotation">Hidden</a> annotation and a ...Hidden method, both need to be true in order to hide the <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> or <a href="#ActionMethods">ActionMethod</a>. </p> 
+   <p> Note that you can not change the visibility with a ...Hidden method for <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> in a <a>TableView</a>! </p> 
+   <p> Syntax: public boolean &lt;property name or actionMethodName&amp;gtHidden;() </p> 
+   <p> ReturnValue: a boolean that is true if the <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> or <a href="#ActionMethods">ActionMethod</a> needs to be hidden </p> 
+   <p></p> 
+   <p></p> 
+   <p></p> 
+   <p></p> 
+   <h2 id="ObjectBehavior_Disabled">Disabled</h2> 
+   <p> </p>
+   <p><a id="Reference_DisabledModelFactory"></a> </p>
+   <p> A <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> or <a href="#ActionMethods">ActionMethod</a> is enabled on the user interface by default, but in some cases you may want to disable them. If something is disabled they are grayed out on the user interface. Disabled properties can not be edited (read only) and disabled <a href="#ActionMethods">ActionMethod</a>s can not be invoked. </p> 
+   <p> You may want to disable items when: </p> 
+   <ul> 
+    <li>Not all properties need to be editable on the user interface but the code might need a setter method to set the <a href="#TheDomainLayer_Properties">DomainObjectProperty</a>value when the <a href="#TheDomainLayer_DomainObjects">DomainObject</a> is created from the database</li> 
+    <li>Depending on the state of a <a href="#TheDomainLayer_DomainObjects">DomainObject</a> you do not want the user to edit certain <a href="#TheDomainLayer_Properties">DomainObjectProperty</a></li> 
+    <li>Depending on the state of a <a href="#TheDomainLayer_DomainObjects">DomainObject</a> you do not want a user to invoke an <a href="#ActionMethods">ActionMethod</a> (e.g. prevent invoking <a href="#ActionMethods">ActionMethod</a> “submit” once the <a href="#TheDomainLayer_DomainObjects">DomainObject</a> already is submitted)</li> 
+    <li>Because a user is not authorized to edit a <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> Value</li> 
+    <li>Because a user is not authorized to invoke an <a href="#ActionMethods">ActionMethod</a></li> 
+   </ul> 
+   <p></p> 
+   <p> Note that if an user is not authorized to change a <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> or call an <a href="#ActionMethods">ActionMethod</a> it is best to hide the method or property instead of disabling it. In general you do not want to confuse users (clutter the user interface) with options that they are not allowed to use anyway. </p> 
+   <h3 id="ObjectBehavior_Disabled_DisabledAnnotation">Disabled Annotation</h3> 
+   <p> </p>
+   <p><a id="Reference_Disabled"></a> </p>
+   <p> You can disable a <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> by putting the <a href="#ObjectBehavior_Disabled_DisabledAnnotation">Disabled</a> annotation before the getter method or you can disable an <a href="#ActionMethods">ActionMethod</a> by putting the <a href="#ObjectBehavior_Disabled_DisabledAnnotation">Disabled</a> annotation before the <a href="#ActionMethods">ActionMethod</a>. </p> 
+   <p> Syntax: @Disabled(exceptForRoles) </p> 
+   <p> Parameter: <a>exceptForRoleNames()</a>: optional comma separated string of user roles that are allowed to edit the <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> or invoke a <a href="#ActionMethods">ActionMethod</a> </p> TODO EXAMPLE 
+   <p></p> 
+   <p></p> 
+   <h3 id="ObjectBehavior_Disabled_DisabledMethod">Disabled Method</h3> 
+   <p> </p>
+   <p><a id="Reference_DisabledMethod"></a> </p>
+   <p> You can disable a <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> or <a href="#ActionMethods_ActionMethodsForDomainObjects">DomainObjectActionMethod</a> depending on the <a href="#TheDomainLayer_DomainObjects">DomainObject</a> state (the value of its properties). </p> 
+   <p> If you have a <a href="#ObjectBehavior_Disabled_DisabledAnnotation">Disabled</a> annotation and a disabled method, only one needs to be true in order to disable the <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> or <a href="#ActionMethods">ActionMethod</a>. </p> 
+   <p> Syntax: public boolean &lt;property name or actionMethodName&gt;Disabled() </p> 
+   <p> ReturnValue: a boolean that is true if the <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> or <a href="#ActionMethods">ActionMethod</a> needs to be disabled </p> 
+   <p></p> 
+   <p></p> 
+   <h3 id="ObjectBehavior_Disabled_DisabledAnnotationAndDisabledMethod">Disabled Annotation and Disabled Method</h3> 
+   <p> </p>
+   <p><a id="Reference_DisabledOrModel"></a> If the code has both a &quot;disabled annotation&quot; and a &quot;disabled method&quot;, the <a href="#TheIntrospectFramework">IntrospectFramework</a> work will disable the item when on of them is true (if the user is not authorized by the definition of the <a href="#ObjectBehavior_Disabled_DisabledAnnotation">Disabled</a> annotation OR if the disabled method returns true). </p> 
+   <p></p> 
+   <p></p> 
+   <p></p> 
+   <h2 id="ObjectBehavior_Order">Order</h2> 
+   <p> </p>
+   <p><a id="Reference_Order"></a> </p>
+   <p> The order in which the class members (<a href="#TheDomainLayer_Properties">DomainObjectProperty</a> and <a href="#ActionMethods">ActionMethod</a>) are displayed is defined with the <a href="#ObjectBehavior_Order">Order</a> annotation. Note that the order of class members can not be changed during runtime. </p> 
+   <p> The <a href="#ObjectBehavior_Order">Order</a> annotation can be added before the getter method of a <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> or before an <a href="#ActionMethods">ActionMethod</a>. Both <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> and <a href="#ActionMethods">ActionMethod</a>s are ordered separately but use the same annotation. </p> 
+   <p> Syntax: @Order(double sequenceNumber) </p> 
+   <p> The sequenceNumber of the <a href="#ObjectBehavior_Order">Order</a> annotation determines the position of the class member. The class member with the lowest sequenceNumber will be shown first, a higher sequenceNumber later. Class members that are not annotated will be shown last. </p> It is recommended to use an interval (of let's say 10) between the sequenceNumbers so that you do not have to renumber all the existing 
+   <a href="#ObjectBehavior_Order">Order</a> annotations every time you add a new class member in between. Otherwise you can always fall back on using decimals (e.g. 1.5 or 10.25). 
+   <p></p> 
+   <p></p> 
+   <p></p> 
+   <h2 id="ObjectBehavior_Format">Format</h2> 
+   <p> </p>
+   <p><a id="Reference_Format"></a> </p>
+   <p> Some property types such as <a>Date</a>, time, <a>Number</a> can be formatted with help of the <a href="#ObjectBehavior_Format">Format</a> annotation. Note that the format can NOT be changed during runtime. </p> The 
+   <a href="#ObjectBehavior_Format">Format</a> annotation can be added before the getter method of a 
+   <a href="#TheDomainLayer_Properties">DomainObjectProperty</a>. 
+   <p></p> 
+   <p> Syntax: @Format(string pattern) </p> 
+   <p> Please see the JavaDoc of the <a>SimpleDateFormat</a> and <a>DecimalFormat</a> formatters to learn more about the patterns that can be used. See the <a>FormatFactory</a> to learn how the formating works for the different <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> types. </p> TODO example 
+   <p></p> 
+   <p></p> 
+   <h2 id="ObjectBehavior_FieldMode">Field Mode</h2> 
+   <p> </p>
+   <p><a id="Reference_TextFieldMode"></a> </p>
+   <p><a href="#TheDomainLayer_DomainObjects">DomainObject</a>s are rendered by the user interface layer as fields when a <a href="#TheDomainLayer_DomainObjects">DomainObject</a> is displayed in a form view. The <a>FormView</a> will determine in what type of field these <a href="#TheDomainLayer_Properties">DomainObjectProperty</a>s are displayed (textbox, combobox, etc). When the <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> is a String, you can select an alternative field type using the <a href="#ObjectBehavior_FieldMode">TextFieldMode</a> annotation. The <a href="#ObjectBehavior_FieldMode">TextFieldMode</a> annotation needs to be put before the getter method of a <a href="#TheDomainLayer_Properties">DomainObjectProperty</a>. Note that the format can not be changed during runtime. </p> 
+   <p> Syntax: @TextFieldMode(FieldModeType mode) </p> 
+   <p> Examples of alternative <a>FieldModeType</a>s: </p> 
+   <ul> 
+    <li><a>FieldModeType.TEXT_AREA</a>: renders a text field to edit a string with multiple lines</li> 
+    <li><a>FieldModeType.PASSWORD</a>: renders a field to edit a password string (obscuring the input so that other viewers can not read the secret password)</li> 
+    <li><a>FieldModeType.RICH_TEXT_AREA</a>: renders a field to edit a string, with formatting options such as bold, underline, italic,etc...)</li> 
+   </ul> 
+   <p></p> 
+   <p> </p>
+   <p></p> 
+   <p></p> 
+   <h2 id="ObjectBehavior_ExecutionMode">Execution Mode</h2> 
+   <p> </p>
+   <p><a id="Reference_ExecutionMode"></a> </p>
+   <p> <a href="#ActionMethods">ActionMethod</a>s can be annotated, so that the <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> knows how the <a href="#ActionMethods">ActionMethod</a> needs to be invoked after the user has clicked on the corresponding menu item. Note that the <a href="#ObjectBehavior_ExecutionMode">ExecutionMode</a> can not be changed during runtime. </p> 
+   <p> Syntax: @ExecutionMode(<a href="#ObjectBehavior_ExecutionMode">ExecutionModeType</a> mode) </p> 
+   <p> <a href="#ObjectBehavior_ExecutionMode">ExecutionModeType</a>: </p> 
+   <p> </p>
+   <p><a id="Reference_ExecutionModeType"></a> </p>
+   <ul> 
+    <li><a href="#ObjectBehavior_ExecutionMode">ExecutionModeType.EXECUTE_METHOD_DIRECTLY</a> : executes the method directly without user intervention</li> 
+    <li><a href="#ObjectBehavior_ExecutionMode">ExecutionModeType.EXECUTE_METHOD_AFTER_CONFORMATION</a>: the <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> opens a confirmation dialog. The method is executed after the user activates the confirmation button. The method is NOT executed when the user cancels the confirmation dialog.</li> 
+    <li> <a href="#ObjectBehavior_ExecutionMode">ExecutionModeType.EDIT_PARAMETER_THAN_EXECUTE_METHOD_OR_CANCEL</a>: the <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> opens a form on a new tab, so that the user can modify (edit) the <a href="#TheDomainLayer_DomainObjects">DomainObject</a>. The method is executed with the edited <a href="#TheDomainLayer_DomainObjects">DomainObject</a> as the method parameter, when the user clicks the confirmation button on the button bar. The method is NOT executed when the user clicks on cancel in the bottom bar.</li> 
+   </ul> 
+   <p></p> 
+   <p></p> 
+   <p></p> 
+   <p></p> 
+   <h2 id="ObjectBehavior_ParameterFactory">Parameter Factory</h2> 
+   <p> </p>
+   <p><a id="Reference_ParameterFactoryModelFactory"></a> </p>
+   <p> The parameter factory allows you to create an object for an <a href="#ActionMethods">ActionMethod</a>. This object can then be edited by the user (depending how the <a href="#ActionMethods">ActionMethod</a> is annotated, see <a href="#ObjectBehavior_ExecutionMode">ExecutionMode</a> annotation) after which it is passed as method parameter when the <a href="#ActionMethods">ActionMethod</a> is invoked. </p> 
+   <p> The <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a> will display all <a href="#ActionMethods">ActionMethod</a>s of all registered <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s that can directly be executed (without the need of an opened <a href="#TheDomainLayer_DomainObjects">DomainObject</a>). This means that only <a href="#ActionMethods">ActionMethod</a>s that either have no method parameter or have an <a href="#ObjectBehavior_ParameterFactory_ParameterFactoryAnnotation">ParameterFactory</a> are displayed as menu items in the <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a>. </p>
+   <p> </p>
+   <h3 id="ObjectBehavior_ParameterFactory_ParameterFactoryAnnotation">ParameterFactory Annotation</h3> 
+   <p> </p>
+   <p><a id="Reference_ParameterFactory"></a> </p>
+   <p> When adding the <a href="#ObjectBehavior_ParameterFactory_ParameterFactoryAnnotation">ParameterFactory</a> Annotation before an <a href="#ActionMethods">ActionMethod</a>, the <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> know's it is allowed to try to instantiate a new DomainObject. This <a href="#TheDomainLayer_DomainObjects">DomainObject</a> can then be edited by the user (depending how the <a href="#ActionMethods">ActionMethod</a> is annotated, see <a href="#ObjectBehavior_ExecutionMode">ExecutionMode</a>) after which it is passed as method parameter when the <a href="#ActionMethods">ActionMethod</a> is invoked. </p> 
+   <p> Note that the method parameter (a <a href="#TheDomainLayer_DomainObjects">DomainObject</a>) can only be instantiated by an <a href="#ObjectBehavior_ParameterFactory_ParameterFactoryAnnotation">ParameterFactory</a> annotation if it has a public constructor without parameters. If not use the ...ParameterFactory method. </p> 
+   <p> Syntax: </p>
+   <p></p> 
+   <p></p> 
+   <h3 id="ObjectBehavior_ParameterFactory_ParameterFactoryMethod">ParameterFactory Method</h3> 
+   <p> </p>
+   <p><a id="Reference_ParameterFactoryMethod"></a> </p>
+   <p> When adding the <a href="#ObjectBehavior_ParameterFactory_ParameterFactoryAnnotation">ParameterFactory</a> method (normally located after an <a href="#ActionMethods">ActionMethod</a>), the <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> will first get a new <a href="#TheDomainLayer_DomainObjects">DomainObject</a> from the <a href="#ObjectBehavior_ParameterFactory_ParameterFactoryMethod">ParameterFactoryMethod</a>. This object can then be edited by the user (depending how the <a href="#ActionMethods">ActionMethod</a> is annotated, see <a href="#ObjectBehavior_ExecutionMode">ExecutionMode</a>) after which it is passed as method parameter when the <a href="#ActionMethods">ActionMethod</a> is invoked. </p> 
+   <p> Syntax: public&lt;domainObject type&gt; prameterFactory&lt;actionMethodName&gt;() </p> 
+   <p> TODO EXAMPLE OF ordersWithinPeriod METHOD </p>
+   <p></p> 
+   <p></p> 
+   <p></p> 
+   <p></p> 
+   <h2 id="ObjectBehavior_Validation">Validation</h2> 
+   <p> </p>
+   <p><a id="Reference_ValidationMethodFactory"></a> </p>
+   <p> The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> sometimes let’s the user edit an <a href="#TheDomainLayer_DomainObjects">DomainObject</a> before it is passed as an <a href="#ActionMethods">ActionMethod</a> parameter (depending on how the <a href="#ActionMethods">ActionMethod</a> is annotated, see <a href="#ObjectBehavior_ExecutionMode">ExecutionMode</a>). The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> then validates the edited <a href="#TheDomainLayer_DomainObjects">DomainObject</a> using the <a href="#TheProviderLayer_ValidationProvider">ValidationProvider</a> before the <a href="#ActionMethods">ActionMethod</a> is called.The <a href="#TheProviderLayer_ValidationProvider">ValidationProvider</a> will use validation annotations and validation methods that are located in the <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s them selves to validate the <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s. </p> 
+   <h3 id="ObjectBehavior_Validation_ValidationAnnotations">Validation annotations</h3> 
+   <p> A <a href="#TheDomainLayer_Properties">DomainObjectProperty</a>s can be validated by putting validation annotations before the getter method of a property. The <a href="#TheIntrospectFramework">IntrospectFramework</a> uses the JSR303 complient Apache BVal library for validation. Please read the BVal documentation on how to annotate the getter methods of the properties. </p> 
+   <h3 id="ObjectBehavior_Validation_ValidationMethods">Validation methods</h3> 
+   <p> </p>
+   <p><a id="Reference_ValidationMethod"></a> </p>
+   <p> <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s and <a href="#TheDomainLayer_Properties">DomainObjectProperty</a>s can also be validated with <a href="#ObjectBehavior_Validation_ValidationMethods">ValidationMethod</a>s located in the <a href="#TheDomainLayer_DomainObjects">DomainObject</a> so that you can do more complicated validation using code. </p> 
+   <p> ValidationMethods conventions: </p> 
+   <ul> 
+    <li>Syntax: public <a>ValidationViolations</a> &lt;<a href="#TheDomainLayer_Properties">DomainObjectProperty</a>Name&gt;&lt;constraint name&gt;Validation.<br /> E.g. for a <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> startDate: public <a>ValidationViolations</a> startDateAfterTodayValidation()<br /> E.g. for business rule custommerUnique: public <a>ValidationViolations</a> customerUniqueValidation()</li> 
+    <li>Method may not have a method parameter</li> 
+    <li>Method must return a ValidationViolation</li> 
+    <li>Method must be public</li> 
+    <li>Method may not be static</li> 
+    <li>May not change the state of the <a href="#TheDomainLayer_DomainObjects">DomainObject</a></li> 
+   </ul> TODO code example TODO EXPLAIN 
+   <a>ValidationViolations</a> 
+   <p></p> 
+   <p></p> 
+   <p></p> 
+   <p></p> 
+   <p></p> 
+   <p></p> 
+   <h1 id="IntrospectApplicationProjects">Introspect Application Projects</h1> 
+   <p><a id="Reference_IntrospectApplicationProjects"></a> </p>
+   <p> There are different implementations of the <a href="#TheIntrospectFramework_TheIntrospectApplication">IntrospectApplication</a> class, to support different type of applications (e.g. for the command line, desktop, mobile, web environments). This chapter will explain the different <a href="#IntrospectProviderProjects">IntrospectProviderProjects</a> that come with the <a href="#TheIntrospectFramework">IntrospectFramework</a>. If needed you can of course free to write your implementation of the <a href="#TheIntrospectFramework_TheIntrospectApplication">IntrospectApplication</a>. </p> 
+   <h2 id="IntrospectApplicationProjects_IntrospectForCommandLine">Introspect for CommandLine</h2> 
+   <p> {@include IntrospectApplicationForCommandLine} </p> 
+   <h2 id="IntrospectApplicationProjects_IntrospectForSwing">Introspect for Swing</h2> 
+   <p> {@include IntrospectApplicationForSwing} </p> 
+   <h2 id="IntrospectApplicationProjects_IntrospectForJUnit">Introspect for JUnit</h2> 
+   <p> {@include IntrospectApplicationForJUnit} </p> 
+   <p></p> 
+   <h1 id="IntrospectProviderProjects">Introspect Provider Projects</h1> 
+   <p><a id="Reference_IntrospectProviderProjects"></a> </p>
+   <p> <a href="#TheProviderLayer_ProviderObjects">Provider</a> objects can have different implementations. Depending on the type of application you can write your own implementation of a provider or use or extend one of the <a href="#IntrospectProviderProjects">IntrospectProviderProjects</a> that come with the framework. In example, depending on your application you might need a different <a href="#TheProviderLayer_AuthorizationProvider">AuthorizationProvider</a> such as: </p> 
+   <ul> 
+    <li>hard coded authorization</li> 
+    <li>file based authorization</li> 
+    <li>database authorization</li> 
+    <li>web container authorization (e.g. <a href="https://tomcat.apache.org/tomcat-7.0-doc/realm-howto.html">Apache Tomcat Realm</a>)</li> 
+    <li><a href="https://nl.wikipedia.org/wiki/Lightweight_Directory_Access_Protocol">LDAP</a></li> 
+    <li><a href="https://nl.wikipedia.org/wiki/Active_Directory">Active directory</a></li> 
+    <li>or other</li> 
+   </ul> 
+   <p> If you wish to use a non default <a href="#TheProviderLayer_ProviderObjects">Provider</a>, you need to register a <a href="#TheProviderLayer_ProviderObjects">Provider</a> by overwriting the matching <a href="#TheIntrospectFramework_TheIntrospectApplication">IntrospectApplication.get ...ProviderClass()</a> method. </p> 
+   <p> The following sections will describe the optional <a href="#IntrospectProviderProjects">IntrospectProviderProjects</a> that come with the <a href="#TheIntrospectFramework">IntrospectFramework</a>. </p>
+   <h2 id="IntrospectProviderProjects_IntrospectProviderTomcatAuthorization">IntrospectProviderTomcatAuthorization</h2> 
+   <p> {@include ...} </p> 
+   <p></p> 
+   <h1 id="IntrospectInfrastructureProjects">Introspect Infrastructure Projects</h1> 
+   <p><a id="Reference_IntrospectInfrastructureProjects"></a> </p>
+   <p> Depending on your application you are creating, you might need different InfrasturcoreObjects to communicate with databases (repositories), mail servers (email clients), web servers (e.g. SOAP or restful clients), etc. The <a href="#TheIntrospectFramework">IntrospectFramework</a> comes with several <a href="#IntrospectInfrastructureProjects">IntrospectInfrastructureProjects</a> that you can optionally use and/or extend. </p>
+   <p> Before you can use an <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a>, you need to register an <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a> by overwriting the <a href="#TheIntrospectFramework_TheIntrospectApplication">IntrospectApplication.getInfrastructureClasses()</a> method. </p> 
+   <p> U can use an <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a> in a <a href="#TheDomainLayer_DomainObjects">DomainObject</a> or <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> by adding the <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a> as a parameter of the constructor and linking it to a private final field. </p> 
+   <p> The following sections will describe the optional <a href="#IntrospectInfrastructureProjects">IntrospectInfrastructureProjects</a> that come with the <a href="#TheIntrospectFramework">IntrospectFramework</a>. </p>
+   <h2 id="IntrospectInfrastructureProjects_TODO">TODO</h2> 
+   <p> {@include ...} </p> 
+   <p></p> 
+   <h1 id="Downloads">Downloads</h1> 
+   <p><a id="Reference_IntrospectDownloads"></a> Source Code: </p>
+   <ul> 
+    <li><a href="https://github.com/ntenhoeve/Introspect-Framework">Git Hub Web Pages</a></li> 
+    <li><a href="https://github.com/ntenhoeve/Introspect-Framework/archive/master.zip">Download Introspect projects as zip</a></li> 
+   </ul> 
+   <p></p> 
+   <h1 id="Documentation">Documentation</h1> 
+   <p> The documentation of the <a href="#TheIntrospectFramework">IntrospectFramework</a> is generated from its JavaDoc (starting with the <a>IntrospectDocumentation</a> file) and published in different formats and at different locations with help of the <a>SoftwareDocumentationGenerator</a>: </p> 
+   <ul> 
+    <li><a href="https://github.com/ntenhoeve/Introspect-Framework/wiki">Documentation as Git Hub Wiki</a></li> 
+    <li><a href="http://ntenhoeve.github.io/TheIntrospectFramework.html">Documentation as Web Page</a></li> 
+    <li><a href="http://ntenhoeve.github.io/TheIntrospectFramework_Printable.html">Documentation as a printable Web Page (single page)</a></li> 
+   </ul> 
+   <h1 id="Development">Development</h1> 
+   <p><a id="Reference_IntrospectDevelopment"></a> </p>
+   <ul> 
+    <li><a href="https://github.com/ntenhoeve/Introspect-Framework/issues">Issue Tracker</a></li> 
+    <li><a href="https://github.com/ntenhoeve/Introspect-Framework/milestones">Roadmap</a></li> 
+    <li><a href="https://nl.linkedin.com/in/nilstenhoeve">About the developer</a></li> 
+   </ul> 
+   <p></p> 
+  </div>
+ </body>
+</html>
