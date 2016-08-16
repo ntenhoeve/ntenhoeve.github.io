@@ -332,6 +332,26 @@
     <li>Domain object as a row in a table:<br /> <img src="ObjectAsTable.png" /></li> 
    </ul> 
    <p></p> 
+   <h3 id="TheDomainLayer_DomainObjects_Construction">Construction</h3> 
+   <p> The principle of “naked objects” is that any <a href="http://en.wikipedia.org/wiki/Plain_Old_Java_Object">'Plain Old Java Object' (POJO)</a> can function as a domain object. In other words: a domain class does not have to inherit from any special class, nor implement any particular interface, nor have any specific attributes. </p> 
+   <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s can be created by different objects e.g.: 
+   <ul> 
+    <li>By a <a href="#ActionMethods_ActionMethodsForServiceObjects">ServiceObjectActionMethod</a> such as customerService.createNewCustomer() </li> 
+    <li>By a <a href="#ActionMethods_ActionMethodsForDomainObjects">DomainObjectActionMethod</a> such as shoppingCart.lineItemCreate(LineItem lineItem)</li> 
+    <li>By a <a>DomainContainer</a> such as domainContainer.getObject(Customer.class)</li> 
+    <li>By a <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a> method such as orderRepository.allOpenOrders() or shoppingCartFactory.createForCustomer(Customer customer).</li> 
+   </ul> 
+   <br /> There are 2 ways to create new 
+   <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s: 
+   <ul> 
+    <li>Creating a new <a href="#TheDomainLayer_DomainObjects">DomainObject</a> with the new keyword:<br /> In example: Order order=new OrderLine()</li> 
+    <li>Creating a domain object using Dependency Injection:<br /> Sometimes you want a new <a href="#TheDomainLayer_DomainObjects">DomainObject</a> to have references to other objects (being other <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s, <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a>s or <a href="#TheProviderLayer_ProviderObjects">Provider</a>Objects). In example: A Customer object needs a references to a ShoppingCartFactory object. The Customer object can therefore be created by the <a>DomainContainer</a> with Customer customer=(Customer) domainContainer.getObject(Customer.class). The ShopingCart object will automatically be injected as a constructor parameter of the Customer class. In order to create <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s using dependency injection you need to:</li> 
+    <ul> 
+     <li>Add the reference object as a parameter in the constructor and link it to a private field, so that it can be used throughout the class.</li> 
+     <li>Make sure that the referenced object type is known by the <a href="#TheIntrospectFramework">IntrospectFramework</a>: Its class must be returned by the <a href="#TheIntrospectFramework_TheIntrospectApplication">IntrospectApplication.getDomainClasses()</a> method.</li> 
+     <li>The object that creates the <a href="#TheDomainLayer_DomainObjects">DomainObject</a> needs to have a reference to the <a>DomainContainer</a> as a constructor parameter, so that that the <a>DomainContainer.get(Class)</a> method can be called to get or create the <a href="#TheDomainLayer_DomainObjects">DomainObject</a> with the required dependencies injected by the <a href="#TheIntrospectFramework">IntrospectFramework</a></li> 
+    </ul> 
+   </ul> 
    <h3 id="TheDomainLayer_DomainObjects_DomainObjectMembers">Domain object members</h3> 
    <p> Domain objects contain: </p> 
    <ul> 
@@ -419,27 +439,7 @@
    <a href="#ObjectBehavior">ObjectBehavior</a>. 
    <p></p> 
    <h2 id="TheDomainLayer_ActionMethods">Action Methods</h2> 
-   <p> Domain objects can contain action methods (see <a href="#ActionMethods_ActionMethodsForDomainObjects">DomainObjectActionMethod</a> section) </p> 
-   <h3 id="TheDomainLayer_ActionMethods_Construction">Construction</h3> 
-   <p> The principle of “naked objects” is that any <a href="http://en.wikipedia.org/wiki/Plain_Old_Java_Object">'Plain Old Java Object' (POJO)</a> can function as a domain object. In other words: a domain class does not have to inherit from any special class, nor implement any particular interface, nor have any specific attributes. </p> 
-   <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s can be created by different objects e.g.: 
-   <ul> 
-    <li>By a <a href="#ActionMethods_ActionMethodsForServiceObjects">ServiceObjectActionMethod</a> such as customerService.createNewCustomer() </li> 
-    <li>By a <a href="#ActionMethods_ActionMethodsForDomainObjects">DomainObjectActionMethod</a> such as shoppingCart.lineItemCreate(LineItem lineItem)</li> 
-    <li>By a <a>DomainContainer</a> such as domainContainer.getObject(Customer.class)</li> 
-    <li>By a <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a> method such as orderRepository.allOpenOrders() or shoppingCartFactory.createForCustomer(Customer customer).</li> 
-   </ul> 
-   <br /> There are 2 ways to create new 
-   <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s: 
-   <ul> 
-    <li>Creating a new <a href="#TheDomainLayer_DomainObjects">DomainObject</a> with the new keyword:<br /> In example: Order order=new OrderLine()</li> 
-    <li>Creating a domain object using Dependency Injection:<br /> Sometimes you want a new <a href="#TheDomainLayer_DomainObjects">DomainObject</a> to have references to other objects (being other <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s, <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a>s or <a href="#TheProviderLayer_ProviderObjects">Provider</a>Objects). In example: A Customer object needs a references to a ShoppingCartFactory object. The Customer object can therefore be created by the <a>DomainContainer</a> with Customer customer=(Customer) domainContainer.getObject(Customer.class). The ShopingCart object will automatically be injected as a constructor parameter of the Customer class. In order to create <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s using dependency injection you need to:</li> 
-    <ul> 
-     <li>Add the reference object as a parameter in the constructor and link it to a private field, so that it can be used throughout the class.</li> 
-     <li>Make sure that the referenced object type is known by the <a href="#TheIntrospectFramework">IntrospectFramework</a>: Its class must be returned by the <a href="#TheIntrospectFramework_TheIntrospectApplication">IntrospectApplication.getDomainClasses()</a> method.</li> 
-     <li>The object that creates the <a href="#TheDomainLayer_DomainObjects">DomainObject</a> needs to have a reference to the <a>DomainContainer</a> as a constructor parameter, so that that the <a>DomainContainer.get(Class)</a> method can be called to get or create the <a href="#TheDomainLayer_DomainObjects">DomainObject</a> with the required dependencies injected by the <a href="#TheIntrospectFramework">IntrospectFramework</a></li> 
-    </ul> 
-   </ul> 
+   <p> Domain objects can contain action methods (see <a href="#ActionMethods_ActionMethodsForDomainObjects">DomainObjectActionMethod</a> section) </p> * 
    <p></p> 
    <p></p> 
    <h1 id="TheServiceLayer">The Service Layer</h1> 
@@ -485,20 +485,8 @@
     <li>This method will return a list of <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s that meet the search criteria</li> 
     <li>The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> displays the found list of <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s as a table in a new tab.</li> 
    </ul> 
-   <p></p> 
-   <h3 id="TheServiceLayer_ServiceObjects_Naming">Naming</h3> 
-   <p> <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s are normally named after the <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s that they service and have the suffix 'Service' (e.g. CustomerService, OrderService, etc). </p> 
-   <h3 id="TheServiceLayer_ServiceObjects_ServiceObjectMembers">Service object members</h3> 
-   <p> Service objects contain: </p> 
-   <ul> 
-    <li><a href="#ActionMethods_ActionMethodsForServiceObjects">ServiceObjectActionMethod</a>s: that define user actions</li> 
-    <li>Methods: that define <a href="#ObjectBehavior">ObjectBehavior</a></li> 
-    <li>Annotations: that define <a href="#ObjectBehavior">ObjectBehavior</a></li> 
-   </ul> These members are discussed in more detail in the following paragraphs. 
-   <p></p> 
-   <h2 id="TheServiceLayer_ActionMethods">Action Methods</h2> 
-   <p> <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s are all about <a href="#ActionMethods">ActionMethod</a>s that represent the main menu items (see section <a href="#ActionMethods_ActionMethodsForServiceObjects">ServiceObjectActionMethod</a>) </p> 
-   <h3 id="TheServiceLayer_ActionMethods_Construction">Construction</h3> 
+   <p></p> * 
+   <h3 id="TheServiceLayer_ServiceObjects_Construction">Construction</h3> 
    <p> The principle of “naked objects” is that any <a href="http://en.wikipedia.org/wiki/Plain_Old_Java_Object">'Plain Old Java Object' (POJO)</a> can function as a <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>. In other words: a service class does not have to inherit from any special class, nor implement any particular interface, nor have any specific attributes. </p> 
    <p> <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s are instantiated by the <a href="#TheIntrospectFramework">IntrospectFramework</a>, and therefore need to be registered to the <a href="#TheIntrospectFramework_TheIntrospectApplication">IntrospectApplication.getServiceClasses()</a> method. </p> In example: 
    <pre>
@@ -517,6 +505,18 @@
   
     </class<?></pre> 
    <p> <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s can have references to other objects. These objects are injected into the ServiceObject (see the <a href="#TheIntrospectFramework_DependencyInjectionContainer_ConstructorInjection">ConstructionInjection</a> section) </p> 
+   <h3 id="TheServiceLayer_ServiceObjects_Naming">Naming</h3> 
+   <p> <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s are normally named after the <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s that they service and have the suffix 'Service' (e.g. CustomerService, OrderService, etc). </p> 
+   <h3 id="TheServiceLayer_ServiceObjects_ServiceObjectMembers">Service object members</h3> 
+   <p> Service objects contain: </p> 
+   <ul> 
+    <li><a href="#ActionMethods_ActionMethodsForServiceObjects">ServiceObjectActionMethod</a>s: that define user actions</li> 
+    <li>Methods: that define <a href="#ObjectBehavior">ObjectBehavior</a></li> 
+    <li>Annotations: that define <a href="#ObjectBehavior">ObjectBehavior</a></li> 
+   </ul> These members are discussed in more detail in the following paragraphs. 
+   <p></p> 
+   <h2 id="TheServiceLayer_ActionMethods">Action Methods</h2> 
+   <p> <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s are all about <a href="#ActionMethods">ActionMethod</a>s that represent the main menu items (see section <a href="#ActionMethods_ActionMethodsForServiceObjects">ServiceObjectActionMethod</a>) </p> 
    <p></p> 
    <p></p> 
    <h1 id="TheInfrastructureLayer">The Infrastructure Layer</h1> 
@@ -551,7 +551,7 @@
    </ul> 
    <p></p> 
    <h3 id="TheInfrastructureLayer_InfrastructureObjects_InfrastructureObjectPresentation">Infrastructure Object Presentation</h3> 
-   <p> The methods of infrastructure object are unknown to the <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> and are not displayed on the <a href="https://en.wikipedia.org/wiki/User_interface">User Interface</a>. </p>
+   <p> The methods of infrastructure object are unknown to the <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> and are not displayed on the <a href="https://en.wikipedia.org/wiki/User_interface">User Interface</a>. * </p>
    <h3 id="TheInfrastructureLayer_InfrastructureObjects_Construction">Construction</h3> 
    <p> The principle of “naked objects” is that any <a href="http://en.wikipedia.org/wiki/Plain_Old_Java_Object">'Plain Old Java Object' (POJO)</a> can function as a <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a>. In other words: a <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a> class does not have to inherit from any special class, nor implement any particular interface, nor have any specific attributes. </p> 
    <p> You can: </p> 
