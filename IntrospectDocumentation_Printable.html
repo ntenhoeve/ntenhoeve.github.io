@@ -483,7 +483,7 @@
    <h3 id="TheServiceLayer_ServiceObjects_AWebShopExample">A web shop example</h3> 
    <ul> 
     <li>The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> class calls the <a href="#ActionMethods_ActionMethodsForServiceObjects">ServiceObjectActionMethod</a> findProduct(searchCriteria) method on <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>: ProductService</li> 
-    <li>This method will call the findProduct on the <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a> : ProductRepository</li> 
+    <li>This method will call the findProduct method on the <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a> : ProductRepository</li> 
     <li>This method will return a list of <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s that meet the search criteria</li> 
     <li>The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> displays the found list of <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s as a table in a new tab.</li> 
    </ul> 
@@ -736,56 +736,7 @@
    <h2 id="TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</h2> 
    <p><a id="Reference_UserInterfaceController"></a> </p>
    <p> The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> is responsible for showing information to the user and processing the information from the user using the objects in the lower layers (see <a href="#TheIntrospectFramework_ArchitectureOfAnIntrospectApplication">IntrospectArchitecture</a>). </p> 
-   <p> See the <a href="#IntrospectApplicationProjects">IntrospectApplicationProjects</a> section to learn what types of user interfaces are available, or download all the sources of the <a href="#TheIntrospectFramework">IntrospectFramework</a> projects and see the class hierarchy of the <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> class to find all the different user interface implementations. </p> TODO make reference to IntrospectProjectsDemosAndDownloads and move the sub parts to the javadoc IntrospectApplication inplementations, containting a description of the type of application, How to download a demo, How to create a new project 
-   <p> An user interface could be any type of user interface, in example: </p> 
-   <h3 id="TheUserInterfaceLayer_UserInterfaceController_CommandLineInterface">Command line interface</h3> 
-   <ul> 
-    <li><a href="http://en.wikipedia.org/wiki/Command-line_interface">Command line interface</a> is a text-based user interface where the user (or client) issues commands in the form of successive lines of text (command lines).</li> 
-    <li>The user can be a person or another computer application (using a shell). </li> 
-    <li>See <a>IntrospectApplicationForCommandLine</a>.</li> 
-   </ul> 
-   <h3 id="TheUserInterfaceLayer_UserInterfaceController_DesktopInterface">Desktop interface</h3> 
-   <ul> 
-    <li>A desktop interface is a <a href="http://en.wikipedia.org/wiki/Graphical_user_interface"> graphical user interface</a> for a computer with an <a href="https://en.wikipedia.org/wiki/Desktop_environment">desktop environment</a></li> 
-    <li>The user is likely to be a person</li> 
-    <li>Introspect has an desktop implementation based on <a href="">Swing</a>. See <a>IntrospectApplicationForSwing</a></li> 
-   </ul> 
-   <h3 id="TheUserInterfaceLayer_UserInterfaceController_MobileInterface">Mobile interface</h3> 
-   <ul> 
-    <li>A mobile interface is a <a href="http://en.wikipedia.org/wiki/Graphical_user_interface"> graphical user interface</a> for mobile devices such as smart phones and tablets.</li> 
-    <li>The user is likely to be a person</li> 
-    <li>Introspect will have a mobile implementation using Android. See <a>IntrospectApplicationForAndroid</a></li> 
-   </ul> 
-   <h3 id="TheUserInterfaceLayer_UserInterfaceController_WebInterface">Web interface</h3> 
-   <ul> 
-    <li>A <a href="https://en.wikipedia.org/wiki/Web_application">web application</a> is a <a href="http://en.wikipedia.org/wiki/Graphical_user_interface">graphical user interface</a> for <a href="https://en.wikipedia.org/wiki/Web_browser">web browsers</a></li> 
-    <li>The user is likely to be a person</li> 
-    <li>Introspect will have a mobile implementation using Vaadin. See <a>IntrospectApplicationForVaadin</a></li> 
-   </ul> 
-   <h3 id="TheUserInterfaceLayer_UserInterfaceController_SOAPInterface">SOAP interface</h3> 
-   <ul> 
-    <li>The SOAP interface is a <a href="https://en.wikipedia.org/wiki/Web_service">web service</a> that allows other computer applications to interact via the <a href="http://en.wikipedia.org/wiki/SOAP">Simple Object Access Protocol (SOAP)</a></li> 
-    <li>The user is likely to be another computer application</li> 
-    <li>Introspect might have a SOAP implementation in the future</li> 
-   </ul> 
-   <h3 id="TheUserInterfaceLayer_UserInterfaceController_RESTfullXMLInterface">RESTfull XML interface</h3> 
-   <ul> 
-    <li>The RESTfull XML interface is a <a href="https://en.wikipedia.org/wiki/Web_service">web service</a> that allows other computer applications to interact using <a href="http://en.wikipedia.org/wiki/Representational_state_transfer"> Representational State Transfer (RESTfull)</a> with <a href="https://en.wikipedia.org/wiki/XML">XML</a></li> 
-    <li>The user is likely to be another computer application</li> 
-    <li>Introspect might have a RESTfull XML implementation in the future</li> 
-   </ul> 
-   <h3 id="TheUserInterfaceLayer_UserInterfaceController_RESTfullJSONInterface">RESTfull JSON interface</h3> 
-   <ul> 
-    <li>The RESTfull SJON interface is a <a href="https://en.wikipedia.org/wiki/Web_service">web service</a> that allows other computer applications to interact using <a href="http://en.wikipedia.org/wiki/Representational_state_transfer"> Representational State Transfer (RESTfull)</a> with <a href="https://en.wikipedia.org/wiki/JSON">JSON</a></li> 
-    <li>The user is likely to be another computer application</li> 
-    <li>Introspect might have a RESTfull XML implementation in the future</li> 
-   </ul> 
-   <h3 id="TheUserInterfaceLayer_UserInterfaceController_JUnitInterface">JUnit interface</h3> 
-   <ul> 
-    <li>The JUnit interface is an interface to test objects in the lower layers (see <a href="#TheIntrospectFramework_ArchitectureOfAnIntrospectApplication">IntrospectArchitecture</a>), using the <a href="https://en.wikipedia.org/wiki/JUnit">JUnit test framework</a></li> 
-    <li>The user is the JUnit test framework</li> 
-    <li>See <a>IntrospectApplicationForJUnit</a>.</li> 
-   </ul> 
+   <p> See the <a href="#IntrospectApplicationProjects">IntrospectApplicationProjects</a> section to learn what types of user interfaces are available, or download all the sources of the <a href="#TheIntrospectFramework">IntrospectFramework</a> projects and see the class hierarchy of the <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> class to find all the different user interface implementations. </p> 
    <p></p> 
    <p></p> 
    <h1 id="ActionMethods">Action Methods</h1> 
@@ -847,7 +798,7 @@
     <li>The method is NOT static</li> 
    </ul> 
    <h2 id="ActionMethods_ActionMethodNames">Action method names</h2> 
-   <p> The name of an <a href="#ActionMethods">ActionMethod</a> should describe the action and match the <a href="http://martinfowler.com/bliki/UbiquitousLanguage.html">Ubiquitous Language</a> (in terms understood by both users and developers). Keep in mind that the goal of a user is almost never to create, update or delete objects. Method names like: createPerson, updatePerson and removePerson should therefore be avoided where possible. Method names like registerNewBirth, registerMarriage, registerPersonDeceased would be better names. </p> 
+   <p> The name of an <a href="#ActionMethods">ActionMethod</a> should describe the action and match the <a href="http://martinfowler.com/bliki/UbiquitousLanguage.html">Ubiquitous Language</a> (in terms understood by both users and developers). Keep in mind that the goal of a user is almost never to create, update or delete objects. Method names like: createPerson(Person person), updatePerson(Person person) and removePerson(Person person) should therefore be avoided where possible. Method names like addNewBorn(BirthCirtificate birthCirtificate), addMarriage(Marriage marriage), deceased(DeathCertificate deathCertificate) would be better method names. </p> 
    <h2 id="ActionMethods_ActionMethodParameter">Action method parameter</h2> 
    <p> An action method either has no parameter or a single <a href="#TheDomainLayer_DomainObjects">DomainObject</a> as a parameter. If not, the Introspect Framework will not recognize a method as an <a href="#ActionMethods">ActionMethod</a>. </p> 
    <h2 id="ActionMethods_ActionMethodReturnValue">Action method return value</h2> 
@@ -1189,7 +1140,7 @@
    <h2 id="ObjectBehavior_ServiceObjectChildren">Service Object Children</h2>
    <h2 id="ObjectBehavior_ServiceObjectsCanBeNestedSoThatTheyCanBeDisplayedAsATreeViewInTheMainMenu"> <p> </p><p><a id="Reference_ServiceObjectChildrenModel"></a> </p><p> <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s can be nested so that they can be displayed as a <a href="https://en.wikipedia.org/wiki/Tree_view">tree view</a> in the <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a>. </p> </h2>
    <h3 id="ObjectBehavior_ServiceObjectsCanBeNestedSoThatTheyCanBeDisplayedAsATreeViewInTheMainMenu_ServiceObjectChildrenAnnotation">ServiceObjectChildren annotation</h3> 
-   <p> {insert: ServiceObjectChildren} </p> 
+   <p> {@insert: ServiceObjectChildren} </p> 
    <p></p> 
    <p></p> 
    <p></p> 
@@ -1197,11 +1148,73 @@
    <p><a id="Reference_IntrospectApplicationProjects"></a> </p>
    <p> There are different implementations of the <a href="#TheIntrospectFramework_TheIntrospectApplication">IntrospectApplication</a> class, to support different type of applications (e.g. for the command line, desktop, mobile, web environments). This chapter will explain the different <a href="#IntrospectProviderProjects">IntrospectProviderProjects</a> that come with the <a href="#TheIntrospectFramework">IntrospectFramework</a>. If needed you can of course free to write your implementation of the <a href="#TheIntrospectFramework_TheIntrospectApplication">IntrospectApplication</a>. </p> 
    <h2 id="IntrospectApplicationProjects_IntrospectForJUnit">Introspect for JUnit</h2> 
-   <p> {@include IntrospectApplicationForJUnit} </p> 
+   <p> </p>
+   <p><a id="Reference_IntrospectApplicationForJUnit"></a> The <a href="#IntrospectApplicationProjects_IntrospectForJUnit">IntrospectApplicationForJUnit</a> is created to be used for <a href="http://en.wikipedia.org/wiki/JUnit">JUnit tests</a>. Its big advantage over using one of the other <a href="#TheIntrospectFramework_TheIntrospectApplication">IntrospectApplication</a> implementations in a JUnit test is that the <a href="#IntrospectApplicationProjects_IntrospectForJUnit">IntrospectApplicationForJUnit</a>: </p>
+   <ul> 
+    <li>Does not have a <a href="#TheUserInterfaceLayer">UserInterfaceLayer</a>, because it is not needed for testing. None of the <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s, <a href="#TheDomainLayer_DomainObjects">DomainObject</a>'s <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a>, <a href="#TheProviderLayer_ProviderObjects">Provider</a> Objects that you create or maintain do know the User Interface (see <a href="#TheIntrospectFramework_ArchitectureOfAnIntrospectApplication">IntrospectArchitecture</a>). We do not need to test the <a>Introspect</a> <a href="#TheUserInterfaceLayer">UserInterfaceLayer</a> if we assume it works as it should.</li> 
+    <li>You only need to register the classes that need testing. You register classes by overriding the get...Class or get...Classes methods in the <a href="#IntrospectApplicationProjects_IntrospectForJUnit">IntrospectApplicationForJUnit</a> class</li> 
+   </ul> 
+   <p> If you are new to JUnit test I recommend to watch one of the many instruction video's on the Internet. Your IDE most likely supports you with implementing and running JUnit tests (and if not you can probably download a plug-in for it) </p> 
+   <h3 id="IntrospectApplicationProjects_IntrospectForJUnit_HowToDownloadAIntrospectForJUnitDemoProject">How to download a IntrospectForJUnit demo project</h3> 
+   <p> TODO </p> 
+   <h3 id="IntrospectApplicationProjects_IntrospectForJUnit_HowToCreateANewIntrospectForJUnitProject">How to create a new IntrospectForJUnit project</h3> 
+   <p> TODO </p> 
+   <h3 id="IntrospectApplicationProjects_IntrospectForJUnit_ExampleOfATestingAServiceObjectAndInfrastructureMockUpObjectInAJUnitTestCase">Example of a testing a ServiceObject and InfrastructureMockUpObject in a JUnit test case</h3> 
+   <pre>
+ public class ProductServiceTest {
+ 
+ 	private ProductService productService;
+ 
+ 	@Before
+ 	public void setUp() throws Exception {
+ 		DependencyInjectionContainer container = new IntrospectApplicationForJUnit()
+ 				.addServiceClass(ProductService.class)
+ 				.addInfrastructureClass(ProductRepositoryMockup.class)
+              .createContainer();
+ 		productService = container.get(ProductService.class);
+ 	}
+ 
+ 	@Test
+ 	public void bestSellingProductsTest() {
+ 		List&lt;Product&gt; products = productService.bestSellingProducts();
+ 		// assert method calls ...
+ 	}
+ 
+ 	// other test methods ...
+ }
+ 
+ </pre> 
+   <p></p> 
+   <p></p> 
    <h2 id="IntrospectApplicationProjects_IntrospectForCommandLine">Introspect for CommandLine</h2> 
-   <p> {@include IntrospectApplicationForCommandLine} </p> 
+   <p> </p>
+   <p><a id="Reference_IntrospectApplicationForCommandLine"></a> TODO </p>
+   <h3 id="IntrospectApplicationProjects_IntrospectForCommandLine_HowToDownloadAIntrospectForCommandLineDemoProject">How to download a IntrospectForCommandLine demo project</h3> 
+   <p> TODO </p> 
+   <h3 id="IntrospectApplicationProjects_IntrospectForCommandLine_HowToCreateANewIntrospectCommandLineProject">How to create a new IntrospectCommandLine project</h3> 
+   <p> TODO </p> 
+   <p></p> 
+   <p></p> 
    <h2 id="IntrospectApplicationProjects_IntrospectForJavaFx">Introspect for JavaFx</h2> 
-   <p> {@include ReflectApplicationForJavaFX} </p> * 
+   <p> </p>
+   <p><a id="Reference_ReflectApplicationForJavaFX"></a> </p>
+   <p> <a href="#IntrospectApplicationProjects_IntrospectForJavaFx">ReflectApplicationForJavaFX</a> is an implementation of the <a href="#TheIntrospectFramework">IntrospectFramework</a> that has a <a href="http://en.wikipedia.org/wiki/Graphical_user_interface"> graphical user interface</a> for a computer with an <a href="https://en.wikipedia.org/wiki/Desktop_environment">desktop environment</a>. It might also be used for mobile devices in the future as well, but porting JavaFX for Android is still somewhat of a problem at the time of this writing. <a href="#IntrospectApplicationProjects_IntrospectForJavaFx">ReflectApplicationForJavaFX</a> tries to comply with the <a href="https://material.io/guidelines/">Google Material Design</a> as much as possible. It optimizes the user interface depending on the size of the main window. </p> 
+   <h3 id="IntrospectApplicationProjects_IntrospectForJavaFx_HowToDownloadAIntrospectForJavaFXDemoProject">How to download a IntrospectForJavaFX demo project</h3> 
+   <p> TODO </p> 
+   <h3 id="IntrospectApplicationProjects_IntrospectForJavaFx_HowToCreateANewIntrospectForJavaFXProject">How to create a new IntrospectForJavaFX project</h3> 
+   <p> TODO </p> 
+   <p></p> 
+   <p></p> 
+   <h3 id="IntrospectApplicationProjects_IntrospectForJavaFx_PossibleFutureProjectIntrospectForAndroid">Possible future project: Introspect for Android</h3> 
+   <p> An application with a <a href="http://en.wikipedia.org/wiki/Graphical_user_interface"> graphical user interface</a> for <a href="https://en.wikipedia.org/wiki/Mobile_device">mobile devices</a> such as <a href="https://en.wikipedia.org/wiki/Smartphone">smart phones</a> and <a href="https://en.wikipedia.org/wiki/Tablet_computer">tablets</a>. </p> 
+   <h3 id="IntrospectApplicationProjects_IntrospectForJavaFx_PossibleFutureProjectIntrospectForVaadin">Possible future project: Introspect for Vaadin</h3> 
+   <p> A <a href="https://en.wikipedia.org/wiki/Web_application">web application</a> with a <a href="http://en.wikipedia.org/wiki/Graphical_user_interface">graphical user interface</a> for <a href="https://en.wikipedia.org/wiki/Web_browser">web browsers</a> </p> 
+   <h3 id="IntrospectApplicationProjects_IntrospectForJavaFx_PossibleFutureProjectSOAPInterface">Possible future project: SOAP interface</h3> 
+   <p> A <a href="https://en.wikipedia.org/wiki/Web_service">web service</a> that allows other computer applications to interact via the <a href="http://en.wikipedia.org/wiki/SOAP">Simple Object Access Protocol (SOAP)</a> </p> 
+   <h3 id="IntrospectApplicationProjects_IntrospectForJavaFx_PossibleFutureProjectRESTfullXMLInterface">Possible future project: RESTfull XML interface</h3> 
+   <p> A <a href="https://en.wikipedia.org/wiki/Web_service">web service</a> that allows other computer applications to interact using <a href="http://en.wikipedia.org/wiki/Representational_state_transfer"> Representational State Transfer (RESTfull)</a> with <a href="https://en.wikipedia.org/wiki/XML">XML</a> </p> 
+   <h3 id="IntrospectApplicationProjects_IntrospectForJavaFx_PossibleFutureProjectRESTfullJSONInterface">Possible future project: RESTfull JSON interface</h3> 
+   <p>A <a href="https://en.wikipedia.org/wiki/Web_service">web service</a> that allows other computer applications to interact using <a href="http://en.wikipedia.org/wiki/Representational_state_transfer"> Representational State Transfer (RESTfull)</a> with <a href="https://en.wikipedia.org/wiki/JSON">JSON</a> </p> 
    <p></p> 
    <h1 id="IntrospectProviderProjects">Introspect Provider Projects</h1> 
    <p><a id="Reference_IntrospectProviderProjects"></a> </p>
@@ -1218,7 +1231,7 @@
    <p> If you wish to use a non default <a href="#TheProviderLayer_ProviderObjects">Provider</a>, you need to register a <a href="#TheProviderLayer_ProviderObjects">Provider</a> by overwriting the matching <a href="#TheIntrospectFramework_TheIntrospectApplication">IntrospectApplication.get ...ProviderClass()</a> method. </p> 
    <p> The following sections will describe the optional <a href="#IntrospectProviderProjects">IntrospectProviderProjects</a> that come with the <a href="#TheIntrospectFramework">IntrospectFramework</a>. </p>
    <h2 id="IntrospectProviderProjects_IntrospectProviderTomcatAuthorization">IntrospectProviderTomcatAuthorization</h2> 
-   <p> {@include ...} </p> 
+   <p> TODO </p> 
    <p></p> 
    <h1 id="IntrospectInfrastructureProjects">Introspect Infrastructure Projects</h1> 
    <p><a id="Reference_IntrospectInfrastructureProjects"></a> </p>
@@ -1227,7 +1240,7 @@
    <p> U can use an <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a> in a <a href="#TheDomainLayer_DomainObjects">DomainObject</a> or <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> by adding the <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a> as a parameter of the constructor and linking it to a private final field. </p> 
    <p> The following sections will describe the optional <a href="#IntrospectInfrastructureProjects">IntrospectInfrastructureProjects</a> that come with the <a href="#TheIntrospectFramework">IntrospectFramework</a>. </p>
    <h2 id="IntrospectInfrastructureProjects_TODO">TODO</h2> 
-   <p> {@include ...} </p> 
+   <p> TODO </p> 
    <p></p> 
    <h1 id="Downloads">Downloads</h1> 
    <p><a id="Reference_IntrospectDownloads"></a> Source Code: </p>
