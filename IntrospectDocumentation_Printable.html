@@ -108,18 +108,9 @@
    <p><a id="Reference_IntrospectFramework"></a> </p>
    <p> Introspect is a light weight <a href="http://en.wikipedia.org/wiki/Java_(programming_language)">Java</a> <a href="http://en.wikipedia.org/wiki/Application_framework">Application Framework</a>. It provides a framework for writing business like applications for viewing and editing information in forms and tables (not for graphical applications such as games) </p> 
    <p> With the introspect framework you only need to create domain classes. Introspect provides you the user interface, without writing any user interface code. This means that the Introspect Framework is ideal for rapid prototyping, rapid development or to learn programming (e.g. to teach: <a href="https://en.wikipedia.org/wiki/Object-oriented_programming">Object Oriented Programming</a> or <a href="https://en.wikipedia.org/wiki/Domain-driven_design">Domain Driven Design</a>). </p> 
-   <p> The Introspect framework provides different user interface implementations that you can use for: </p> 
-   <ul> 
-    <li><a href="https://en.wikipedia.org/wiki/JUnit">Junit test</a></li> 
-    <li><a href="http://en.wikipedia.org/wiki/Command-line_interface">Command line</a></li> 
-    <li>The desktop (using <a href="https://en.wikipedia.org/wiki/JavaFX">JavaFx</a>)</li> 
-    <li>Mobile devices (still to be developed, using <a href="http://en.wikipedia.org/wiki/Android_(operating_system)">Android</a> )</li> 
-    <li>The web (still to be developed, using <a href="http://en.wikipedia.org/wiki/Vaadin">Vaadin</a>)</li> 
-    <li>And possible others in the future</li> 
-   </ul> 
-   <p></p> 
-   <p> If you want to start coding right now (even if you are a beginner) please go to the <a href="#IntrospectApplicationProjects">IntrospectApplicationProjects</a> section. If you want to know more about the Introspect Framework keep reading.... </p> 
+   <p> The Introspect framework provides different <a href="https://en.wikipedia.org/wiki/User_interface">user interface</a> implementations that you can use for your domain logic. Please read the <a href="#IntrospectApplicationProjects">IntrospectApplicationProjects</a> section to learn what <a href="https://en.wikipedia.org/wiki/User_interface">user interfaces</a> are available and how to get started. If you want to know more about the details of the <a href="#TheIntrospectFramework">IntrospectFramework</a> keep reading.... </p> 
    <h2 id="TheIntrospectFramework_WhyTheIntrospectFrameworkWasDeveloped">Why the Introspect framework was developed</h2> 
+   <p> </p>
    <p><a id="Reference_IntrospectWhyItWasDeveloped"></a> </p>
    <p> Almost everyday new libraries, frameworks and tools are being released by the developer community, many of which reinvent the wheel. </p> 
    <p> This is called the &quot;Yet Another Framework Syndrome&quot; (YAFS), or in more general terms &quot;Not Invented Here&quot; (NIH). While innovation is something we should all welcome, YAFS can lead to confusion and frustration for users because there's a big risk of it introducing more noise than value.<br /> </p> 
@@ -138,7 +129,9 @@
    </ul> 
    <h3 id="TheIntrospectFramework_WhyTheIntrospectFrameworkWasDeveloped_Reason4BecauseICouldNotFindWhatINeeded">Reason 4: Because I could not find what I needed.</h3> I have not found an framework that provides an out of the box User Interface for both desktop, mobile devices, web interface, command line interface, etc. They are probably out there (Naked Objects and Isis coming close) but I haven't found one (or one that I liked). 
    <p></p> 
+   <p></p> 
    <h2 id="TheIntrospectFramework_IntrospectCoreValues">Introspect Core Values</h2> 
+   <p> </p>
    <p><a id="Reference_IntrospectCoreValues"></a> Introspect is designed around the following core values: </p>
    <h3 id="TheIntrospectFramework_IntrospectCoreValues_BasedOnTheNakedObjectsDesignPattern">Based on the Naked Objects Design Pattern</h3> See the Wiki page on the 
    <a href="http://en.wikipedia.org/wiki/Naked_objects">Naked Objects Design Pattern</a>: 
@@ -169,9 +162,13 @@
    </ul> 
    <p> Furthermore the Introspect framework prefers “Configure by Exception”. This means that the Introspect framework uses reasonable defaults wherever possible. These default values can be overridden by the developer. </p> 
    <p></p> 
+   <p></p> 
    <h2 id="TheIntrospectFramework_IntrospectLicense">Introspect License</h2> 
+   <p> </p>
    <p><a id="Reference_IntrospectLicense"></a> Introspect is an <a href="http://en.wikipedia.org/wiki/Open_source">open source</a> project under the <a href="http://en.wikipedia.org/wiki/GNU_Lesser_General_Public_License">GNU Lesser General Public License</a>. The license can be found <a href="https://github.com/ntenhoeve/Introspect-Framework/blob/master/LICENSE">here</a>. </p> 
+   <p></p> 
    <h2 id="TheIntrospectFramework_ArchitectureOfAnIntrospectApplication">Architecture of an introspect application</h2> 
+   <p> </p>
    <p><a id="Reference_IntrospectArchitecture"></a> The Introspect Framework helps you to create a <a href="http://en.wikipedia.org/wiki/Multilayered_architecture">multi layer architecture</a> for your application. A multi layer architecture has several <a href="http://martinfowler.com/bliki/LayeringPrinciples.html"> design principles</a>: </p>
    <ul> 
     <li>Separation of concerns (separate responsibilities within the application into different layers).</li> 
@@ -205,7 +202,9 @@
    <br /> Red objects are provided by the Introspect framework
    <br /> Yellow objects need to be written or included by the developer. 
    <p></p> 
+   <p></p> 
    <h2 id="TheIntrospectFramework_DependencyInjectionContainer">Dependency Injection Container</h2> 
+   <p> </p>
    <p><a id="Reference_DependencyInjectionContainer"></a> </p>
    <p> The <a href="#TheIntrospectFramework">IntrospectFramework</a> is a dependency injection framework and consists of several <a href="http://en.wikipedia.org/wiki/Dependency_injection">dependency injection containers</a>. </p> 
    <p> If you new to Dependency Injection I recommend reading <a href="http://en.wikipedia.org/wiki/Martin_Fowler">Martin Fowler</a>'s <a href="http://martinfowler.com/articles/injection.html">article</a> in which he explains the basics dependency injection. </p> 
@@ -254,7 +253,9 @@
    </ul> 
    <p></p> 
    <p></p> 
+   <p></p> 
    <h2 id="TheIntrospectFramework_TheIntrospectApplication">The Introspect Application</h2> 
+   <p> </p>
    <p><a id="Reference_IntrospectApplication"></a> <a href="#TheIntrospectFramework_TheIntrospectApplication">IntrospectApplication</a> is used as initialization parameter for the <a>Introspect</a> framework.<br /> An Introspect application has several purposes: </p>
    <ul> 
     <li>It provides the name, icon and description of the application (see <a href="#ObjectBehavior">ObjectBehavior</a>)</li> 
@@ -295,10 +296,13 @@
  </pre> 
    <p> For more (detailed) examples see the <a href="#IntrospectApplicationProjects">IntrospectApplicationProjects</a> section. </p> 
    <p></p> 
+   <p></p> 
    <h2 id="TheIntrospectFramework_StartingANewIntrospectProject">Starting a new Introspect Project</h2> 
+   <p> </p>
    <p><a id="Reference_IntrospectStartingANewProject"></a> </p>
    <p> How you create a new Introspect application depends on the type of application type that you want to create. </p> 
    <p> First decide on the type of application you want to create. Then look up the corresponding paragraph in the <a href="#IntrospectApplicationProjects">IntrospectApplicationProjects</a> section. There you will learn how to create a java project that contains an application class that extends the <a href="#TheIntrospectFramework_TheIntrospectApplication">IntrospectApplication</a> class. This class will initialize and start the <a href="#TheIntrospectFramework">IntrospectFramework</a>. This class also contains methods that you need to implement to provide the <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> classes and <a href="#TheInfrastructureLayer">InfrastructureLayer</a> classes that are required in the application. </p> 
+   <p></p> 
    <p></p> 
    <p></p> 
    <h1 id="TheDomainLayer">The Domain Layer</h1> 
