@@ -781,14 +781,14 @@
     <p> The <a href="#TheIntrospectFramework">IntrospectFramework</a> supports DisplayNames for multiple languages. The <a href="#TheProviderLayer_LanguageProvider">LanguageProvider</a> is used to get the default displayNames from a language specific property files. For more information see <a href="#TheProviderLayer_LanguageProvider">LanguageProvider</a>. </p> 
     <h3 id="ObjectBehavior_DisplayName_DisplayNameAnnotation">DisplayName Annotation</h3> 
     <p> </p>
-    <p><a id="Reference_DisplayName"></a> In some cases the default <a>ServiceObjectChildren</a> does not suffice, in example when: </p>
+    <p><a id="Reference_DisplayName"></a> In some cases the default <a href="#ObjectBehavior_ServiceObjectChildren_ServiceObjectChildrenAnnotation">ServiceObjectChildren</a> does not suffice, in example when: </p>
     <ul> 
      <li>A different use of capital case is needed</li> 
      <li>Special characters are needed that can not be used in the code</li> 
      <li>The plural form of the default displayName of a ServiceObject is incorrect</li> 
     </ul> 
-    <p> In these cases you can use the <a>ServiceObjectChildren</a> annotation before the class keyword, before the getter method of a <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> or before the <a href="#ActionMethods">ActionMethod</a>. </p> TODO EXAMPLE ACMEWebShop 
-    <p> Note that the <a>ServiceObjectChildren</a> annotation is intended for the English language only. Use the <a>ServiceObjectChildren</a> default if you want to use multiple languages. </p> 
+    <p> In these cases you can use the <a href="#ObjectBehavior_ServiceObjectChildren_ServiceObjectChildrenAnnotation">ServiceObjectChildren</a> annotation before the class keyword, before the getter method of a <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> or before the <a href="#ActionMethods">ActionMethod</a>. </p> TODO EXAMPLE ACMEWebShop 
+    <p> Note that the <a href="#ObjectBehavior_ServiceObjectChildren_ServiceObjectChildrenAnnotation">ServiceObjectChildren</a> annotation is intended for the English language only. Use the <a href="#ObjectBehavior_ServiceObjectChildren_ServiceObjectChildrenAnnotation">ServiceObjectChildren</a> default if you want to use multiple languages. </p> 
     <p></p> 
     <p></p> 
     <p></p> 
@@ -798,7 +798,7 @@
     <p><a id="Reference_DescriptionModel"></a> </p>
     <p> Each <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> or <a href="#ActionMethods">ActionMethod</a> can have a text to explain the class member in more detail. This description is often displayed in a graphical user interface when the user hovers over the property or action menu. </p> 
     <h3 id="ObjectBehavior_Description_DescriptionDefault">Description Default</h3> 
-    <p> By default the description is the same as the default <a>ServiceObjectChildren</a>, therefore it is recommended to override the default value where needed. You can override the default value by defining the description in the language property files (see <a href="#TheProviderLayer_LanguageProvider">LanguageProvider</a>) or by adding a description annotation. </p> 
+    <p> By default the description is the same as the default <a href="#ObjectBehavior_ServiceObjectChildren_ServiceObjectChildrenAnnotation">ServiceObjectChildren</a>, therefore it is recommended to override the default value where needed. You can override the default value by defining the description in the language property files (see <a href="#TheProviderLayer_LanguageProvider">LanguageProvider</a>) or by adding a description annotation. </p> 
     <h3 id="ObjectBehavior_Description_DescriptionAnnotation">Description Annotation</h3> 
     <p> </p>
     <p><a id="Reference_Description"></a> </p>
@@ -1059,7 +1059,27 @@
     <p><a id="Reference_ServiceObjectChildrenModel"></a> </p>
     <p> <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s can be nested so that they can be displayed as a <a href="https://en.wikipedia.org/wiki/Tree_view">tree view</a> in the <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a>. </p> 
     <h3 id="ObjectBehavior_ServiceObjectChildren_ServiceObjectChildrenAnnotation">ServiceObjectChildren annotation</h3> 
-    <p> {@insert: ServiceObjectChildren} </p> 
+    <p> </p>
+    <p><a id="Reference_ServiceObjectChildren"></a> </p>
+    <p> You can nest <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>'s by adding a <a href="#ObjectBehavior_ServiceObjectChildren_ServiceObjectChildrenAnnotation">ServiceObjectChildren</a> annotation before the class keyword. It has the following parameters: </p> 
+    <ul> 
+     <li><a>serviceClasses()</a>: an array of <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> classes that need to be displayed as children of that <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a></li> 
+     <li><a>beforeActionMethods()</a>: a boolean to indicate if these children should be displayed before or after the <a href="#ActionMethods_ActionMethodsForServiceObjects">ServiceObjectActionMethod</a>s (default=before)</li> 
+    </ul> 
+    <p></p> 
+    <p> Example: </p>
+    <p> <code> @ServiceObjectChildren(serviceClasses = { CheckingAccountService.class, SavingsAccountService.class}, beforeActionMethods=false)<br /> public class BankAccountService {<br /><br /> &nbsp;&nbsp;public void logout() {<br /> &nbsp;&nbsp;&nbsp;&nbsp;//logout<br /> &nbsp;&nbsp;}<br /><br /> &nbsp;&nbsp;//etc...<br /> }<br /> </code> </p> 
+    <p></p> 
+    <p> Things to consider: </p> 
+    <ul> 
+     <li>Do not nest to deep. The <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a> is not very wide and a deep tree structure is time consuming to navigate trough</li> 
+     <li>You can nest the same <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> as child of multiple other <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s, but this is not recommended because it is more time consuming to navigate trough.</li> 
+     <li>Do not add a <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> child if its type is already a <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> parent, to prevent infinite loops</li> 
+     <li>The <a href="#ObjectBehavior_ServiceObjectChildren_ServiceObjectChildrenAnnotation">ServiceObjectChildren</a> annotation only impacts the way the <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> are displayed in the <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a>. <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>'s that are nested still need to be registered with the <a href="#TheIntrospectFramework_TheIntrospectApplication">IntrospectApplication.getServiceClasses()</a> method.</li> 
+    </ul> 
+    <p></p> 
+    <p></p> 
+    <p></p> 
     <p></p> 
     <p></p> 
     <p></p> 
@@ -1124,16 +1144,18 @@
     <p> TODO </p> 
     <p></p> 
     <p></p> 
-    <h3 id="IntrospectApplicationProjects_IntrospectForJavaFx_PossibleFutureProjectIntrospectForAndroid">Possible future project: Introspect for Android</h3> 
+    <h2 id="IntrospectApplicationProjects_PossibleFutureProjects">Possible future projects</h2> 
+    <p> This is a list of possible future projects (still to be developed) </p> 
+    <h3 id="IntrospectApplicationProjects_PossibleFutureProjects_IntrospectForAndroid">Introspect for Android</h3> 
     <p> An application with a <a href="http://en.wikipedia.org/wiki/Graphical_user_interface"> graphical user interface</a> for <a href="https://en.wikipedia.org/wiki/Mobile_device">mobile devices</a> such as <a href="https://en.wikipedia.org/wiki/Smartphone">smart phones</a> and <a href="https://en.wikipedia.org/wiki/Tablet_computer">tablets</a>. </p> 
-    <h3 id="IntrospectApplicationProjects_IntrospectForJavaFx_PossibleFutureProjectIntrospectForVaadin">Possible future project: Introspect for Vaadin</h3> 
+    <h3 id="IntrospectApplicationProjects_PossibleFutureProjects_IntrospectForVaadin">Introspect for Vaadin</h3> 
     <p> A <a href="https://en.wikipedia.org/wiki/Web_application">web application</a> with a <a href="http://en.wikipedia.org/wiki/Graphical_user_interface">graphical user interface</a> for <a href="https://en.wikipedia.org/wiki/Web_browser">web browsers</a> </p> 
-    <h3 id="IntrospectApplicationProjects_IntrospectForJavaFx_PossibleFutureProjectSOAPInterface">Possible future project: SOAP interface</h3> 
+    <h3 id="IntrospectApplicationProjects_PossibleFutureProjects_IntrospectForSOAP">Introspect for SOAP</h3> 
     <p> A <a href="https://en.wikipedia.org/wiki/Web_service">web service</a> that allows other computer applications to interact via the <a href="http://en.wikipedia.org/wiki/SOAP">Simple Object Access Protocol (SOAP)</a> </p> 
-    <h3 id="IntrospectApplicationProjects_IntrospectForJavaFx_PossibleFutureProjectRESTfullXMLInterface">Possible future project: RESTfull XML interface</h3> 
+    <h3 id="IntrospectApplicationProjects_PossibleFutureProjects_IntrospectForRESTfullXML">Introspect for RESTfull XML</h3> 
     <p> A <a href="https://en.wikipedia.org/wiki/Web_service">web service</a> that allows other computer applications to interact using <a href="http://en.wikipedia.org/wiki/Representational_state_transfer"> Representational State Transfer (RESTfull)</a> with <a href="https://en.wikipedia.org/wiki/XML">XML</a> </p> 
-    <h3 id="IntrospectApplicationProjects_IntrospectForJavaFx_PossibleFutureProjectRESTfullJSONInterface">Possible future project: RESTfull JSON interface</h3> 
-    <p>A <a href="https://en.wikipedia.org/wiki/Web_service">web service</a> that allows other computer applications to interact using <a href="http://en.wikipedia.org/wiki/Representational_state_transfer"> Representational State Transfer (RESTfull)</a> with <a href="https://en.wikipedia.org/wiki/JSON">JSON</a> </p> 
+    <h3 id="IntrospectApplicationProjects_PossibleFutureProjects_IntrospectForRESTfullJSON">Introspect for RESTfull JSON</h3> 
+    <p> A <a href="https://en.wikipedia.org/wiki/Web_service">web service</a> that allows other computer applications to interact using <a href="http://en.wikipedia.org/wiki/Representational_state_transfer"> Representational State Transfer (RESTfull)</a> with <a href="https://en.wikipedia.org/wiki/JSON">JSON</a> </p> 
     <p></p> 
     <h1 id="IntrospectProviderProjects">Introspect Provider Projects</h1> 
     <p><a id="Reference_IntrospectProviderProjects"></a> </p>
@@ -1259,6 +1281,7 @@
         <li><a href="#IntrospectApplicationProjects_IntrospectForJUnit">Introspect for JUnit</a></li>
         <li><a href="#IntrospectApplicationProjects_IntrospectForCommandLine">Introspect for CommandLine</a></li>
         <li><a href="#IntrospectApplicationProjects_IntrospectForJavaFx">Introspect for JavaFx</a></li>
+        <li><a href="#IntrospectApplicationProjects_PossibleFutureProjects">Possible future projects</a></li>
        </ul></a></li>
      <li><a href="#IntrospectProviderProjects">Introspect Provider Projects
        <ul>
