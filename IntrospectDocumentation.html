@@ -1131,7 +1131,19 @@
     <p></p> 
     <h2 id="IntrospectApplicationProjects_IntrospectForCommandLine">Introspect for CommandLine</h2> 
     <p> </p>
-    <p><a id="Reference_IntrospectApplicationForCommandLine"></a> The <a href="#TheIntrospectFramework_TheIntrospectApplication">IntrospectApplication</a> is an implementation of the <a href="#TheIntrospectFramework">IntrospectFramework</a> for <a href="https://en.wikipedia.org/wiki/Command-line_interface">command line interface</a>. It will parse the command and arguments from the given commandline and call one of the <a href="#ActionMethods">ActionMethod</a>'s of a <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> class with the given arguments. </p>
+    <p><a id="Reference_IntrospectApplicationForCommandLine"></a> </p>
+    <p> The <a href="#TheIntrospectFramework_TheIntrospectApplication">IntrospectApplication</a> is an implementation of the <a href="#TheIntrospectFramework">IntrospectFramework</a> for <a href="https://en.wikipedia.org/wiki/Command-line_interface">command line interfaces</a>.<br /> <br /> If you execute the application with parameters it will: </p> 
+    <ul> 
+     <li>parse the given command line</li> 
+     <li>call one of the <a href="#ActionMethods">ActionMethod</a>'s of a <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> class (given as command) with an optional <a href="#ActionMethods">ActionMethod</a> parameter</li> 
+     <li>Return the result of the method or return a message if a method was successfully executed or not</li> 
+     <li>The <a href="#IntrospectApplicationProjects_IntrospectForCommandLine">IntrospectApplicationForCommandLine</a> is than terminated (state is lost unless the application stores state somehow)</li> 
+    </ul> If you execute the application without parameters it will: 
+    <ul> 
+     <li>Return a list of possible commands and arguments</li> 
+     <li>The <a href="#IntrospectApplicationProjects_IntrospectForCommandLine">IntrospectApplicationForCommandLine</a> is than terminated</li> 
+    </ul> 
+    <p></p> 
     <h3 id="IntrospectApplicationProjects_IntrospectForCommandLine_HowToDownloadAIntrospectForCommandLineDemoProject">How to download a IntrospectForCommandLine demo project</h3> 
     <p> TODO </p> 
     <h3 id="IntrospectApplicationProjects_IntrospectForCommandLine_HowToCreateANewIntrospectCommandLineProject">How to create a new IntrospectCommandLine project</h3> 
