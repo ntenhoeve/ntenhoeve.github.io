@@ -473,7 +473,7 @@
     <li>The operation is state-less</li> 
    </ul> These characteristics are discussed in more detail in the following paragraphs. 
    <h3 id="TheServiceLayer_ServiceObjects_ServiceObjectsOperationsRelatesToADomainConceptThatIsNotANaturalPartOfADomainObject">Service objects operations relates to a domain concept that is not a natural part of a DomainObject</h3> 
-   <p> <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s contain <a href="#ActionMethods_ActionMethodsForServiceObjects">ServiceObjectActionMethod</a>s. The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> displays these methods as menu items and invokes these methods once a user clicks on the menu item. <a href="#ActionMethods_ActionMethodsForServiceObjects">ServiceObjectActionMethod</a>s create or retrieve <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s where the user does not have an existing <a href="#TheDomainLayer_DomainObjects">DomainObject</a> to navigate from. </p> 
+   <p> <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s contain <a href="#ActionMethods_ActionMethodsForServiceObjects">ServiceObjectActionMethod</a>s. The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> displays these methods as menu items and invokes these methods once a user clicks on the menu item. Most <a href="#ActionMethods_ActionMethodsForServiceObjects">ServiceObjectActionMethod</a>s create or retrieve <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s where the user does not have an existing <a href="#TheDomainLayer_DomainObjects">DomainObject</a> to navigate from. </p> 
    <h3 id="TheServiceLayer_ServiceObjects_ServiceObjectsDefineAnInterfaceInTermsOfTheDomainModel">Service objects define an interface in terms of the domain model</h3> 
    <p> <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s basically provides the user (via the <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a>) access to <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s, so that the user can work on them (via the <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a>). </p> 
    <h3 id="TheServiceLayer_ServiceObjects_ServiceObjectsAreStateless">Service objects are state-less</h3> 
@@ -489,9 +489,9 @@
     <li>This method will return a list of <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s that meet the search criteria</li> 
     <li>The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> displays the found list of <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s as a table in a new tab.</li> 
    </ul> 
-   <p></p> * 
+   <p></p> 
    <h3 id="TheServiceLayer_ServiceObjects_Construction">Construction</h3> 
-   <p> The principle of “naked objects” is that any <a href="http://en.wikipedia.org/wiki/Plain_Old_Java_Object">'Plain Old Java Object' (POJO)</a> can function as a <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>. In other words: a service class does not have to inherit from any special class, nor implement any particular interface, nor have any specific attributes. </p> 
+   <p> The principle of <a href="https://en.wikipedia.org/wiki/Naked_objects">“naked objects”</a> is that any <a href="http://en.wikipedia.org/wiki/Plain_Old_Java_Object">'Plain Old Java Object' (POJO)</a> can function as a <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>. In other words: a service class does not have to inherit from any special class, nor implement any particular interface, nor have any specific attributes. </p> 
    <p> <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s are instantiated by the <a href="#TheIntrospectFramework">IntrospectFramework</a>, and therefore need to be registered to the <a href="#TheIntrospectFramework_TheIntrospectApplication">IntrospectApplication.getServiceClasses()</a> method. </p> In example: 
    <pre>
  public class WebShop extends IntrospectApplicationFor... {
@@ -1216,7 +1216,7 @@
    <p> The <a href="#TheIntrospectFramework_TheIntrospectApplication">IntrospectApplication</a> is an implementation of the <a href="#TheIntrospectFramework">IntrospectFramework</a> for <a href="https://en.wikipedia.org/wiki/Command-line_interface">command line interfaces</a>.<br /> <br /> If you execute the application with parameters it will: </p> 
    <ul> 
     <li>parse the given command line</li> 
-    <li>call one of the <a href="#ActionMethods">ActionMethod</a>'s of a <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> class (given as command) with an optional <a href="#ActionMethods">ActionMethod</a> parameter</li> 
+    <li>call one of the <a href="#ActionMethods_ActionMethodsForServiceObjects">ServiceObjectActionMethod</a>'s with an optional parameter</li> 
     <li>Return the result of the method or return a message if a method was successfully executed or not</li> 
     <li>The <a href="#IntrospectApplicationProjects_IntrospectForCommandLine">IntrospectApplicationForCommandLine</a> is than terminated (state is lost unless the application stores state somehow)</li> 
    </ul> If you execute the application without parameters it will: 
