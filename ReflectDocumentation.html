@@ -26,49 +26,43 @@
     <p> The <a href="#TheReflectFramework">ReflectFramework</a> is a light weight <a href="http://en.wikipedia.org/wiki/Java_(programming_language)">Java</a> <a href="http://en.wikipedia.org/wiki/Application_framework">Application Framework</a> for creating <a href="https://en.wikipedia.org/wiki/Business_software">business like applications</a> that can view and manipulate information by using <a href="https://en.wikipedia.org/wiki/Form_(document)">forms</a> and <a href="https://en.wikipedia.org/wiki/Table_(information)">tables</a>. </p> 
     <p> With the <a href="#TheReflectFramework">ReflectFramework</a> you only need to create <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s. The <a href="#TheReflectFramework">ReflectFramework</a> provides you the <a href="https://en.wikipedia.org/wiki/User_interface">user interface</a>, without writing any <a href="https://en.wikipedia.org/wiki/User_interface">user interface</a> code. This means that the <a href="#TheReflectFramework">ReflectFramework</a> is ideal for rapid prototyping, rapid development or to learn programming (e.g. to teach: <a href="https://en.wikipedia.org/wiki/Object-oriented_programming">Object Oriented Programming</a> or <a href="https://en.wikipedia.org/wiki/Domain-driven_design">Domain Driven Design</a>). </p> 
     <p> The <a href="#TheReflectFramework">ReflectFramework</a> provides different <a href="https://en.wikipedia.org/wiki/User_interface">user interface</a> implementations that you can use for your <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s. Please read the <a href="#ReflectApplicationProjectsGettingStarted">ReflectApplicationProjects</a> section to learn what <a href="https://en.wikipedia.org/wiki/User_interface">user interfaces</a> are available and how to get started. If you want to know more about the details of the <a href="#TheReflectFramework">ReflectFramework</a>, keep reading.... </p> 
-    <h2 id="TheReflectFramework_WhyTheReflectFrameworkWasDeveloped">Why the Reflect Framework was developed</h2> 
-    <p> </p>
-    <p><a id="Reference_ReflectWhyItWasDeveloped"></a> </p>
-    <p> Almost everyday new libraries, frameworks and tools are being released by the developer community, many of which reinvent the wheel. </p> 
-    <p> This is called the &quot;Yet Another Framework Syndrome&quot; (YAFS), or in more general terms &quot;Not Invented Here&quot; (NIH). While innovation is something we should all welcome, YAFS can lead to confusion and frustration for users because there's a big risk of it introducing more noise than value.<br /> </p> 
-    <p> So why did I develop a new framework while there are so many Java application frameworks out there? </p> 
-    <h3 id="TheReflectFramework_WhyTheReflectFrameworkWasDeveloped_Reason1BecauseItsFun">Reason 1: Because its fun</h3> Probably the best reason ever! 
-    <h3 id="TheReflectFramework_WhyTheReflectFrameworkWasDeveloped_Reason2BecauseIWantedToLearn">Reason 2: Because I wanted to learn</h3> The journey of developing yet another framework has thought me more than I could have learned implementing an existing framework. Specifically on how other frameworks solved issues that I run into. 
-    <h3 id="TheReflectFramework_WhyTheReflectFrameworkWasDeveloped_Reason3BecauseIWantedToDoItDifferent">Reason 3: Because I wanted to do it different</h3> I love the thoughts behind the 
-    <a href="http://nakedobjects.codeplex.com/">Naked Objects Framework</a> (for 
-    <a href="http://en.wikipedia.org/wiki/.NET_Framework">.net</a>) and the 
-    <a href="http://isis.apache.org/">Apache Isis Framework</a> (for 
-    <a href="http://en.wikipedia.org/wiki/Java_(programming_language)">Java</a>). But looking at the Apache Isis Framework, there are several things I wanted to do it different in the 
-    <a href="#TheReflectFramework">ReflectFramework</a> (good or bad is all open for debate): 
-    <ul> 
-     <li>The <a href="http://en.wikipedia.org/wiki/Business_logic">domain objects</a> and service objects (often repository objects) usually extend a convenience class that contains methods to interact with the Apache Isis framework/ object container. Extending such a class is not mandatory, because you can implement these methods in your objects, but to me this still ignores the principle of &quot;Naked objects&quot; or <a href="http://en.wikipedia.org/wiki/Plain_Old_Java_Object">POJO’s</a>.</li> 
-     <li>I personally dislike the way Apache Isis manages the editing of objects. This is very tightly linked to its <a href="http://en.wikipedia.org/wiki/Persistence_framework">persistence framework</a>. I however believe that objects do not necessarily need to be persisted after its been edited. I prefer a different approach: domain objects can be passed to a method as a method parameter. This method parameter can be edited by a user before a method is executed (depending on how the method is annotated). The domain object/ method parameter may then be handled by a <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a> like a persistence service (or not at all).</li> 
-    </ul> 
-    <h3 id="TheReflectFramework_WhyTheReflectFrameworkWasDeveloped_Reason4BecauseICouldNotFindWhatINeeded">Reason 4: Because I could not find what I needed.</h3> I have not found an framework that provides an out of the box User Interface for both desktop, mobile devices, web interface, command line interface, etc. They are probably out there (Naked Objects and Isis coming close) but I haven't found one that lives up to modern GUI standards (e.g. like Google's 
-    <a href="https://material.io/design/">Material Design</a>). 
-    <p></p> 
-    <p></p> 
     <h2 id="TheReflectFramework_ReflectCoreValues">Reflect Core Values</h2> 
     <p> </p>
     <p><a id="Reference_ReflectCoreValues"></a> The <a href="#TheReflectFramework">ReflectFramework</a> is designed around the following core values: </p>
     <h3 id="TheReflectFramework_ReflectCoreValues_BasedOnTheNakedObjectsDesignPattern">Based on the Naked Objects Design Pattern</h3> See the Wiki page on the 
-    <a href="http://en.wikipedia.org/wiki/Naked_objects">Naked Objects Design Pattern</a>: 
+    <a href="http://en.wikipedia.org/wiki/Naked_objects">Naked Objects</a> 
+    <a href="https://en.wikipedia.org/wiki/Architectural_pattern">Architectural pattern</a>: 
     <ul> 
      <li>All <a href="http://en.wikipedia.org/wiki/Business_logic">business logic</a> should be encapsulated onto the <a href="http://en.wikipedia.org/wiki/Business_object_(computer_science)">domain objects</a>. This principle is not unique to naked objects: it is just a strong commitment to <a href="http://en.wikipedia.org/wiki/Encapsulation_%28object-oriented_programming%29">encapsulation</a>.</li> 
      <li>The <a href="http://en.wikipedia.org/wiki/User_interface">user interface</a> should be a direct representation of the <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s, with all user actions consisting, explicitly, of creating or retrieving <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s and/or invoking <a href="http://en.wikipedia.org/wiki/Method_(computer_science)">methods</a> on those objects. This principle is also not unique to naked objects: it is just a specific interpretation of an <a href="http://en.wikipedia.org/wiki/Object-oriented_user_interface">object-oriented user interface (OOUI)</a>.</li> 
      <li>The user interface should be created 100% automatically from the definition of the <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s. <a href="http://en.wikipedia.org/wiki/Reflection_(computer_science)">Reflection</a> is used instead of code generation. Hence the name of the <a href="#TheReflectFramework">ReflectFramework</a>: The framework reflects the code of the <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s and <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s to the user interface.</li> 
+    </ul> 
+    <h3 id="TheReflectFramework_ReflectCoreValues_WrittenInJava">Written in Java</h3> At the time of this writing, 
+    <a href="https://java.com">Java</a> is still the 
+    <a href="https://www.codingdojo.com/blog/7-most-in-demand-programming-languages-of-2018/">most used programming language</a>. Most developers are able to write (or read) Java code. There are many Java libraries available that can be used in the application, e.g. for: 
+    <ul> 
+     <li>Testing or improving code</li> 
+     <li>Logging</li> 
+     <li>Storing or retreiving data (e.g. JPA)</li> 
+     <li>PDF and M$ Excel reading and writing</li> 
+     <li>email clients</li> 
+     <li>etc</li> 
     </ul> 
     <h3 id="TheReflectFramework_ReflectCoreValues_ProvideAGoodStructureForApplications">Provide a good structure for applications</h3> 
     <ul> 
      <li>Enforce <a href="http://en.wikipedia.org/wiki/Separation_of_concerns">separation of concerns</a> (see <a href="#TheReflectFramework_ArchitectureOfAnReflectApplication">ReflectArchitecture</a>).</li> 
      <li>Facilitate <a href="http://en.wikipedia.org/wiki/Domain-driven_design">domain driven design</a>.</li> 
      <li>The <a href="#TheReflectFramework">ReflectFramework</a> should not create a <a href="http://en.wikipedia.org/wiki/Vendor_lock-in">vendor lock-in</a> (not that there is such a thing as an <a href="#TheReflectFramework">ReflectFramework</a> Vendor, since it is open source). <a href="#TheDomainLayer_DomainObjects">DomainObject</a>'s, <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>'s and <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a>'s should have no (or almost no) dependencies with the <a href="#TheReflectFramework">ReflectFramework</a> so that it could easily (within a few hours) be replaced with another dependency injection framework (such as <a href="http://en.wikipedia.org/wiki/Spring_Framework">Spring</a>, <a href="http://en.wikipedia.org/wiki/Google_Guice">Guice</a> or <a href="http://picocontainer.codehaus.org/">Pico container</a>, etc...) or visa versa.</li> 
+     <li>The <a href="#TheReflectFramework">ReflectFramework</a> must accept <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s, <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s, <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a>s that are <a href="https://en.wikipedia.org/wiki/Plain_old_Java_object">Plain Old Java Objects (POJO's)</a>.</li> 
      <li>The <a href="#TheReflectFramework">ReflectFramework</a> exists of a few basic interfaces like <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> and <a href="#TheProviderLayer_ProviderObjects">Provider</a>s that can have multiple different implementations.</li> 
+    </ul> 
+    <h3 id="TheReflectFramework_ReflectCoreValues_HaveAModernGraphicalUserInterface">Have a modern graphical user interface</h3> 
+    <ul> 
+     <li><a href="https://en.wikipedia.org/wiki/Responsive_web_design">Responsive Design</a>: An optimized user experience on a variety of devices and screen sizes.</li> 
+     <li><a href="https://en.wikipedia.org/wiki/Flat_design">Flat design</a>: A minimalist graphical user interface that does not distract the user in executing his or her tasks, e.g. like Google's <a href="https://material.io/design/">Material Design</a></li> 
     </ul> 
     <h3 id="TheReflectFramework_ReflectCoreValues_WriteOnceAndDeployAsDifferentTypeOfApplications">Write once and deploy as different type of applications</h3> 
     <p> The <a href="#TheReflectFramework">ReflectFramework</a> allows you to write your code once, and deploy it as different types of applications without much of a hassle. See the <a href="#ReflectApplicationProjectsGettingStarted">ReflectApplicationProjects</a> for more information. </p> 
-    <h3 id="TheReflectFramework_ReflectCoreValues_Lightweight">Lightweight</h3> 
-    <p> The <a href="#TheReflectFramework">ReflectFramework</a> framework should only be a few kilobytes in size. </p> 
     <h3 id="TheReflectFramework_ReflectCoreValues_SimpleToConfigure">Simple to configure</h3> The 
     <a href="#TheReflectFramework">ReflectFramework</a> has no configuration files (see 
     <a href="http://www.martinfowler.com/articles/injection.html#CodeOrConfigurationFiles">“Code or configuration files”</a> section in Martin Fowlers article for the arguments why).
@@ -80,6 +74,54 @@
      <li>The <a href="#ObjectBehavior">ObjectBehavior</a> of <a href="#TheDomainLayer_DomainObjects">DomainObject</a>'s and <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> 's (how the domain needs to handled by the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a>)</li> 
     </ul> 
     <p> Furthermore the <a href="#TheReflectFramework">ReflectFramework</a> prefers “Configure by Exception”. This means that the <a href="#TheReflectFramework">ReflectFramework</a> uses reasonable defaults wherever possible. These default values can be overridden by the developer. </p> 
+    <h3 id="TheReflectFramework_ReflectCoreValues_Lightweight">Lightweight</h3> 
+    <p> The <a href="#TheReflectFramework">ReflectFramework</a> is aimed to have a small distribution size. </p> 
+    <h3 id="TheReflectFramework_ReflectCoreValues_OpenSourceAndFree">Open source and free</h3> 
+    <p> See the <a href="#TheReflectFramework_ReflectLicense">ReflectLicense</a>. </p> 
+    <p></p> 
+    <p></p> 
+    <h2 id="TheReflectFramework_WhyTheReflectFrameworkWasDeveloped">Why the Reflect Framework was developed</h2> 
+    <p> </p>
+    <p><a id="Reference_ReflectWhyItWasDeveloped"></a> </p>
+    <p> Almost everyday new libraries, frameworks and tools are being released by the developer community, many of which reinvent the wheel. </p> 
+    <p> This is called the &quot;Yet Another Framework Syndrome&quot; (YAFS), or in more general terms &quot;Not Invented Here&quot; (NIH). While innovation is something we should all welcome, YAFS can lead to confusion and frustration for users because there's a big risk of it introducing more noise than value.<br /> </p> 
+    <p> So why did I develop a new framework while there are so many Java application frameworks out there? </p> 
+    <h3 id="TheReflectFramework_WhyTheReflectFrameworkWasDeveloped_Reason1BecauseItsFun">Reason 1: Because its fun</h3> Probably the best reason ever! 
+    <h3 id="TheReflectFramework_WhyTheReflectFrameworkWasDeveloped_Reason2BecauseIWantedToLearn">Reason 2: Because I wanted to learn</h3> The journey of developing yet another framework has thought me more than I could have learned implementing an existing framework. Specifically on how other frameworks solved issues that I run into. 
+    <h3 id="TheReflectFramework_WhyTheReflectFrameworkWasDeveloped_Reason3BecauseICouldNotFindWhatIWasLookingFor">Reason 3: Because I could not find what I was looking for</h3> There are already several frame works that are based on the 
+    <a href="https://en.wikipedia.org/wiki/Naked_objects">Naked Objects</a> pattern, e.g.: 
+    <ul> 
+     <li><a href="https://github.com/NakedObjectsGroup/NakedObjectsFramework">Naked Objects </a><a> (for .net)</a></li> 
+     <a> </a> 
+     <li><a></a><a href="https://isis.apache.org/">Apache Isis</a> <a href="https://isis.apache.org/guides/ugvw/ugvw.html">Wicket Viewer</a> (for Java)</li> 
+     <li><a href="http://metawidget.sourceforge.net/screenshots.php">MetaWidget </a> (for Java)</li> 
+     <li><a href="http://www.openxava.org">Openxava</a> (for Java)</li> 
+    </ul> These frame works have merit on their own, but they did not have all the things I was looking for (see 
+    <a href="#TheReflectFramework_ReflectCoreValues">ReflectCoreValues</a>). Specifically: 
+    <h3 id="TheReflectFramework_WhyTheReflectFrameworkWasDeveloped_UsePOJOs">Use POJO's</h3> The 
+    <a href="http://en.wikipedia.org/wiki/Business_logic">domain objects</a> and service objects (often repository objects) usually extend a convenience class that contains methods to interact with the Apache Isis framework/ object container. Extending such a class is not mandatory, because you can implement these methods in your objects, but to me this still ignores the principle of 
+    <a href="https://en.wikipedia.org/wiki/Naked_objects">Naked Objects</a> or 
+    <a href="http://en.wikipedia.org/wiki/Plain_Old_Java_Object">POJO’s</a>. 
+    <h3 id="TheReflectFramework_WhyTheReflectFrameworkWasDeveloped_EditingObjectsWithoutJPADependency">Editing objects without JPA dependency</h3> I personally dislike the way Apache Isis manages the editing of objects. This is very tightly linked to its 
+    <a href="http://en.wikipedia.org/wiki/Persistence_framework">persistence framework</a>. I however believe that objects do not necessarily need to be persisted after its been edited. I prefer a different approach: domain objects can be passed to a method as a method parameter. This method parameter can be edited by a user before a method is executed (depending on how the method is annotated). The domain object/ method parameter may then be handled by a 
+    <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a> like a persistence service (or not at all). 
+    <h3 id="TheReflectFramework_WhyTheReflectFrameworkWasDeveloped_MissingAGoodGraphicalUserInterface">Missing a good graphical user interface.</h3> In my opinion (at the time of this writing), none of these graphical user interfaces meet modern design principles like: 
+    <ul> 
+     <li><a href="https://en.wikipedia.org/wiki/Responsive_web_design">Responsive Design</a>: An optimized user experience on a variety of devices and screen sizes.</li> 
+     <li><a href="https://en.wikipedia.org/wiki/Flat_design">Flat design</a>: A minimalist graphical user interface that does not distract the user execute its tasks, e.g. like Google's <a href="https://material.io/design/">Material Design</a></li> 
+    </ul> 
+    <h3 id="TheReflectFramework_WhyTheReflectFrameworkWasDeveloped_MissingANakedObjectsWORAFramework">Missing a Naked Objects WORA framework</h3> 
+    <a href="https://java.com/">Java</a> was developed with the 
+    <a href="https://en.wikipedia.org/wiki/Write_once,_run_anywhere">Write Once Run Anywhere (WORA)</a>philosophy. A lot has changed since. So does WORA still apply for Java? The answer: Yes and No: 
+    <ul> 
+     <li>Yes: The <a href="https://en.wikipedia.org/wiki/Java_virtual_machine">Java Virtual Machine (JVM)</a> can run on almost all devices</li> 
+     <li>No: It is nearly impossible to write a GUI for a desktop, and deploy it as a web application or mobile application or vice-versa</li> 
+    </ul> Frameworks like 
+    <a href="https://facebook.github.io/react-native/">React Native</a>, 
+    <a href="https://flutter.io">Google Flutter</a> and 
+    <a href="https://www.codenameone.com">Codename One</a> all aim to write code once and execute it on different platforms. The need for such frameworks is obvious: Most of us want our applications to run on as many devices as possible, without having to re-write test and release the (GUI) application for multiple platforms, because this is tedious, no value added, costly work. 
+    <p></p> 
+    <p> At the time of this writing, none of the existing frameworks can be dispatched to different platforms (e.g. the web, desktop, and mobile devices). The <a href="#TheReflectFramework">ReflectFramework</a> lets you wrap your <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s, <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s and <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a>s, in several native implementations of the <a href="#TheReflectFramework">ReflectFramework</a>. For more information see: <a href="#ReflectApplicationProjectsGettingStarted">ReflectApplicationProjects</a> </p> 
     <p></p> 
     <p></p> 
     <h2 id="TheReflectFramework_ReflectLicense">Reflect License</h2> 
@@ -1228,8 +1270,8 @@
     <ul>
      <li><a href="#TheReflectFramework">The Reflect Framework
        <ul>
-        <li><a href="#TheReflectFramework_WhyTheReflectFrameworkWasDeveloped">Why the Reflect Framework was developed</a></li>
         <li><a href="#TheReflectFramework_ReflectCoreValues">Reflect Core Values</a></li>
+        <li><a href="#TheReflectFramework_WhyTheReflectFrameworkWasDeveloped">Why the Reflect Framework was developed</a></li>
         <li><a href="#TheReflectFramework_ReflectLicense">Reflect License</a></li>
         <li><a href="#TheReflectFramework_ArchitectureOfAnReflectApplication">Architecture of an Reflect Application</a></li>
         <li><a href="#TheReflectFramework_DependencyInjectionContainer">Dependency Injection Container</a></li>
