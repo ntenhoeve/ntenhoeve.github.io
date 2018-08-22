@@ -98,10 +98,6 @@
      <li><a href="http://www.openxava.org">Openxava</a> (for Java)</li> 
     </ul> These frame works have merit on their own, but they did not have all the things I was looking for (see 
     <a href="#TheReflectFramework_ReflectCoreValues">ReflectCoreValues</a>). Specifically: 
-    <h3 id="TheReflectFramework_WhyTheReflectFrameworkWasDeveloped_UsePOJOs">Use POJO's</h3> The 
-    <a href="http://en.wikipedia.org/wiki/Business_logic">domain objects</a> and service objects (often repository objects) usually extend a convenience class that contains methods to interact with the Apache Isis framework/ object container. Extending such a class is not mandatory, because you can implement these methods in your objects, but to me this still ignores the principle of 
-    <a href="https://en.wikipedia.org/wiki/Naked_objects">Naked Objects</a> or 
-    <a href="http://en.wikipedia.org/wiki/Plain_Old_Java_Object">POJO’s</a>. 
     <h3 id="TheReflectFramework_WhyTheReflectFrameworkWasDeveloped_EditingObjectsWithoutJPADependency">Editing objects without JPA dependency</h3> I personally dislike the way Apache Isis manages the editing of objects. This is very tightly linked to its 
     <a href="http://en.wikipedia.org/wiki/Persistence_framework">persistence framework</a>. I however believe that objects do not necessarily need to be persisted after its been edited. I prefer a different approach: domain objects can be passed to a method as a method parameter. This method parameter can be edited by a user before a method is executed (depending on how the method is annotated). The domain object/ method parameter may then be handled by a 
     <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a> like a persistence service (or not at all). 
@@ -222,16 +218,16 @@
     <ul> 
      <li>It provides the name, icon and description of the application (see <a href="#ObjectBehavior">ObjectBehavior</a>)</li> 
      <li>It provides the location of the distribution package (jar, war)</li> 
-     <li>It provides the <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> type, needed for the application with the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication.getUserInterfaceControllerClass()</a> method. Each application type (commandline, swing, vaadin) requires different implementations of the <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a></li> 
+     <li>It provides the <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> type, needed for the application with the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication.getUserInterfaceControllerClass()</a> method. Each application type (e.g. for the command line, desktop, mobile devices or the web) requires different implementations of the <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a></li> 
      <li>It provides a list of <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> types with the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication.getServiceClasses()</a> method. <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s basically provide the actionable/menu items</li> 
      <li>It provides a list of <a href="#TheDomainLayer_DomainObjects">DomainObject</a> types that need to be created using dependency injection, with the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication.getDomainClasses()</a> method.</li> 
      <li>It provides a list of <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a> types with the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication.getInfrastructureClasses()</a> method. <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a>s basically communicate to the outside world (i.e. data base access objects, email clients, soap clients, etc)</li> 
-     <li>It provides the <a href="#TheProviderLayer_ProviderObjects">Provider</a> types with the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication.get...ProviderClass()</a> methods. <a href="#TheProviderLayer_ProviderObjects">Provider</a> Objects help with <a href="https://en.wikipedia.org/wiki/Cross-cutting_concern">cross cutting concerns</a>. Each application type (commandline, swing, vaadin) requires different implementations of the providers</li> 
+     <li>It provides the <a href="#TheProviderLayer_ProviderObjects">Provider</a> types with the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication.get...ProviderClass()</a> methods. <a href="#TheProviderLayer_ProviderObjects">Provider</a> Objects help with <a href="https://en.wikipedia.org/wiki/Cross-cutting_concern">cross cutting concerns</a>. Each application type (e.g. for the command line, desktop, mobile devices or the web) requires different implementations of the providers</li> 
     </ul> 
-    <p> Each application type (command line, Android, Vaadin, etc..) has its own implementation of <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a> to help initializing the framework. See the type hierarchy of <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a> to learn which classes can be used and view their java doc to learn how to use them. </p> 
+    <p> Each application type (e.g. for the command line, desktop, mobile devices or the web) has its own implementation of <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a> to help initializing the framework. See the type hierarchy of <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a> to learn which classes can be used and view their java doc to learn how to use them. </p> 
     <p> If you create a new application you will be extending one of these classes. You will only need to implement some of the methods mentioned above (at least the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication.getServiceClasses()</a> method). </p> An example of a desktop application: 
     <pre>
- public class AcmeWebShop extends ReflectApplicationForSwing {
+ public class AcmeWebShop extends ReflectApplicationForJavaFx {
  
  	// constructor not displayed
  
@@ -239,19 +235,12 @@
  
  	@Override
  	public List&lt;Class&lt;?&gt;&gt; getServiceClasses() {
- 		List&lt;Class&lt;?&gt;&gt; serviceClasses = new ArrayList&lt;Class&lt;?&gt;&gt;();
- 		serviceClasses.add(ShoppingCartService.class);
- 		serviceClasses.add(ProductService.class);
- 		return serviceClasses;
+ 		return Arrays.asList(ShoppingCartService.class, ProductService.class);
  	}
  
  	@Override
  	public List&lt;Class&lt;?&gt;&gt; getInfrastructureClasses() {
- 		List&lt;Class&lt;?&gt;&gt; infrastructureClasses = new ArrayList&lt;Class&lt;?&gt;&gt;();
- 		infrastructureClasses.add(ProductRepository.class);
- 		infrastructureClasses.add(EmailClient.class);
- 		infrastructureClasses.add(PaymentClient.class);
- 		return infrastructureClasses;
+ 		return Arrays.asList(ProductRepository.class, EmailClient.class, PaymentClient.class);
  	}
  
  }
@@ -830,14 +819,14 @@
     <p> The <a href="#TheReflectFramework">ReflectFramework</a> supports DisplayNames for multiple languages. The <a href="#TheProviderLayer_LanguageProvider">LanguageProvider</a> is used to get the default displayNames from a language specific property files. For more information see <a href="#TheProviderLayer_LanguageProvider">LanguageProvider</a>. </p> 
     <h3 id="ObjectBehavior_DisplayName_DisplayNameAnnotation">DisplayName Annotation</h3> 
     <p> </p>
-    <p><a id="Reference_DisplayName"></a> In some cases the default <a href="#ObjectBehavior_ServiceObjectChildren_ServiceObjectChildrenAnnotation">ServiceObjectChildren</a> does not suffice, in example when: </p>
+    <p><a id="Reference_DisplayName"></a> In some cases the default <a href="#ObjectBehavior_DisplayName_DisplayNameAnnotation">DisplayName</a> does not suffice, in example when: </p>
     <ul> 
      <li>A different use of capital case is needed</li> 
      <li>Special characters are needed that can not be used in the code</li> 
      <li>The plural form of the default displayName of a ServiceObject is incorrect</li> 
     </ul> 
-    <p> In these cases you can use the <a href="#ObjectBehavior_ServiceObjectChildren_ServiceObjectChildrenAnnotation">ServiceObjectChildren</a> annotation before the class keyword, before the getter method of a <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> or before the <a href="#ActionMethods">ActionMethod</a>. </p> TODO EXAMPLE ACMEWebShop 
-    <p> Note that the <a href="#ObjectBehavior_ServiceObjectChildren_ServiceObjectChildrenAnnotation">ServiceObjectChildren</a> annotation is intended for the English language only. Use the <a href="#ObjectBehavior_ServiceObjectChildren_ServiceObjectChildrenAnnotation">ServiceObjectChildren</a> default if you want to use multiple languages. </p> 
+    <p> In these cases you can use the <a href="#ObjectBehavior_DisplayName_DisplayNameAnnotation">DisplayName</a> annotation before the class keyword, before the getter method of a <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> or before a <a href="#ActionMethods">ActionMethod</a>. </p> TODO EXAMPLE ACMEWebShop 
+    <p> Note that the <a href="#ObjectBehavior_DisplayName_DisplayNameAnnotation">DisplayName</a> annotation is intended for the English language only. Use the <a href="#ObjectBehavior_DisplayName_DisplayNameAnnotation">DisplayName</a> default if you want to use multiple languages. </p> 
     <p></p> 
     <p></p> 
     <p></p> 
