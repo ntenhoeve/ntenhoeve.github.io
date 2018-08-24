@@ -672,7 +672,28 @@
     <p></p> 
     <h2 id="TheProviderLayer_URLProviders">URL Providers</h2> 
     <p> </p>
-    <p><a id="Reference_UrlProvider"></a> <a>ReflectUrl</a>'s needs to have a <a href="#TheProviderLayer_URLProviders">UrlProvider</a> that need to be registered with the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication.getUrlProviderClasses()</a> so that they can be registered with <a>URL.setURLStreamHandlerFactory()</a> (See <a>ReflectUrlStreamHandlerFactory</a>). </p> 
+    <p><a id="Reference_UrlProvider"></a> </p>
+    <p> You can use custom URL's or <a>ReflectUrl</a>'s that are translated to normal URL's using <a href="#TheProviderLayer_URLProviders">UrlProvider</a>s. <a href="#TheProviderLayer_URLProviders">UrlProvider</a> that need to be registered with the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication.getUrlProviderClasses()</a> so that they can be registered with <a>URL.setURLStreamHandlerFactory()</a> (See <a>ReflectUrlStreamHandlerFactory</a>). The following paragraphs show examples of <a href="#TheProviderLayer_URLProviders">UrlProvider</a>s </p> 
+    <h3 id="TheProviderLayer_URLProviders_ApplicationUrlProvider">ApplicationUrlProvider</h3> 
+    <p> </p>
+    <p><a id="Reference_ApplicationUrlProvider"></a> A <a href="#TheProviderLayer_URLProviders_ApplicationUrlProvider">ApplicationUrlProvider</a> handles a <a>ApplicationUrl</a>. {@include ApplicationUrl} </p> 
+    <p></p> 
+    <h3 id="TheProviderLayer_URLProviders_ClassResourceUrlProvider">ClassResourceUrlProvider</h3> 
+    <p> </p>
+    <p><a id="Reference_ClassResourceUrlProvider"></a> A <a href="#TheProviderLayer_URLProviders_ClassResourceUrlProvider">ClassResourceUrlProvider</a> handles a <a>ClassResourceUrl</a>. {@include ClassResourceUrl} </p> 
+    <p></p> 
+    <h3 id="TheProviderLayer_URLProviders_FontIconUrlProvider">FontIconUrlProvider</h3> 
+    <p> </p>
+    <p><a id="Reference_FontIconUrlProvider"></a> The <a href="#TheProviderLayer_URLProviders_FontIconUrlProvider">FontIconUrlProvider</a> resolves <a href="#TheProviderLayer_URLProviders_FontIconUrlProvider">FontIconUrl</a>s. </p>
+    <p><a id="Reference_FontIconUrl"></a> </p>
+    <p> A <a href="#TheProviderLayer_URLProviders_FontIconUrlProvider">FontIconUrl</a> is a <a>ReflectUrl</a> that helps to create a reference to a font icon. </p> 
+    <p> The format of a <a href="#TheProviderLayer_URLProviders_FontIconUrlProvider">FontIconUrl</a> is: reflect-font-icon://&lt;font name&gt;/&lt;font fontIconUrl&gt;#&lt;uni code&gt; </p> 
+    <p> E.g.: reflect-font-icon://FontAwesomeUrl/META-INF/resources/webjars/font-awesome/4.5.0/ fonts/fontawesome-webfont.ttf#\uf0c9 for a menu/navigation icon </p> 
+    <p> <a href="#TheProviderLayer_URLProviders_FontIconUrlProvider">FontIconUrl</a>'s can be used in your code with e.g. FontAwesomeUrl.NAVIGATION </p> 
+    <p></p> 
+    <p></p> 
+    <p></p> 
+    <p></p> 
     <p></p>
     <p></p> 
     <p></p> 
@@ -907,17 +928,17 @@
     <h3 id="ObjectBehavior_FontIcon_FontIconAnnotation">FontIcon Annotation</h3> 
     <p> </p>
     <p><a id="Reference_FontIcon"></a> </p>
-    <p> You can define the <a href="#ObjectBehavior_FontIcon_FontIconAnnotation">FontIcon</a> by placing an FontIcon annotation before the class key word of the <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> or the <a href="#TheDomainLayer_DomainObjects">DomainObject</a> or before the <a href="#ActionMethods">ActionMethod</a>. </p> 
+    <p> You can define the <a href="#ObjectBehavior_FontIcon_FontIconAnnotation">FontIcon</a> by placing an <a href="#ObjectBehavior_FontIcon_FontIconAnnotation">FontIcon</a> annotation before the class key word of the <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> or the <a href="#TheDomainLayer_DomainObjects">DomainObject</a> or before the <a href="#ActionMethods">ActionMethod</a>. </p> 
     <p> Syntax: <a href="#ObjectBehavior_FontIcon_FontIconAnnotation">FontIcon</a>(String fontIconUrl) </p> 
-    <p> Parameter fontIconUrl: See <a>FontIconUrl</a> </p> 
+    <p> Parameter fontIconUrl: See <a href="#TheProviderLayer_URLProviders_FontIconUrlProvider">FontIconUrl</a> </p> 
     <p></p> 
     <p></p> 
     <h3 id="ObjectBehavior_FontIcon_FontIconMethod">FontIcon Method</h3> 
     <p> </p>
     <p><a id="Reference_FontIconMethod"></a> </p>
     <p> Instead of the <a href="#ObjectBehavior_FontIcon_FontIconAnnotation">FontIcon</a> annotation you can also define the icon with a <a href="#ObjectBehavior_FontIcon_FontIconMethod">FontIconMethod</a>. This allows you to change the icon dynamically during runtime, based on the object state (e.g. when the <a href="#TheDomainLayer_DomainObjects">DomainObject</a> Person is a male or female). </p> 
-    <p> Syntax: public string fontIcon&lt;className or <a href="#ActionMethods">ActionMethod</a>Name&gt;() </p> The return value must be an 
-    <a>FontIconUrl</a>. TODO EXAMPLE customer male or female icon 
+    <p> Syntax: public string &lt;className or <a href="#ActionMethods">ActionMethod</a>Name&gt;FontIcon() </p> The return value must be an 
+    <a href="#TheProviderLayer_URLProviders_FontIconUrlProvider">FontIconUrl</a>. TODO EXAMPLE customer male or female icon 
     <p></p> 
     <p></p> 
     <p></p> 
