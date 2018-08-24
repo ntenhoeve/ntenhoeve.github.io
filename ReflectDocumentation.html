@@ -676,11 +676,23 @@
     <p> You can use custom URL's or <a>ReflectUrl</a>'s that are translated to normal URL's using <a href="#TheProviderLayer_URLProviders">UrlProvider</a>s. <a href="#TheProviderLayer_URLProviders">UrlProvider</a> that need to be registered with the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication.getUrlProviderClasses()</a> so that they can be registered with <a>URL.setURLStreamHandlerFactory()</a> (See <a>ReflectUrlStreamHandlerFactory</a>). The following paragraphs show examples of <a href="#TheProviderLayer_URLProviders">UrlProvider</a>s </p> 
     <h3 id="TheProviderLayer_URLProviders_ApplicationUrlProvider">ApplicationUrlProvider</h3> 
     <p> </p>
-    <p><a id="Reference_ApplicationUrlProvider"></a> A <a href="#TheProviderLayer_URLProviders_ApplicationUrlProvider">ApplicationUrlProvider</a> handles a <a>ApplicationUrl</a>. {@include ApplicationUrl} </p> 
+    <p><a id="Reference_ApplicationUrlProvider"></a> A <a href="#TheProviderLayer_URLProviders_ApplicationUrlProvider">ApplicationUrlProvider</a> handles a <a href="#TheProviderLayer_URLProviders_ApplicationUrlProvider">ApplicationUrl</a>. </p>
+    <p><a id="Reference_ApplicationUrl"></a> </p>
+    <p> A <a href="#TheProviderLayer_URLProviders_ApplicationUrlProvider">ApplicationUrl</a> is a <a>ReflectUrl</a> that helps to create a reference to the application folder e.g. to get a resource file </p> 
+    <p> The format of a <a href="#TheProviderLayer_URLProviders_ApplicationUrlProvider">ApplicationUrl</a> is: reflect-application://&lt;relative path to resource&gt; </p> 
+    <p> E.g.: reflect-application://images/sales.png (for a reference to the sales.png file in the application sub folder images) </p> 
+    <p></p> 
+    <p></p> 
     <p></p> 
     <h3 id="TheProviderLayer_URLProviders_ClassResourceUrlProvider">ClassResourceUrlProvider</h3> 
     <p> </p>
-    <p><a id="Reference_ClassResourceUrlProvider"></a> A <a href="#TheProviderLayer_URLProviders_ClassResourceUrlProvider">ClassResourceUrlProvider</a> handles a <a>ClassResourceUrl</a>. {@include ClassResourceUrl} </p> 
+    <p><a id="Reference_ClassResourceUrlProvider"></a> A <a href="#TheProviderLayer_URLProviders_ClassResourceUrlProvider">ClassResourceUrlProvider</a> handles a <a href="#TheProviderLayer_URLProviders_ClassResourceUrlProvider">ClassResourceUrl</a>. </p>
+    <p><a id="Reference_ClassResourceUrl"></a> </p>
+    <p> A <a href="#TheProviderLayer_URLProviders_ClassResourceUrlProvider">ClassResourceUrl</a> is a <a>ReflectUrl</a> that helps to create a reference to a class resource (See <a>Class.getResource(String)</a>) </p> 
+    <p> The format of a <a href="#TheProviderLayer_URLProviders_ApplicationUrlProvider">ApplicationUrl</a> is: reflect-class-resource://&lt;class path&gt;/&lt;resource name&gt; </p> 
+    <p> E.g.: reflect-class-resource://com.acme.SalesApp/sales.png; (for a sales.png file in the com.acme package, next to the SalesApp class) </p> 
+    <p></p> 
+    <p></p> 
     <p></p> 
     <h3 id="TheProviderLayer_URLProviders_FontIconUrlProvider">FontIconUrlProvider</h3> 
     <p> </p>
@@ -688,7 +700,7 @@
     <p><a id="Reference_FontIconUrl"></a> </p>
     <p> A <a href="#TheProviderLayer_URLProviders_FontIconUrlProvider">FontIconUrl</a> is a <a>ReflectUrl</a> that helps to create a reference to a font icon. </p> 
     <p> The format of a <a href="#TheProviderLayer_URLProviders_FontIconUrlProvider">FontIconUrl</a> is: reflect-font-icon://&lt;font name&gt;/&lt;font fontIconUrl&gt;#&lt;uni code&gt; </p> 
-    <p> E.g.: reflect-font-icon://FontAwesomeUrl/META-INF/resources/webjars/font-awesome/4.5.0/ fonts/fontawesome-webfont.ttf#\uf0c9 for a menu/navigation icon </p> 
+    <p> E.g.: reflect-font-icon://FontAwesome/META-INF/resources/webjars/font-awesome/4.5.0/ fonts/fontawesome-webfont.ttf#\uf0c9 for a menu/navigation icon </p> 
     <p> <a href="#TheProviderLayer_URLProviders_FontIconUrlProvider">FontIconUrl</a>'s can be used in your code with e.g. FontAwesomeUrl.NAVIGATION </p> 
     <p></p> 
     <p></p> 
