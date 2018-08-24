@@ -70,7 +70,7 @@
     <li><a href="#ObjectBehavior_DisplayName">Display Name</a></li>
     <li><a href="#ObjectBehavior_Description">Description</a></li>
     <li><a href="#ObjectBehavior_Title">Title</a></li>
-    <li><a href="#ObjectBehavior_Icon">Icon</a></li>
+    <li><a href="#ObjectBehavior_FontIcon">FontIcon</a></li>
     <li><a href="#ObjectBehavior_Hidden">Hidden</a></li>
     <li><a href="#ObjectBehavior_Disabled">Disabled</a></li>
     <li><a href="#ObjectBehavior_Order">Order</a></li>
@@ -120,20 +120,12 @@
    </ul> 
    <h3 id="TheReflectFramework_ReflectCoreValues_WrittenInJava">Written in Java</h3> At the time of this writing, 
    <a href="https://java.com">Java</a> is still the 
-   <a href="https://www.codingdojo.com/blog/7-most-in-demand-programming-languages-of-2018/">most used programming language</a>. Most developers are able to write (or read) Java code. There are many Java libraries available that can be used in the application, e.g. for: 
-   <ul> 
-    <li>Testing or improving code</li> 
-    <li>Logging</li> 
-    <li>Storing or retreiving data (e.g. JPA)</li> 
-    <li>PDF and M$ Excel reading and writing</li> 
-    <li>email clients</li> 
-    <li>etc</li> 
-   </ul> 
+   <a href="https://www.codingdojo.com/blog/7-most-in-demand-programming-languages-of-2018/">most used programming language</a>. Most developers are able to write (or read) Java code. There are many Java libraries available that can be used in your application. 
    <h3 id="TheReflectFramework_ReflectCoreValues_ProvideAGoodStructureForApplications">Provide a good structure for applications</h3> 
    <ul> 
     <li>Enforce <a href="http://en.wikipedia.org/wiki/Separation_of_concerns">separation of concerns</a> (see <a href="#TheReflectFramework_ArchitectureOfAnReflectApplication">ReflectArchitecture</a>).</li> 
     <li>Facilitate <a href="http://en.wikipedia.org/wiki/Domain-driven_design">domain driven design</a>.</li> 
-    <li>The <a href="#TheReflectFramework">ReflectFramework</a> should not create a <a href="http://en.wikipedia.org/wiki/Vendor_lock-in">vendor lock-in</a> (not that there is such a thing as an <a href="#TheReflectFramework">ReflectFramework</a> Vendor, since it is open source). <a href="#TheDomainLayer_DomainObjects">DomainObject</a>'s, <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>'s and <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a>'s should have no (or almost no) dependencies with the <a href="#TheReflectFramework">ReflectFramework</a> so that it could easily (within a few hours) be replaced with another dependency injection framework (such as <a href="http://en.wikipedia.org/wiki/Spring_Framework">Spring</a>, <a href="http://en.wikipedia.org/wiki/Google_Guice">Guice</a> or <a href="http://picocontainer.codehaus.org/">Pico container</a>, etc...) or visa versa.</li> 
+    <li><a href="#TheDomainLayer_DomainObjects">DomainObject</a>'s, <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>'s and <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a>'s should have no (or almost no) dependencies with the <a href="#TheReflectFramework">ReflectFramework</a> so that it could easily be replaced with another dependency injection framework (such as <a href="http://en.wikipedia.org/wiki/Spring_Framework">Spring</a>, <a href="http://en.wikipedia.org/wiki/Google_Guice">Guice</a> or <a href="http://picocontainer.codehaus.org/">Pico container</a>, etc...) or visa versa. You would only need to change some annotations and link it to the other dependency injection framework</li> 
     <li>The <a href="#TheReflectFramework">ReflectFramework</a> must accept <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s, <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s, <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a>s that are <a href="https://en.wikipedia.org/wiki/Plain_old_Java_object">Plain Old Java Objects (POJO's)</a>.</li> 
     <li>The <a href="#TheReflectFramework">ReflectFramework</a> exists of a few basic interfaces like <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> and <a href="#TheProviderLayer_ProviderObjects">Provider</a>s that can have multiple different implementations.</li> 
    </ul> 
@@ -189,16 +181,16 @@
    </ul> 
    <h3 id="TheReflectFramework_WhyTheReflectFrameworkWasDeveloped_MissingANakedObjectsWORAFramework">Missing a Naked Objects WORA framework</h3> 
    <a href="https://java.com/">Java</a> was developed with the 
-   <a href="https://en.wikipedia.org/wiki/Write_once,_run_anywhere">Write Once Run Anywhere (WORA)</a>philosophy. A lot has changed since. So does WORA still apply for Java? The answer: Yes and No: 
+   <a href="https://en.wikipedia.org/wiki/Write_once,_run_anywhere">Write Once Run Anywhere (WORA)</a> philosophy. A lot has changed since. So does WORA still apply for Java? The answer: Yes and No: 
    <ul> 
-    <li>Yes: The <a href="https://en.wikipedia.org/wiki/Java_virtual_machine">Java Virtual Machine (JVM)</a> can run on almost all devices</li> 
-    <li>No: It is nearly impossible to write a GUI for a desktop, and deploy it as a web application or mobile application or vice-versa</li> 
+    <li>Yes: The <a href="https://en.wikipedia.org/wiki/Java_virtual_machine">Java Virtual Machine (JVM)</a> can run on almost all devices (from PC to devices out in space) and has been very successful on the server side.</li> 
+    <li>No: Apple does not allow the Oracle JVM on its devices and Android devices use Googles JVM which is different. Furthermore: It is nearly impossible to write a GUI for a desktop, and deploy it as a web application or mobile application or vice-versa</li> 
    </ul> Frameworks like 
    <a href="https://facebook.github.io/react-native/">React Native</a>, 
    <a href="https://flutter.io">Google Flutter</a> and 
    <a href="https://www.codenameone.com">Codename One</a> all aim to write code once and execute it on different platforms. The need for such frameworks is obvious: Most of us want our applications to run on as many devices as possible, without having to re-write test and release the (GUI) application for multiple platforms, because this is tedious, no value added, costly work. 
    <p></p> 
-   <p> At the time of this writing, none of the existing frameworks can be dispatched to different platforms (e.g. the web, desktop, and mobile devices). The <a href="#TheReflectFramework">ReflectFramework</a> lets you wrap your <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s, <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s and <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a>s, in several native implementations of the <a href="#TheReflectFramework">ReflectFramework</a>. For more information see: <a href="#ReflectApplicationProjectsGettingStarted">ReflectApplicationProjects</a> </p> 
+   <p> At the time of this writing, none of the existing Naked Object frameworks can be dispatched to different platforms (e.g. the command line, desktop, mobile devices and the web). The <a href="#TheReflectFramework">ReflectFramework</a> lets you wrap your <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s, <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s and <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a>s, in several native implementations of the <a href="#TheReflectFramework">ReflectFramework</a>. For more information see: <a href="#ReflectApplicationProjectsGettingStarted">ReflectApplicationProjects</a> </p> 
    <p></p> 
    <p></p> 
    <h2 id="TheReflectFramework_ReflectLicense">Reflect License</h2> 
@@ -361,7 +353,7 @@
    <p> <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s represent entities; the nouns of the domain. If your application domain is a sales application it’s likely that your domain model contains <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s such as: customers, products and orders. </p> 
    <p> <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s are created by a developer or are reused from an existing application that needs to be re-written. They can be created from scratch or generated from a schema (in example from a <a href="http://en.wikipedia.org/wiki/Database_schema">database schema</a>, <a href="http://nl.wikipedia.org/wiki/XML_Schema">XML schema</a> or <a href="http://en.wikipedia.org/wiki/Web_Services_Description_Language">web service</a>) </p> 
    <h3 id="TheDomainLayer_DomainObjects_Naming">Naming</h3> 
-   <p> <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s names are nouns, such as customer, product and order. They basically describe the things that are important in your application. <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s names need to match the <a href="http://martinfowler.com/bliki/UbiquitousLanguage.html">Ubiquitous Language</a> (in terms understood by both users and developers). </p> 
+   <p> <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s names are nouns, such as customer, product and order. They basically describe the things that are important in your application. <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s names are part of the <a href="http://martinfowler.com/bliki/UbiquitousLanguage.html">Ubiquitous Language</a>: in terms understood by both users and developers. </p> 
    <h3 id="TheDomainLayer_DomainObjects_Presentation">Presentation</h3> 
    <p> An <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> can display domain objects in 3 ways:<br /> </p> 
    <ul> 
@@ -382,7 +374,7 @@
    <br /> There are 2 ways to create new 
    <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s: 
    <ul> 
-    <li>Creating a new <a href="#TheDomainLayer_DomainObjects">DomainObject</a> with the new keyword:<br /> In example: Order order=new OrderLine()</li> 
+    <li>Creating a new <a href="#TheDomainLayer_DomainObjects">DomainObject</a> with the new keyword:<br /> In example: Order order=new Order()</li> 
     <li>Creating a domain object using Dependency Injection:<br /> Sometimes you want a new <a href="#TheDomainLayer_DomainObjects">DomainObject</a> to have references to other objects (being other <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s, <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a>s or <a href="#TheProviderLayer_ProviderObjects">Provider</a>Objects). In example: A Customer object needs a references to a ShoppingCartFactory object. The Customer object can therefore be created by the <a>DomainContainer</a> with Customer customer=(Customer) domainContainer.getObject(Customer.class). The ShopingCart object will automatically be injected as a constructor parameter of the Customer class. In order to create <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s using dependency injection you need to:</li> 
     <ul> 
      <li>Add the reference object as a parameter in the constructor and link it to a private field, so that it can be used throughout the class.</li> 
@@ -761,7 +753,7 @@
    <p></p> 
    <h2 id="TheProviderLayer_URLProviders">URL Providers</h2> 
    <p> </p>
-   <p><a id="Reference_UrlProvider"></a> <a>ReflectUrl</a>'s needs to have a <a href="#TheProviderLayer_URLProviders">UrlProvider</a> that need to be registered with the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication.getUrlProviderClasses()</a> so that they can be registered with <a>URL.setURLStreamHandlerFactory()</a> (See <a>ReflectUrlStreamHandlerFactory</a>). TODO look at a maybe nicer solution: http://stackoverflow.com/questions/15195890/nio2-how-to-generically-map-a-uri-to-a-path </p> 
+   <p><a id="Reference_UrlProvider"></a> <a>ReflectUrl</a>'s needs to have a <a href="#TheProviderLayer_URLProviders">UrlProvider</a> that need to be registered with the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication.getUrlProviderClasses()</a> so that they can be registered with <a>URL.setURLStreamHandlerFactory()</a> (See <a>ReflectUrlStreamHandlerFactory</a>). </p> 
    <p></p>
    <p></p> 
    <p></p> 
@@ -862,7 +854,7 @@
    <h3 id="ObjectBehavior_BehavioralAnnotations">Behavioral Annotations</h3> 
    <p> </p>
    <p><a id="Reference_BehavioralAnnotation"></a> </p>
-   <p> <a href="#ObjectBehavior_BehavioralAnnotations">BehavioralAnnotation</a>s are recognized by the <a href="#TheReflectFramework">ReflectFramework</a> and define how <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s, <a href="#TheDomainLayer_Properties">DomainObjectProperty</a>s or <a href="#ActionMethods">ActionMethod</a>s behave (how they act and how they displayed). </p> 
+   <p> <a href="#ObjectBehavior_BehavioralAnnotations">BehavioralAnnotation</a>s are recognized by the <a href="#TheReflectFramework">ReflectFramework</a> and define how <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s, <a href="#TheDomainLayer_Properties">DomainObjectProperty</a>s or <a href="#ActionMethods">ActionMethod</a>s behave (how they act and how they are displayed). </p> 
    <a href="#ObjectBehavior_BehavioralAnnotations">BehavioralAnnotation</a>s are normally located before the declaration of the member: 
    <ul> 
     <li><a href="#ObjectBehavior_BehavioralAnnotations">BehavioralAnnotation</a>s for a class: are located before the class key word </li> 
@@ -874,10 +866,10 @@
    <h3 id="ObjectBehavior_BehavioralMethods">Behavioral Methods</h3> 
    <p> </p>
    <p><a id="Reference_BehavioralMethod"></a> </p>
-   <p> <a href="#ObjectBehavior_BehavioralMethods">BehavioralMethod</a>s are recognized by the <a href="#TheReflectFramework">ReflectFramework</a> and dynamically define how <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s, <a href="#TheDomainLayer_Properties">DomainObjectProperty</a>s or <a href="#ActionMethods">ActionMethod</a>s behave (how they act and how they displayed). Dynamic means that the behavior can change over time, depending on the state of the object (property values). </p> 
+   <p> <a href="#ObjectBehavior_BehavioralMethods">BehavioralMethod</a>s are recognized by the <a href="#TheReflectFramework">ReflectFramework</a> and dynamically define how <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s, <a href="#TheDomainLayer_Properties">DomainObjectProperty</a>s or <a href="#ActionMethods">ActionMethod</a>s behave (how they act and how they displayed). The <a href="#TheReflectFramework">ReflectFramework</a> will call these <a href="#ObjectBehavior_BehavioralMethods">BehavioralMethod</a>s when the user interface is updated to get the current behavioral values depending on the state of the object (property values) </p> 
    <h3 id="ObjectBehavior_BehavioralMethodConvention">Behavioral Method Convention</h3> 
    <ul> 
-    <li>Syntax: &lt;memberName&gt;&lt;behaviourName&gt;<br /> &lt;memberName&gt;= can be a <a>Class</a>Name, a <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> Name or a <a href="#ActionMethods">ActionMethod</a>Name<br /> &lt;behaviourName&gt;= A behavior like Icon, Hidden, Disabled, Validation, etc </li> 
+    <li>Syntax: &lt;memberName&gt;&lt;behaviourName&gt;<br /> &lt;memberName&gt;= can be a <a>Class</a>Name, a <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> Name or a <a href="#ActionMethods">ActionMethod</a>Name<br /> &lt;behaviourName&gt;= A behavior like FontIcon, Hidden, Disabled, Validation, etc</li> 
     <li><a href="#ObjectBehavior_BehavioralMethods">BehavioralMethod</a>s do NOT have any parameters</li> 
     <li><a href="#ObjectBehavior_BehavioralMethods">BehavioralMethod</a>s ALWAYS return a value (see <a href="#ObjectBehavior_BehavioralMethods">BehavioralMethod.returnType()</a> of the different implementations</li> 
     <li><a href="#ObjectBehavior_BehavioralMethods">BehavioralMethod</a>s are public</li> 
@@ -894,20 +886,25 @@
    <h2 id="ObjectBehavior_DisplayName">Display Name</h2> 
    <p> </p>
    <p><a id="Reference_DisplayNameModel"></a> </p>
-   <p> The <a>Class</a>Names, <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> names and <a href="#ActionMethods">ActionMethod</a>Names are part of the <a href="http://martinfowler.com/bliki/UbiquitousLanguage.html">ubiquitous language</a> (in terms both understand by users and developers) and should therefore match both the code and user interface. </p> 
+   <p> The <a>Class</a>Names, <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> names and <a href="#ActionMethods">ActionMethod</a>Names are part of the <a href="http://martinfowler.com/bliki/UbiquitousLanguage.html">ubiquitous language</a> (in terms both understand by users and developers). The <a href="#TheReflectFramework">ReflectFramework</a> therefore displays the same names as used in the program code. </p> 
    <h3 id="ObjectBehavior_DisplayName_DisplayNameDefault">DisplayName Default</h3> 
    <p> <a>Class</a> names, <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> names and <a href="#ActionMethods">ActionMethod</a> names in the <a href="https://en.wikipedia.org/wiki/Codebase">codebase</a> use names such as OrderService, orderLines, addOrderLine (using no spaces, <a href="https://nl.wikipedia.org/wiki/CamelCase">camelCase</a> and no special characters). If the user is a an human, more user friendly names are needed such as “Orders” “Order lines” and “Add order line”. This format is called the <a href="#ObjectBehavior_DisplayName_DisplayNameAnnotation">DisplayName</a>. The <a href="#TheReflectFramework">ReflectFramework</a> will automatically convert the names used in the code to a human readable format (<a href="#ObjectBehavior_DisplayName_DisplayNameAnnotation">DisplayName</a>) when needed. </p> 
    <p> The <a href="#TheReflectFramework">ReflectFramework</a> supports DisplayNames for multiple languages. The <a href="#TheProviderLayer_LanguageProvider">LanguageProvider</a> is used to get the default displayNames from a language specific property files. For more information see <a href="#TheProviderLayer_LanguageProvider">LanguageProvider</a>. </p> 
    <h3 id="ObjectBehavior_DisplayName_DisplayNameAnnotation">DisplayName Annotation</h3> 
    <p> </p>
-   <p><a id="Reference_DisplayName"></a> In some cases the default <a href="#ObjectBehavior_DisplayName_DisplayNameAnnotation">DisplayName</a> does not suffice, in example when: </p>
+   <p><a id="Reference_DisplayName"></a> The <a href="#TheReflectFramework">ReflectFramework</a> will automatically convert the names used in the program code to a human readable English format by default. In some cases the default <a href="#ObjectBehavior_DisplayName_DisplayNameAnnotation">DisplayName</a> does not suffice, in example when: </p>
    <ul> 
     <li>A different use of capital case is needed</li> 
     <li>Special characters are needed that can not be used in the code</li> 
     <li>The plural form of the default displayName of a ServiceObject is incorrect</li> 
    </ul> 
-   <p> In these cases you can use the <a href="#ObjectBehavior_DisplayName_DisplayNameAnnotation">DisplayName</a> annotation before the class keyword, before the getter method of a <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> or before a <a href="#ActionMethods">ActionMethod</a>. </p> TODO EXAMPLE ACMEWebShop 
-   <p> Note that the <a href="#ObjectBehavior_DisplayName_DisplayNameAnnotation">DisplayName</a> annotation is intended for the English language only. Use the <a href="#ObjectBehavior_DisplayName_DisplayNameAnnotation">DisplayName</a> default if you want to use multiple languages. </p> 
+   <p> In these cases you can override the English default text with the language property file or with a <a href="#ObjectBehavior_DisplayName_DisplayNameAnnotation">DisplayName</a> annotation, The <a href="#ObjectBehavior_DisplayName_DisplayNameAnnotation">DisplayName</a> annotation is placed: </p> 
+   <ul> 
+    <li>before the class keyword</li> 
+    <li>before the getter method of a <a href="#TheDomainLayer_Properties">DomainObjectProperty</a></li> 
+    <li>or before a <a href="#ActionMethods">ActionMethod</a></li> 
+   </ul> 
+   <p></p> TODO EXAMPLE ACMEWebShop 
    <p></p> 
    <p></p> 
    <p></p> 
@@ -915,9 +912,9 @@
    <h2 id="ObjectBehavior_Description">Description</h2> 
    <p> </p>
    <p><a id="Reference_DescriptionModel"></a> </p>
-   <p> Each <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> or <a href="#ActionMethods">ActionMethod</a> can have a text to explain the class member in more detail. This description is often displayed in a graphical user interface when the user hovers over the property or action menu. </p> 
+   <p> Each <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> or <a href="#ActionMethods">ActionMethod</a> can have a text to explain the class member in more detail. This <a href="#ObjectBehavior_Description">DescriptionModel</a> is often displayed in a graphical user interface as <a href="https://en.wikipedia.org/wiki/Tooltip">tooltip</a> or can be used by most <a href="https://en.wikipedia.org/wiki/Computer_accessibility">accessibility tools (e.g. for blind people)</a> when the user hovers over the <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> or <a href="#ActionMethods">ActionMethod</a> (menu item) or icon </p> 
    <h3 id="ObjectBehavior_Description_DescriptionDefault">Description Default</h3> 
-   <p> By default the description is the same as the default <a href="#ObjectBehavior_ServiceObjectChildren_ServiceObjectChildrenAnnotation">ServiceObjectChildren</a>, therefore it is recommended to override the default value where needed. You can override the default value by defining the description in the language property files (see <a href="#TheProviderLayer_LanguageProvider">LanguageProvider</a>) or by adding a description annotation. </p> 
+   <p> By default the description is the same as the default <a href="#ObjectBehavior_DisplayName_DisplayNameAnnotation">DisplayName</a>, therefore it is recommended to override the default value where needed. You can override the default value by by adding the <a href="#ObjectBehavior_Description_DescriptionAnnotation">Description</a> in the language property files (see <a href="#TheProviderLayer_LanguageProvider">LanguageProvider</a>) or by adding a description annotation. </p> 
    <h3 id="ObjectBehavior_Description_DescriptionAnnotation">Description Annotation</h3> 
    <p> </p>
    <p><a id="Reference_Description"></a> </p>
@@ -954,46 +951,54 @@
    <p></p> 
    <p></p> 
    <p></p> 
-   <h2 id="ObjectBehavior_Icon">Icon</h2> 
+   <h2 id="ObjectBehavior_FontIcon">FontIcon</h2> 
    <p> </p>
-   <p><a id="Reference_IconModelFactory"></a> </p>
-   <p><a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a> objects, <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s and <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s can have icons that are displayed in graphical user interfaces. These icons help the user to quickly identify what they are looking at.</p> 
-   <h3 id="ObjectBehavior_Icon_IconDefault">Icon Default</h3> 
-   <p> </p>
-   <p><a id="Reference_IconDefaultModel"></a> The <a href="#TheReflectFramework">ReflectFramework</a> will try to find an image with the same <a>Class</a>Name or <a href="#ActionMethods">ActionMethod</a>Name but with the “.png” extension in the same package. </p>
+   <p><a id="Reference_FontIconModelFactory"></a> </p>
+   <p> <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s ,<a href="#TheDomainLayer_DomainObjects">DomainObject</a>s and <a href="#ActionMethods">ActionMethod</a>s can have <a href="https://www.sitepoint.com/introduction-icon-fonts-font-awesome-icomoon/">FontIcons</a> that are displayed in graphical user interfaces. These icons help the user to quickly identify what they are looking at. </p> 
+   <p> <a href="https://www.sitepoint.com/introduction-icon-fonts-font-awesome-icomoon/">Fonticons</a> have become very popular in graphical user interface design. Icon fonts are just fonts. However, instead of containing letters or numbers, they contain symbols and glyphs that can be used in a graphical user interface. Advantages of font icons over <a href="https://en.wikipedia.org/wiki/Image_file_formats#Raster_formats">raster format files</a>: </p> 
    <ul> 
-    <li>Filename signature for object icon: &lt;package&gt;/&lt;className&gt;.png (e.g. c:/MyProject/bin/com/acme/web/shop/customer/CustomerService.png)</li> 
-    <li>Filename signature for ActionMethod icon: &lt;package&gt;/&lt;className&gt;_&lt;actionMethodName&gt;.png (e.g. c:/MyProject/bin/com/acme/web/shop/customer/CustomerService_findCustomer.png) </li> 
-   </ul> 
-   <p> No icon will be displayed when the icon file can not be found. </p> 
-   <p> Currently the PNG image format is the only format that is supported. Adding more image types will slow down lookup performance. </p> 
-   <p></p> 
-   <p></p> 
-   <h3 id="ObjectBehavior_Icon_IconAnnotation">Icon Annotation</h3> 
-   <p> </p>
-   <p><a id="Reference_Icon"></a> </p>
-   <p> If you do not want to use the default icon, you can define an alternative icon by placing an Icon annotation before the “class” key word or before the <a href="#ActionMethods">ActionMethod</a>. </p> 
-   <p> Syntax: <a href="#ObjectBehavior_Icon_IconAnnotation">Icon</a>(String iconURL) </p> 
-   <p> Parameter iconURI: image or unicode character to be used as an icon </p> The iconURL can be a: 
-   <ul> 
-    <li><a>FontIconUrl</a> <b>Note that this is the preferred way of defining an icon</b></li> 
-    <li><a>ApplicationUrl</a></li> 
-    <li>&lt;fileName&gt; e.g. Cut.jpg that will be located in the &lt;imageFolder&gt;/Cut.jpg</li> 
-    <li>&lt;relativePath&gt;/&lt;fileName&gt; e.g. /edit/Cut.jpg that will be located in the &lt;imageFolder&gt;/edit/Cut.jpg</li> 
-    <li>&lt;absolutePath&gt;/&lt;fileName&gt; e.g. file://c:/MyProject/images/Cut.jpg, or you can use the ReflectIconUri class to give you an absolute URI to one of the standard icons.</li> 
+    <li>Browsers are usually faster in rendering fonts than loading image files. </li> 
+    <li>Fonts Icons are <a href="https://en.wikipedia.org/wiki/Vector_graphics">vector graphics</a>, so they scale well at any size.</li> 
+    <li>As font icons are text characters, all icons can be styled in the same way (size, color, shadow, etc)</li> 
    </ul> 
    <p></p> 
-   <p></p> 
-   <h3 id="ObjectBehavior_Icon_IconMethod">Icon Method</h3> 
-   <p> </p>
-   <p><a id="Reference_IconMethod"></a> </p>
-   <p> Instead of the <a href="#ObjectBehavior_Icon_IconAnnotation">Icon</a> annotation you can also define the icon with a <a href="#ObjectBehavior_Icon_IconMethod">IconMethod</a>. This allows you to change the icon dynamically during runtime, based on state (e.g. when the <a href="#TheDomainLayer_DomainObjects">DomainObject</a> Person is a male or female). </p> 
-   <p> Syntax: public string icon&lt;className or actionMethodName&gt;() </p> The return value must be an iconURI, which can be a: 
+   <p> There are many free font icons that you can use in your application (e.g. download or include with a build tool like <a href="https://maven.apache.org/">Maven</a>). Examples of free Icon fonts are: </p> 
    <ul> 
-    <li> &lt;fileName&gt; e.g. Cut.jpg that will be located in the &lt;imageFolder&gt;/Cut.jpg</li> 
-    <li>&lt;relativePath&gt;/&lt;fileName&gt; e.g. /edit/Cut.jpg that will be located in the &lt;imageFolder&gt;/edit/Cut.jpg</li> 
-    <li>&lt;absolutePath&gt;/&lt;fileName&gt; e.g. file://c:/MyProject/images/Cut.jpg, or you can use the ReflectIconUri class to give you an absolute URI to one of the standard icons.</li> 
-   </ul> TODO EXAMPLE customer male or female icon 
+    <li><a href="https://material.io/tools/icons/">Google Material Icons</a></li> 
+    <li><a href="https://fontawesome.com">Font Awesome</a></li> 
+    <li><a href="https://speckyboy.com/free-icon-fonts/">and many more...</a></li> 
+   </ul> 
+   <p></p> 
+   <p> There are free online tools to create your own icon font, e.g by: importing from icons from their (free) database, other (free) icon fonts or <a href="https://en.wikipedia.org/wiki/Scalable_Vector_Graphics"> XML-based vector image format (SVG)</a> from other (free) web sites. Example of web site that help you build your icon font are: </p> 
+   <ul> 
+    <li><a href="http://fontastic.me">Fontastic</a></li> 
+    <li><a href="https://icomoon.io">Icomoon</a></li> 
+    <li><a href="https://www.flaticon.com">FlatIcon</a></li> 
+   </ul> 
+   <p></p> Note that the icon is also linked to the 
+   <a href="#ObjectBehavior_Description_DescriptionAnnotation">Description</a> of that class so that it can be displayed as a 
+   <a href="https://en.wikipedia.org/wiki/Tooltip">tooltip</a> or can be used by most 
+   <a href="https://en.wikipedia.org/wiki/Computer_accessibility">accessibility tools (e.g. for blind people)</a> when the user hovers over the icon. 
+   <h3 id="ObjectBehavior_FontIcon_FontIconDefault">FontIcon Default</h3> 
+   <p> </p>
+   <p><a id="Reference_FontIconNoUrlModel"></a> </p>
+   <p> The default is no <a href="#ObjectBehavior_FontIcon_FontIconAnnotation">FontIcon</a> </p> 
+   <p></p> 
+   <p></p> 
+   <h3 id="ObjectBehavior_FontIcon_FontIconAnnotation">FontIcon Annotation</h3> 
+   <p> </p>
+   <p><a id="Reference_FontIcon"></a> </p>
+   <p> You can define the <a href="#ObjectBehavior_FontIcon_FontIconAnnotation">FontIcon</a> by placing an FontIcon annotation before the class key word of the <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> or the <a href="#TheDomainLayer_DomainObjects">DomainObject</a> or before the <a href="#ActionMethods">ActionMethod</a>. </p> 
+   <p> Syntax: <a href="#ObjectBehavior_FontIcon_FontIconAnnotation">FontIcon</a>(String fontIconUrl) </p> 
+   <p> Parameter fontIconUrl: See <a>FontIconUrl</a> </p> 
+   <p></p> 
+   <p></p> 
+   <h3 id="ObjectBehavior_FontIcon_FontIconMethod">FontIcon Method</h3> 
+   <p> </p>
+   <p><a id="Reference_FontIconMethod"></a> </p>
+   <p> Instead of the <a href="#ObjectBehavior_FontIcon_FontIconAnnotation">FontIcon</a> annotation you can also define the icon with a <a href="#ObjectBehavior_FontIcon_FontIconMethod">FontIconMethod</a>. This allows you to change the icon dynamically during runtime, based on the object state (e.g. when the <a href="#TheDomainLayer_DomainObjects">DomainObject</a> Person is a male or female). </p> 
+   <p> Syntax: public string fontIcon&lt;className or <a href="#ActionMethods">ActionMethod</a>Name&gt;() </p> The return value must be an 
+   <a>FontIconUrl</a>. TODO EXAMPLE customer male or female icon 
    <p></p> 
    <p></p> 
    <p></p> 
@@ -1043,10 +1048,9 @@
     <li>Depending on the state of a <a href="#TheDomainLayer_DomainObjects">DomainObject</a> you do not want the user to edit certain <a href="#TheDomainLayer_Properties">DomainObjectProperty</a></li> 
     <li>Depending on the state of a <a href="#TheDomainLayer_DomainObjects">DomainObject</a> you do not want a user to invoke an <a href="#ActionMethods">ActionMethod</a> (e.g. prevent invoking <a href="#ActionMethods">ActionMethod</a> “submit” once the <a href="#TheDomainLayer_DomainObjects">DomainObject</a> already is submitted)</li> 
     <li>Because a user is not authorized to edit a <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> Value</li> 
-    <li>Because a user is not authorized to invoke an <a href="#ActionMethods">ActionMethod</a></li> 
    </ul> 
    <p></p> 
-   <p> Note that if an user is not authorized to change a <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> or call an <a href="#ActionMethods">ActionMethod</a> it is best to hide the method or property instead of disabling it. In general you do not want to confuse users (clutter the user interface) with options that they are not allowed to use anyway. </p> 
+   <p> Important note: If an user is not authorized to change a <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> or call an <a href="#ActionMethods">ActionMethod</a> it is best to hide the method or property instead of disabling it. In general you do not want to confuse users (clutter the user interface) with options that they are not allowed to use anyway. Disabled <a href="#ActionMethods">ActionMethod</a>s <a href="https://axesslab.com/disabled-buttons-suck/">have a bad impact on usability</a>. </p> 
    <h3 id="ObjectBehavior_Disabled_DisabledAnnotation">Disabled Annotation</h3> 
    <p> </p>
    <p><a id="Reference_Disabled"></a> </p>
@@ -1204,7 +1208,7 @@
    <p></p> 
    <h1 id="ReflectApplicationProjectsGettingStarted">Reflect Application Projects (Getting started)</h1> 
    <p><a id="Reference_ReflectApplicationProjects"></a> </p>
-   <p> There are different implementations of the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a> class, to support different type of applications (e.g. for the command line, desktop, mobile, web environments). This chapter will explain the different <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a>, and how to get started with them. If needed you can of course write your own implementation of the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a> class. </p> 
+   <p> There are different implementations of the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a> class, to support different type of applications (e.g. for the command line, desktop, mobile devices, web environments). This chapter will explain the different <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a>, and how to get started with them. If needed you can of course write your own implementation of the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a> class. </p> 
    <h2 id="ReflectApplicationProjectsGettingStarted_ReflectForJUnit">Reflect for JUnit</h2> 
    <p> </p>
    <p><a id="Reference_ReflectApplicationForJUnit"></a> The <a href="#ReflectApplicationProjectsGettingStarted_ReflectForJUnit">ReflectApplicationForJUnit</a> is created to be used for <a href="http://en.wikipedia.org/wiki/JUnit">JUnit tests</a>. Its big advantage over using one of the other <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a> implementations in a JUnit test is that the <a href="#ReflectApplicationProjectsGettingStarted_ReflectForJUnit">ReflectApplicationForJUnit</a>: </p>
@@ -1309,7 +1313,7 @@
    <p><a id="Reference_ReflectInfrastructureProjects"></a> </p>
    <p> Depending on your application you are creating, you might need different InfrasturcoreObjects to communicate with databases (repositories), mail servers (email clients), web servers (e.g. SOAP or restful clients), etc. The <a href="#TheReflectFramework">ReflectFramework</a> comes with several <a href="#ReflectInfrastructureProjects">ReflectInfrastructureProjects</a> that you can optionally use and/or extend. </p>
    <p> Before you can use an <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a>, you need to register an <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a> by overwriting the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication.getInfrastructureClasses()</a> method. </p> 
-   <p> U can use an <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a> in a <a href="#TheDomainLayer_DomainObjects">DomainObject</a> or <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> by adding the <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a> as a parameter of the constructor and linking it to a private final field. </p> 
+   <p> You can use an <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a> in a <a href="#TheDomainLayer_DomainObjects">DomainObject</a> or <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> by adding the <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a> as a parameter of the constructor and linking it to a private final field. </p> 
    <p> The following sections will describe the optional <a href="#ReflectInfrastructureProjects">ReflectInfrastructureProjects</a> that come with the <a href="#TheReflectFramework">ReflectFramework</a>. </p>
    <p> TODO </p> 
    <p></p> 
