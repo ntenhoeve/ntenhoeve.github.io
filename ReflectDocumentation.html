@@ -657,7 +657,7 @@
     <p></p> 
     <h2 id="TheProviderLayer_ReflectionProvider">Reflection Provider</h2> 
     <p> </p>
-    <p><a id="Reference_ReflectionProvider"></a> The <a href="#TheProviderLayer_ReflectionProvider">ReflectionProvider</a> provides information on objects ( <a>ClassInfo</a>), properties (<a>PropertyInfo</a>) of <a href="#ActionMethods">ActionMethod</a> (<a>ActionMethodInfo</a>) using <a href="https://en.wikipedia.org/wiki/Reflection_(computer_programming)">reflection</a>. The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> uses this information to know how the user interface should look like and behave. You can use the <a href="#TheProviderLayer_ReflectionProvider">ReflectionProvider</a> in your code when you need meta information (See <a href="#TheReflectFramework_DependencyInjectionContainer_ConstructorInjection">ConstructionInjection</a>) TODO Code example </p> 
+    <p><a id="Reference_ReflectionProvider"></a> The <a href="#TheProviderLayer_ReflectionProvider">ReflectionProvider</a> provides information on objects ( <a>ApplicationInfo</a>), properties (<a>PropertyInfo</a>) of <a href="#ActionMethods">ActionMethod</a> (<a>ActionMethodInfo</a>) using <a href="https://en.wikipedia.org/wiki/Reflection_(computer_programming)">reflection</a>. The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> uses this information to know how the user interface should look like and behave. You can use the <a href="#TheProviderLayer_ReflectionProvider">ReflectionProvider</a> in your code when you need meta information (See <a href="#TheReflectFramework_DependencyInjectionContainer_ConstructorInjection">ConstructionInjection</a>) TODO Code example </p> 
     <p></p> 
     <h2 id="TheProviderLayer_AboutProvider">About Provider</h2> 
     <p> </p>
@@ -673,7 +673,7 @@
     <h2 id="TheProviderLayer_URLProviders">URL Providers</h2> 
     <p> </p>
     <p><a id="Reference_UrlProvider"></a> </p>
-    <p> You can use custom URL's or <a>ReflectUrl</a>'s that are translated to normal URL's using <a href="#TheProviderLayer_URLProviders">UrlProvider</a>s. <a href="#TheProviderLayer_URLProviders">UrlProvider</a> that need to be registered with the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication.getUrlProviderClasses()</a> so that they can be registered with <a>URL.setURLStreamHandlerFactory()</a> (See <a>ReflectUrlStreamHandlerFactory</a>). The following paragraphs show examples of <a href="#TheProviderLayer_URLProviders">UrlProvider</a>s </p> 
+    <p> You can use custom URL's or <a>ReflectUrl</a>'s that are translated to normal URL's using <a href="#TheProviderLayer_URLProviders">UrlProvider</a>s. <a href="#TheProviderLayer_URLProviders">UrlProvider</a>s need to be registered with the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication.getUrlProviderClasses()</a> so that they can be registered with <a>URL.setURLStreamHandlerFactory()</a> (See <a>ReflectUrlStreamHandlerFactory</a>). The following paragraphs show examples of <a href="#TheProviderLayer_URLProviders">UrlProvider</a>s </p> 
     <h3 id="TheProviderLayer_URLProviders_ApplicationUrlProvider">ApplicationUrlProvider</h3> 
     <p> </p>
     <p><a id="Reference_ApplicationUrlProvider"></a> A <a href="#TheProviderLayer_URLProviders_ApplicationUrlProvider">ApplicationUrlProvider</a> handles a <a href="#TheProviderLayer_URLProviders_ApplicationUrlProvider">ApplicationUrl</a>. </p>
@@ -689,7 +689,7 @@
     <p><a id="Reference_ClassResourceUrlProvider"></a> A <a href="#TheProviderLayer_URLProviders_ClassResourceUrlProvider">ClassResourceUrlProvider</a> handles a <a href="#TheProviderLayer_URLProviders_ClassResourceUrlProvider">ClassResourceUrl</a>. </p>
     <p><a id="Reference_ClassResourceUrl"></a> </p>
     <p> A <a href="#TheProviderLayer_URLProviders_ClassResourceUrlProvider">ClassResourceUrl</a> is a <a>ReflectUrl</a> that helps to create a reference to a class resource (See <a>Class.getResource(String)</a>) </p> 
-    <p> The format of a <a href="#TheProviderLayer_URLProviders_ApplicationUrlProvider">ApplicationUrl</a> is: reflect-class-resource://&lt;class path&gt;/&lt;resource name&gt; </p> 
+    <p> The format of a <a href="#TheProviderLayer_URLProviders_ClassResourceUrlProvider">ClassResourceUrl</a> is: reflect-class-resource://&lt;class path&gt;/&lt;resource name&gt; </p> 
     <p> E.g.: reflect-class-resource://com.acme.SalesApp/sales.png; (for a sales.png file in the com.acme package, next to the SalesApp class) </p> 
     <p></p> 
     <p></p> 
@@ -698,9 +698,9 @@
     <p> </p>
     <p><a id="Reference_FontIconUrlProvider"></a> The <a href="#TheProviderLayer_URLProviders_FontIconUrlProvider">FontIconUrlProvider</a> resolves <a href="#TheProviderLayer_URLProviders_FontIconUrlProvider">FontIconUrl</a>s. </p>
     <p><a id="Reference_FontIconUrl"></a> </p>
-    <p> A <a href="#TheProviderLayer_URLProviders_FontIconUrlProvider">FontIconUrl</a> is a <a>ReflectUrl</a> that helps to create a reference to a font icon. </p> 
+    <p> A <a href="#TheProviderLayer_URLProviders_FontIconUrlProvider">FontIconUrl</a> is a <a>ReflectUrl</a> that helps to create a reference to a <a href="#ObjectBehavior_FontIcon_FontIconAnnotation">FontIcon</a>. </p> 
     <p> The format of a <a href="#TheProviderLayer_URLProviders_FontIconUrlProvider">FontIconUrl</a> is: reflect-font-icon://&lt;font name&gt;/&lt;font fontIconUrl&gt;#&lt;uni code&gt; </p> 
-    <p> E.g.: reflect-font-icon://FontAwesome/META-INF/resources/webjars/font-awesome/4.5.0/ fonts/fontawesome-webfont.ttf#\uf0c9 for a menu/navigation icon </p> 
+    <p> E.g.: reflect-font-icon://FontAwesome/META-INF/resources/webjars/font-awesome/4.5.0/ fonts/fontawesome-webfont.ttf#F0C9 for a menu/navigation icon </p> 
     <p> <a href="#TheProviderLayer_URLProviders_FontIconUrlProvider">FontIconUrl</a>'s can be used in your code with e.g. FontAwesomeUrl.NAVIGATION </p> 
     <p></p> 
     <p></p> 
@@ -907,14 +907,14 @@
     <p> </p>
     <p><a id="Reference_FontIconModelFactory"></a> </p>
     <p> <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s ,<a href="#TheDomainLayer_DomainObjects">DomainObject</a>s and <a href="#ActionMethods">ActionMethod</a>s can have <a href="https://www.sitepoint.com/introduction-icon-fonts-font-awesome-icomoon/">FontIcons</a> that are displayed in graphical user interfaces. These icons help the user to quickly identify what they are looking at. </p> 
-    <p> <a href="https://www.sitepoint.com/introduction-icon-fonts-font-awesome-icomoon/">Fonticons</a> have become very popular in graphical user interface design. Icon fonts are just fonts. However, instead of containing letters or numbers, they contain symbols and glyphs that can be used in a graphical user interface. Advantages of font icons over <a href="https://en.wikipedia.org/wiki/Image_file_formats#Raster_formats">raster format files</a>: </p> 
+    <p> <a href="https://www.sitepoint.com/introduction-icon-fonts-font-awesome-icomoon/">Fonticons</a> have become very popular in graphical user interface design. ApplicationIcon fonts are just fonts. However, instead of containing letters or numbers, they contain symbols and glyphs that can be used in a graphical user interface. Advantages of font icons over <a href="https://en.wikipedia.org/wiki/Image_file_formats#Raster_formats">raster format files</a>: </p> 
     <ul> 
      <li>Browsers are usually faster in rendering fonts than loading image files. </li> 
      <li>Fonts Icons are <a href="https://en.wikipedia.org/wiki/Vector_graphics">vector graphics</a>, so they scale well at any size.</li> 
      <li>As font icons are text characters, all icons can be styled in the same way (size, color, shadow, etc)</li> 
     </ul> 
     <p></p> 
-    <p> There are many free font icons that you can use in your application (e.g. download or include with a build tool like <a href="https://maven.apache.org/">Maven</a>). Examples of free Icon fonts are: </p> 
+    <p> There are many free font icons that you can use in your application (e.g. download or include with a build tool like <a href="https://maven.apache.org/">Maven</a>). Examples of free ApplicationIcon fonts are: </p> 
     <ul> 
      <li><a href="https://material.io/tools/icons/">Google Material Icons</a></li> 
      <li><a href="https://fontawesome.com">Font Awesome</a></li> 
@@ -951,6 +951,37 @@
     <p> Instead of the <a href="#ObjectBehavior_FontIcon_FontIconAnnotation">FontIcon</a> annotation you can also define the icon with a <a href="#ObjectBehavior_FontIcon_FontIconMethod">FontIconMethod</a>. This allows you to change the icon dynamically during runtime, based on the object state (e.g. when the <a href="#TheDomainLayer_DomainObjects">DomainObject</a> Person is a male or female). </p> 
     <p> Syntax: public string &lt;className or <a href="#ActionMethods">ActionMethod</a>Name&gt;FontIcon() </p> The return value must be an 
     <a href="#TheProviderLayer_URLProviders_FontIconUrlProvider">FontIconUrl</a>. TODO EXAMPLE customer male or female icon 
+    <p></p> 
+    <p></p> 
+    <p></p> 
+    <p></p> 
+    <h2 id="ObjectBehavior_ApplicationIcon">ApplicationIcon</h2> 
+    <p> </p>
+    <p><a id="Reference_ApplicationIconModelFactory"></a> </p>
+    <p> With a <a href="#ObjectBehavior_ApplicationIcon_ApplicationIconAnnotation">ApplicationIcon</a> the graphical user interface of a <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a> can easily identified by the user. This icon is a file that contains an image. The type, size and depends on the type(platforms) of your application. In example: </p> 
+    <ul> 
+     <li><a href="https://docs.oracle.com/javase/8/javafx/api/javafx/stage/Stage.html#getIcons--">Icon requirements for JavaFX (desktop) applications</a></li> 
+     <li><a href="https://developer.android.com/studio/write/image-asset-studio">Icon requirements for Android (mobile) applications</a></li> 
+     <li><a href="https://en.m.wikipedia.org/wiki/Favicon">Icon requirements for Web applications</a></li> 
+    </ul> 
+    <p></p> 
+    <h3 id="ObjectBehavior_ApplicationIcon_ApplicationIconDefault">ApplicationIcon Default</h3> 
+    <p> The default is no <a href="#ObjectBehavior_ApplicationIcon_ApplicationIconAnnotation">ApplicationIcon</a> </p> 
+    <h3 id="ObjectBehavior_ApplicationIcon_ApplicationIconAnnotation">ApplicationIcon Annotation</h3> 
+    <p> </p>
+    <p><a id="Reference_ApplicationIcon"></a> </p>
+    <p> You can define the <a href="#ObjectBehavior_ApplicationIcon_ApplicationIconAnnotation">ApplicationIcon</a> by placing an <a href="#ObjectBehavior_FontIcon_FontIconAnnotation">FontIcon</a> annotation before the “class” of the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a>. </p> 
+    <p> Syntax: <a href="#ObjectBehavior_ApplicationIcon_ApplicationIconAnnotation">ApplicationIcon</a>(String iconURL) </p> 
+    <p> Parameter iconURI: a URL to a image file. Best practice is to put the icon file in the package of the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a> class and refer to it using a <a href="#TheProviderLayer_URLProviders_ClassResourceUrlProvider">ClassResourceUrl</a>. TODO: example. </p> 
+    <p></p> 
+    <p></p> 
+    <h3 id="ObjectBehavior_ApplicationIcon_ApplicationIconMethod">ApplicationIcon Method</h3> 
+    <p> </p>
+    <p><a id="Reference_ApplicationIconMethod"></a> </p>
+    <p> Instead of the <a href="#ObjectBehavior_FontIcon_FontIconAnnotation">FontIcon</a> annotation you can also define the icon with a <a href="#ObjectBehavior_ApplicationIcon_ApplicationIconMethod">ApplicationIconMethod</a>. This allows you to change the icon dynamically during runtime, based on state (e.g. when the <a href="#TheDomainLayer_DomainObjects">DomainObject</a> Person is a male or female). </p> 
+    <p> Syntax: public string &lt;ApplicationClassName&gt;ApplicationIcon() </p> The return value must be an a URL to the 
+    <a href="#ObjectBehavior_ApplicationIcon_ApplicationIconAnnotation">ApplicationIcon</a> file, e.g. a 
+    <a href="#TheProviderLayer_URLProviders_ClassResourceUrlProvider">ClassResourceUrl</a>. TODO EXAMPLE of a changing application icon 
     <p></p> 
     <p></p> 
     <p></p> 
@@ -1352,6 +1383,7 @@
         <li><a href="#ObjectBehavior_Description">Description</a></li>
         <li><a href="#ObjectBehavior_Title">Title</a></li>
         <li><a href="#ObjectBehavior_FontIcon">FontIcon</a></li>
+        <li><a href="#ObjectBehavior_ApplicationIcon">ApplicationIcon</a></li>
         <li><a href="#ObjectBehavior_Hidden">Hidden</a></li>
         <li><a href="#ObjectBehavior_Disabled">Disabled</a></li>
         <li><a href="#ObjectBehavior_Order">Order</a></li>
