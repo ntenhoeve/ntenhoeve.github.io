@@ -122,7 +122,7 @@
     <ul> 
      <li>Separation of concerns (separate responsibilities within the application into different layers).</li> 
      <li>Low coupling between layers, high cohesion within them.</li> 
-     <li>User interface modules should contain no business logic.</li> 
+     <li>UserTestObject interface modules should contain no business logic.</li> 
      <li>Layers should be testable individual.</li> 
      <li>Business logic layers contain no user interface and don't refer to user interface modules.</li> 
      <li>No circular references between layers.</li> 
@@ -500,7 +500,7 @@
     </ul> 
     <p></p> 
     <h3 id="TheInfrastructureLayer_InfrastructureObjects_InfrastructureObjectPresentation">Infrastructure Object Presentation</h3> 
-    <p> The methods of infrastructure object are unknown to the <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> and are not displayed on the <a href="https://en.wikipedia.org/wiki/User_interface">User Interface</a>. * </p>
+    <p> The methods of infrastructure object are unknown to the <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> and are not displayed on the <a href="https://en.wikipedia.org/wiki/User_interface">UserTestObject Interface</a>. * </p>
     <h3 id="TheInfrastructureLayer_InfrastructureObjects_Construction">Construction</h3> 
     <p> The principle of “naked objects” is that any <a href="http://en.wikipedia.org/wiki/Plain_Old_Java_Object">'Plain Old Java Object' (POJO)</a> can function as a <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a>. In other words: a <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a> class does not have to inherit from any special class, nor implement any particular interface, nor have any specific attributes. </p> 
     <p> You can: </p> 
@@ -559,20 +559,20 @@
      <li>or other</li> 
     </ul> An example of a basic hard coded validation 
     <pre>
- public class AcmeAuthorizationProvider implements AuthorizationProvider {
+ public class AuthorizationProviderTestObject implements AuthorizationProvider {
  
- 	private final List&lt;User&gt; users;
- 	private User currentUser;
+ 	private final List&lt;UserTestObject&gt; users;
+ 	private UserTestObject currentUser;
  
- 	public AcmeAuthorizationProvider() {
+ 	public AuthorizationProviderTestObject() {
  		users = new ArrayList&lt;&gt;();
- 		users.add(new User(&quot;carla&quot;, &quot;pasword1&quot;, &quot;salesmanager&quot;));
- 		users.add(new User(&quot;john&quot;, &quot;pasword2&quot;, &quot;customer&quot;));
+ 		users.add(new UserTestObject(&quot;carla&quot;, &quot;pasword1&quot;, &quot;salesmanager&quot;));
+ 		users.add(new UserTestObject(&quot;john&quot;, &quot;pasword2&quot;, &quot;customer&quot;));
  	}
  
  	public void login(String userName, String password)
  			throws InvalidNameOrPasswordException {
- 		for (User user : users) {
+ 		for (UserTestObject user : users) {
  			if (user.isValid(userName, password)) {
  				currentUser = user;
  				return;
@@ -1189,6 +1189,83 @@
     <p></p> 
     <p></p> 
     <p></p> 
+    <h1 id="GraphicalDesignRules">Graphical Design Rules</h1> 
+    <p><a id="Reference_ReflectGraphicalDesignRules"></a> </p>
+    <p> Big software companies like <a href="https://en.wikipedia.org/wiki/Google">Google</a>, <a href="https://en.wikipedia.org/wiki/Microsoft">Micro$oft</a>, <a href="https://en.wikipedia.org/wiki/Apple_Inc.">Apple</a> and <a href="https://en.wikipedia.org/wiki/Facebook">Facebook</a> spend a lot of research and effort in maximizing <a href="https://en.wikipedia.org/wiki/Usability">usability</a> and the <a href="https://en.wikipedia.org/wiki/User_experience">user experience</a> for their <a href="https://en.wikipedia.org/wiki/User_interface_design">graphical user interface design</a>s. These companies all have a set rules that say something about <a href="https://en.wikipedia.org/wiki/Usability">usability</a>, <a href="https://en.wikipedia.org/wiki/Graphic_design">graphical design</a> and <a href="https://en.wikipedia.org/wiki/Typography">typography</a>. All these companies use a <a href="https://en.wikipedia.org/wiki/Flat_design">flat design</a> style. </p> 
+    <p> <a href="#TheReflectFramework">ReflectFramework</a> applications also uses a set of set of <a href="https://en.wikipedia.org/wiki/User_interface_design">graphical user interface design</a> rules in order to make them consistent across all <a href="#ReflectApplicationProjectsGettingStarted">ReflectApplicationProjects</a>. </p> 
+    <h2 id="GraphicalDesignRules_GooglesMaterialDesign">Google's Material Design</h2> 
+    <p><a id="Reference_MaterialDesign"></a> </p>
+    <p> <a href="https://material.io/design/">Google's Material Design</a> is beautiful, simple, well accepted, and well defined. <a href="#TheReflectFramework">ReflectFramework</a> applications follow the <a href="https://material.io/design/">Google's Material Design</a> as much as possible. For more information see <a href="https://material.io/design/">https://material.io/design/</a> </p> 
+    <p></p> 
+    <h2 id="GraphicalDesignRules_ResponsiveDesign">Responsive Design</h2> 
+    <p><a id="Reference_ReflectResponsiveDesign"></a> </p>
+    <p> <a href="#TheReflectFramework">ReflectFramework</a> applications have a <a href="https://en.wikipedia.org/wiki/Responsive_web_design">responsive design</a>: a graphical user interface that optimizes its layout and its <a href="https://en.wikipedia.org/wiki/List_of_graphical_user_interface_elements">components</a>, for a variety of devices and screen sizes, in order to maximize <a href="https://en.wikipedia.org/wiki/Usability">usability</a> and <a href="https://en.wikipedia.org/wiki/User_experience">user experience</a>. </p> 
+    <p> The size of the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a> could normal be anywhere between a small smart phone in portrait orientation until a desktop monitor in landscape orientation. </p> 
+    <h3 id="GraphicalDesignRules_ResponsiveDesign_DifferentDisplayWidths">Different display widths</h3> The layout and components vary depending on the 
+    <a>ReflectDisplayWidth</a>: 
+    <ul> 
+     <li>The ApplicationBar</li> 
+     <ul> 
+      <li><a>ReflectDisplayWidth.SMALL</a>:</li> 
+      <ul> 
+       <li>The application name is only visible when the <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a> is displayed (overlapping the tab headers because there is no space to show both of them at the same time).</li> 
+       <li>The <a href="#ActionMethods">ActionMethod</a>s of the active <a>View</a> are displayed as ContextMenu after clicking the ContextMenu icon on the ApplicationBar (because there is no space to show the <a href="#ActionMethods">ActionMethod</a>s in the ApplicationBar).</li> 
+       <li>The <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a> is displayed as a <a href="https://material.io/design/components/navigation-drawer.html">navigation drawer</a> (overlapping the content area (tab panels) because there is no space to show both of them at the same time).</li> 
+       <li>Tables only have one column that show the <a href="#TheDomainLayer_DomainObjects">DomainObject</a> <a href="#ObjectBehavior_Title">TitleModel</a> because there is no space to show more columns</li> 
+       <li><a>FormView</a>s show all <a>PropertyPanel</a>'s underneath each other</li> 
+      </ul> 
+      <li><a>ReflectDisplayWidth.MEDIUM</a>:</li> 
+      <ul> 
+       <li>The application name is only visible when the <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a> is displayed (overlapping the tab headers because there is no space to show both of them at the same time).</li> 
+       <li>The <a href="#ActionMethods">ActionMethod</a>s of the active <a>View</a> are displayed as ContextMenu after clicking the ContextMenu icon on the ApplicationBar (because there is no space to show the <a href="#ActionMethods">ActionMethod</a>s in the ApplicationBar).</li> 
+       <li>The <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a> is displayed as a <a href="https://material.io/design/components/navigation-drawer.html">navigation drawer</a> (overlapping the content area (tab panels) because there is no space to show both of them at the same time).</li> 
+       <li>Tables only can have a few columns</li> 
+       <li><a>FormView</a>s could have more <a>PropertyPanel</a>'s next to each other</li> 
+      </ul> 
+     </ul> 
+     <li><a>ReflectDisplayWidth.LARGE</a>:</li> 
+     <ul> 
+      <li>The application name is visible when the <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a> is displayed.</li> 
+      <li>The <a href="#ActionMethods">ActionMethod</a>s of the active <a>View</a> are displayed on the application bar or in a ContextMenu after clicking the ContextMenu icon on the ApplicationBar (if there is no space to show all the <a href="#ActionMethods">ActionMethod</a>s in the ApplicationBar).</li> 
+      <li>The <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a> is displayed on the left when it is not hidden (shifting the content area (tab panels) to the right so that both are visible)</li> 
+      <li>Tables only can have multiple columns</li> 
+      <li><a>FormView</a>s could have more <a>PropertyPanel</a>'s next to each other</li> 
+     </ul> 
+     <h3 id="GraphicalDesignRules_ResponsiveDesign_DifferentDisplayHeights">Different display heights</h3> The layout and components vary depending on the 
+     <a>ReflectDisplayHeight</a>: 
+     <ul> 
+      <li>The ApplicationBar</li> 
+      <ul> 
+       <li><a>ReflectDisplayHeight.SMALL</a>:</li> 
+       <ul> 
+        <li>The ApplicationBar can scroll out of sight to make more space for the <a>View</a>s</li> 
+       </ul> 
+       <li><a>ReflectDisplayHeight.MEDIUM</a>:</li> 
+       <ul> 
+        <li>The ApplicationBar is always visible on top</li> 
+       </ul> 
+       <li><a>ReflectDisplayHeight.LARGE</a>:</li> 
+       <ul> 
+        <li>The ApplicationBar is always visible on top and may have more height</li> 
+        <li>The <a href="#ActionMethods">ActionMethod</a>s of the active <a>View</a> can either be displayed on the higher ApplicationBar or on a ToolBar on the top of the View.</li> 
+       </ul> 
+      </ul> 
+     </ul> 
+    </ul>
+    <p></p> 
+    <h2 id="GraphicalDesignRules_Colors">Colors</h2> 
+    <p><a id="Reference_ReflectColors"></a> <a href="#TheReflectFramework">ReflectFramework</a> applications with a graphical user interface use 3 main colors: </p>
+    <ul> 
+     <li>PrimaryBackgroundColor: A color that is prominent visible, e.g.: the background color of the application tool bar</li> 
+     <li>AccentBackGroundColor: A color that is used for thinks that need attention (i.e. important buttons or controls that have focus</li> 
+     <li>ContentBackgroundColor: A color used for the background of the content. This color should preferably either be very light (e.g. White) or very dark (e.g.Black)</li> 
+    </ul> 
+    <p> <a href="https://material.io/design/">Google's Material Design</a> recommends to use colors from color palettes that they recommend. See <a href="https://material.io/design/color/the-color-system.html#color-usage-palettes">Google's Material Design Palettes</a> for more information. </p> 
+    <p> Each color can be derived into a <a href="#GraphicalDesignRules_Colors">ReflectColorSet</a>. </p>
+    <p><a id="Reference_ReflectColorSet"></a> A <a href="#GraphicalDesignRules_Colors">ReflectColorSet</a> is a group of background and foreground colors, based on a given background color and a predefined set of rules. </p> 
+    <p></p> 
+    <p></p> 
+    <p></p> 
     <h1 id="ReflectApplicationProjectsGettingStarted">Reflect Application Projects (Getting started)</h1> 
     <p><a id="Reference_ReflectApplicationProjects"></a> </p>
     <p> There are different implementations of the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a> class, to support different type of applications (e.g. for the command line, desktop, mobile devices, web environments). This chapter will explain the different <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a>, and how to get started with them. If needed you can of course write your own implementation of the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a> class. </p> 
@@ -1196,7 +1273,7 @@
     <p> </p>
     <p><a id="Reference_ReflectApplicationForJUnit"></a> The <a href="#ReflectApplicationProjectsGettingStarted_ReflectForJUnit">ReflectApplicationForJUnit</a> is created to be used for <a href="http://en.wikipedia.org/wiki/JUnit">JUnit tests</a>. Its big advantage over using one of the other <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a> implementations in a JUnit test is that the <a href="#ReflectApplicationProjectsGettingStarted_ReflectForJUnit">ReflectApplicationForJUnit</a>: </p>
     <ul> 
-     <li>Does not have a <a href="#TheUserInterfaceLayer">UserInterfaceLayer</a>, because it is not needed for testing. None of the <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s, <a href="#TheDomainLayer_DomainObjects">DomainObject</a>'s <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a>, <a href="#TheProviderLayer_ProviderObjects">Provider</a> Objects that you create or maintain do know the User Interface (see <a href="#TheReflectFramework_ArchitectureOfAnReflectApplication">ReflectArchitecture</a>). We do not need to test the <a href="#TheReflectFramework">ReflectFramework</a> <a href="#TheUserInterfaceLayer">UserInterfaceLayer</a> if we assume it works as it should.</li> 
+     <li>Does not have a <a href="#TheUserInterfaceLayer">UserInterfaceLayer</a>, because it is not needed for testing. None of the <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s, <a href="#TheDomainLayer_DomainObjects">DomainObject</a>'s <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a>, <a href="#TheProviderLayer_ProviderObjects">Provider</a> Objects that you create or maintain do know the UserTestObject Interface (see <a href="#TheReflectFramework_ArchitectureOfAnReflectApplication">ReflectArchitecture</a>). We do not need to test the <a href="#TheReflectFramework">ReflectFramework</a> <a href="#TheUserInterfaceLayer">UserInterfaceLayer</a> if we assume it works as it should.</li> 
      <li>You only need to register the classes that need testing. You register classes by overriding the get...Class or get...Classes methods in the <a href="#ReflectApplicationProjectsGettingStarted_ReflectForJUnit">ReflectApplicationForJUnit</a> class</li> 
     </ul> 
     <p> If you are new to JUnit test I recommend to watch one of the many instruction video's on the Internet. Your IDE most likely supports you with implementing and running JUnit tests (and if not you can probably download a plug-in for it) </p> 
@@ -1255,7 +1332,7 @@
     <h2 id="ReflectApplicationProjectsGettingStarted_ReflectForJavaFx">Reflect for JavaFx</h2> 
     <p> </p>
     <p><a id="Reference_ReflectApplicationForJavaFX"></a> </p>
-    <p> <a href="#ReflectApplicationProjectsGettingStarted_ReflectForJavaFx">ReflectApplicationForJavaFX</a> is an implementation of the <a href="#TheReflectFramework">ReflectFramework</a> that has a <a href="http://en.wikipedia.org/wiki/Graphical_user_interface"> graphical user interface</a> for a computer with an <a href="https://en.wikipedia.org/wiki/Desktop_environment">desktop environment</a>. It might also be used for mobile devices in the future as well, but porting JavaFX for Android is still somewhat of a problem at the time of this writing. <a href="#ReflectApplicationProjectsGettingStarted_ReflectForJavaFx">ReflectApplicationForJavaFX</a> tries to comply with the <a href="https://material.io/guidelines/">Google Material Design</a> as much as possible. It optimizes the user interface depending on the size of the main window. </p> 
+    <p> <a href="#ReflectApplicationProjectsGettingStarted_ReflectForJavaFx">ReflectApplicationForJavaFX</a> is an implementation of the <a href="#TheReflectFramework">ReflectFramework</a> that provides a <a href="http://en.wikipedia.org/wiki/Graphical_user_interface"> graphical user interface</a> for a computer with an <a href="https://en.wikipedia.org/wiki/Desktop_environment">desktop environment</a>. It might also be used for mobile devices in the future as well, but porting JavaFX for Android is still somewhat of a problem at the time of this writing. <a href="#ReflectApplicationProjectsGettingStarted_ReflectForJavaFx">ReflectApplicationForJavaFX</a> tries to comply with the <a href="https://material.io/guidelines/">Google Material Design</a> as much as possible. The application can be used on a <a href="https://en.wikipedia.org/wiki/Desktop_computer">desktop</a>, <a href="https://en.wikipedia.org/wiki/Laptop">lap-top</a>, <a href="https://en.wikipedia.org/wiki/Tablet_computer">tablet</a> or <a href="https://en.wikipedia.org/wiki/Mobile_device">mobile device</a>. It has an <a href="https://en.wikipedia.org/wiki/Responsive_web_design">responsive web design</a>: It optimizes the user interface depending on the size of the <a>RfxWindow</a>. </p> 
     <h3 id="ReflectApplicationProjectsGettingStarted_ReflectForJavaFx_HowToDownloadAReflectForJavaFXDemoProject">How to download a ReflectForJavaFX demo project</h3> 
     <p> TODO </p> 
     <h3 id="ReflectApplicationProjectsGettingStarted_ReflectForJavaFx_HowToCreateANewReflectForJavaFXProject">How to create a new ReflectForJavaFX project</h3> 
@@ -1393,6 +1470,12 @@
         <li><a href="#ObjectBehavior_ParameterFactory">Parameter Factory</a></li>
         <li><a href="#ObjectBehavior_Validation">Validation</a></li>
         <li><a href="#ObjectBehavior_ServiceObjectChildren">Service Object Children</a></li>
+       </ul></a></li>
+     <li><a href="#GraphicalDesignRules">Graphical Design Rules
+       <ul>
+        <li><a href="#GraphicalDesignRules_GooglesMaterialDesign">Google's Material Design</a></li>
+        <li><a href="#GraphicalDesignRules_ResponsiveDesign">Responsive Design</a></li>
+        <li><a href="#GraphicalDesignRules_Colors">Colors</a></li>
        </ul></a></li>
      <li><a href="#ReflectApplicationProjectsGettingStarted">Reflect Application Projects (Getting started)
        <ul>
