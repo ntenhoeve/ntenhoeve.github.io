@@ -1204,24 +1204,21 @@
     <h3 id="GraphicalDesignRules_ResponsiveDesign_DifferentDisplayWidths">Different display widths</h3> The layout and components vary depending on the 
     <a>ReflectDisplayWidth</a>: 
     <ul> 
-     <li>The ApplicationBar</li> 
+     <li><a>ReflectDisplayWidth.SMALL</a>:</li> 
      <ul> 
-      <li><a>ReflectDisplayWidth.SMALL</a>:</li> 
-      <ul> 
-       <li>The application name is only visible when the <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a> is displayed (overlapping the tab headers because there is no space to show both of them at the same time).</li> 
-       <li>The <a href="#ActionMethods">ActionMethod</a>s of the active <a>View</a> are displayed as ContextMenu after clicking the ContextMenu icon on the ApplicationBar (because there is no space to show the <a href="#ActionMethods">ActionMethod</a>s in the ApplicationBar).</li> 
-       <li>The <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a> is displayed as a <a href="https://material.io/design/components/navigation-drawer.html">navigation drawer</a> (overlapping the content area (tab panels) because there is no space to show both of them at the same time).</li> 
-       <li>Tables only have one column that show the <a href="#TheDomainLayer_DomainObjects">DomainObject</a> <a href="#ObjectBehavior_Title">TitleModel</a> because there is no space to show more columns</li> 
-       <li><a>FormView</a>s show all <a>PropertyPanel</a>'s underneath each other</li> 
-      </ul> 
-      <li><a>ReflectDisplayWidth.MEDIUM</a>:</li> 
-      <ul> 
-       <li>The application name is only visible when the <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a> is displayed (overlapping the tab headers because there is no space to show both of them at the same time).</li> 
-       <li>The <a href="#ActionMethods">ActionMethod</a>s of the active <a>View</a> are displayed as ContextMenu after clicking the ContextMenu icon on the ApplicationBar (because there is no space to show the <a href="#ActionMethods">ActionMethod</a>s in the ApplicationBar).</li> 
-       <li>The <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a> is displayed as a <a href="https://material.io/design/components/navigation-drawer.html">navigation drawer</a> (overlapping the content area (tab panels) because there is no space to show both of them at the same time).</li> 
-       <li>Tables only can have a few columns</li> 
-       <li><a>FormView</a>s could have more <a>PropertyPanel</a>'s next to each other</li> 
-      </ul> 
+      <li>The application name is only visible when the <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a> is displayed (overlapping the tab headers because there is no space to show both of them at the same time).</li> 
+      <li>The <a href="#ActionMethods">ActionMethod</a>s of the active <a>View</a> are displayed as ContextMenu after clicking the ContextMenu icon on the ApplicationBar (because there is no space to show the <a href="#ActionMethods">ActionMethod</a>s in the ApplicationBar).</li> 
+      <li>The <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a> is displayed as a <a href="https://material.io/design/components/navigation-drawer.html">navigation drawer</a> (overlapping the content area (tab panels) because there is no space to show both of them at the same time).</li> 
+      <li>Tables only have one column that show the <a href="#TheDomainLayer_DomainObjects">DomainObject</a> <a href="#ObjectBehavior_Title">TitleModel</a> because there is no space to show more columns</li> 
+      <li><a>FormView</a>s show all <a>PropertyPanel</a>'s underneath each other</li> 
+     </ul> 
+     <li><a>ReflectDisplayWidth.MEDIUM</a>:</li> 
+     <ul> 
+      <li>The application name is only visible when the <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a> is displayed (overlapping the tab headers because there is no space to show both of them at the same time).</li> 
+      <li>The <a href="#ActionMethods">ActionMethod</a>s of the active <a>View</a> are displayed as ContextMenu after clicking the ContextMenu icon on the ApplicationBar (because there is no space to show the <a href="#ActionMethods">ActionMethod</a>s in the ApplicationBar).</li> 
+      <li>The <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a> is displayed as a <a href="https://material.io/design/components/navigation-drawer.html">navigation drawer</a> (overlapping the content area (tab panels) because there is no space to show both of them at the same time).</li> 
+      <li>Tables only can have a few columns</li> 
+      <li><a>FormView</a>s could have more <a>PropertyPanel</a>'s next to each other</li> 
      </ul> 
      <li><a>ReflectDisplayWidth.LARGE</a>:</li> 
      <ul> 
@@ -1231,27 +1228,24 @@
       <li>Tables only can have multiple columns</li> 
       <li><a>FormView</a>s could have more <a>PropertyPanel</a>'s next to each other</li> 
      </ul> 
-     <h3 id="GraphicalDesignRules_ResponsiveDesign_DifferentDisplayHeights">Different display heights</h3> The layout and components vary depending on the 
-     <a>ReflectDisplayHeight</a>: 
+    </ul> 
+    <h3 id="GraphicalDesignRules_ResponsiveDesign_DifferentDisplayHeights">Different display heights</h3> The layout and components vary depending on the 
+    <a>ReflectDisplayHeight</a>: 
+    <ul> 
+     <li><a>ReflectDisplayHeight.SMALL</a>:</li> 
      <ul> 
-      <li>The ApplicationBar</li> 
-      <ul> 
-       <li><a>ReflectDisplayHeight.SMALL</a>:</li> 
-       <ul> 
-        <li>The ApplicationBar can scroll out of sight to make more space for the <a>View</a>s</li> 
-       </ul> 
-       <li><a>ReflectDisplayHeight.MEDIUM</a>:</li> 
-       <ul> 
-        <li>The ApplicationBar is always visible on top</li> 
-       </ul> 
-       <li><a>ReflectDisplayHeight.LARGE</a>:</li> 
-       <ul> 
-        <li>The ApplicationBar is always visible on top and may have more height</li> 
-        <li>The <a href="#ActionMethods">ActionMethod</a>s of the active <a>View</a> can either be displayed on the higher ApplicationBar or on a ToolBar on the top of the View.</li> 
-       </ul> 
-      </ul> 
+      <li>The ApplicationBar can scroll out of sight to make more space for the <a>View</a>s</li> 
      </ul> 
-    </ul>
+     <li><a>ReflectDisplayHeight.MEDIUM</a>:</li> 
+     <ul> 
+      <li>The ApplicationBar is always visible on top</li> 
+     </ul> 
+     <li><a>ReflectDisplayHeight.LARGE</a>:</li> 
+     <ul> 
+      <li>The ApplicationBar is always visible on top and may have more height</li> 
+      <li>The <a href="#ActionMethods">ActionMethod</a>s of the active <a>View</a> can either be displayed on the higher ApplicationBar or on a ToolBar on the top of the View.</li> 
+     </ul> 
+    </ul> 
     <p></p> 
     <h2 id="GraphicalDesignRules_Colors">Colors</h2> 
     <p><a id="Reference_ReflectColors"></a> <a href="#TheReflectFramework">ReflectFramework</a> applications with a graphical user interface use 3 main colors: </p>
