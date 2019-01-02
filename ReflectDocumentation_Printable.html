@@ -51,7 +51,13 @@
    </ul>
    <h3><a href="#TheUserInterfaceLayer">The UserInterface Layer</a></h3>
    <ul>
-    <li><a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a></li>
+    <li><a href="#TheUserInterfaceLayer_UserInterfaceController">User Interface Controller</a></li>
+    <li><a href="#TheUserInterfaceLayer_GraphicalUserInterfaceController">Graphical User Interface Controller</a></li>
+    <li><a href="#TheUserInterfaceLayer_GraphicalUserInterfaceMainWindow">Graphical User Interface Main Window</a></li>
+    <li><a href="#TheUserInterfaceLayer_ApplicationBar">Application Bar</a></li>
+    <li><a href="#TheUserInterfaceLayer_MainMenu">Main Menu</a></li>
+    <li><a href="#TheUserInterfaceLayer_Tab">Tab</a></li>
+    <li><a href="#TheUserInterfaceLayer_GraphicalUserInterfaceDesignRules">Graphical User Interface Design Rules</a></li>
    </ul>
    <h3><a href="#ActionMethods">Action Methods</a></h3>
    <ul>
@@ -78,15 +84,8 @@
     <li><a href="#ObjectBehavior_Format">Format</a></li>
     <li><a href="#ObjectBehavior_FieldMode">Field Mode</a></li>
     <li><a href="#ObjectBehavior_ExecutionMode">Execution Mode</a></li>
-    <li><a href="#ObjectBehavior_ParameterFactory">Parameter Factory</a></li>
+    <li><a href="#ObjectBehavior_ParameterRandomGenerator">Parameter RandomGenerator</a></li>
     <li><a href="#ObjectBehavior_Validation">Validation</a></li>
-    <li><a href="#ObjectBehavior_ServiceObjectChildren">Service Object Children</a></li>
-   </ul>
-   <h3><a href="#GraphicalDesignRules">Graphical Design Rules</a></h3>
-   <ul>
-    <li><a href="#GraphicalDesignRules_GooglesMaterialDesign">Google's Material Design</a></li>
-    <li><a href="#GraphicalDesignRules_ResponsiveDesign">Responsive Design</a></li>
-    <li><a href="#GraphicalDesignRules_Colors">Colors</a></li>
    </ul>
    <h3><a href="#ReflectApplicationProjectsGettingStarted">Reflect Application Projects (Getting started)</a></h3>
    <ul>
@@ -111,7 +110,7 @@
   <div id="content">
    <h1 id="TheReflectFramework">The Reflect Framework</h1> 
    <p><a id="Reference_ReflectFramework"></a> </p>
-   <p> The <a href="#TheReflectFramework">ReflectFramework</a> is a light weight <a href="http://en.wikipedia.org/wiki/Java_(programming_language)">Java</a> <a href="http://en.wikipedia.org/wiki/Application_framework">Application Framework</a> for creating <a href="https://en.wikipedia.org/wiki/Business_software">business like applications</a> that can view and manipulate information by using <a href="https://en.wikipedia.org/wiki/Form_(document)">forms</a> and <a href="https://en.wikipedia.org/wiki/Table_(information)">tables</a>. </p> 
+   <p> The <a href="#TheReflectFramework">ReflectFramework</a> is a light weight <a href="http://en.wikipedia.org/wiki/Java_(programming_language)">Java</a> <a href="http://en.wikipedia.org/wiki/Application_framework">Application Framework</a> for creating <a href="https://en.wikipedia.org/wiki/Business_software">business like applications</a> that can read and manipulate information by using <a href="https://en.wikipedia.org/wiki/Form_(document)">forms</a> and <a href="https://en.wikipedia.org/wiki/Table_(information)">tables</a>. </p> 
    <p> With the <a href="#TheReflectFramework">ReflectFramework</a> you only need to create <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s. The <a href="#TheReflectFramework">ReflectFramework</a> provides you the <a href="https://en.wikipedia.org/wiki/User_interface">user interface</a>, without writing any <a href="https://en.wikipedia.org/wiki/User_interface">user interface</a> code. This means that the <a href="#TheReflectFramework">ReflectFramework</a> is ideal for rapid prototyping, rapid development or to learn programming (e.g. to teach: <a href="https://en.wikipedia.org/wiki/Object-oriented_programming">Object Oriented Programming</a> or <a href="https://en.wikipedia.org/wiki/Domain-driven_design">Domain Driven Design</a>). </p> 
    <p> The <a href="#TheReflectFramework">ReflectFramework</a> provides different <a href="https://en.wikipedia.org/wiki/User_interface">user interface</a> implementations that you can use for your <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s. Please read the <a href="#ReflectApplicationProjectsGettingStarted">ReflectApplicationProjects</a> section to learn what <a href="https://en.wikipedia.org/wiki/User_interface">user interfaces</a> are available and how to get started. If you want to know more about the details of the <a href="#TheReflectFramework">ReflectFramework</a>, keep reading.... </p> 
    <h2 id="TheReflectFramework_ReflectCoreValues">Reflect Core Values</h2> 
@@ -304,7 +303,7 @@
     <li>It provides a list of <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a> types with the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication.getInfrastructureClasses()</a> method. <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a>s basically communicate to the outside world (i.e. data base access objects, email clients, soap clients, etc)</li> 
     <li>It provides the <a href="#TheProviderLayer_ProviderObjects">Provider</a> types with the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication.get...ProviderClass()</a> methods. <a href="#TheProviderLayer_ProviderObjects">Provider</a> Objects help with <a href="https://en.wikipedia.org/wiki/Cross-cutting_concern">cross cutting concerns</a>. Each application type (e.g. for the command line, desktop, mobile devices or the web) requires different implementations of the providers</li> 
    </ul> 
-   <p> Each application type (e.g. for the command line, desktop, mobile devices or the web) has its own implementation of <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a> to help initializing the framework. See the type hierarchy of <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a> to learn which classes can be used and view their java doc to learn how to use them. </p> 
+   <p> Each application type (e.g. for the command line, desktop, mobile devices or the web) has its own implementation of <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a> to help initializing the framework. See the type hierarchy of <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a> to learn which classes can be used and read their java doc to learn how to use them. </p> 
    <p> If you create a new application you will be extending one of these classes. You will only need to implement some of the methods mentioned above (at least the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication.getServiceClasses()</a> method). </p> An example of a desktop application: 
    <pre>
  public class AcmeWebShop extends ReflectApplicationForJavaFx {
@@ -583,7 +582,7 @@
    <ul> 
     <li>Communicating with a <a href="https://en.wikipedia.org/wiki/Database">database</a>:<br /> class names end with 'Repository', e.g.: CustomerRepository, OrderRepository, etc...</li> 
     <li>Communicating with a <a href="https://en.wikipedia.org/?title=Web_servicehttps://en.wikipedia.org/?title=Web_service">web-service</a>:<br /> class names end with 'Client', e.g.: EmailClient, GoogleMapsClient, SOAPClient, etc..</li> 
-    <li>Creating objects with a <a href="https://en.wikipedia.org/wiki/Factory_(object-oriented_programming)">factory</a> class:<br /> class names end with 'Factory', e.g.: ReportFactory, etc..</li> 
+    <li>Creating objects with a <a href="https://en.wikipedia.org/wiki/Factory_(object-oriented_programming)">factory</a> class:<br /> class names end with 'RandomGenerator', e.g.: ReportFactory, etc..</li> 
     <li><a href="https://en.wikipedia.org/wiki/Logfile">Logging</a>:<br /> class names end with 'Logger'</li> 
    </ul> 
    <p></p> 
@@ -801,11 +800,82 @@
    <p><a id="Reference_UserInterfaceLayer"></a> The <a href="#TheUserInterfaceLayer">UserInterfaceLayer</a> is also know as presentation layer (although I think that 'presentation layer' is a poor name, because it is responsible for so much more). The <a href="#TheUserInterfaceLayer">UserInterfaceLayer</a> contains the <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a>, which is responsible for showing information to the user and processing the information from the user using the objects in the lower layers (see <a href="#TheReflectFramework_ArchitectureOfAnReflectApplication">ReflectArchitecture</a>). </p>
    <p> The <a>UserInterfaceContainer</a> is an <a href="#TheReflectFramework_DependencyInjectionContainer">DependencyInjectionContainer</a> that represents the <a href="#TheUserInterfaceLayer">UserInterfaceLayer</a> and holds and manages the <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a>. </p> Note that this layer is the top layer, which means it may know all the objects in the lower layers but not visa versa! See 
    <a href="#TheReflectFramework_ArchitectureOfAnReflectApplication">ReflectArchitecture</a> 
-   <h2 id="TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</h2> 
+   <h2 id="TheUserInterfaceLayer_UserInterfaceController">User Interface Controller</h2> 
    <p><a id="Reference_UserInterfaceController"></a> </p>
-   <p> The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> is responsible for showing information to the user and processing the information from the user using the objects in the lower layers (see <a href="#TheReflectFramework_ArchitectureOfAnReflectApplication">ReflectArchitecture</a>). </p> 
+   <p> The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> is responsible for showing information to the user (or other systems) and processing the information from the user using the objects in the lower layers (see <a href="#TheReflectFramework_ArchitectureOfAnReflectApplication">ReflectArchitecture</a>). </p> 
    <p> See the <a href="#ReflectApplicationProjectsGettingStarted">ReflectApplicationProjects</a> section to learn what types of user interfaces are available, or download all the sources of the <a href="#TheReflectFramework">ReflectFramework</a> projects and see the class hierarchy of the <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> class to find all the different user interface implementations. </p> 
    <p></p> 
+   <h2 id="TheUserInterfaceLayer_GraphicalUserInterfaceController">Graphical User Interface Controller</h2>
+   <p><a id="Reference_GraphicalUserinterfaceController"></a> </p>
+   <p> The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> provides a basic interface which is fine for handling communication with other systems (e.g. a <a href="https://simple.wikipedia.org/wiki/SOAP_(protocol)">SOAP</a> or <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">RESTFULL interface</a> ) or with a person or other system via a <a href="https://en.wikipedia.org/wiki/Command-line_interface">command line interface</a>. </p> 
+   <p> The <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceController">GraphicalUserinterfaceController</a> extends the <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> and adds functionality needed for a <a herf="https://en.wikipedia.org/wiki/Graphical_user_interface">Graphical User Interface</a>. The <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceController">GraphicalUserinterfaceController</a> creates and manipulates a <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceMainWindow">MainWindow</a> for a person to interact with. </p>
+   <p></p> 
+   <h2 id="TheUserInterfaceLayer_GraphicalUserInterfaceMainWindow">Graphical User Interface Main Window</h2>
+   <p><a id="Reference_MainWindow"></a> TODO PICTURE MAIN WINDOW </p>
+   <p> The <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceMainWindow">MainWindow</a> contains all the <a>ReflectGuiComponent</a>s needed for a <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a>: </p> 
+   <ul> 
+    <li><a href="#TheUserInterfaceLayer_ApplicationBar">ApplicationBar</a></li> 
+    <li><a>MainMenu</a></li> 
+    <li><a href="#TheUserInterfaceLayer_Tab">Tab</a>s</li> 
+   </ul> 
+   <p></p> 
+   <p> </p>
+   <h2 id="TheUserInterfaceLayer_ApplicationBar">Application Bar</h2>
+   <p><a id="Reference_ApplicationBar"></a> </p>
+   <p> A <a href="#TheUserInterfaceLayer_ApplicationBar">ApplicationBar</a> is a <a>ReflectGuiComponent</a>. It is located at the top over the whole width of the application.It provides content and actions related to the current screen. It’s used for branding, screen titles, navigation, and actions. </p> 
+   <h3 id="TheUserInterfaceLayer_ApplicationBar_Principles">Principles</h3> 
+   <ul> 
+    <li>Persistent: Top app bars appear at the top of each screen in an app, and can disappear upon scroll when the <a>ReflectDisplayHeight.SMALL</a>.</li> 
+    <li>Guiding: Top app bars provide a reliable way to guide users through an app.</li> 
+    <li>Consistent: Top app bars have a consistent position and content to increase familiarity.</li> 
+   </ul> 
+   <h3 id="TheUserInterfaceLayer_ApplicationBar_Anatomy">Anatomy</h3> 
+   <p> The recommended placement of elements in a top app bar for left-to-right languages is: </p> 
+   <ul> 
+    <li>Place navigation on the far left</li> 
+    <li>Place any titles to the right of navigation</li> 
+    <li>Place contextual actions to the right of navigation</li> 
+    <li>Place an overflow menu (if used) to the far right</li> 
+   </ul> 
+   <p></p> 
+   <p></p> 
+   <h2 id="TheUserInterfaceLayer_MainMenu">Main Menu</h2>
+   <p><a id="Reference_MainMenu"></a> TODO PICTURE MAIN MENU </p>
+   <p> The <a>MainMenu</a> is displayed on a panel on the left hand side of the user interface. Sometimes this panel is hidden but it can always be made visible again using the menu icon on the <a href="#TheUserInterfaceLayer_ApplicationBar">ApplicationBar</a>. The <a>MainMenu</a> provides the user access to the <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s so that the user can work on them. The <a>MainMenu</a> contains all <a href="#ActionMethods">ActionMethod</a>s of <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s that either have no method parameter or have an <a href="#ObjectBehavior_ParameterRandomGenerator_ParameterFactoryAnnotation">ParameterFactory</a>. </p> 
+   <p> <a href="#ActionMethods">ActionMethod</a>s of <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s that take a <a href="#TheDomainLayer_DomainObjects">DomainObject</a> as a parameter and have no <a href="#ObjectBehavior_ParameterRandomGenerator_ParameterFactoryAnnotation">ParameterFactory</a> are displayed in <a href="#ActionMethods_ActionMethodsForDomainObjects_DomainObjectMenu">FormMenu</a>s and propertyMenus. </p> Each 
+   <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> is always displayed as a sub menu 
+   <p></p> 
+   <h2 id="TheUserInterfaceLayer_Tab">Tab</h2>
+   <p><a id="Reference_Tab"></a> </p>
+   <p> A <a href="#TheUserInterfaceLayer_Tab">Tab</a> is a <a>ReflectGuiComponent</a> on which some kind of information is displayed. This is often a <a href="#TheUserInterfaceLayer_Tab_FormTab">FormTab</a> or a <a href="#TheUserInterfaceLayer_Tab_TableTab">TableTab</a> that show the results or parameter of a <a href="#ActionMethods">ActionMethod</a>. A graphical user interface of a <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a> can have multiple tabs at the same time (see <a href="https://en.wikipedia.org/wiki/Tab_(GUI)">tabbed document interface (TDI)</a>). Only one <a href="#TheUserInterfaceLayer_Tab">Tab</a> wil be displayed at a time. Each <a href="#TheUserInterfaceLayer_Tab">Tab</a> will have a TabHeader that is displayed in the TabHeaderBar. You can select another <a href="#TheUserInterfaceLayer_Tab">Tab</a> by clicking on one of the other TabHeaders or the TabSelectionButton </p> 
+   <p> A <a>GraphicalUserInterfaceApplication</a> can contain multiple types of tabs: </p>
+   <h3 id="TheUserInterfaceLayer_Tab_TableTab">Table Tab</h3>
+   <p><a id="Reference_TableTab"></a> A <a href="#TheUserInterfaceLayer_Tab_TableTab">TableTab</a> is a <a>ReflectGuiComponent</a>. It shows the user a table or grid of values which could be <a href="#TheDomainLayer_DomainObjects">DomainObject</a>. These values (an array, list, set or queue) is the result of a <a href="#ActionMethods">ActionMethod</a>. <a href="#TheUserInterfaceLayer_Tab_TableTab">TableTab</a>s are normally used to select e <a href="#TheDomainLayer_DomainObjects">DomainObject</a>, so that it can be viewed or manipulated with a <a href="#TheUserInterfaceLayer_Tab_FormTab">FormTab</a> </p> 
+   <h3 id="TheUserInterfaceLayer_Tab_FormTab">Form Tab</h3>
+   <p><a id="Reference_FormTab"></a> A <a href="#TheUserInterfaceLayer_Tab_FormTab">FormTab</a> is a <a>ReflectGuiComponent</a>. It shows the user a <a href="#TheDomainLayer_DomainObjects">DomainObject</a> with <a href="#TheUserInterfaceLayer_Tab_PropertyPanels">PropertyPanel</a>s. This <a href="#TheDomainLayer_DomainObjects">DomainObject</a> is either a <a href="#ActionMethods">ActionMethod</a> result (read-only) or a <a href="#ActionMethods">ActionMethod</a> parameter (can be edited by a user depending on the <a href="#ObjectBehavior_ExecutionMode">ExecutionMode</a> annotation of the <a href="#ActionMethods">ActionMethod</a>. </p>
+   <h3 id="TheUserInterfaceLayer_Tab_PropertyPanels">Property Panels</h3> 
+   <p><a id="Reference_PropertyPanel"></a> A <a href="#TheUserInterfaceLayer_Tab_FormTab">FormTab</a> has one or more <a href="#TheUserInterfaceLayer_Tab_PropertyPanels">PropertyPanel</a>s. Each <a href="#TheUserInterfaceLayer_Tab_PropertyPanels">PropertyPanel</a> represents a <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> and contains: </p>
+   <ul> 
+    <li>a <a>PropertyLabel</a></li> 
+    <li>a <a>PropertyField</a></li> 
+    <li>a <a>PropertyActionMethodMenu</a></li> 
+    <li><a>PropertyValidationLabel</a> if any</li> 
+   </ul> 
+   <p> A <a href="#TheUserInterfaceLayer_Tab_PropertyPanels">PropertyPanel</a> usually extends some kind of <a href="https://en.wikipedia.org/wiki/List_of_graphical_user_interface_elements">user interface element (also known as component or element)</a>. The type of the user interface element depends on the framework used (e.g. JavaFx Component, Vaadin Component or Android Component). </p> 
+   <p> The PropertyPanelFactory will create a PropertyPanel, by passing all necessary information as <a>Constructor</a> <a>Parameter</a>s. </p> 
+   <p></p> 
+   <p></p> 
+   <h3 id="TheUserInterfaceLayer_Tab_CustomizedTabs">Customized tabs</h3> 
+   <p> The <a href="#TheUserInterfaceLayer_Tab_TableTab">TableTab</a> and <a href="#TheUserInterfaceLayer_Tab_FormTab">FormTab</a> are normally used to select a <a href="#TheDomainLayer_DomainObjects">DomainObject</a> and view or manipulate it. You can create your own <a href="#TheUserInterfaceLayer_Tab">Tab</a> and configure it to be used in your <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a> if you need a different representation of the <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s. Typical examples are: </p> 
+   <ul> 
+    <li>A <a href="https://en.wikipedia.org/wiki/Blog">Blog</a> where a list of Comments (<a href="#TheDomainLayer_DomainObjects">DomainObject</a>s) are displayed in a alternative manner (See <a href="https://phraseapp.com/blog/posts/10-must-read-blogs-for-software-developer/">this blog example</a>)</li> 
+    <li>A map that represents information from a MapInformation (<a href="#TheDomainLayer_DomainObjects">DomainObject</a> (See this <a href="https://www.google.com/maps/place/Amsterdam/@52.3545653,4.7585408,11z/data=!3m1!4b1!4m5!3m4!1s0x47c63fb5949a7755:0x6600fd4cb7c0af8d!8m2!3d52.3679843!4d4.9035614">this map example</a>)</li> 
+    <p></p> 
+   </ul>
+   <p></p> 
+   <p></p> 
+   <h2 id="TheUserInterfaceLayer_GraphicalUserInterfaceDesignRules">Graphical User Interface Design Rules</h2>
+   <a>ReflectGraphicalDesignRules</a> 
    <p></p> 
    <h1 id="ActionMethods">Action Methods</h1> 
    <p><a id="Reference_ActionMethod"></a> </p>
@@ -816,9 +886,9 @@
    <p> <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s may have <a href="#ActionMethods">ActionMethod</a>s that to do something with or for the given <a href="#TheDomainLayer_DomainObjects">DomainObject</a>. In example: an ShoppingCart object may have an ActionMethod such as checkout(). </p> 
    <h3 id="ActionMethods_ActionMethodsForDomainObjects_DomainObjectMenu">Domain Object Menu</h3> 
    <p> </p>
-   <p><a id="Reference_DomainObjectMenu"></a> TODO PICTURE Domain object MENU and table row context menu </p>
-   <p> <a href="#ActionMethods">ActionMethod</a>s of <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s are displayed as menu items in the <a href="#ActionMethods_ActionMethodsForDomainObjects_DomainObjectMenu">DomainObjectMenu</a>. </p> 
-   <p> The <a href="#ActionMethods_ActionMethodsForDomainObjects_DomainObjectMenu">DomainObjectMenu</a> is displayed on the <a href="https://en.wikipedia.org/wiki/Toolbar">toolbar</a> of a <a>FormView</a> (that displays a <a href="#TheDomainLayer_DomainObjects">DomainObject</a>) or as a <a href="">context menu</a> when the user clicks on a row of a table view. The <a href="#ActionMethods_ActionMethodsForDomainObjects_DomainObjectMenu">DomainObjectMenu</a> allows a user to perform an action on or with a <a href="#TheDomainLayer_DomainObjects">DomainObject</a>. An <a href="#ActionMethods_ActionMethodsForDomainObjects_DomainObjectMenu">DomainObjectMenu</a> contains all the <a href="#ActionMethods">ActionMethod</a>s of the <a href="#TheDomainLayer_DomainObjects">DomainObject</a> and all <a href="#ActionMethods">ActionMethod</a> s of <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s that take the <a href="#TheDomainLayer_DomainObjects">DomainObject</a> as a parameter. Each <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> is displayed as a sub menu. </p> 
+   <p><a id="Reference_FormMenu"></a> TODO PICTURE Domain object MENU and table row context menu </p>
+   <p> <a href="#ActionMethods">ActionMethod</a>s of <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s are displayed as menu items in the <a href="#ActionMethods_ActionMethodsForDomainObjects_DomainObjectMenu">FormMenu</a>. </p> 
+   <p> The <a href="#ActionMethods_ActionMethodsForDomainObjects_DomainObjectMenu">FormMenu</a> is displayed on the <a href="https://en.wikipedia.org/wiki/Toolbar">toolbar</a> of a <a href="#TheUserInterfaceLayer_Tab_FormTab">FormTab</a> (that displays a <a href="#TheDomainLayer_DomainObjects">DomainObject</a>) or as a <a href="">context menu</a> when the user clicks on a row of a <a href="#TheUserInterfaceLayer_Tab_TableTab">TableTab</a>. The <a href="#ActionMethods_ActionMethodsForDomainObjects_DomainObjectMenu">FormMenu</a> allows a user to perform an action on or with a <a href="#TheDomainLayer_DomainObjects">DomainObject</a>. An <a href="#ActionMethods_ActionMethodsForDomainObjects_DomainObjectMenu">FormMenu</a> contains all the <a href="#ActionMethods">ActionMethod</a>s of the <a href="#TheDomainLayer_DomainObjects">DomainObject</a> and all <a href="#ActionMethods">ActionMethod</a> s of <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s that take the <a href="#TheDomainLayer_DomainObjects">DomainObject</a> as a parameter. Each <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> is displayed as a sub menu. </p> 
    <p></p> 
    <p></p>
    <p></p> 
@@ -837,7 +907,7 @@
    <h3 id="ActionMethods_ActionMethodsForDomainObjectProperties_DomainObjectPropertyMenu">Domain Object Property Menu</h3> 
    <p> </p>
    <p><a id="Reference_DomainObjectPropertyMenu"></a> TODO PICTURE property context MENU and field table row context menu </p>
-   <p> The <a href="#ActionMethods_ActionMethodsForDomainObjectProperties_DomainObjectPropertyMenu">DomainObjectPropertyMenu</a> is displayed as a <a href="https://en.wikipedia.org/wiki/Context_menu">context menu</a> in a formview when the menu button of a referenceProperty or a row of a collectionproperty is clicked. The propertyMenu allows a user to manipulate a <a href="#TheDomainLayer_Properties">DomainObjectProperty</a>. It contains all <a href="#ActionMethods_ActionMethodsForDomainObjectProperties">DomainObjectPropertyActionMethod</a>s of and all <a href="#ActionMethods">ActionMethod</a>s of <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s that take the <a href="#TheDomainLayer_DomainObjects">DomainObject</a> as a parameter. Each <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> is displayed as a sub menu. </p> 
+   <p> The <a href="#ActionMethods_ActionMethodsForDomainObjectProperties_DomainObjectPropertyMenu">DomainObjectPropertyMenu</a> is displayed as a <a href="https://en.wikipedia.org/wiki/Context_menu">context menu</a> in a <a href="#TheUserInterfaceLayer_Tab_FormTab">FormTab</a> when the menu button of a referenceProperty or a row of a collectionproperty is clicked. The propertyMenu allows a user to manipulate a <a href="#TheDomainLayer_Properties">DomainObjectProperty</a>. It contains all <a href="#ActionMethods_ActionMethodsForDomainObjectProperties">DomainObjectPropertyActionMethod</a>s of and all <a href="#ActionMethods">ActionMethod</a>s of <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s that take the <a href="#TheDomainLayer_DomainObjects">DomainObject</a> as a parameter. Each <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> is displayed as a sub menu. </p> 
    <p></p> 
    <p></p> 
    <p></p> 
@@ -845,12 +915,12 @@
    <h2 id="ActionMethods_ActionMethodsForServiceObjects">Action Methods for Service Objects</h2> 
    <p> </p>
    <p><a id="Reference_ServiceObjectActionMethod"></a> </p>
-   <p> <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s exist because they always have one ore more <a href="#ActionMethods">ActionMethod</a>s. ActionMethods of serviceObjects can appear as menu items in the <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a>, <a href="#ActionMethods_ActionMethodsForDomainObjects_DomainObjectMenu">DomainObjectMenu</a>, or <a href="#ActionMethods_ActionMethodsForDomainObjectProperties_DomainObjectPropertyMenu">DomainObjectPropertyMenu</a> </p> 
-   <p> In Example: a CustomerService object may have an <a href="#ActionMethods">ActionMethod</a> such as findCustomer(CustomerSearchArgument searchArgument) that is displayed in the <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a>. </p> 
+   <p> <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s exist because they always have one ore more <a href="#ActionMethods">ActionMethod</a>s. ActionMethods of serviceObjects can appear as menu items in the <a>MainMenu</a>, <a href="#ActionMethods_ActionMethodsForDomainObjects_DomainObjectMenu">FormMenu</a>, or <a href="#ActionMethods_ActionMethodsForDomainObjectProperties_DomainObjectPropertyMenu">DomainObjectPropertyMenu</a> </p> 
+   <p> In Example: a CustomerService object may have an <a href="#ActionMethods">ActionMethod</a> such as findCustomer(CustomerSearchArgument searchArgument) that is displayed in the <a>MainMenu</a>. </p> 
    <h3 id="ActionMethods_ActionMethodsForServiceObjects_MainMenu">Main menu</h3> 
    <p><a id="Reference_MainMenu"></a> TODO PICTURE MAIN MENU </p>
-   <p> The <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a> is displayed on a panel on the left hand side of the user interface. Sometimes this panel is hidden but it can always be made visible again using the main tool bar. The <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a> provides the user access to the <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s so that the user can work on them. The <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a> contains all <a href="#ActionMethods">ActionMethod</a>s of <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s that either have no method parameter or have an <a href="#ObjectBehavior_ParameterFactory_ParameterFactoryAnnotation">ParameterFactory</a>. </p> 
-   <p> <a href="#ActionMethods">ActionMethod</a>s of <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s that take a <a href="#TheDomainLayer_DomainObjects">DomainObject</a> as a parameter and have no <a href="#ObjectBehavior_ParameterFactory_ParameterFactoryAnnotation">ParameterFactory</a> are displayed in <a href="#ActionMethods_ActionMethodsForDomainObjects_DomainObjectMenu">DomainObjectMenu</a>s and propertyMenus. </p> Each 
+   <p> The <a>MainMenu</a> is displayed on a panel on the left hand side of the user interface. Sometimes this panel is hidden but it can always be made visible again using the menu icon on the <a href="#TheUserInterfaceLayer_ApplicationBar">ApplicationBar</a>. The <a>MainMenu</a> provides the user access to the <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s so that the user can work on them. The <a>MainMenu</a> contains all <a href="#ActionMethods">ActionMethod</a>s of <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s that either have no method parameter or have an <a href="#ObjectBehavior_ParameterRandomGenerator_ParameterFactoryAnnotation">ParameterFactory</a>. </p> 
+   <p> <a href="#ActionMethods">ActionMethod</a>s of <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s that take a <a href="#TheDomainLayer_DomainObjects">DomainObject</a> as a parameter and have no <a href="#ObjectBehavior_ParameterRandomGenerator_ParameterFactoryAnnotation">ParameterFactory</a> are displayed in <a href="#ActionMethods_ActionMethodsForDomainObjects_DomainObjectMenu">FormMenu</a>s and propertyMenus. </p> Each 
    <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> is always displayed as a sub menu 
    <p></p> 
    <p></p> 
@@ -1027,11 +1097,7 @@
    <p></p> 
    <h3 id="ObjectBehavior_FontIcon_FontIconAnnotation">FontIcon Annotation</h3> 
    <p> </p>
-   <p><a id="Reference_FontIcon"></a> </p>
-   <p> You can define the <a href="#ObjectBehavior_FontIcon_FontIconAnnotation">FontIcon</a> by placing an <a href="#ObjectBehavior_FontIcon_FontIconAnnotation">FontIcon</a> annotation before the class key word of the <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> or the <a href="#TheDomainLayer_DomainObjects">DomainObject</a> or before the <a href="#ActionMethods">ActionMethod</a>. </p> 
-   <p> Syntax: <a href="#ObjectBehavior_FontIcon_FontIconAnnotation">FontIcon</a>(String fontIconUrl) </p> 
-   <p> Parameter fontIconUrl: See <a href="#TheProviderLayer_URLProviders_FontIconUrlProvider">FontIconUrl</a> </p> 
-   <p></p> 
+   <p><a id="Reference_FontIcon"></a> ContentButton rfxButton=new ContentButton(); rfxButton.setGraphic(new FontIcon(FontAwesomeIconName.CLONE,16)); <br /> icon color can be set with css, e.g.: .rfx-primary-button &gt; .rfx-font-icon {-fx-fill: -rfx-color-primary-foreground1;} </p> 
    <p></p> 
    <h3 id="ObjectBehavior_FontIcon_FontIconMethod">FontIcon Method</h3> 
    <p> </p>
@@ -1092,7 +1158,7 @@
    <p> Syntax: @Hidden(propertyHiddenFor, exceptForRoles) </p> 
    <p> Parameters: </p> 
    <ul> 
-    <li><a>propertyHiddenFor()</a>: optional and for properties only: to indicate if the property should be hidden in <a>FormView</a>s, <a>TableView</a>s or both (hidden for both is default).</li> 
+    <li><a>propertyHiddenFor()</a>: optional and for properties only: to indicate if the property should be hidden in <a href="#TheUserInterfaceLayer_Tab_FormTab">FormTab</a>s, <a href="#TheUserInterfaceLayer_Tab_TableTab">TableTab</a>s or both (hidden for both is default).</li> 
     <li><a>exceptForRoleNames()</a> : optional comma separated string of user roles that are allowed to see the <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> or <a href="#ActionMethods">ActionMethod</a></li> 
    </ul> 
    <p></p> TODO EXAMPLE 
@@ -1102,7 +1168,7 @@
    <p> </p>
    <p><a id="Reference_HiddenMethod"></a> </p>
    <p> You can hide a <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> or <a href="#ActionMethods_ActionMethodsForDomainObjects">DomainObjectActionMethod</a> depending on the <a href="#TheDomainLayer_DomainObjects">DomainObject</a> state (the value of its properties), with an ...Hidden method. If you have a <a href="#ObjectBehavior_Hidden_HiddenAnnotation">Hidden</a> annotation and a ...Hidden method, both need to be true in order to hide the <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> or <a href="#ActionMethods">ActionMethod</a>. </p> 
-   <p> Note that you can not change the visibility with a ...Hidden method for <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> in a <a>TableView</a>! </p> 
+   <p> Note that you can not change the visibility with a ...Hidden method for <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> in a <a href="#TheUserInterfaceLayer_Tab_TableTab">TableTab</a>! </p> 
    <p> Syntax: public boolean &lt;property name or actionMethodName&amp;gtHidden;() </p> 
    <p> ReturnValue: a boolean that is true if the <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> or <a href="#ActionMethods">ActionMethod</a> needs to be hidden </p> 
    <p></p> 
@@ -1170,12 +1236,12 @@
    <h2 id="ObjectBehavior_FieldMode">Field Mode</h2> 
    <p> </p>
    <p><a id="Reference_TextFieldMode"></a> </p>
-   <p><a href="#TheDomainLayer_DomainObjects">DomainObject</a>s are rendered by the user interface layer as fields when a <a href="#TheDomainLayer_DomainObjects">DomainObject</a> is displayed in a form view. The <a>FormView</a> will determine in what type of field these <a href="#TheDomainLayer_Properties">DomainObjectProperty</a>s are displayed (textbox, combobox, etc). When the <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> is a String, you can select an alternative field type using the <a href="#ObjectBehavior_FieldMode">TextFieldMode</a> annotation. The <a href="#ObjectBehavior_FieldMode">TextFieldMode</a> annotation needs to be put before the getter method of a <a href="#TheDomainLayer_Properties">DomainObjectProperty</a>. Note that the format can not be changed during runtime. </p> 
+   <p> <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s are rendered by the user interface layer as fields when a <a href="#TheDomainLayer_DomainObjects">DomainObject</a> is displayed in a <a href="#TheUserInterfaceLayer_Tab_FormTab">FormTab</a>. The <a href="#TheUserInterfaceLayer_Tab_FormTab">FormTab</a> will determine in what type of field these <a href="#TheDomainLayer_Properties">DomainObjectProperty</a>s are displayed (textbox, combobox, etc). When the <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> is a String, you can select an alternative field type using the <a href="#ObjectBehavior_FieldMode">TextFieldMode</a> annotation. The <a href="#ObjectBehavior_FieldMode">TextFieldMode</a> annotation needs to be put before the getter method of a <a href="#TheDomainLayer_Properties">DomainObjectProperty</a>. Note that the format can not be changed during runtime. </p> 
    <p> Syntax: @TextFieldMode(FieldModeType mode) </p> 
    <p> Examples of alternative <a>FieldModeType</a>s: </p> 
    <ul> 
     <li><a>FieldModeType.TEXT_AREA</a>: renders a text field to edit a string with multiple lines</li> 
-    <li><a>FieldModeType.PASSWORD</a>: renders a field to edit a password string (obscuring the input so that other viewers can not read the secret password)</li> 
+    <li><a>FieldModeType.PASSWORD</a>: renders a field to edit a password string (obscuring the input so that other users can not read the secret password)</li> 
     <li><a>FieldModeType.RICH_TEXT_AREA</a>: renders a field to edit a string, with formatting options such as bold, underline, italic,etc...)</li> 
    </ul> 
    <p></p> 
@@ -1199,24 +1265,24 @@
    <p></p> 
    <p></p> 
    <p></p> 
-   <h2 id="ObjectBehavior_ParameterFactory">Parameter Factory</h2> 
+   <h2 id="ObjectBehavior_ParameterRandomGenerator">Parameter RandomGenerator</h2> 
    <p> </p>
    <p><a id="Reference_ParameterFactoryModelFactory"></a> </p>
    <p> The parameter factory allows you to create an object for an <a href="#ActionMethods">ActionMethod</a>. This object can then be edited by the user (depending how the <a href="#ActionMethods">ActionMethod</a> is annotated, see <a href="#ObjectBehavior_ExecutionMode">ExecutionMode</a> annotation) after which it is passed as method parameter when the <a href="#ActionMethods">ActionMethod</a> is invoked. </p> 
-   <p> The <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a> will display all <a href="#ActionMethods">ActionMethod</a>s of all registered <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s that can directly be executed (without the need of an opened <a href="#TheDomainLayer_DomainObjects">DomainObject</a>). This means that only <a href="#ActionMethods">ActionMethod</a>s that either have no method parameter or have an <a href="#ObjectBehavior_ParameterFactory_ParameterFactoryAnnotation">ParameterFactory</a> are displayed as menu items in the <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a>. </p>
+   <p> The <a>MainMenu</a> will display all <a href="#ActionMethods">ActionMethod</a>s of all registered <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s that can directly be executed (without the need of an opened <a href="#TheDomainLayer_DomainObjects">DomainObject</a>). This means that only <a href="#ActionMethods">ActionMethod</a>s that either have no method parameter or have an <a href="#ObjectBehavior_ParameterRandomGenerator_ParameterFactoryAnnotation">ParameterFactory</a> are displayed as menu items in the <a>MainMenu</a>. </p>
    <p> </p>
-   <h3 id="ObjectBehavior_ParameterFactory_ParameterFactoryAnnotation">ParameterFactory Annotation</h3> 
+   <h3 id="ObjectBehavior_ParameterRandomGenerator_ParameterFactoryAnnotation">ParameterFactory Annotation</h3> 
    <p> </p>
    <p><a id="Reference_ParameterFactory"></a> </p>
-   <p> When adding the <a href="#ObjectBehavior_ParameterFactory_ParameterFactoryAnnotation">ParameterFactory</a> Annotation before an <a href="#ActionMethods">ActionMethod</a>, the <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> know's it is allowed to try to instantiate a new DomainObject. This <a href="#TheDomainLayer_DomainObjects">DomainObject</a> can then be edited by the user (depending how the <a href="#ActionMethods">ActionMethod</a> is annotated, see <a href="#ObjectBehavior_ExecutionMode">ExecutionMode</a>) after which it is passed as method parameter when the <a href="#ActionMethods">ActionMethod</a> is invoked. </p> 
-   <p> Note that the method parameter (a <a href="#TheDomainLayer_DomainObjects">DomainObject</a>) can only be instantiated by an <a href="#ObjectBehavior_ParameterFactory_ParameterFactoryAnnotation">ParameterFactory</a> annotation if it has a public constructor without parameters. If not use the ...ParameterFactory method. </p> 
+   <p> When adding the <a href="#ObjectBehavior_ParameterRandomGenerator_ParameterFactoryAnnotation">ParameterFactory</a> Annotation before an <a href="#ActionMethods">ActionMethod</a>, the <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> know's it is allowed to try to instantiate a new DomainObject. This <a href="#TheDomainLayer_DomainObjects">DomainObject</a> can then be edited by the user (depending how the <a href="#ActionMethods">ActionMethod</a> is annotated, see <a href="#ObjectBehavior_ExecutionMode">ExecutionMode</a>) after which it is passed as method parameter when the <a href="#ActionMethods">ActionMethod</a> is invoked. </p> 
+   <p> Note that the method parameter (a <a href="#TheDomainLayer_DomainObjects">DomainObject</a>) can only be instantiated by an <a href="#ObjectBehavior_ParameterRandomGenerator_ParameterFactoryAnnotation">ParameterFactory</a> annotation if it has a public constructor without parameters. If not use the ...ParameterFactory method. </p> 
    <p> Syntax: </p>
    <p></p> 
    <p></p> 
-   <h3 id="ObjectBehavior_ParameterFactory_ParameterFactoryMethod">ParameterFactory Method</h3> 
+   <h3 id="ObjectBehavior_ParameterRandomGenerator_ParameterFactoryMethod">ParameterFactory Method</h3> 
    <p> </p>
    <p><a id="Reference_ParameterFactoryMethod"></a> </p>
-   <p> When adding the <a href="#ObjectBehavior_ParameterFactory_ParameterFactoryAnnotation">ParameterFactory</a> method (normally located after an <a href="#ActionMethods">ActionMethod</a>), the <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> will first get a new <a href="#TheDomainLayer_DomainObjects">DomainObject</a> from the <a href="#ObjectBehavior_ParameterFactory_ParameterFactoryMethod">ParameterFactoryMethod</a>. This object can then be edited by the user (depending how the <a href="#ActionMethods">ActionMethod</a> is annotated, see <a href="#ObjectBehavior_ExecutionMode">ExecutionMode</a>) after which it is passed as method parameter when the <a href="#ActionMethods">ActionMethod</a> is invoked. </p> 
+   <p> When adding the <a href="#ObjectBehavior_ParameterRandomGenerator_ParameterFactoryAnnotation">ParameterFactory</a> method (normally located after an <a href="#ActionMethods">ActionMethod</a>), the <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> will first get a new <a href="#TheDomainLayer_DomainObjects">DomainObject</a> from the <a href="#ObjectBehavior_ParameterRandomGenerator_ParameterFactoryMethod">ParameterFactoryMethod</a>. This object can then be edited by the user (depending how the <a href="#ActionMethods">ActionMethod</a> is annotated, see <a href="#ObjectBehavior_ExecutionMode">ExecutionMode</a>) after which it is passed as method parameter when the <a href="#ActionMethods">ActionMethod</a> is invoked. </p> 
    <p> Syntax: public&lt;domainObject type&gt; prameterFactory&lt;actionMethodName&gt;() </p> 
    <p> TODO EXAMPLE OF ordersWithinPeriod METHOD </p>
    <p></p> 
@@ -1246,105 +1312,6 @@
    <p></p> 
    <p></p> 
    <p></p> 
-   <p></p> 
-   <p></p> 
-   <h2 id="ObjectBehavior_ServiceObjectChildren">Service Object Children</h2> 
-   <p> </p>
-   <p><a id="Reference_ServiceObjectChildrenModel"></a> </p>
-   <p> <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s can be nested so that they can be displayed as a <a href="https://en.wikipedia.org/wiki/Tree_view">tree view</a> in the <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a>. </p> 
-   <h3 id="ObjectBehavior_ServiceObjectChildren_ServiceObjectChildrenAnnotation">ServiceObjectChildren annotation</h3> 
-   <p> </p>
-   <p><a id="Reference_ServiceObjectChildren"></a> </p>
-   <p> You can nest <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>'s by adding a <a href="#ObjectBehavior_ServiceObjectChildren_ServiceObjectChildrenAnnotation">ServiceObjectChildren</a> annotation before the class keyword. It has the following parameters: </p> 
-   <ul> 
-    <li><a>serviceClasses()</a>: an array of <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> classes that need to be displayed as children of that <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a></li> 
-    <li><a>beforeActionMethods()</a>: a boolean to indicate if these children should be displayed before or after the <a href="#ActionMethods_ActionMethodsForServiceObjects">ServiceObjectActionMethod</a>s (default=before)</li> 
-   </ul> 
-   <p></p> 
-   <p> Example: </p>
-   <p> <code> @ServiceObjectChildren(serviceClasses = { CheckingAccountService.class, SavingsAccountService.class}, beforeActionMethods=false)<br /> public class BankAccountService {<br /><br /> &nbsp;&nbsp;public void logout() {<br /> &nbsp;&nbsp;&nbsp;&nbsp;//logout<br /> &nbsp;&nbsp;}<br /><br /> &nbsp;&nbsp;//etc...<br /> }<br /> </code> </p> 
-   <p></p> 
-   <p> Things to consider: </p> 
-   <ul> 
-    <li>Do not nest to deep. The <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a> is not very wide and a deep tree structure is time consuming to navigate trough</li> 
-    <li>You can nest the same <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> as child of multiple other <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s, but this is not recommended because it is more time consuming to navigate trough.</li> 
-    <li>Do not add a <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> child if its type is already a <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> parent, to prevent infinite loops</li> 
-    <li>The <a href="#ObjectBehavior_ServiceObjectChildren_ServiceObjectChildrenAnnotation">ServiceObjectChildren</a> annotation only impacts the way the <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> are displayed in the <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a>. <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>'s that are nested still need to be registered with the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication.getServiceClasses()</a> method.</li> 
-   </ul> 
-   <p></p> 
-   <p></p> 
-   <p></p> 
-   <p></p> 
-   <p></p> 
-   <p></p> 
-   <h1 id="GraphicalDesignRules">Graphical Design Rules</h1> 
-   <p><a id="Reference_ReflectGraphicalDesignRules"></a> </p>
-   <p> Big software companies like <a href="https://en.wikipedia.org/wiki/Google">Google</a>, <a href="https://en.wikipedia.org/wiki/Microsoft">Micro$oft</a>, <a href="https://en.wikipedia.org/wiki/Apple_Inc.">Apple</a> and <a href="https://en.wikipedia.org/wiki/Facebook">Facebook</a> spend a lot of research and effort in maximizing <a href="https://en.wikipedia.org/wiki/Usability">usability</a> and the <a href="https://en.wikipedia.org/wiki/User_experience">user experience</a> for their <a href="https://en.wikipedia.org/wiki/User_interface_design">graphical user interface design</a>s. These companies all have a set rules that say something about <a href="https://en.wikipedia.org/wiki/Usability">usability</a>, <a href="https://en.wikipedia.org/wiki/Graphic_design">graphical design</a> and <a href="https://en.wikipedia.org/wiki/Typography">typography</a>. All these companies use a <a href="https://en.wikipedia.org/wiki/Flat_design">flat design</a> style. </p> 
-   <p> <a href="#TheReflectFramework">ReflectFramework</a> applications also uses a set of set of <a href="https://en.wikipedia.org/wiki/User_interface_design">graphical user interface design</a> rules in order to make them consistent across all <a href="#ReflectApplicationProjectsGettingStarted">ReflectApplicationProjects</a>. </p> 
-   <h2 id="GraphicalDesignRules_GooglesMaterialDesign">Google's Material Design</h2> 
-   <p><a id="Reference_MaterialDesign"></a> </p>
-   <p> <a href="https://material.io/design/">Google's Material Design</a> is beautiful, simple, well accepted, and well defined. <a href="#TheReflectFramework">ReflectFramework</a> applications follow the <a href="https://material.io/design/">Google's Material Design</a> as much as possible. For more information see <a href="https://material.io/design/">https://material.io/design/</a> </p> 
-   <p></p> 
-   <h2 id="GraphicalDesignRules_ResponsiveDesign">Responsive Design</h2> 
-   <p><a id="Reference_ReflectResponsiveDesign"></a> </p>
-   <p> <a href="#TheReflectFramework">ReflectFramework</a> applications have a <a href="https://en.wikipedia.org/wiki/Responsive_web_design">responsive design</a>: a graphical user interface that optimizes its layout and its <a href="https://en.wikipedia.org/wiki/List_of_graphical_user_interface_elements">components</a>, for a variety of devices and screen sizes, in order to maximize <a href="https://en.wikipedia.org/wiki/Usability">usability</a> and <a href="https://en.wikipedia.org/wiki/User_experience">user experience</a>. </p> 
-   <p> The size of the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a> could normal be anywhere between a small smart phone in portrait orientation until a desktop monitor in landscape orientation. </p> 
-   <h3 id="GraphicalDesignRules_ResponsiveDesign_DifferentDisplayWidths">Different display widths</h3> The layout and components vary depending on the 
-   <a>ReflectDisplayWidth</a>: 
-   <ul> 
-    <li><a>ReflectDisplayWidth.SMALL</a>:</li> 
-    <ul> 
-     <li>The application name is only visible when the <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a> is displayed (overlapping the tab headers because there is no space to show both of them at the same time).</li> 
-     <li>The <a href="#ActionMethods">ActionMethod</a>s of the active <a>View</a> are displayed as ContextMenu after clicking the ContextMenu icon on the ApplicationBar (because there is no space to show the <a href="#ActionMethods">ActionMethod</a>s in the ApplicationBar).</li> 
-     <li>The <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a> is displayed as a <a href="https://material.io/design/components/navigation-drawer.html">navigation drawer</a> (overlapping the content area (tab panels) because there is no space to show both of them at the same time).</li> 
-     <li>Tables only have one column that show the <a href="#TheDomainLayer_DomainObjects">DomainObject</a> <a href="#ObjectBehavior_Title">TitleModel</a> because there is no space to show more columns</li> 
-     <li><a>FormView</a>s show all <a>PropertyPanel</a>'s underneath each other</li> 
-    </ul> 
-    <li><a>ReflectDisplayWidth.MEDIUM</a>:</li> 
-    <ul> 
-     <li>The application name is only visible when the <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a> is displayed (overlapping the tab headers because there is no space to show both of them at the same time).</li> 
-     <li>The <a href="#ActionMethods">ActionMethod</a>s of the active <a>View</a> are displayed as ContextMenu after clicking the ContextMenu icon on the ApplicationBar (because there is no space to show the <a href="#ActionMethods">ActionMethod</a>s in the ApplicationBar).</li> 
-     <li>The <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a> is displayed as a <a href="https://material.io/design/components/navigation-drawer.html">navigation drawer</a> (overlapping the content area (tab panels) because there is no space to show both of them at the same time).</li> 
-     <li>Tables only can have a few columns</li> 
-     <li><a>FormView</a>s could have more <a>PropertyPanel</a>'s next to each other</li> 
-    </ul> 
-    <li><a>ReflectDisplayWidth.LARGE</a>:</li> 
-    <ul> 
-     <li>The application name is visible when the <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a> is displayed.</li> 
-     <li>The <a href="#ActionMethods">ActionMethod</a>s of the active <a>View</a> are displayed on the application bar or in a ContextMenu after clicking the ContextMenu icon on the ApplicationBar (if there is no space to show all the <a href="#ActionMethods">ActionMethod</a>s in the ApplicationBar).</li> 
-     <li>The <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a> is displayed on the left when it is not hidden (shifting the content area (tab panels) to the right so that both are visible)</li> 
-     <li>Tables only can have multiple columns</li> 
-     <li><a>FormView</a>s could have more <a>PropertyPanel</a>'s next to each other</li> 
-    </ul> 
-   </ul> 
-   <h3 id="GraphicalDesignRules_ResponsiveDesign_DifferentDisplayHeights">Different display heights</h3> The layout and components vary depending on the 
-   <a>ReflectDisplayHeight</a>: 
-   <ul> 
-    <li><a>ReflectDisplayHeight.SMALL</a>:</li> 
-    <ul> 
-     <li>The ApplicationBar can scroll out of sight to make more space for the <a>View</a>s</li> 
-    </ul> 
-    <li><a>ReflectDisplayHeight.MEDIUM</a>:</li> 
-    <ul> 
-     <li>The ApplicationBar is always visible on top</li> 
-    </ul> 
-    <li><a>ReflectDisplayHeight.LARGE</a>:</li> 
-    <ul> 
-     <li>The ApplicationBar is always visible on top and may have more height</li> 
-     <li>The <a href="#ActionMethods">ActionMethod</a>s of the active <a>View</a> can either be displayed on the higher ApplicationBar or on a ToolBar on the top of the View.</li> 
-    </ul> 
-   </ul> 
-   <p></p> 
-   <h2 id="GraphicalDesignRules_Colors">Colors</h2> 
-   <p><a id="Reference_ReflectColors"></a> <a href="#TheReflectFramework">ReflectFramework</a> applications with a graphical user interface use 3 main colors: </p>
-   <ul> 
-    <li>PrimaryBackgroundColor: A color that is prominent visible, e.g.: the background color of the application tool bar</li> 
-    <li>AccentBackGroundColor: A color that is used for thinks that need attention (i.e. important buttons or controls that have focus</li> 
-    <li>ContentBackgroundColor: A color used for the background of the content. This color should preferably either be very light (e.g. White) or very dark (e.g.Black)</li> 
-   </ul> 
-   <p> <a href="https://material.io/design/">Google's Material Design</a> recommends to use colors from color palettes that they recommend. See <a href="https://material.io/design/color/the-color-system.html#color-usage-palettes">Google's Material Design Palettes</a> for more information. </p> 
-   <p> Each color can be derived into a <a href="#GraphicalDesignRules_Colors">ReflectColorSet</a>. </p>
-   <p><a id="Reference_ReflectColorSet"></a> A <a href="#GraphicalDesignRules_Colors">ReflectColorSet</a> is a group of background and foreground colors, based on a given background color and a predefined set of rules. </p> 
    <p></p> 
    <p></p> 
    <p></p> 
@@ -1414,7 +1381,7 @@
    <h2 id="ReflectApplicationProjectsGettingStarted_ReflectForJavaFx">Reflect for JavaFx</h2> 
    <p> </p>
    <p><a id="Reference_ReflectApplicationForJavaFX"></a> </p>
-   <p> <a href="#ReflectApplicationProjectsGettingStarted_ReflectForJavaFx">ReflectApplicationForJavaFX</a> is an implementation of the <a href="#TheReflectFramework">ReflectFramework</a> that provides a <a href="http://en.wikipedia.org/wiki/Graphical_user_interface"> graphical user interface</a> for a computer with an <a href="https://en.wikipedia.org/wiki/Desktop_environment">desktop environment</a>. It might also be used for mobile devices in the future as well, but porting JavaFX for Android is still somewhat of a problem at the time of this writing. <a href="#ReflectApplicationProjectsGettingStarted_ReflectForJavaFx">ReflectApplicationForJavaFX</a> tries to comply with the <a href="https://material.io/guidelines/">Google Material Design</a> as much as possible. The application can be used on a <a href="https://en.wikipedia.org/wiki/Desktop_computer">desktop</a>, <a href="https://en.wikipedia.org/wiki/Laptop">lap-top</a>, <a href="https://en.wikipedia.org/wiki/Tablet_computer">tablet</a> or <a href="https://en.wikipedia.org/wiki/Mobile_device">mobile device</a>. It has an <a href="https://en.wikipedia.org/wiki/Responsive_web_design">responsive web design</a>: It optimizes the user interface depending on the size of the <a>RfxWindow</a>. </p> 
+   <p> <a href="#ReflectApplicationProjectsGettingStarted_ReflectForJavaFx">ReflectApplicationForJavaFX</a> is an implementation of the <a href="#TheReflectFramework">ReflectFramework</a> that provides a <a href="http://en.wikipedia.org/wiki/Graphical_user_interface"> graphical user interface</a> for a computer with an <a href="https://en.wikipedia.org/wiki/Desktop_environment">desktop environment</a>. It might also be used for mobile devices in the future as well, but porting JavaFX for Android is still somewhat of a problem at the time of this writing. <a href="#ReflectApplicationProjectsGettingStarted_ReflectForJavaFx">ReflectApplicationForJavaFX</a> tries to comply with the <a href="https://material.io/guidelines/">Google Material Design</a> as much as possible. The application can be used on a <a href="https://en.wikipedia.org/wiki/Desktop_computer">desktop</a>, <a href="https://en.wikipedia.org/wiki/Laptop">lap-top</a>, <a href="https://en.wikipedia.org/wiki/Tablet_computer">tablet</a> or <a href="https://en.wikipedia.org/wiki/Mobile_device">mobile device</a>. It has an <a href="https://en.wikipedia.org/wiki/Responsive_web_design">responsive web design</a>: It optimizes the user interface depending on the size of the <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceMainWindow">MainWindow</a>. </p> 
    <h3 id="ReflectApplicationProjectsGettingStarted_ReflectForJavaFx_HowToDownloadAReflectForJavaFXDemoProject">How to download a ReflectForJavaFX demo project</h3> 
    <p> TODO </p> 
    <h3 id="ReflectApplicationProjectsGettingStarted_ReflectForJavaFx_HowToCreateANewReflectForJavaFXProject">How to create a new ReflectForJavaFX project</h3> 
