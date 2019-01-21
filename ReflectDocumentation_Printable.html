@@ -8,7 +8,7 @@
  <body>
   <div id="frontCover">
    <a id="reflect_reflect-core_src_main_java_nth_reflect_fw_documentation_reflectdocumentation"></a> 
-   <img src="reflect_reflect-core_src_main_java_nth_reflect_fw_documentation_ReflectLogo.png" /> 
+   <img src="reflect_reflect-core_src_main_java_nth_reflect_fw_documentation_reflectlogo.png" /> 
    <title>The Reflect Framework</title> 
   </div>
   <div id="tableOfContents">
@@ -287,20 +287,24 @@
    <p> Each application type (e.g. for the command line, desktop, mobile devices or the web) has its own implementation of <a href="ReferenceName_ReflectApplication">ReflectApplication</a> to help initializing the framework. See the type hierarchy of <a href="ReferenceName_ReflectApplication">ReflectApplication</a> to learn which classes can be used and read their java doc to learn how to use them. </p> 
    <p> If you create a new application you will be extending one of these classes. You will only need to implement some of the methods mentioned above (at least the <a href="ReferenceName_ReflectApplication">ReflectApplication.getServiceClasses()</a> method). </p> An example of a desktop application: 
    <pre>
- public class AcmeWebShop extends ReflectApplicationForJavaFx {
+ public class WebShopForJavaFX extends ReflectApplicationForJavaFX {
  
- 	// constructor not displayed
+ private List&lt;Class&lt;?&gt;&gt; serviceClasses;
+ private List&lt;Class&lt;?&gt;&gt; infrastructureClasses;
  
- 	// main method
- 
+ public class WebShopForJavaFX() {
+    serviceClasses=Arrays.asList(ShoppingCartService.class, ProductService.class);
+    infrastructureClasses=Arrays.asList(ProductRepository.class, EmailClient.class, PaymentClient.class);
+ }
+
  	@Override
  	public List&lt;Class&lt;?&gt;&gt; getServiceClasses() {
- 		return Arrays.asList(ShoppingCartService.class, ProductService.class);
+ 		return serviceClasses;
  	}
  
  	@Override
  	public List&lt;Class&lt;?&gt;&gt; getInfrastructureClasses() {
- 		return Arrays.asList(ProductRepository.class, EmailClient.class, PaymentClient.class);
+ 		return infrastructureClasses;
  	}
  
  }
