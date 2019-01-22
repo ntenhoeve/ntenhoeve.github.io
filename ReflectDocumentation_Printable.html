@@ -485,10 +485,13 @@
    <p></p> 
    <p> Note that this layer is the bottom layer (see <a href="ReferenceName_ReflectArchitecture">ReflectArchitecture</a> ), which means that objects in the upper layers may haved references to <a href="ReferenceName_Provider">Provider</a>Objects, but not visa versa! </p> 
    <h2 id="TheProviderLayer_ProviderObjects">Provider Objects</h2> 
-   <p> <a id="reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_validation_validationprovider"></a> </p> 
-   <p> The <a href="ReferenceName_UserInterfaceController">UserInterfaceController</a> sometimes let’s the user edit an <a href="ReferenceName_DomainObject">DomainObject</a> before it is passed as an <a href="ReferenceName_ActionMethod">ActionMethod</a> parameter (depending on how the ActionMethod is annotated, see <a href="ReferenceName_ExecutionMode">ExecutionMode</a> ). The <a href="ReferenceName_UserInterfaceController">UserInterfaceController</a> then validates the edited <a href="ReferenceName_DomainObject">DomainObject</a> using the <a href="ReferenceName_ValidationProvider">ValidationProvider</a> before the <a href="ReferenceName_ActionMethod">ActionMethod</a> is called.The <a href="ReferenceName_ValidationProvider">ValidationProvider</a> will use ValidationAnnotationsTODO_LINK and ValidationMethods_TODO_LINK that are located in the <a href="ReferenceName_DomainObject">DomainObject</a>s them selves so that they can be validated. </p> 
-   <h3 id="TheProviderLayer_ProviderObjects_ValidationProviderImplementation">ValidationProvider implementation</h3> 
-   <p> There are many validation libraries and frameworks available. The ReflectFramework complies with the JSR303 by using the <a href="http://bval.apache.org/">Apache Bean Validator (BVal)</a> library, combined with <a href="ReferenceName_ValidationMethod">ValidationMethod</a>s. You are free to implement or extend your own implementation and register it to your <a href="ReferenceName_ReflectApplication">ReflectApplication</a> by overriding the <a href="ReferenceName_ReflectApplication">ReflectApplication.getValidationProviderClass()</a> method </p> 
+   <p> <a id="reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_notification_notificationprovider"></a> </p> 
+   <ul> 
+    <li>TODO What it does</li> 
+    <li>TODO How you can use it (or explain who uses it)</li> 
+    <li>TODO Code example</li> 
+    <li>TODO How to register a custom ... provider</li> 
+   </ul> 
    <p></p> 
    <p></p> 
    <h1 id="TheUserInterfaceLayer">The UserInterface Layer</h1> 
@@ -497,9 +500,8 @@
    <p> Note that this layer is the top layer, which means it may know all the objects in the lower layers but not visa versa! See <a href="ReferenceName_ReflectArchitecture">ReflectArchitecture</a> </p> 
    <p> The <a href="ReferenceName_ReflectFramework">ReflectFramework</a> has multiple user interface implementations. See the <a href="ReferenceName_ReflectApplicationProjects">ReflectApplicationProjects</a> section to learn what types of user interfaces are available, or download all the sources of the <a href="ReferenceName_ReflectFramework">ReflectFramework</a> projects and see the class hierarchy of the <a href="ReferenceName_UserInterfaceController">UserInterfaceController</a> class to find all the different user interface implementations. </p> 
    <h2 id="TheUserInterfaceLayer_UserInterfaceController">User Interface Controller</h2> 
-   <p> <a id="reflect_reflect-core_src_main_java_nth_reflect_fw_layer1userinterface_controller_userinterfacecontroller"></a> </p> 
-   <p> The <a href="ReferenceName_UserInterfaceController">UserInterfaceController</a> is responsible for showing information to the user (or other systems) and processing the information from the user using the objects in the lower layers (see <a href="ReferenceName_ReflectArchitecture">ReflectArchitecture</a>). </p> 
-   <p> The <a href="ReferenceName_UserInterfaceController">UserInterfaceController</a> provides a basic interface for handling communication with other systems (e.g. a <a href="https://simple.wikipedia.org/wiki/SOAP_(protocol)">SOAP</a> or <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">RESTFULL interface</a>) or with a person or other system via a <a href="https://en.wikipedia.org/wiki/Command-line_interface">command line interface</a>. </p> 
+   <p> <a id="reflect_reflect-graphical-user-interface_src_main_java_nth_reflect_fw_gui_graphicaluserinterfacecontroller"></a> </p> 
+   <p> The <a href="ReferenceName_GraphicalUserinterfaceController">GraphicalUserinterfaceController</a> extends the <a href="ReferenceName_UserInterfaceController">UserInterfaceController</a> and adds functionality needed for a <a href="https://en.wikipedia.org/wiki/Graphical_user_interface">Graphical User Interface</a>. The <a href="ReferenceName_GraphicalUserinterfaceController">GraphicalUserinterfaceController</a> creates and manipulates a <a href="ReferenceName_MainWindow">MainWindow</a> for a person to interact with. </p> 
    <p></p> 
    <h2 id="TheUserInterfaceLayer_GraphicalUserInterfaceController">Graphical User Interface Controller</h2> 
    <p> <a id="reflect_reflect-graphical-user-interface_src_main_java_nth_reflect_fw_gui_graphicaluserinterfacecontroller"></a> </p> 
@@ -889,7 +891,7 @@
    <p></p> 
    <h2 id="ObjectBehavior_Format">Format</h2> 
    <p> </p> 
-   <p> <a id="reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_reflection_behavior_format_impl_calendarformat"></a> Adapter for <a href="ReferenceName_SimpleDateFormat">SimpleDateFormat</a> to work with <a href="ReferenceName_Calendar">Calendar</a>-type </p> 
+   <p> </p> 
    <p></p> 
    <h2 id="ObjectBehavior_FieldMode">Field Mode</h2> 
    <p> </p> 
