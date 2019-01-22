@@ -221,13 +221,13 @@
     <pre>
  public class WebShopForJavaFX extends ReflectApplicationForJavaFX {
  
- private List&lt;Class&lt;?&gt;&gt; serviceClasses;
- private List&lt;Class&lt;?&gt;&gt; infrastructureClasses;
+ 	private List&lt;Class&lt;?&gt;&gt; serviceClasses;
+ 	private List&lt;Class&lt;?&gt;&gt; infrastructureClasses;
  
- public class WebShopForJavaFX() {
-    serviceClasses=Arrays.asList(ShoppingCartService.class, ProductService.class);
-    infrastructureClasses=Arrays.asList(ProductRepository.class, EmailClient.class, PaymentClient.class);
- }
+ 	public class WebShopForJavaFX() {
+		serviceClasses=Arrays.asList(ShoppingCartService.class, ProductService.class);
+		infrastructureClasses=Arrays.asList(ProductRepository.class, EmailClient.class, PaymentClient.class);
+ 	}
 
  	@Override
  	public List&lt;Class&lt;?&gt;&gt; getServiceClasses() {

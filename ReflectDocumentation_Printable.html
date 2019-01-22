@@ -8,7 +8,7 @@
  <body>
   <div id="frontCover">
    <a id="reflect_reflect-core_src_main_java_nth_reflect_fw_documentation_reflectdocumentation"></a> 
-   <img src="reflect_reflect-core_src_main_java_nth_reflect_fw_documentation_reflectlogo.png" /> 
+   <img src="reflect_reflect-core_src_main_java_nth_reflect_fw_documentation_ReflectLogo.png" /> 
    <title>The Reflect Framework</title> 
   </div>
   <div id="tableOfContents">
@@ -289,13 +289,13 @@
    <pre>
  public class WebShopForJavaFX extends ReflectApplicationForJavaFX {
  
- private List&lt;Class&lt;?&gt;&gt; serviceClasses;
- private List&lt;Class&lt;?&gt;&gt; infrastructureClasses;
+ 	private List&lt;Class&lt;?&gt;&gt; serviceClasses;
+ 	private List&lt;Class&lt;?&gt;&gt; infrastructureClasses;
  
- public class WebShopForJavaFX() {
-    serviceClasses=Arrays.asList(ShoppingCartService.class, ProductService.class);
-    infrastructureClasses=Arrays.asList(ProductRepository.class, EmailClient.class, PaymentClient.class);
- }
+ 	public class WebShopForJavaFX() {
+		serviceClasses=Arrays.asList(ShoppingCartService.class, ProductService.class);
+		infrastructureClasses=Arrays.asList(ProductRepository.class, EmailClient.class, PaymentClient.class);
+ 	}
 
  	@Override
  	public List&lt;Class&lt;?&gt;&gt; getServiceClasses() {
