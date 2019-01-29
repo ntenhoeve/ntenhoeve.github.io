@@ -536,7 +536,115 @@
     <p></p> 
     <p> Note that this layer is the bottom layer (see <a href="#TheReflectFramework_ArchitectureOfAnReflectApplication">ReflectArchitecture</a> ), which means that objects in the upper layers may haved references to <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_language_defaultlanguageprovider.java">Provider</a>Objects, but not visa versa! </p> 
     <h2 id="TheProviderLayer_ProviderObjects">Provider Objects</h2> 
+    <p> <a id="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_provider.java"></a> <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_language_defaultlanguageprovider.java">Provider</a>s are responsible for different <a href="cross cutting concerns">cross cutting concerns</a> within an <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a> such as: </p> 
+    <ul> 
+     <li>Authorization (see <a href="#TheProviderLayer_AuthorizationProvider">AuthorizationProvider</a>)</li> 
+     <li>Validation (see <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_validation_defaultvalidationprovider.java">ValidationProvider</a>)</li> 
+     <li>Multi language (see <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_language_defaultlanguageprovider.java">LanguageProvider</a>)</li> 
+     <li>Notifications (see <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_notification_defaultnotificationprovider.java">NotificationProvider</a>)</li> 
+     <li>File path information (see <a href="#TheProviderLayer_URLProviders">UrlProvider</a>)</li> 
+     <li>Object meta information (see <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_reflection_defaultreflectionprovider.java">ReflectionProvider</a>)</li> 
+     <li>Version information (see <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_about_defaultaboutprovider.java">AboutProvider</a>)</li> 
+    </ul> 
+    <p> <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_language_defaultlanguageprovider.java">Provider</a>s may be used by any class within an application. </p> 
+    <p> Providers are interfaces and can have multiple implementations (depending on what type of application you are using/writing). Which implementation of each provider needs to be used within an application is defined in the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a> class. You are free to implement your own <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_language_defaultlanguageprovider.java">Provider</a> implementation and register it by overwriting one of the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication.get...ProviderClass()</a> methods </p> 
+    <h3 id="TheProviderLayer_ProviderObjects_ProviderConstruction">Provider Construction</h3> 
+    <p> <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_language_defaultlanguageprovider.java">Provider</a>'s are instantiated by the <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_providercontainer.java">ProviderContainer</a> (see <a href="#TheReflectFramework_DependencyInjectionContainer">DependencyInjectionContainer</a>) <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_language_defaultlanguageprovider.java">Provider</a>Objects can have references to other <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_language_defaultlanguageprovider.java">Provider</a>Objects. These objects are injected into the <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_language_defaultlanguageprovider.java">Provider</a>Objects (see the <a href="#TheReflectFramework_DependencyInjectionContainer_ConstructorInjection">ConstructionInjection</a> section. </p> 
+    <h3 id="TheProviderLayer_ProviderObjects_ProviderPresentation">Provider Presentation</h3> 
+    <p> The methods of <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_language_defaultlanguageprovider.java">Provider</a>Objects are not displayed by the <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a>. </p> 
+    <h2 id="TheProviderLayer_AuthorizationProvider">Authorization Provider</h2> 
     <p> </p> 
+    <p> <a id="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_authorization_authorizationprovider.java"></a> </p> 
+    <p> <a href="https://en.wikipedia.org/wiki/Authorization_(computer_access_control)">Authorization</a>, means the ability to control what an individual user can see and do within an application, based upon their identity and the role(s) assigned to them. </p> The 
+    <a href="#TheProviderLayer_AuthorizationProvider">AuthorizationProvider</a> facilitates this with methods: 
+    <ul> 
+     <li> <a href="#TheProviderLayer_AuthorizationProvider">AuthorizationProvider.getCurrentUserName()</a></li> 
+     <li> <a href="#TheProviderLayer_AuthorizationProvider">AuthorizationProvider.userInRole(String userRole)</a></li> 
+    </ul> 
+    <h3 id="TheProviderLayer_AuthorizationProvider_TypesOfAuthorizationProvider">Types of AuthorizationProvider</h3> There can be different types of 
+    <a href="#TheProviderLayer_AuthorizationProvider">AuthorizationProvider</a> implementations, depending on the authorization mechanism you prefer. In example: you could write an implementation that uses: 
+    <ul> 
+     <li>hard coded authorization</li> 
+     <li>file based authorization</li> 
+     <li>database authorization</li> 
+     <li>web container authorization (e.g. <a href="https://tomcat.apache.org/tomcat-7.0-doc/realm-howto.html">Apache Tomcat Realm</a>)</li> 
+     <li><a href="https://nl.wikipedia.org/wiki/Lightweight_Directory_Access_Protocol">LDAP</a></li> 
+     <li><a href="https://nl.wikipedia.org/wiki/Active_Directory">Active directory</a></li> 
+     <li>or other</li> 
+    </ul> An example of a basic hard coded validation 
+    <pre>
+ public class AuthorizationProviderTestObject implements AuthorizationProvider {
+ 
+ 	private final List&lt;UserTestObject&gt; users;
+ 	private UserTestObject currentUser;
+ 
+ 	public AuthorizationProviderTestObject() {
+ 		users = new ArrayList&lt;&gt;();
+ 		users.add(new UserTestObject(&quot;carla&quot;, &quot;pasword1&quot;, &quot;salesmanager&quot;));
+ 		users.add(new UserTestObject(&quot;john&quot;, &quot;pasword2&quot;, &quot;customer&quot;));
+ 	}
+ 
+ 	public void login(String userName, String password)
+ 			throws InvalidNameOrPasswordException {
+ 		for (UserTestObject user : users) {
+ 			if (user.isValid(userName, password)) {
+ 				currentUser = user;
+ 				return;
+ 			}
+ 		}
+ 		throw new InvalidNameOrPasswordException();
+ 	}
+ 
+ 	@Override
+ 	public String getCurrentUserName() {
+ 		return currentUser == null ? &quot;&quot; : currentUser.getName();
+ 	}
+ 
+ 	@Override
+ 	public boolean userInRole(String role) {
+ 		return currentUser == null ? false : currentUser.inRole(role);
+ 	}
+ 
+ }
+ 
+ </pre> 
+    <h3 id="TheProviderLayer_AuthorizationProvider_RegisteringAnAuthorizationProvider">Registering an AuthorizationProvider</h3> 
+    <p> The <a href="#TheProviderLayer_AuthorizationProvider">AuthorizationProvider</a> is registered to the framework with the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication.getAuthorizationProviderClass()</a> method. By default it returns the <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_authorization_defaultauthorizationprovider.java">DefaultAuthorizationProvider</a>, which always returns true on the <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_reflection_behavior_disabled_disabledmodel.java">userInRole(String)</a> method. You can register another <a href="#TheProviderLayer_AuthorizationProvider">AuthorizationProvider</a> implementation by overriding the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication.getAuthorizationProviderClass()</a> method. </p> 
+    <h3 id="TheProviderLayer_AuthorizationProvider_UsingAnAuthorizationProvider">Using an AuthorizationProvider</h3> 
+    <p> The <a href="#TheProviderLayer_AuthorizationProvider">AuthorizationProvider</a> is used by the @Hidden and @Disabled annotations (see <a href="#ObjectBehavior">ObjectBehavior</a>). If you want to use the <a href="#TheProviderLayer_AuthorizationProvider">AuthorizationProvider</a> in your code you need to inject it into your object (see <a href="#TheReflectFramework_DependencyInjectionContainer_ConstructorInjection">ConstructionInjection</a>) </p> 
+    <p></p> 
+    <p></p> 
+    <h2 id="TheProviderLayer_ValidationProvider">Validation Provider</h2> 
+    <p> </p> 
+    <p> </p> 
+    <p></p> 
+    <h2 id="TheProviderLayer_LanguageProvider">Language Provider</h2> 
+    <p> </p> 
+    <p> </p> 
+    <p></p> 
+    <h2 id="TheProviderLayer_NotificationProvider">Notification Provider</h2> 
+    <p> </p> 
+    <p> </p> 
+    <p></p> 
+    <p></p> 
+    <h2 id="TheProviderLayer_ReflectionProvider">Reflection Provider</h2> 
+    <p> </p> 
+    <p> </p> 
+    <p></p> 
+    <h2 id="TheProviderLayer_AboutProvider">About Provider</h2> 
+    <p> </p> 
+    <p> </p> 
+    <p></p> 
+    <h2 id="TheProviderLayer_URLProviders">URL Providers</h2> 
+    <p> </p> 
+    <p> <a id="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_url_application_applicationurlprovider.java"></a> A <a href="#TheProviderLayer_URLProviders">ApplicationUrlProvider</a> handles a <a href="#TheProviderLayer_URLProviders">ApplicationUrl</a>. </p> 
+    <p> <a id="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_url_application_applicationurl.java"></a> </p> 
+    <p> A <a href="#TheProviderLayer_URLProviders">ApplicationUrl</a> is a <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_url_reflecturl.java">ReflectUrl</a> that helps to create a reference to the application folder e.g. to get a resource file </p> 
+    <p> The format of a <a href="#TheProviderLayer_URLProviders">ApplicationUrl</a> is: reflect-application://&lt;relative path to resource&gt; </p> 
+    <p> E.g.: reflect-application://images/sales.png (for a reference to the sales.png file in the application sub folder images) </p> 
+    <p></p> 
+    <p></p> 
+    <p></p> 
     <p></p> 
     <h1 id="TheUserInterfaceLayer">The UserInterface Layer</h1> 
     <p> <a id="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer1userinterface_userinterfacelayer.java"></a> The <a href="#TheUserInterfaceLayer">UserInterfaceLayer</a> is also know as presentation layer (although I think that 'presentation layer' is a poor name, because it is responsible for so much more). The <a href="#TheUserInterfaceLayer">UserInterfaceLayer</a> contains the <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a>. </p>
@@ -816,7 +924,11 @@
     <p></p> 
     <h3 id="ObjectBehavior_FontIcon_FontIconAnnotation">FontIcon Annotation</h3> 
     <p> </p> 
-    <p> </p> 
+    <p> <a id="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_reflection_behavior_fonticon_fonticon.java"></a> </p> 
+    <p> You can define the <a href="ReferenceName_reflect_reflect-for-javafx_src_main_java_nth_reflect_fw_javafx_control_fonticon_fonticon.java">FontIcon</a> by placing an <a href="ReferenceName_reflect_reflect-for-javafx_src_main_java_nth_reflect_fw_javafx_control_fonticon_fonticon.java">FontIcon</a> annotation before the class key word of the <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> or the <a href="#TheDomainLayer_DomainObjects">DomainObject</a> or before the <a href="#ActionMethods">ActionMethod</a>. </p> 
+    <p> Syntax: <a href="ReferenceName_reflect_reflect-for-javafx_src_main_java_nth_reflect_fw_javafx_control_fonticon_fonticon.java">FontIcon</a>(String fontIconUrl) </p> 
+    <p> Parameter fontIconUrl: See <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_url_fonticon_fonticonurl.java">FontIconUrl</a> </p> 
+    <p></p> 
     <p></p> 
     <h3 id="ObjectBehavior_FontIcon_FontIconMethod">FontIcon Method</h3> 
     <p> </p> 
@@ -1115,7 +1227,7 @@
     <p></p> 
     <h1 id="ReflectProviderProjects">Reflect Provider Projects</h1> 
     <p> <a id="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_documentation_reflectproviderprojects.java"></a> </p>
-    <p> <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_language_defaultlanguageprovider.java">Provider</a> objects can have different implementations. Depending on the type of application you can write your own implementation of a provider or use or extend one of the <a href="#ReflectProviderProjects">ReflectProviderProjects</a> that come with the framework. In example, depending on your application you might need a different <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_authorization_authorizationprovider.java">AuthorizationProvider</a> such as: </p> 
+    <p> <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_language_defaultlanguageprovider.java">Provider</a> objects can have different implementations. Depending on the type of application you can write your own implementation of a provider or use or extend one of the <a href="#ReflectProviderProjects">ReflectProviderProjects</a> that come with the framework. In example, depending on your application you might need a different <a href="#TheProviderLayer_AuthorizationProvider">AuthorizationProvider</a> such as: </p> 
     <ul> 
      <li>hard coded authorization</li> 
      <li>file based authorization</li> 
@@ -1191,6 +1303,13 @@
      <li><a href="#TheProviderLayer">The Provider Layer
        <ul>
         <li><a href="#TheProviderLayer_ProviderObjects">Provider Objects</a></li>
+        <li><a href="#TheProviderLayer_AuthorizationProvider">Authorization Provider</a></li>
+        <li><a href="#TheProviderLayer_ValidationProvider">Validation Provider</a></li>
+        <li><a href="#TheProviderLayer_LanguageProvider">Language Provider</a></li>
+        <li><a href="#TheProviderLayer_NotificationProvider">Notification Provider</a></li>
+        <li><a href="#TheProviderLayer_ReflectionProvider">Reflection Provider</a></li>
+        <li><a href="#TheProviderLayer_AboutProvider">About Provider</a></li>
+        <li><a href="#TheProviderLayer_URLProviders">URL Providers</a></li>
        </ul></a></li>
      <li><a href="#TheUserInterfaceLayer">The UserInterface Layer
        <ul>
