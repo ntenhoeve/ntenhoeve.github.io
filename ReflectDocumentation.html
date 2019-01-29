@@ -46,7 +46,7 @@
      <li>Facilitate <a href="http://en.wikipedia.org/wiki/Domain-driven_design">domain driven design</a>.</li> 
      <li><a href="#TheDomainLayer_DomainObjects">DomainObject</a>'s, <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>'s and <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a>'s should have no (or almost no) dependencies with the <a href="#TheReflectFramework">ReflectFramework</a> so that it could easily be replaced with another dependency injection framework (such as <a href="http://en.wikipedia.org/wiki/Spring_Framework">Spring</a>, <a href="http://en.wikipedia.org/wiki/Google_Guice">Guice</a> or <a href="http://picocontainer.codehaus.org/">Pico container</a>, etc...) or visa versa. You would only need to change some annotations and link it to the other dependency injection framework</li> 
      <li>The <a href="#TheReflectFramework">ReflectFramework</a> must accept <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s, <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s, <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a>s that are <a href="https://en.wikipedia.org/wiki/Plain_old_Java_object">Plain Old Java Objects (POJO's)</a>.</li> 
-     <li>The <a href="#TheReflectFramework">ReflectFramework</a> exists of a few basic interfaces like <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> and <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_language_defaultlanguageprovider.java">Provider</a>s that can have multiple different implementations.</li> 
+     <li>The <a href="#TheReflectFramework">ReflectFramework</a> exists of a few basic interfaces like <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> and <a href="#TheProviderLayer_ProviderObjects">Provider</a>s that can have multiple different implementations.</li> 
     </ul> 
     <h3 id="TheReflectFramework_ReflectCoreValues_HaveAModernGraphicalUserInterface">Have a modern graphical user interface</h3> 
     <ul> 
@@ -61,7 +61,7 @@
     <br /> 
     <br /> There are 3 things that need to be configured: 
     <ul> 
-     <li>Which implementations of the <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> and <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_language_defaultlanguageprovider.java">Provider</a>'s are going to be used by the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a>. </li> 
+     <li>Which implementations of the <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> and <a href="#TheProviderLayer_ProviderObjects">Provider</a>'s are going to be used by the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a>. </li> 
      <li>Which <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> classes and <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a> classes are going to be used by the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a>.</li> 
      <li>The <a href="#ObjectBehavior">ObjectBehavior</a> of <a href="#TheDomainLayer_DomainObjects">DomainObject</a>'s and <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> 's (how the domain needs to handled by the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a>)</li> 
     </ul> 
@@ -169,7 +169,7 @@
      <li><a href="#TheServiceLayer">ServiceLayer</a>: <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>'s are managed by a <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer2service_servicecontainer.java">ServiceContainer</a>. The <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer2service_servicecontainer.java">ServiceContainer</a> knows the <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer3domain_domaincontainer.java">DomainContainer</a></li> 
      <li><a href="#TheDomainLayer">DomainLayer</a>: <a href="#TheDomainLayer_DomainObjects">DomainObject</a>'s are managed by a <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer3domain_domaincontainer.java">DomainContainer</a>. The <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer3domain_domaincontainer.java">DomainContainer</a> knows the <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer4infrastructure_infrastructurecontainer.java">InfrastructureContainer</a></li> 
      <li><a href="#TheInfrastructureLayer">InfrastructureLayer</a>: <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a>'s are managed by a <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer4infrastructure_infrastructurecontainer.java">InfrastructureContainer</a>. The <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer3domain_domaincontainer.java">DomainContainer</a> knows the <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_providercontainer.java">ProviderContainer</a></li> 
-     <li><a href="#TheProviderLayer">ProviderLayer</a>: <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_language_defaultlanguageprovider.java">Provider</a> object's are managed by a <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_providercontainer.java">ProviderContainer</a>.</li> 
+     <li><a href="#TheProviderLayer">ProviderLayer</a>: <a href="#TheProviderLayer_ProviderObjects">Provider</a> object's are managed by a <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_providercontainer.java">ProviderContainer</a>.</li> 
     </ul> 
     <p></p> 
     <h3 id="TheReflectFramework_DependencyInjectionContainer_ConstructorInjection">Constructor Injection</h3> 
@@ -212,7 +212,7 @@
      <li>It provides a list of <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> types with the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication.getServiceClasses()</a> method. <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s basically provide the actionable/menu items</li> 
      <li>It provides a list of <a href="#TheDomainLayer_DomainObjects">DomainObject</a> types that need to be created using dependency injection, with the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication.getDomainClasses()</a> method.</li> 
      <li>It provides a list of <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a> types with the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication.getInfrastructureClasses()</a> method. <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a>s basically communicate to the outside world (i.e. data base access objects, email clients, soap clients, etc)</li> 
-     <li>It provides the <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_language_defaultlanguageprovider.java">Provider</a> types with the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication.get...ProviderClass()</a> methods. <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_language_defaultlanguageprovider.java">Provider</a> Objects help with <a href="https://en.wikipedia.org/wiki/Cross-cutting_concern">cross cutting concerns</a>. Each application type (e.g. for the command line, desktop, mobile devices or the web) requires different implementations of the providers</li> 
+     <li>It provides the <a href="#TheProviderLayer_ProviderObjects">Provider</a> types with the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication.get...ProviderClass()</a> methods. <a href="#TheProviderLayer_ProviderObjects">Provider</a> Objects help with <a href="https://en.wikipedia.org/wiki/Cross-cutting_concern">cross cutting concerns</a>. Each application type (e.g. for the command line, desktop, mobile devices or the web) requires different implementations of the providers</li> 
     </ul> 
     <p> Each application type (e.g. for the command line, desktop, mobile devices or the web) has its own implementation of <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a> to help initializing the framework. See the type hierarchy of <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a> to learn which classes can be used and read their java doc to learn how to use them. </p> 
     <p> If you create a new application you will be extending one of these classes. You will only need to implement some of the methods mentioned above (at least the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication.getServiceClasses()</a> method). </p> An example of a desktop application: 
@@ -287,8 +287,8 @@
     <p> The principle of “naked objects” is that any <a href="http://en.wikipedia.org/wiki/Plain_Old_Java_Object">'Plain Old Java Object' (POJO)</a> can function as a domain object. In other words: a domain class does not have to inherit from any special class, nor implement any particular interface, nor have any specific attributes. </p> 
     <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s can be created by different objects e.g.: 
     <ul> 
-     <li>By a <a href="#ActionMethods">ServiceObjectActionMethod</a> such as customerService.createNewCustomer() </li> 
-     <li>By a <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer3domain_domainobjectactionmethod.java">DomainObjectActionMethod</a> such as shoppingCart.lineItemCreate(LineItem lineItem)</li> 
+     <li>By a <a href="#ActionMethods_ActionMethodsForServiceObjects">ServiceObjectActionMethod</a> such as customerService.createNewCustomer() </li> 
+     <li>By a <a href="#ActionMethods_ActionMethodsForDomainObjects">DomainObjectActionMethod</a> such as shoppingCart.lineItemCreate(LineItem lineItem)</li> 
      <li>By a <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer3domain_domaincontainer.java">DomainContainer</a> such as domainContainer.getObject(Customer.class)</li> 
      <li>By a <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a> method such as orderRepository.allOpenOrders() or shoppingCartFactory.createForCustomer(Customer customer).</li> 
     </ul> 
@@ -296,7 +296,7 @@
     <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s: 
     <ul> 
      <li>Creating a new <a href="#TheDomainLayer_DomainObjects">DomainObject</a> with the new keyword:<br /> In example: Order order=new Order()</li> 
-     <li>Creating a domain object using Dependency Injection:<br /> Sometimes you want a new <a href="#TheDomainLayer_DomainObjects">DomainObject</a> to have references to other objects (being other <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s, <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a>s or <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_language_defaultlanguageprovider.java">Provider</a>Objects). In example: A Customer object needs a references to a ShoppingCartFactory object. The Customer object can therefore be created by the <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer3domain_domaincontainer.java">DomainContainer</a> with Customer customer=(Customer) domainContainer.getObject(Customer.class). The ShopingCart object will automatically be injected as a constructor parameter of the Customer class. In order to create <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s using dependency injection you need to:</li> 
+     <li>Creating a domain object using Dependency Injection:<br /> Sometimes you want a new <a href="#TheDomainLayer_DomainObjects">DomainObject</a> to have references to other objects (being other <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s, <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a>s or <a href="#TheProviderLayer_ProviderObjects">Provider</a>Objects). In example: A Customer object needs a references to a ShoppingCartFactory object. The Customer object can therefore be created by the <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer3domain_domaincontainer.java">DomainContainer</a> with Customer customer=(Customer) domainContainer.getObject(Customer.class). The ShopingCart object will automatically be injected as a constructor parameter of the Customer class. In order to create <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s using dependency injection you need to:</li> 
      <ul> 
       <li>Add the reference object as a parameter in the constructor and link it to a private field, so that it can be used throughout the class.</li> 
       <li>Make sure that the referenced object type is known by the <a href="#TheReflectFramework">ReflectFramework</a>: Its class must be returned by the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication.getDomainClasses()</a> method.</li> 
@@ -307,7 +307,7 @@
     <p> Domain objects contain: </p> 
     <ul> 
      <li>Getter and setter methods (and possible fields): that define <a href="http://en.wikipedia.org/wiki/Property_(programming)">properties</a></li> 
-     <li><a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer3domain_domainobjectactionmethod.java">DomainObjectActionMethod</a>s: that define user actions</li> 
+     <li><a href="#ActionMethods_ActionMethodsForDomainObjects">DomainObjectActionMethod</a>s: that define user actions</li> 
      <li>Methods: that define <a href="#ObjectBehavior">ObjectBehavior</a></li> 
      <li>Annotations: that define <a href="#ObjectBehavior">ObjectBehavior</a></li> 
     </ul> These members are discussed in more detail in the following paragraphs. 
@@ -376,7 +376,7 @@
     <h3 id="TheDomainLayer_Properties_Fields">Fields</h3> 
     <ul> 
      <li>Properties can use <a href="http://en.wikipedia.org/wiki/Field_%28computer_science%29">fields</a> to hold information in the domain object. These fields need to be private (not accessible by other objects) to ensure <a href="http://en.wikipedia.org/wiki/Encapsulation_(computer_science)"> encapsulation</a> (See private fields givenName, familyName and male in the example above)</li> 
-     <li>A property does not need to have a field. The value can be a computation of fields of other properties (such as the fullName property in the example above), or maybe even a value from an <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a> or a <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_language_defaultlanguageprovider.java">Provider</a>.</li> 
+     <li>A property does not need to have a field. The value can be a computation of fields of other properties (such as the fullName property in the example above), or maybe even a value from an <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a> or a <a href="#TheProviderLayer_ProviderObjects">Provider</a>.</li> 
      <li>Fields are commonly defined at the beginning of the class</li> 
     </ul> 
     <h3 id="TheDomainLayer_Properties_PropertyTypes">Property types</h3> Property types can be divided into 3 groups: 
@@ -390,7 +390,7 @@
     <a href="#ObjectBehavior">ObjectBehavior</a>. 
     <p></p> 
     <h2 id="TheDomainLayer_ActionMethods">Action Methods</h2> 
-    <p> Domain objects can contain action methods (see <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer3domain_domainobjectactionmethod.java">DomainObjectActionMethod</a> section) </p> 
+    <p> Domain objects can contain action methods (see <a href="#ActionMethods_ActionMethodsForDomainObjects">DomainObjectActionMethod</a> section) </p> 
     <p></p> 
     <p></p> 
     <h1 id="TheServiceLayer">The Service Layer</h1> 
@@ -420,18 +420,18 @@
      <li>The operation is state-less</li> 
     </ul> These characteristics are discussed in more detail in the following paragraphs. 
     <h3 id="TheServiceLayer_ServiceObjects_ServiceObjectsOperationsRelatesToADomainConceptThatIsNotANaturalPartOfADomainObject">Service objects operations relates to a domain concept that is not a natural part of a DomainObject</h3> 
-    <p> <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s contain <a href="#ActionMethods">ServiceObjectActionMethod</a>s. The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> displays these methods as menu items and invokes these methods once a user clicks on the menu item. Most <a href="#ActionMethods">ServiceObjectActionMethod</a>s create or retrieve <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s where the user does not have an existing <a href="#TheDomainLayer_DomainObjects">DomainObject</a> to navigate from. </p> 
+    <p> <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s contain <a href="#ActionMethods_ActionMethodsForServiceObjects">ServiceObjectActionMethod</a>s. The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> displays these methods as menu items and invokes these methods once a user clicks on the menu item. Most <a href="#ActionMethods_ActionMethodsForServiceObjects">ServiceObjectActionMethod</a>s create or retrieve <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s where the user does not have an existing <a href="#TheDomainLayer_DomainObjects">DomainObject</a> to navigate from. </p> 
     <h3 id="TheServiceLayer_ServiceObjects_ServiceObjectsDefineAnInterfaceInTermsOfTheDomainModel">Service objects define an interface in terms of the domain model</h3> 
     <p> <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s basically provides the user (via the <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a>) access to <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s, so that the user can work on them (via the <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a>). </p> 
     <h3 id="TheServiceLayer_ServiceObjects_ServiceObjectsAreStateless">Service objects are state-less</h3> 
     <p> Quoting Eric Evans: “<a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s should be state-less. State-less here means that any client can use any instance of the <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s without regard to the instance’s individual history. The execution of the service will use information that is accessible globally, and may even change that global information (have side-effects). But it does not hold state of its own that affects its behavior, as most domain objects do.&quot; </p> 
-    <p> <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s do not have state and therefore should not have properties (no getter and setter methods). My personal opinion is that a <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> with state is a <a href="http://en.wikipedia.org/wiki/Code_smell">code-smell</a>, which you can solve by moving the <a href="#ActionMethods">ServiceObjectActionMethod</a>s that share state (fields) to new or existing <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s. </p> 
+    <p> <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s do not have state and therefore should not have properties (no getter and setter methods). My personal opinion is that a <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> with state is a <a href="http://en.wikipedia.org/wiki/Code_smell">code-smell</a>, which you can solve by moving the <a href="#ActionMethods_ActionMethodsForServiceObjects">ServiceObjectActionMethod</a>s that share state (fields) to new or existing <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s. </p> 
     <h3 id="TheServiceLayer_ServiceObjects_ServiceObjectsShouldBeFlat">Service Objects should be flat</h3> 
-    <p> <a href="https://en.wikipedia.org/?title=Object-oriented_programming"> Object Orientated Programming</a> favors to put business logic and the validation logic into the <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s (and sometimes <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a>s) as much as possible. <a href="#ActionMethods">ServiceObjectActionMethod</a>s should therefore not contain business logic or validation logic, but delegate the work to collaborations of <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s and <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a>s, in order to prevent the <a href="http://martinfowler.com/bliki/AnemicDomainModel.html">Anemic Domain Model</a> - <a href="http://en.wikipedia.org/wiki/Anti-pattern">anti-pattern</a>. </p> 
+    <p> <a href="https://en.wikipedia.org/?title=Object-oriented_programming"> Object Orientated Programming</a> favors to put business logic and the validation logic into the <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s (and sometimes <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a>s) as much as possible. <a href="#ActionMethods_ActionMethodsForServiceObjects">ServiceObjectActionMethod</a>s should therefore not contain business logic or validation logic, but delegate the work to collaborations of <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s and <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a>s, in order to prevent the <a href="http://martinfowler.com/bliki/AnemicDomainModel.html">Anemic Domain Model</a> - <a href="http://en.wikipedia.org/wiki/Anti-pattern">anti-pattern</a>. </p> 
     <p> </p> 
     <h3 id="TheServiceLayer_ServiceObjects_AWebShopExample">A web shop example</h3> 
     <ul> 
-     <li>The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> class calls the <a href="#ActionMethods">ServiceObjectActionMethod</a> findProduct(searchCriteria) method on <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>: ProductService</li> 
+     <li>The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> class calls the <a href="#ActionMethods_ActionMethodsForServiceObjects">ServiceObjectActionMethod</a> findProduct(searchCriteria) method on <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>: ProductService</li> 
      <li>This method will call the findProduct method on the <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a> : ProductRepository</li> 
      <li>This method will return a list of <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s that meet the search criteria</li> 
      <li>The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> displays the found list of <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s as a table in a new tab.</li> 
@@ -473,13 +473,13 @@
     <h3 id="TheServiceLayer_ServiceObjects_ServiceObjectMembers">Service object members</h3> 
     <p> Service objects contain: </p> 
     <ul> 
-     <li><a href="#ActionMethods">ServiceObjectActionMethod</a>s: that define user actions</li> 
+     <li><a href="#ActionMethods_ActionMethodsForServiceObjects">ServiceObjectActionMethod</a>s: that define user actions</li> 
      <li>Methods: that define <a href="#ObjectBehavior">ObjectBehavior</a></li> 
      <li>Annotations: that define <a href="#ObjectBehavior">ObjectBehavior</a></li> 
     </ul> These members are discussed in more detail in the following paragraphs. 
     <p></p> 
     <h2 id="TheDomainLayer_ActionMethods">Action Methods</h2> 
-    <p> <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s are all about <a href="#ActionMethods">ActionMethod</a>s that represent the main menu items (see section <a href="#ActionMethods">ServiceObjectActionMethod</a>) </p> 
+    <p> <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s are all about <a href="#ActionMethods">ActionMethod</a>s that represent the main menu items (see section <a href="#ActionMethods_ActionMethodsForServiceObjects">ServiceObjectActionMethod</a>) </p> 
     <p></p> 
     <p></p> 
     <h1 id="TheInfrastructureLayer">The Infrastructure Layer</h1> 
@@ -531,27 +531,27 @@
     <p></p> 
     <h1 id="TheProviderLayer">The Provider Layer</h1> 
     <p> <a id="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_providerlayer.java"></a> </p>
-    <p> The <a href="#TheProviderLayer">ProviderLayer</a> contains <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_language_defaultlanguageprovider.java">Provider</a> objects that provide generic <a href="#TheReflectFramework">ReflectFramework</a> capabilities (<a href="cross cutting concerns">cross cutting concerns</a>) to support the higher layers (see <a href="#TheReflectFramework_ArchitectureOfAnReflectApplication">ReflectArchitecture</a>) </p> 
-    <p> The <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_providercontainer.java">ProviderContainer</a> is an <a href="#TheReflectFramework_DependencyInjectionContainer">DependencyInjectionContainer</a> that represents the <a href="#TheProviderLayer">ProviderLayer</a> and holds and manages <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_language_defaultlanguageprovider.java">Provider</a> Objects. </p> 
+    <p> The <a href="#TheProviderLayer">ProviderLayer</a> contains <a href="#TheProviderLayer_ProviderObjects">Provider</a> objects that provide generic <a href="#TheReflectFramework">ReflectFramework</a> capabilities (<a href="cross cutting concerns">cross cutting concerns</a>) to support the higher layers (see <a href="#TheReflectFramework_ArchitectureOfAnReflectApplication">ReflectArchitecture</a>) </p> 
+    <p> The <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_providercontainer.java">ProviderContainer</a> is an <a href="#TheReflectFramework_DependencyInjectionContainer">DependencyInjectionContainer</a> that represents the <a href="#TheProviderLayer">ProviderLayer</a> and holds and manages <a href="#TheProviderLayer_ProviderObjects">Provider</a> Objects. </p> 
     <p></p> 
-    <p> Note that this layer is the bottom layer (see <a href="#TheReflectFramework_ArchitectureOfAnReflectApplication">ReflectArchitecture</a> ), which means that objects in the upper layers may haved references to <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_language_defaultlanguageprovider.java">Provider</a>Objects, but not visa versa! </p> 
+    <p> Note that this layer is the bottom layer (see <a href="#TheReflectFramework_ArchitectureOfAnReflectApplication">ReflectArchitecture</a> ), which means that objects in the upper layers may haved references to <a href="#TheProviderLayer_ProviderObjects">Provider</a>Objects, but not visa versa! </p> 
     <h2 id="TheProviderLayer_ProviderObjects">Provider Objects</h2> 
-    <p> <a id="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_provider.java"></a> <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_language_defaultlanguageprovider.java">Provider</a>s are responsible for different <a href="cross cutting concerns">cross cutting concerns</a> within an <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a> such as: </p> 
+    <p> <a id="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_provider.java"></a> <a href="#TheProviderLayer_ProviderObjects">Provider</a>s are responsible for different <a href="cross cutting concerns">cross cutting concerns</a> within an <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a> such as: </p> 
     <ul> 
      <li>Authorization (see <a href="#TheProviderLayer_AuthorizationProvider">AuthorizationProvider</a>)</li> 
-     <li>Validation (see <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_validation_defaultvalidationprovider.java">ValidationProvider</a>)</li> 
-     <li>Multi language (see <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_language_defaultlanguageprovider.java">LanguageProvider</a>)</li> 
-     <li>Notifications (see <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_notification_defaultnotificationprovider.java">NotificationProvider</a>)</li> 
+     <li>Validation (see <a href="#TheProviderLayer_ValidationProvider">ValidationProvider</a>)</li> 
+     <li>Multi language (see <a href="#TheProviderLayer_LanguageProvider">LanguageProvider</a>)</li> 
+     <li>Notifications (see <a href="#TheProviderLayer_NotificationProvider">NotificationProvider</a>)</li> 
      <li>File path information (see <a href="#TheProviderLayer_URLProviders">UrlProvider</a>)</li> 
-     <li>Object meta information (see <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_reflection_defaultreflectionprovider.java">ReflectionProvider</a>)</li> 
-     <li>Version information (see <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_about_defaultaboutprovider.java">AboutProvider</a>)</li> 
+     <li>Object meta information (see <a href="#TheProviderLayer_ReflectionProvider">ReflectionProvider</a>)</li> 
+     <li>Version information (see <a href="#TheProviderLayer_AboutProvider">AboutProvider</a>)</li> 
     </ul> 
-    <p> <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_language_defaultlanguageprovider.java">Provider</a>s may be used by any class within an application. </p> 
-    <p> Providers are interfaces and can have multiple implementations (depending on what type of application you are using/writing). Which implementation of each provider needs to be used within an application is defined in the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a> class. You are free to implement your own <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_language_defaultlanguageprovider.java">Provider</a> implementation and register it by overwriting one of the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication.get...ProviderClass()</a> methods </p> 
+    <p> <a href="#TheProviderLayer_ProviderObjects">Provider</a>s may be used by any class within an application. </p> 
+    <p> Providers are interfaces and can have multiple implementations (depending on what type of application you are using/writing). Which implementation of each provider needs to be used within an application is defined in the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a> class. You are free to implement your own <a href="#TheProviderLayer_ProviderObjects">Provider</a> implementation and register it by overwriting one of the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication.get...ProviderClass()</a> methods </p> 
     <h3 id="TheProviderLayer_ProviderObjects_ProviderConstruction">Provider Construction</h3> 
-    <p> <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_language_defaultlanguageprovider.java">Provider</a>'s are instantiated by the <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_providercontainer.java">ProviderContainer</a> (see <a href="#TheReflectFramework_DependencyInjectionContainer">DependencyInjectionContainer</a>) <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_language_defaultlanguageprovider.java">Provider</a>Objects can have references to other <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_language_defaultlanguageprovider.java">Provider</a>Objects. These objects are injected into the <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_language_defaultlanguageprovider.java">Provider</a>Objects (see the <a href="#TheReflectFramework_DependencyInjectionContainer_ConstructorInjection">ConstructionInjection</a> section. </p> 
+    <p> <a href="#TheProviderLayer_ProviderObjects">Provider</a>'s are instantiated by the <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_providercontainer.java">ProviderContainer</a> (see <a href="#TheReflectFramework_DependencyInjectionContainer">DependencyInjectionContainer</a>) <a href="#TheProviderLayer_ProviderObjects">Provider</a>Objects can have references to other <a href="#TheProviderLayer_ProviderObjects">Provider</a>Objects. These objects are injected into the <a href="#TheProviderLayer_ProviderObjects">Provider</a>Objects (see the <a href="#TheReflectFramework_DependencyInjectionContainer_ConstructorInjection">ConstructionInjection</a> section. </p> 
     <h3 id="TheProviderLayer_ProviderObjects_ProviderPresentation">Provider Presentation</h3> 
-    <p> The methods of <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_language_defaultlanguageprovider.java">Provider</a>Objects are not displayed by the <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a>. </p> 
+    <p> The methods of <a href="#TheProviderLayer_ProviderObjects">Provider</a>Objects are not displayed by the <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a>. </p> 
     <h2 id="TheProviderLayer_AuthorizationProvider">Authorization Provider</h2> 
     <p> </p> 
     <p> <a id="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_authorization_authorizationprovider.java"></a> </p> 
@@ -609,39 +609,115 @@
  
  </pre> 
     <h3 id="TheProviderLayer_AuthorizationProvider_RegisteringAnAuthorizationProvider">Registering an AuthorizationProvider</h3> 
-    <p> The <a href="#TheProviderLayer_AuthorizationProvider">AuthorizationProvider</a> is registered to the framework with the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication.getAuthorizationProviderClass()</a> method. By default it returns the <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_authorization_defaultauthorizationprovider.java">DefaultAuthorizationProvider</a>, which always returns true on the <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_reflection_behavior_disabled_disabledmodel.java">userInRole(String)</a> method. You can register another <a href="#TheProviderLayer_AuthorizationProvider">AuthorizationProvider</a> implementation by overriding the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication.getAuthorizationProviderClass()</a> method. </p> 
+    <p> The <a href="#TheProviderLayer_AuthorizationProvider">AuthorizationProvider</a> is registered to the framework with the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication.getAuthorizationProviderClass()</a> method. By default it returns the <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_authorization_defaultauthorizationprovider.java">DefaultAuthorizationProvider</a>, which always returns true on the <a href="ReferenceName_">userInRole(String)</a> method. You can register another <a href="#TheProviderLayer_AuthorizationProvider">AuthorizationProvider</a> implementation by overriding the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication.getAuthorizationProviderClass()</a> method. </p> 
     <h3 id="TheProviderLayer_AuthorizationProvider_UsingAnAuthorizationProvider">Using an AuthorizationProvider</h3> 
     <p> The <a href="#TheProviderLayer_AuthorizationProvider">AuthorizationProvider</a> is used by the @Hidden and @Disabled annotations (see <a href="#ObjectBehavior">ObjectBehavior</a>). If you want to use the <a href="#TheProviderLayer_AuthorizationProvider">AuthorizationProvider</a> in your code you need to inject it into your object (see <a href="#TheReflectFramework_DependencyInjectionContainer_ConstructorInjection">ConstructionInjection</a>) </p> 
     <p></p> 
     <p></p> 
     <h2 id="TheProviderLayer_ValidationProvider">Validation Provider</h2> 
     <p> </p> 
-    <p> </p> 
+    <p> <a id="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_validation_validationprovider.java"></a> </p> 
+    <p> The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> sometimes let’s the user edit an <a href="#TheDomainLayer_DomainObjects">DomainObject</a> before it is passed as an <a href="#ActionMethods">ActionMethod</a> parameter (depending on how the ActionMethod is annotated, see <a href="#ObjectBehavior_ExecutionMode">ExecutionMode</a> ). The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> then validates the edited <a href="#TheDomainLayer_DomainObjects">DomainObject</a> using the <a href="#TheProviderLayer_ValidationProvider">ValidationProvider</a> before the <a href="#ActionMethods">ActionMethod</a> is called.The <a href="#TheProviderLayer_ValidationProvider">ValidationProvider</a> will use ValidationAnnotationsTODO_LINK and ValidationMethods_TODO_LINK that are located in the <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s them selves so that they can be validated. </p> 
+    <h3 id="TheProviderLayer_ValidationProvider_ValidationProviderImplementation">ValidationProvider implementation</h3> 
+    <p> There are many validation libraries and frameworks available. The ReflectFramework complies with the JSR303 by using the <a href="http://bval.apache.org/">Apache Bean Validator (BVal)</a> library, combined with <a href="#ObjectBehavior_Validation_ValidationMethods">ValidationMethod</a>s. You are free to implement or extend your own implementation and register it to your <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a> by overriding the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication.getValidationProviderClass()</a> method </p> 
+    <p></p> 
     <p></p> 
     <h2 id="TheProviderLayer_LanguageProvider">Language Provider</h2> 
     <p> </p> 
-    <p> </p> 
+    <p> <a id="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_language_languageprovider.java"></a> </p> 
+    <p> The <a href="#TheProviderLayer_LanguageProvider">LanguageProvider</a> makes multilingual support possible. The <a href="#TheReflectFramework">ReflectFramework</a> supports the English language by default because it uses the ClassNames, <a href="#TheDomainLayer_Properties">DomainObjectProperty</a>Names and <a href="#ActionMethods">ActionMethod</a>names that are used in the code as part of the <a href="http://martinfowler.com/bliki/UbiquitousLanguage.html">Ubiquitous Language</a> (it does not make sense to mix an other language into your code). </p> 
+    <h3 id="TheProviderLayer_LanguageProvider_LanguagePropertyFiles">Language property files</h3> 
+    <p> Texts for other languages are stored in property files. The name of these files need to be: &lt;application configuration folder&gt;/language_&lt;language_code&gt;.properties </p> Where: 
+    <ul> 
+     <li> &lt;application configuration folder&gt; These files need to be located at the configuration folder of the application. See PathProvider for more information</li> 
+     <li>&lt;Language_code&gt; two letter language code (see java <a href="ReferenceName_Locale">Locale</a>)</li> 
+    </ul> 
+    <p> The language property files comply to the Java <a href="https://en.wikipedia.org/wiki/.properties">.properties</a> standard and thus contain key value pairs. </p> 
+    <ul> 
+     <li> The key is an reference to part of the code. Keys have the following format: &lt;packageName&gt;.&lt;classname&gt; or &lt;packageName&gt;.&lt;classname&gt;.&lt;propertyName&gt; or &lt;packageName&gt;.&lt;classname&gt;.&lt;actionMethodName&gt;, followed by .displayname or.description (see examples below)</li> 
+     <li>The value is the translated text. Special characters are supported with Unicode (\u 
+      <number>
+        e.g. \u20AC=€). There are several free tools available to edit .properties file with good Unicode support. 
+      </number></li> 
+    </ul> 
+    <p></p> 
+    <p> Examples of key value lines in property files: </p> 
+    <ul> 
+     <li> com.acme.order.ShoppingCart.displayname=Winkel wagen</li> 
+     <li>com.acme.product.ProductService.displayname=Producten</li> 
+    </ul> 
+    <h3 id="TheProviderLayer_LanguageProvider_GettingTheTranslatedText">Getting the translated text</h3> 
+    <p> The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> will call the <a href="#TheProviderLayer_LanguageProvider">LanguageProvider</a> to try and get the appropriate text from the language property files (depending on the selected language in the graphical user interface). If it can’t find this value it will display the default values (in English) </p> 
+    <p> An other way to get a translated text is to inject the <a href="#TheProviderLayer_LanguageProvider">LanguageProvider</a> into the object that needs it and use it in your code (see <a href="#TheReflectFramework_DependencyInjectionContainer_ConstructorInjection">ConstructionInjection</a>) </p> 
+    <ul> 
+     <li>TODO CODE EXAMPLE OF VALIDATION TEXTS OR EXCEPTION TEXTS</li> 
+     <li>TODO EXPLAIN HOW THE LANGUAGE IS SELECTED</li> 
+     <li>TODO HOW TO SET DEFAULT TEXT OTHER THAN DEFAULT</li> 
+     <li>TODO EXPLAIN HOW TO GENERATE OR UPDATE LANGUAGE PROPERTY FILES WITH A SPECIAL <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a></li> 
+    </ul> 
+    <p></p> 
     <p></p> 
     <h2 id="TheProviderLayer_NotificationProvider">Notification Provider</h2> 
     <p> </p> 
-    <p> </p> 
+    <p> <a id="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_notification_notificationprovider.java"></a> </p> 
+    <ul> 
+     <li>TODO What it does</li> 
+     <li>TODO How you can use it (or explain who uses it)</li> 
+     <li>TODO Code example</li> 
+     <li>TODO How to register a custom ... provider</li> 
+    </ul> 
+    <p></p> 
     <p></p> 
     <p></p> 
     <h2 id="TheProviderLayer_ReflectionProvider">Reflection Provider</h2> 
     <p> </p> 
-    <p> </p> 
+    <p> <a id="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_reflection_reflectionprovider.java"></a> The <a href="#TheProviderLayer_ReflectionProvider">ReflectionProvider</a> provides information on objects ( <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_reflection_info_appinfo_applicationinfo.java">ApplicationInfo</a>), properties ( <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_reflection_info_property_propertyinfo.java">PropertyInfo</a>) of <a href="#ActionMethods">ActionMethod</a> ( <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_reflection_info_actionmethod_actionmethodinfo.java">ActionMethodInfo</a>) using <a href="https://en.wikipedia.org/wiki/Reflection_(computer_programming)">reflection</a>. The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> uses this information to know how the user interface should look like and behave. You can use the <a href="#TheProviderLayer_ReflectionProvider">ReflectionProvider</a> in your code when you need meta information (See <a href="#TheReflectFramework_DependencyInjectionContainer_ConstructorInjection">ConstructionInjection</a>) TODO Code example </p> 
     <p></p> 
     <h2 id="TheProviderLayer_AboutProvider">About Provider</h2> 
     <p> </p> 
-    <p> </p> 
+    <p> <a id="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_about_aboutprovider.java"></a> The <a href="#TheProviderLayer_AboutProvider">AboutProvider</a> provides the following information on all objects used in an <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a>: </p> 
+    <ul> 
+     <li>The class name</li> 
+     <li>The package name (jar,war,etc...)</li> 
+     <li>The version of the jar file (from the meta info file)</li> 
+     <li>The authors of the jar file (from the meta info file)</li> 
+    </ul> This about information can be displayed on a graphical user interface. 
+    <p></p> 
     <p></p> 
     <h2 id="TheProviderLayer_URLProviders">URL Providers</h2> 
     <p> </p> 
-    <p> <a id="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_url_application_applicationurlprovider.java"></a> A <a href="#TheProviderLayer_URLProviders">ApplicationUrlProvider</a> handles a <a href="#TheProviderLayer_URLProviders">ApplicationUrl</a>. </p> 
+    <p> <a id="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_url_urlprovider.java"></a> </p> 
+    <p> You can use custom URL's or <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_url_reflecturl.java">ReflectUrl</a>'s that are translated to normal URL's using <a href="#TheProviderLayer_URLProviders">UrlProvider</a>s. <a href="#TheProviderLayer_URLProviders">UrlProvider</a>s need to be registered with the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication.getUrlProviderClasses()</a> so that they can be registered with <a href="ReferenceName_URL">URL.setURLStreamHandlerFactory()</a> (See <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_url_reflecturlstreamhandlerfactory.java">ReflectUrlStreamHandlerFactory</a>). The following paragraphs show examples of <a href="#TheProviderLayer_URLProviders">UrlProvider</a>s </p> 
+    <h3 id="TheProviderLayer_URLProviders_ApplicationUrlProvider">ApplicationUrlProvider</h3> 
+    <p> </p> 
+    <p> <a id="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_url_application_applicationurlprovider.java"></a> A <a href="#TheProviderLayer_URLProviders_ApplicationUrlProvider">ApplicationUrlProvider</a> handles a <a href="#TheProviderLayer_URLProviders_ApplicationUrlProvider">ApplicationUrl</a>. </p> 
     <p> <a id="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_url_application_applicationurl.java"></a> </p> 
-    <p> A <a href="#TheProviderLayer_URLProviders">ApplicationUrl</a> is a <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_url_reflecturl.java">ReflectUrl</a> that helps to create a reference to the application folder e.g. to get a resource file </p> 
-    <p> The format of a <a href="#TheProviderLayer_URLProviders">ApplicationUrl</a> is: reflect-application://&lt;relative path to resource&gt; </p> 
+    <p> A <a href="#TheProviderLayer_URLProviders_ApplicationUrlProvider">ApplicationUrl</a> is a <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_url_reflecturl.java">ReflectUrl</a> that helps to create a reference to the application folder e.g. to get a resource file </p> 
+    <p> The format of a <a href="#TheProviderLayer_URLProviders_ApplicationUrlProvider">ApplicationUrl</a> is: reflect-application://&lt;relative path to resource&gt; </p> 
     <p> E.g.: reflect-application://images/sales.png (for a reference to the sales.png file in the application sub folder images) </p> 
+    <p></p> 
+    <p></p> 
+    <p></p> 
+    <h3 id="TheProviderLayer_URLProviders_ClassResourceUrlProvider">ClassResourceUrlProvider</h3> 
+    <p> </p> 
+    <p> <a id="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_url_classresource_classresourceurlprovider.java"></a> A <a href="#TheProviderLayer_URLProviders_ClassResourceUrlProvider">ClassResourceUrlProvider</a> handles a <a href="#TheProviderLayer_URLProviders_ClassResourceUrlProvider">ClassResourceUrl</a>. </p> 
+    <p> <a id="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_url_classresource_classresourceurl.java"></a> </p> 
+    <p> A <a href="#TheProviderLayer_URLProviders_ClassResourceUrlProvider">ClassResourceUrl</a> is a <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_url_reflecturl.java">ReflectUrl</a> that helps to create a reference to a class resource (See <a href="ReferenceName_Class">Class.getResource(String)</a>) </p> 
+    <p> The format of a <a href="#TheProviderLayer_URLProviders_ClassResourceUrlProvider">ClassResourceUrl</a> is: reflect-class-resource://&lt;class path&gt;/&lt;resource name&gt; </p> 
+    <p> E.g.: reflect-class-resource://com.acme.SalesApp/sales.png; (for a sales.png file in the com.acme package, next to the SalesApp class) </p> 
+    <p></p> 
+    <p></p> 
+    <p></p> 
+    <h3 id="TheProviderLayer_URLProviders_FontIconUrlProvider">FontIconUrlProvider</h3> 
+    <p> </p> 
+    <p> <a id="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_url_fonticon_fonticonurlprovider.java"></a> The <a href="#TheProviderLayer_URLProviders_FontIconUrlProvider">FontIconUrlProvider</a> resolves <a href="#TheProviderLayer_URLProviders_FontIconUrlProvider">FontIconUrl</a>s. </p> 
+    <p> <a id="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_url_fonticon_fonticonurl.java"></a> </p> 
+    <p> A <a href="#TheProviderLayer_URLProviders_FontIconUrlProvider">FontIconUrl</a> is a <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_url_reflecturl.java">ReflectUrl</a> that helps to create a reference to a <a href="ReferenceName_reflect_reflect-for-javafx_src_main_java_nth_reflect_fw_javafx_control_fonticon_fonticon.java">FontIcon</a>. </p> 
+    <p> The format of a <a href="#TheProviderLayer_URLProviders_FontIconUrlProvider">FontIconUrl</a> is: reflect-font-icon://&lt;font name&gt;/&lt;font fontIconUrl&gt;#&lt;uni code&gt; </p> 
+    <p> E.g.: reflect-font-icon://FontAwesome/META-INF/resources/webjars/font-awesome/4.5.0/ fonts/fontawesome-webfont.ttf#F0C9 for a menu/navigation icon </p> 
+    <p> <a href="#TheProviderLayer_URLProviders_FontIconUrlProvider">FontIconUrl</a>'s can be used in your code with e.g. FontAwesomeUrl.NAVIGATION </p> 
+    <p></p> 
+    <p></p> 
     <p></p> 
     <p></p> 
     <p></p> 
@@ -665,8 +741,8 @@
     <p> The <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceMainWindow">MainWindow</a> contains all the <a href="ReferenceName_reflect_reflect-graphical-user-interface_src_main_java_nth_reflect_fw_gui_component_reflectguicomponent.java">ReflectGuiComponent</a>s needed for a <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a>: </p> 
     <ul> 
      <li><a href="#TheUserInterfaceLayer_GraphicalUserInterfaceApplicationBar">ApplicationBar</a></li> 
-     <li><a href="#TheUserInterfaceLayer_GraphicalUserInterfaceDesignRules_MainMenu">MainMenu</a></li> 
-     <li><a href="ReferenceName_reflect_reflect-for-vaadin_src_main_java_nth_reflect_ui_vaadin_tab_treetable_treetabletab.java">Tab</a>s</li> 
+     <li><a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a></li> 
+     <li><a href="#TheUserInterfaceLayer_GraphicalUserInterfaceTabs">Tab</a>s</li> 
     </ul> 
     <p></p> 
     <p> </p> 
@@ -692,12 +768,26 @@
     <p></p> 
     <h2 id="TheUserInterfaceLayer_GraphicalUserInterfaceMainMenu">Graphical User Interface Main Menu</h2> 
     <p> <a id="ReferenceName_reflect_reflect-graphical-user-interface_src_main_java_nth_reflect_fw_gui_component_mainmenu_mainmenu.java"></a> TODO PICTURE MAIN MENU </p> 
-    <p> The <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceDesignRules_MainMenu">MainMenu</a> is displayed on a panel on the left hand side of the user interface. Sometimes this panel is hidden but it can always be made visible again using the menu icon on the <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceApplicationBar">ApplicationBar</a>. The <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceDesignRules_MainMenu">MainMenu</a> provides the user access to the <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s so that the user can work on them. The <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceDesignRules_MainMenu">MainMenu</a> contains all <a href="#ActionMethods">ActionMethod</a>s of <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s that either have no method parameter or have an <a href="#ObjectBehavior_ParameterRandomGenerator_ParameterFactoryAnnotation">ParameterFactory</a>. </p> 
-    <p> <a href="#ActionMethods">ActionMethod</a>s of <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s that take a <a href="#TheDomainLayer_DomainObjects">DomainObject</a> as a parameter and have no <a href="#ObjectBehavior_ParameterRandomGenerator_ParameterFactoryAnnotation">ParameterFactory</a> are displayed in <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer3domain_formmenu.java">FormMenu</a>s and propertyMenus. </p> Each 
+    <p> The <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a> is displayed on a panel on the left hand side of the user interface. Sometimes this panel is hidden but it can always be made visible again using the menu icon on the <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceApplicationBar">ApplicationBar</a>. The <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a> provides the user access to the <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s so that the user can work on them. The <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a> contains all <a href="#ActionMethods">ActionMethod</a>s of <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s that either have no method parameter or have an <a href="#ObjectBehavior_ParameterRandomGenerator_ParameterFactoryAnnotation">ParameterFactory</a>. </p> 
+    <p> <a href="#ActionMethods">ActionMethod</a>s of <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s that take a <a href="#TheDomainLayer_DomainObjects">DomainObject</a> as a parameter and have no <a href="#ObjectBehavior_ParameterRandomGenerator_ParameterFactoryAnnotation">ParameterFactory</a> are displayed in <a href="#ActionMethods_ActionMethodsForDomainObjects_DomainObjectMenu">FormMenu</a>s and propertyMenus. </p> Each 
     <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> is always displayed as a sub menu 
     <p></p> 
     <h2 id="TheUserInterfaceLayer_GraphicalUserInterfaceTabs">Graphical User Interface Tabs</h2> 
+    <p> <a id="ReferenceName_reflect_reflect-graphical-user-interface_src_main_java_nth_reflect_fw_gui_component_tab_tab.java"></a> TODO PICTURE Tabs </p> 
+    <p> A <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceTabs">Tab</a> is a <a href="ReferenceName_reflect_reflect-graphical-user-interface_src_main_java_nth_reflect_fw_gui_component_reflectguicomponent.java">ReflectGuiComponent</a> on which some kind of information is displayed. This is often a <a href="ReferenceName_reflect_reflect-for-swing_src_main_java_nth_reflect_fw_ui_swing_tab_form_formtab.java">FormTab</a> or a <a href="ReferenceName_reflect_reflect-for-vaadin_src_main_java_nth_reflect_ui_vaadin_tab_table_tabletab.java">TableTab</a> that show the results or parameter of a <a href="#ActionMethods">ActionMethod</a>. A graphical user interface of a <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a> can have multiple tabs at the same time (see <a href="https://en.wikipedia.org/wiki/Tab_(GUI)">tabbed document interface (TDI)</a>). Only one <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceTabs">Tab</a> wil be displayed at a time. Each <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceTabs">Tab</a> will have a TabHeader that is displayed in the TabHeaderBar. You can select another <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceTabs">Tab</a> by clicking on one of the other TabHeaders or the TabSelectionButton </p> 
+    <p> A <a href="ReferenceName_reflect_reflect-graphical-user-interface_src_main_java_nth_reflect_fw_gui_graphicaluserinterfaceapplication.java">GraphicalUserInterfaceApplication</a> can contain multiple types of tabs: </p> 
+    <h3 id="TheUserInterfaceLayer_GraphicalUserInterfaceTabs_TableTab">Table Tab</h3> 
     <p> </p> 
+    <h3 id="TheUserInterfaceLayer_GraphicalUserInterfaceTabs_FormTab">Form Tab</h3> 
+    <p> </p> 
+    <h3 id="TheUserInterfaceLayer_GraphicalUserInterfaceTabs_CustomizedTabs">Customized tabs</h3> 
+    <p> The <a href="ReferenceName_reflect_reflect-for-vaadin_src_main_java_nth_reflect_ui_vaadin_tab_table_tabletab.java">TableTab</a> and <a href="ReferenceName_reflect_reflect-for-swing_src_main_java_nth_reflect_fw_ui_swing_tab_form_formtab.java">FormTab</a> are normally used to select a <a href="#TheDomainLayer_DomainObjects">DomainObject</a> and view or manipulate it. You can create your own <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceTabs">Tab</a> and configure it to be used in your <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a> if you need a different representation of the <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s. Typical examples are: </p> 
+    <ul> 
+     <li>A <a href="https://en.wikipedia.org/wiki/Blog">Blog</a> where a list of Comments (<a href="#TheDomainLayer_DomainObjects">DomainObject</a>s) are displayed in a alternative manner (See <a href="https://phraseapp.com/blog/posts/10-must-read-blogs-for-software-developer/">this blog example</a>)</li> 
+     <li>A map that represents information from a MapInformation (<a href="#TheDomainLayer_DomainObjects">DomainObject</a> (See this <a href="https://www.google.com/maps/place/Amsterdam/@52.3545653,4.7585408,11z/data=!3m1!4b1!4m5!3m4!1s0x47c63fb5949a7755:0x6600fd4cb7c0af8d!8m2!3d52.3679843!4d4.9035614">this map example</a>)</li> 
+     <p></p> 
+    </ul> 
+    <p></p> 
     <h2 id="TheUserInterfaceLayer_GraphicalUserInterfaceDesignRules">Graphical User Interface Design Rules</h2> 
     <p> <a id="ReferenceName_reflect_reflect-graphical-user-interface_src_main_java_nth_reflect_fw_gui_style_reflectgraphicaldesignrules.java"></a> </p> 
     <p> Big software companies like <a href="https://en.wikipedia.org/wiki/Google">Google</a>, <a href="https://en.wikipedia.org/wiki/Microsoft">Micro$oft</a>, <a href="https://en.wikipedia.org/wiki/Apple_Inc.">Apple</a> and <a href="https://en.wikipedia.org/wiki/Facebook">Facebook</a> spend a lot of research and effort in maximizing <a href="https://en.wikipedia.org/wiki/Usability">usability</a> and the <a href="https://en.wikipedia.org/wiki/User_experience">user experience</a> for their <a href="https://en.wikipedia.org/wiki/User_interface_design">graphical user interface design</a>s. These companies all have a set rules that say something about <a href="https://en.wikipedia.org/wiki/Usability">usability</a>, <a href="https://en.wikipedia.org/wiki/Graphic_design">graphical design</a> and <a href="https://en.wikipedia.org/wiki/Typography">typography</a>. All these companies use a <a href="https://en.wikipedia.org/wiki/Flat_design">flat design</a> style. </p> 
@@ -715,25 +805,25 @@
     <ul> 
      <li><a href="ReferenceName_reflect_reflect-graphical-user-interface_src_main_java_nth_reflect_fw_gui_style_reflectdisplaywidth.java">ReflectDisplayWidth.SMALL</a>:</li> 
      <ul> 
-      <li>The application title in the <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceApplicationBar">ApplicationBar</a> is only visible when the <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceDesignRules_MainMenu">MainMenu</a> is displayed (overlapping the tab headers because there is no space to show both of them at the same time).</li> 
-      <li>The <a href="#ActionMethods">ActionMethod</a>s of the active <a href="ReferenceName_reflect_reflect-for-vaadin_src_main_java_nth_reflect_ui_vaadin_tab_treetable_treetabletab.java">Tab</a> are displayed as OverflowMenu after clicking the Overflow icon on the <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceApplicationBar">ApplicationBar</a> (because there is no space to show the <a href="#ActionMethods">ActionMethod</a>s in the <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceApplicationBar">ApplicationBar</a>).</li> 
-      <li>The <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceDesignRules_MainMenu">MainMenu</a> is displayed as a <a href="https://material.io/design/components/navigation-drawer.html">navigation drawer</a> (overlapping the content area (tab panels) because there is no space to show both of them at the same time).</li> 
+      <li>The application title in the <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceApplicationBar">ApplicationBar</a> is only visible when the <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a> is displayed (overlapping the tab headers because there is no space to show both of them at the same time).</li> 
+      <li>The <a href="#ActionMethods">ActionMethod</a>s of the active <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceTabs">Tab</a> are displayed as OverflowMenu after clicking the Overflow icon on the <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceApplicationBar">ApplicationBar</a> (because there is no space to show the <a href="#ActionMethods">ActionMethod</a>s in the <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceApplicationBar">ApplicationBar</a>).</li> 
+      <li>The <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a> is displayed as a <a href="https://material.io/design/components/navigation-drawer.html">navigation drawer</a> (overlapping the content area (tab panels) because there is no space to show both of them at the same time).</li> 
       <li><a href="ReferenceName_reflect_reflect-graphical-user-interface_src_main_java_nth_reflect_fw_gui_component_grid_grid.java">Grid</a>s only have one column that show the <a href="#TheDomainLayer_DomainObjects">DomainObject</a> <a href="#ObjectBehavior_Title">TitleModel</a> because there is no space to show more columns</li> 
       <li><a href="ReferenceName_reflect_reflect-for-swing_src_main_java_nth_reflect_fw_ui_swing_tab_form_formtab.java">FormTab</a>s show all <a href="ReferenceName_reflect_reflect-for-javafx_src_main_java_nth_reflect_fw_javafx_control_tab_form_proppanel_propertypanel.java">PropertyPanel</a>'s underneath each other</li> 
      </ul> 
      <li><a href="ReferenceName_reflect_reflect-graphical-user-interface_src_main_java_nth_reflect_fw_gui_style_reflectdisplaywidth.java">ReflectDisplayWidth.MEDIUM</a>:</li> 
      <ul> 
-      <li>The application title in the <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceApplicationBar">ApplicationBar</a> is only visible when the <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceDesignRules_MainMenu">MainMenu</a> is displayed (overlapping the tab headers because there is no space to show both of them at the same time).</li> 
-      <li>The <a href="#ActionMethods">ActionMethod</a>s of the active <a href="ReferenceName_reflect_reflect-for-vaadin_src_main_java_nth_reflect_ui_vaadin_tab_treetable_treetabletab.java">Tab</a> are displayed as OverflowMenu after clicking the OverflowMenu icon on the <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceApplicationBar">ApplicationBar</a> (because there is no space to show the <a href="#ActionMethods">ActionMethod</a>s in the <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceApplicationBar">ApplicationBar</a>).</li> 
-      <li>The <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceDesignRules_MainMenu">MainMenu</a> is displayed as a <a href="https://material.io/design/components/navigation-drawer.html">navigation drawer</a> (overlapping the content area (tab panels) because there is no space to show both of them at the same time).</li> 
+      <li>The application title in the <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceApplicationBar">ApplicationBar</a> is only visible when the <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a> is displayed (overlapping the tab headers because there is no space to show both of them at the same time).</li> 
+      <li>The <a href="#ActionMethods">ActionMethod</a>s of the active <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceTabs">Tab</a> are displayed as OverflowMenu after clicking the OverflowMenu icon on the <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceApplicationBar">ApplicationBar</a> (because there is no space to show the <a href="#ActionMethods">ActionMethod</a>s in the <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceApplicationBar">ApplicationBar</a>).</li> 
+      <li>The <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a> is displayed as a <a href="https://material.io/design/components/navigation-drawer.html">navigation drawer</a> (overlapping the content area (tab panels) because there is no space to show both of them at the same time).</li> 
       <li><a href="ReferenceName_reflect_reflect-graphical-user-interface_src_main_java_nth_reflect_fw_gui_component_grid_grid.java">Grid</a>s only can have a few columns, depending on the available width</li> 
       <li><a href="ReferenceName_reflect_reflect-for-swing_src_main_java_nth_reflect_fw_ui_swing_tab_form_formtab.java">FormTab</a>s could have more <a href="ReferenceName_reflect_reflect-for-javafx_src_main_java_nth_reflect_fw_javafx_control_tab_form_proppanel_propertypanel.java">PropertyPanel</a>'s next to each other, depending on the available width.</li> 
      </ul> 
      <li><a href="ReferenceName_reflect_reflect-graphical-user-interface_src_main_java_nth_reflect_fw_gui_style_reflectdisplaywidth.java">ReflectDisplayWidth.LARGE</a>:</li> 
      <ul> 
-      <li>The application title is visible in the <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceApplicationBar">ApplicationBar</a> when the <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceDesignRules_MainMenu">MainMenu</a> is displayed.</li> 
-      <li>The <a href="#ActionMethods">ActionMethod</a>s of the active <a href="ReferenceName_reflect_reflect-for-vaadin_src_main_java_nth_reflect_ui_vaadin_tab_treetable_treetabletab.java">Tab</a> are displayed on the <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceApplicationBar">ApplicationBar</a> or in a OverflowMenu after clicking the OverflowMenu icon on the <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceApplicationBar">ApplicationBar</a> (if there is no space to show all the <a href="#ActionMethods">ActionMethod</a>s in the <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceApplicationBar">ApplicationBar</a>).</li> 
-      <li>The <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceDesignRules_MainMenu">MainMenu</a> is displayed on the left when it is not hidden (shifting the content area (tab panels) to the right so that both are visible)</li> 
+      <li>The application title is visible in the <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceApplicationBar">ApplicationBar</a> when the <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a> is displayed.</li> 
+      <li>The <a href="#ActionMethods">ActionMethod</a>s of the active <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceTabs">Tab</a> are displayed on the <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceApplicationBar">ApplicationBar</a> or in a OverflowMenu after clicking the OverflowMenu icon on the <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceApplicationBar">ApplicationBar</a> (if there is no space to show all the <a href="#ActionMethods">ActionMethod</a>s in the <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceApplicationBar">ApplicationBar</a>).</li> 
+      <li>The <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a> is displayed on the left when it is not hidden (shifting the content area (tab panels) to the right so that both are visible)</li> 
       <li><a href="ReferenceName_reflect_reflect-graphical-user-interface_src_main_java_nth_reflect_fw_gui_component_grid_grid.java">Grid</a>s only can have multiple columns, depending on the available width</li> 
       <li><a href="ReferenceName_reflect_reflect-for-swing_src_main_java_nth_reflect_fw_ui_swing_tab_form_formtab.java">FormTab</a>s could have more <a href="ReferenceName_reflect_reflect-for-javafx_src_main_java_nth_reflect_fw_javafx_control_tab_form_proppanel_propertypanel.java">PropertyPanel</a>'s next to each other, depending on the available width</li> 
      </ul> 
@@ -743,7 +833,7 @@
     <ul> 
      <li><a href="ReferenceName_reflect_reflect-graphical-user-interface_src_main_java_nth_reflect_fw_gui_style_reflectdisplayheight.java">ReflectDisplayHeight.SMALL</a>:</li> 
      <ul> 
-      <li>The <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceApplicationBar">ApplicationBar</a> can scroll out of sight to make more space for the <a href="ReferenceName_reflect_reflect-for-vaadin_src_main_java_nth_reflect_ui_vaadin_tab_treetable_treetabletab.java">Tab</a>s</li> 
+      <li>The <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceApplicationBar">ApplicationBar</a> can scroll out of sight to make more space for the <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceTabs">Tab</a>s</li> 
      </ul> 
      <li><a href="ReferenceName_reflect_reflect-graphical-user-interface_src_main_java_nth_reflect_fw_gui_style_reflectdisplayheight.java">ReflectDisplayHeight.MEDIUM</a>:</li> 
      <ul> 
@@ -752,7 +842,7 @@
      <li><a href="ReferenceName_reflect_reflect-graphical-user-interface_src_main_java_nth_reflect_fw_gui_style_reflectdisplayheight.java">ReflectDisplayHeight.LARGE</a>:</li> 
      <ul> 
       <li>The <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceApplicationBar">ApplicationBar</a> is always visible on top and may have more height</li> 
-      <li>The <a href="#ActionMethods">ActionMethod</a>s of the active <a href="ReferenceName_reflect_reflect-for-vaadin_src_main_java_nth_reflect_ui_vaadin_tab_treetable_treetabletab.java">Tab</a> can either be displayed on the higher <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceApplicationBar">ApplicationBar</a> or on a ToolBar on the top of the <a href="ReferenceName_reflect_reflect-for-vaadin_src_main_java_nth_reflect_ui_vaadin_tab_treetable_treetabletab.java">Tab</a></li> 
+      <li>The <a href="#ActionMethods">ActionMethod</a>s of the active <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceTabs">Tab</a> can either be displayed on the higher <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceApplicationBar">ApplicationBar</a> or on a ToolBar on the top of the <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceTabs">Tab</a></li> 
      </ul> 
     </ul> 
     <p></p> 
@@ -772,50 +862,116 @@
     <p></p> 
     <p></p> 
     <h1 id="ActionMethods">Action Methods</h1> 
-    <p> <a id="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer2service_serviceobjectactionmethod.java"></a> </p>
-    <p> <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s exist because they always have one ore more <a href="#ActionMethods">ActionMethod</a>s. ActionMethods of serviceObjects can appear as menu items in the <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceDesignRules_MainMenu">MainMenu</a>, <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer3domain_formmenu.java">FormMenu</a>, or <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer3domain_domainobjectpropertymenu.java">DomainObjectPropertyMenu</a> </p> 
-    <p> In Example: a CustomerService object may have an <a href="#ActionMethods">ActionMethod</a> such as findCustomer(CustomerSearchArgument searchArgument) that is displayed in the <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceDesignRules_MainMenu">MainMenu</a>. </p> 
-    <h3 id="TheUserInterfaceLayer_GraphicalUserInterfaceDesignRules_MainMenu">Main menu</h3> 
+    <p> <a id="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_reflection_info_actionmethod_actionmethod.java"></a> </p>
+    <p> An <a href="#ActionMethods">ActionMethod</a> is a method in a <a href="#TheDomainLayer_DomainObjects">DomainObject</a> or <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> that is displayed by the <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> as a menu item. An <a href="#ActionMethods">ActionMethod</a> is invoked by the <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> when the user clicks on the menu item. </p> 
+    <h2 id="ActionMethods_ActionMethodsForDomainObjects">Action Methods for Domain Objects</h2> 
+    <p> </p> 
+    <p> <a id="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer3domain_domainobjectactionmethod.java"></a> </p> 
+    <p> <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s may have <a href="#ActionMethods">ActionMethod</a>s that to do something with or for the given <a href="#TheDomainLayer_DomainObjects">DomainObject</a>. In example: an ShoppingCart object may have an ActionMethod such as checkout(). </p> 
+    <h3 id="ActionMethods_ActionMethodsForDomainObjects_DomainObjectMenu">Domain Object Menu</h3> 
+    <p> </p> 
+    <p> <a id="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer3domain_formmenu.java"></a> TODO PICTURE Domain object MENU and table row context menu </p> 
+    <p> <a href="#ActionMethods">ActionMethod</a>s of <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s are displayed as menu items in the <a href="#ActionMethods_ActionMethodsForDomainObjects_DomainObjectMenu">FormMenu</a>. </p> 
+    <p> The <a href="#ActionMethods_ActionMethodsForDomainObjects_DomainObjectMenu">FormMenu</a> is displayed on the <a href="https://en.wikipedia.org/wiki/Toolbar">toolbar</a> of a <a href="ReferenceName_reflect_reflect-for-swing_src_main_java_nth_reflect_fw_ui_swing_tab_form_formtab.java">FormTab</a> (that displays a <a href="#TheDomainLayer_DomainObjects">DomainObject</a>) or as a <a href="">context menu</a> when the user clicks on a row of a <a href="ReferenceName_reflect_reflect-for-vaadin_src_main_java_nth_reflect_ui_vaadin_tab_table_tabletab.java">TableTab</a>. The <a href="#ActionMethods_ActionMethodsForDomainObjects_DomainObjectMenu">FormMenu</a> allows a user to perform an action on or with a <a href="#TheDomainLayer_DomainObjects">DomainObject</a>. An <a href="#ActionMethods_ActionMethodsForDomainObjects_DomainObjectMenu">FormMenu</a> contains all the <a href="#ActionMethods">ActionMethod</a>s of the <a href="#TheDomainLayer_DomainObjects">DomainObject</a> and all <a href="#ActionMethods">ActionMethod</a> s of <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s that take the <a href="#TheDomainLayer_DomainObjects">DomainObject</a> as a parameter. Each <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> is displayed as a sub menu. </p> 
+    <p></p> 
+    <p></p> 
+    <p></p> 
+    <h2 id="ActionMethods_ActionMethodsForDomainObjectProperties">Action Methods for Domain Object Properties</h2> 
+    <p> </p> 
+    <p> <a id="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer3domain_domainobjectpropertyactionmethod.java"></a> </p> 
+    <p> <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s may have <a href="#ActionMethods">ActionMethod</a>s that do something with the value of a <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> (e.g. manipulate it). </p> 
+    <p> The name of the ActionMethod for a <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> must begin with the action name, followed by its property name </p> Examples: 
+    <ul> 
+     <li>A ShoppingCar object may have an property lineItems that has a <a href="#ActionMethods_ActionMethodsForDomainObjectProperties">DomainObjectPropertyActionMethod</a>s such as addLineItems(LineItem lineItem) or removeLineItem(LineItem lineItem) or removeAllLineItems().</li> 
+     <li>A Customer object may have an property address that has a PropertyActionMethod such as moveToNewAddress(Address new Address)</li> 
+    </ul> 
+    <a href="#ActionMethods">ActionMethod</a>s of 
+    <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s are displayed as menu items in the PropertyMenu. 
+    <h3 id="ActionMethods_ActionMethodsForDomainObjectProperties_DomainObjectPropertyMenu">Domain Object Property Menu</h3> 
+    <p> </p> 
+    <p> <a id="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer3domain_domainobjectpropertymenu.java"></a> TODO PICTURE property context MENU and field table row context menu </p> 
+    <p> The <a href="#ActionMethods_ActionMethodsForDomainObjectProperties_DomainObjectPropertyMenu">DomainObjectPropertyMenu</a> is displayed as a <a href="https://en.wikipedia.org/wiki/Context_menu">context menu</a> in a <a href="ReferenceName_reflect_reflect-for-swing_src_main_java_nth_reflect_fw_ui_swing_tab_form_formtab.java">FormTab</a> when the menu button of a referenceProperty or a row of a collectionproperty is clicked. The propertyMenu allows a user to manipulate a <a href="#TheDomainLayer_Properties">DomainObjectProperty</a>. It contains all <a href="#ActionMethods_ActionMethodsForDomainObjectProperties">DomainObjectPropertyActionMethod</a>s of and all <a href="#ActionMethods">ActionMethod</a>s of <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s that take the <a href="#TheDomainLayer_DomainObjects">DomainObject</a> as a parameter. Each <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> is displayed as a sub menu. </p> 
+    <p></p> 
+    <p></p> 
+    <p></p> 
+    <p></p> 
+    <h2 id="ActionMethods_ActionMethodsForServiceObjects">Action Methods for Service Objects</h2> 
+    <p> </p> 
+    <p> <a id="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer2service_serviceobjectactionmethod.java"></a> </p> 
+    <p> <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s exist because they always have one ore more <a href="#ActionMethods">ActionMethod</a>s. ActionMethods of serviceObjects can appear as menu items in the <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a>, <a href="#ActionMethods_ActionMethodsForDomainObjects_DomainObjectMenu">FormMenu</a>, or <a href="#ActionMethods_ActionMethodsForDomainObjectProperties_DomainObjectPropertyMenu">DomainObjectPropertyMenu</a> </p> 
+    <p> In Example: a CustomerService object may have an <a href="#ActionMethods">ActionMethod</a> such as findCustomer(CustomerSearchArgument searchArgument) that is displayed in the <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a>. </p> 
+    <h3 id="ActionMethods_ActionMethodsForServiceObjects_MainMenu">Main menu</h3> 
     <p> <a id="ReferenceName_reflect_reflect-graphical-user-interface_src_main_java_nth_reflect_fw_gui_component_mainmenu_mainmenu.java"></a> TODO PICTURE MAIN MENU </p> 
-    <p> The <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceDesignRules_MainMenu">MainMenu</a> is displayed on a panel on the left hand side of the user interface. Sometimes this panel is hidden but it can always be made visible again using the menu icon on the <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceApplicationBar">ApplicationBar</a>. The <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceDesignRules_MainMenu">MainMenu</a> provides the user access to the <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s so that the user can work on them. The <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceDesignRules_MainMenu">MainMenu</a> contains all <a href="#ActionMethods">ActionMethod</a>s of <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s that either have no method parameter or have an <a href="#ObjectBehavior_ParameterRandomGenerator_ParameterFactoryAnnotation">ParameterFactory</a>. </p> 
-    <p> <a href="#ActionMethods">ActionMethod</a>s of <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s that take a <a href="#TheDomainLayer_DomainObjects">DomainObject</a> as a parameter and have no <a href="#ObjectBehavior_ParameterRandomGenerator_ParameterFactoryAnnotation">ParameterFactory</a> are displayed in <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer3domain_formmenu.java">FormMenu</a>s and propertyMenus. </p> Each 
+    <p> The <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a> is displayed on a panel on the left hand side of the user interface. Sometimes this panel is hidden but it can always be made visible again using the menu icon on the <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceApplicationBar">ApplicationBar</a>. The <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a> provides the user access to the <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s so that the user can work on them. The <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a> contains all <a href="#ActionMethods">ActionMethod</a>s of <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s that either have no method parameter or have an <a href="#ObjectBehavior_ParameterRandomGenerator_ParameterFactoryAnnotation">ParameterFactory</a>. </p> 
+    <p> <a href="#ActionMethods">ActionMethod</a>s of <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s that take a <a href="#TheDomainLayer_DomainObjects">DomainObject</a> as a parameter and have no <a href="#ObjectBehavior_ParameterRandomGenerator_ParameterFactoryAnnotation">ParameterFactory</a> are displayed in <a href="#ActionMethods_ActionMethodsForDomainObjects_DomainObjectMenu">FormMenu</a>s and propertyMenus. </p> Each 
     <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> is always displayed as a sub menu 
     <p></p> 
+    <p></p> 
+    <p></p> 
+    <h2 id="ActionMethods_ActionMethodsConvention">Action Methods Convention</h2> 
+    <p> Any method in a <a href="#TheDomainLayer_DomainObjects">DomainObject</a> or <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> can be an Action method, provided that it complies with the following convention: </p> 
+    <ul> 
+     <li>The method has no parameter or a single <a href="#TheDomainLayer_DomainObjects">DomainObject</a> parameter</li> 
+     <li>Its return type (if any) are types recognized by the <a href="#TheReflectFramework">ReflectFramework</a> (see below)</li> 
+     <li>The method is not a getter method or a setter method (see <a href="#TheDomainLayer_Properties">DomainObjectProperty</a>)</li> 
+     <li>The method is not a <a href="#ActionMethods_ActionBehavior_BehavioralMethods">BehavioralMethod</a></li> 
+     <li>The method is public (not private)</li> 
+     <li>The method is NOT static</li> 
+    </ul> 
+    <h2 id="ActionMethods_ActionMethodNames">Action method names</h2> 
+    <p> The name of an <a href="#ActionMethods">ActionMethod</a> should describe the action and match the <a href="http://martinfowler.com/bliki/UbiquitousLanguage.html">Ubiquitous Language</a> (in terms understood by both users and developers). Keep in mind that the goal of a user is almost never to create, update or delete objects. Method names like: createPerson(Person person), updatePerson(Person person) and removePerson(Person person) should therefore be avoided where possible. Method names like addNewBorn(BirthCirtificate birthCirtificate), addMarriage(Marriage marriage), deceased(DeathCertificate deathCertificate) would be better method names. </p> 
+    <h2 id="ActionMethods_ActionMethodParameter">Action method parameter</h2> 
+    <p> An action method either has no parameter or a single <a href="#TheDomainLayer_DomainObjects">DomainObject</a> as a parameter. If not, the <a href="#TheReflectFramework">ReflectFramework</a> will not recognize a method as an <a href="#ActionMethods">ActionMethod</a>. </p> 
+    <h2 id="ActionMethods_ActionMethodReturnValue">Action method return value</h2> 
+    <p> The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> renders the output of a method, depending on the type of the action method return value: </p> 
+    <ul> 
+     <li>No return value (void method): The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> will display a short message when the method has been executed</li> 
+     <li><a href="https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html">A primitive data type</a>: The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> will display a message dialog that displays the return value after the method is been executed</li> 
+     <li>A <a href="#TheDomainLayer_DomainObjects">DomainObject</a>: The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> displays the <a href="#TheDomainLayer_DomainObjects">DomainObject</a> in a form on a new tab.</li> 
+     <li>A <a href="http://en.wikipedia.org/wiki/Java_collections_framework">collection</a> of <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s: The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> displays the <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s in table on a new tab.</li> 
+     <li>A URI: The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> displays the contents of the URI on a new tab.</li> 
+     <li>A <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer1userinterface_controller_downloadstream.java">DownloadStream</a>: The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> will open a &quot;Save as&quot; dialog&quot; so that the file can be down loaded.</li> 
+    </ul> 
+    <p></p> 
+    <h2 id="ActionMethods_ActionExecutionModes">Action execution modes</h2> 
+    <p> <a href="#ActionMethods">ActionMethod</a>s can be annotated, so that the <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> knows how the <a href="#ActionMethods">ActionMethod</a> needs to be invoked after the user has clicked on the corresponding menu item. For more information see <a href="#ObjectBehavior_ExecutionMode">ExecutionMode</a> </p> 
+    <h2 id="ActionMethods_ActionBehavior">Action behavior</h2> 
+    <p> You can specify certain things about both the behavior and presentation of actions methods, such as their display name, icon, visibility, enabled state, etc with help of annotations or behavior methods. See the sections on <a href="#ObjectBehavior">ObjectBehavior</a>. </p> 
     <p></p> 
     <h1 id="ObjectBehavior">Object behavior</h1> 
     <p> <a id="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_reflection_behavior_objectbehavior.java"></a> The <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a>, <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s and <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s can have behavior that defines how the objects act or how they are displayed. Behavior can be defined with: </p>
     <ul> 
-     <li><a href="#TheUserInterfaceLayer_GraphicalUserInterfaceDesignRules_BehavioralAnnotations">BehavioralAnnotation</a>s</li> 
-     <li><a href="#TheUserInterfaceLayer_GraphicalUserInterfaceDesignRules_BehavioralMethods">BehavioralMethod</a>s</li> 
+     <li><a href="#ActionMethods_ActionBehavior_BehavioralAnnotations">BehavioralAnnotation</a>s</li> 
+     <li><a href="#ActionMethods_ActionBehavior_BehavioralMethods">BehavioralMethod</a>s</li> 
     </ul> 
-    <h3 id="TheUserInterfaceLayer_GraphicalUserInterfaceDesignRules_BehavioralAnnotations">Behavioral Annotations</h3> 
+    <h3 id="ActionMethods_ActionBehavior_BehavioralAnnotations">Behavioral Annotations</h3> 
     <p> </p> 
     <p> <a id="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_reflection_behavior_behavioralannotation.java"></a> </p> 
-    <p> <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceDesignRules_BehavioralAnnotations">BehavioralAnnotation</a>s are recognized by the <a href="#TheReflectFramework">ReflectFramework</a> and define how <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s, <a href="#TheDomainLayer_Properties">DomainObjectProperty</a>s or <a href="#ActionMethods">ActionMethod</a>s behave (how they act and how they are displayed). </p> 
-    <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceDesignRules_BehavioralAnnotations">BehavioralAnnotation</a>s are normally located before the declaration of the member: 
+    <p> <a href="#ActionMethods_ActionBehavior_BehavioralAnnotations">BehavioralAnnotation</a>s are recognized by the <a href="#TheReflectFramework">ReflectFramework</a> and define how <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s, <a href="#TheDomainLayer_Properties">DomainObjectProperty</a>s or <a href="#ActionMethods">ActionMethod</a>s behave (how they act and how they are displayed). </p> 
+    <a href="#ActionMethods_ActionBehavior_BehavioralAnnotations">BehavioralAnnotation</a>s are normally located before the declaration of the member: 
     <ul> 
-     <li><a href="#TheUserInterfaceLayer_GraphicalUserInterfaceDesignRules_BehavioralAnnotations">BehavioralAnnotation</a>s for a class: are located before the class key word </li> 
-     <li><a href="#TheUserInterfaceLayer_GraphicalUserInterfaceDesignRules_BehavioralAnnotations">BehavioralAnnotation</a>s for a <a href="#TheDomainLayer_Properties">DomainObjectProperty</a>: are located before the getter method of a <a href="#TheDomainLayer_Properties">DomainObjectProperty</a></li> 
-     <li><a href="#TheUserInterfaceLayer_GraphicalUserInterfaceDesignRules_BehavioralAnnotations">BehavioralAnnotation</a>s for an <a href="#ActionMethods">ActionMethod</a>: are located before the <a href="#ActionMethods">ActionMethod</a></li> 
+     <li><a href="#ActionMethods_ActionBehavior_BehavioralAnnotations">BehavioralAnnotation</a>s for a class: are located before the class key word </li> 
+     <li><a href="#ActionMethods_ActionBehavior_BehavioralAnnotations">BehavioralAnnotation</a>s for a <a href="#TheDomainLayer_Properties">DomainObjectProperty</a>: are located before the getter method of a <a href="#TheDomainLayer_Properties">DomainObjectProperty</a></li> 
+     <li><a href="#ActionMethods_ActionBehavior_BehavioralAnnotations">BehavioralAnnotation</a>s for an <a href="#ActionMethods">ActionMethod</a>: are located before the <a href="#ActionMethods">ActionMethod</a></li> 
     </ul> 
     <p></p> 
     <p></p> 
-    <h3 id="TheUserInterfaceLayer_GraphicalUserInterfaceDesignRules_BehavioralMethods">Behavioral Methods</h3> 
+    <h3 id="ActionMethods_ActionBehavior_BehavioralMethods">Behavioral Methods</h3> 
     <p> </p> 
     <p> <a id="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_reflection_behavior_behavioralmethod.java"></a> </p> 
-    <p> <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceDesignRules_BehavioralMethods">BehavioralMethod</a>s are recognized by the <a href="#TheReflectFramework">ReflectFramework</a> and dynamically define how <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s, <a href="#TheDomainLayer_Properties">DomainObjectProperty</a>s or <a href="#ActionMethods">ActionMethod</a>s behave (how they act and how they displayed). The <a href="#TheReflectFramework">ReflectFramework</a> will call these <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceDesignRules_BehavioralMethods">BehavioralMethod</a>s when the user interface is updated to get the current behavioral values depending on the state of the object (property values) </p> 
-    <h3 id="TheUserInterfaceLayer_GraphicalUserInterfaceDesignRules_BehavioralMethodConvention">Behavioral Method Convention</h3> 
+    <p> <a href="#ActionMethods_ActionBehavior_BehavioralMethods">BehavioralMethod</a>s are recognized by the <a href="#TheReflectFramework">ReflectFramework</a> and dynamically define how <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s, <a href="#TheDomainLayer_Properties">DomainObjectProperty</a>s or <a href="#ActionMethods">ActionMethod</a>s behave (how they act and how they displayed). The <a href="#TheReflectFramework">ReflectFramework</a> will call these <a href="#ActionMethods_ActionBehavior_BehavioralMethods">BehavioralMethod</a>s when the user interface is updated to get the current behavioral values depending on the state of the object (property values) </p> 
+    <h3 id="ActionMethods_ActionBehavior_BehavioralMethodConvention">Behavioral Method Convention</h3> 
     <ul> 
-     <li>Syntax: &lt;memberName&gt;&lt;behaviourName&gt;<br /> &lt;memberName&gt;= can be a <a href="ReferenceName_reflect_reflect-core_src_test_java_nth_reflect_fw_layer5provider_reflection_info_type_testdomainclass.java">Class</a>Name, a <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> Name or a <a href="#ActionMethods">ActionMethod</a>Name<br /> &lt;behaviourName&gt;= A behavior like FontIcon, Hidden, Disabled, Validation, etc</li> 
-     <li><a href="#TheUserInterfaceLayer_GraphicalUserInterfaceDesignRules_BehavioralMethods">BehavioralMethod</a>s do NOT have any parameters</li> 
-     <li><a href="#TheUserInterfaceLayer_GraphicalUserInterfaceDesignRules_BehavioralMethods">BehavioralMethod</a>s ALWAYS return a value (see <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceDesignRules_BehavioralMethods">BehavioralMethod.returnType()</a> of the different implementations</li> 
-     <li><a href="#TheUserInterfaceLayer_GraphicalUserInterfaceDesignRules_BehavioralMethods">BehavioralMethod</a>s are public</li> 
-     <li><a href="#TheUserInterfaceLayer_GraphicalUserInterfaceDesignRules_BehavioralMethods">BehavioralMethod</a>s are not static</li> 
-     <li><a href="#TheUserInterfaceLayer_GraphicalUserInterfaceDesignRules_BehavioralMethods">BehavioralMethod</a>s are normally located after the declaration of the member:</li> 
+     <li>Syntax: &lt;memberName&gt;&lt;behaviourName&gt;<br /> &lt;memberName&gt;= can be a <a href="ReferenceName_Class">Class</a>Name, a <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> Name or a <a href="#ActionMethods">ActionMethod</a>Name<br /> &lt;behaviourName&gt;= A behavior like FontIcon, Hidden, Disabled, Validation, etc</li> 
+     <li><a href="#ActionMethods_ActionBehavior_BehavioralMethods">BehavioralMethod</a>s do NOT have any parameters</li> 
+     <li><a href="#ActionMethods_ActionBehavior_BehavioralMethods">BehavioralMethod</a>s ALWAYS return a value (see <a href="#ActionMethods_ActionBehavior_BehavioralMethods">BehavioralMethod.returnType()</a> of the different implementations</li> 
+     <li><a href="#ActionMethods_ActionBehavior_BehavioralMethods">BehavioralMethod</a>s are public</li> 
+     <li><a href="#ActionMethods_ActionBehavior_BehavioralMethods">BehavioralMethod</a>s are not static</li> 
+     <li><a href="#ActionMethods_ActionBehavior_BehavioralMethods">BehavioralMethod</a>s are normally located after the declaration of the member:</li> 
      <ul> 
-      <li><a href="#TheUserInterfaceLayer_GraphicalUserInterfaceDesignRules_BehavioralMethods">BehavioralMethod</a>s for classes: are located after the constructors </li> 
-      <li><a href="#TheUserInterfaceLayer_GraphicalUserInterfaceDesignRules_BehavioralMethods">BehavioralMethod</a>s for <a href="#TheDomainLayer_Properties">DomainObjectProperty</a>: are located after the getter and setter methods of the properties</li> 
-      <li><a href="#TheUserInterfaceLayer_GraphicalUserInterfaceDesignRules_BehavioralMethods">BehavioralMethod</a>s for <a href="#ActionMethods">ActionMethod</a>: are located after the <a href="#ActionMethods">ActionMethod</a></li> 
+      <li><a href="#ActionMethods_ActionBehavior_BehavioralMethods">BehavioralMethod</a>s for classes: are located after the constructors </li> 
+      <li><a href="#ActionMethods_ActionBehavior_BehavioralMethods">BehavioralMethod</a>s for <a href="#TheDomainLayer_Properties">DomainObjectProperty</a>: are located after the getter and setter methods of the properties</li> 
+      <li><a href="#ActionMethods_ActionBehavior_BehavioralMethods">BehavioralMethod</a>s for <a href="#ActionMethods">ActionMethod</a>: are located after the <a href="#ActionMethods">ActionMethod</a></li> 
      </ul> 
     </ul> 
     <p></p> 
@@ -823,10 +979,10 @@
     <h2 id="ObjectBehavior_DisplayName">Display Name</h2> 
     <p> </p> 
     <p> <a id="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_reflection_behavior_displayname_displaynamemodel.java"></a> </p> 
-    <p> The <a href="ReferenceName_reflect_reflect-core_src_test_java_nth_reflect_fw_layer5provider_reflection_info_type_testdomainclass.java">Class</a>Names, <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> names and <a href="#ActionMethods">ActionMethod</a>Names are part of the <a href="http://martinfowler.com/bliki/UbiquitousLanguage.html">ubiquitous language</a> (in terms both understand by users and developers). The <a href="#TheReflectFramework">ReflectFramework</a> therefore displays the same names as used in the program code. </p> 
+    <p> The <a href="ReferenceName_Class">Class</a>Names, <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> names and <a href="#ActionMethods">ActionMethod</a>Names are part of the <a href="http://martinfowler.com/bliki/UbiquitousLanguage.html">ubiquitous language</a> (in terms both understand by users and developers). The <a href="#TheReflectFramework">ReflectFramework</a> therefore displays the same names as used in the program code. </p> 
     <h3 id="ObjectBehavior_DisplayName_DisplayNameDefault">DisplayName Default</h3> 
-    <p> <a href="ReferenceName_reflect_reflect-core_src_test_java_nth_reflect_fw_layer5provider_reflection_info_type_testdomainclass.java">Class</a> names, <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> names and <a href="#ActionMethods">ActionMethod</a> names in the <a href="https://en.wikipedia.org/wiki/Codebase">codebase</a> use names such as OrderService, orderLines, addOrderLine (using no spaces, <a href="https://nl.wikipedia.org/wiki/CamelCase">camelCase</a> and no special characters). If the user is a an human, more user friendly names are needed such as “Orders” “Order lines” and “Add order line”. This format is called the <a href="#ObjectBehavior_DisplayName_DisplayNameAnnotation">DisplayName</a>. The <a href="#TheReflectFramework">ReflectFramework</a> will automatically convert the names used in the code to a human readable format (<a href="#ObjectBehavior_DisplayName_DisplayNameAnnotation">DisplayName</a>) when needed. </p> 
-    <p> The <a href="#TheReflectFramework">ReflectFramework</a> supports DisplayNames for multiple languages. The <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_language_defaultlanguageprovider.java">LanguageProvider</a> is used to get the default displayNames from a language specific property files. For more information see <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_language_defaultlanguageprovider.java">LanguageProvider</a>. </p> 
+    <p> <a href="ReferenceName_Class">Class</a> names, <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> names and <a href="#ActionMethods">ActionMethod</a> names in the <a href="https://en.wikipedia.org/wiki/Codebase">codebase</a> use names such as OrderService, orderLines, addOrderLine (using no spaces, <a href="https://nl.wikipedia.org/wiki/CamelCase">camelCase</a> and no special characters). If the user is a an human, more user friendly names are needed such as “Orders” “Order lines” and “Add order line”. This format is called the <a href="#ObjectBehavior_DisplayName_DisplayNameAnnotation">DisplayName</a>. The <a href="#TheReflectFramework">ReflectFramework</a> will automatically convert the names used in the code to a human readable format (<a href="#ObjectBehavior_DisplayName_DisplayNameAnnotation">DisplayName</a>) when needed. </p> 
+    <p> The <a href="#TheReflectFramework">ReflectFramework</a> supports DisplayNames for multiple languages. The <a href="#TheProviderLayer_LanguageProvider">LanguageProvider</a> is used to get the default displayNames from a language specific property files. For more information see <a href="#TheProviderLayer_LanguageProvider">LanguageProvider</a>. </p> 
     <h3 id="ObjectBehavior_DisplayName_DisplayNameAnnotation">DisplayName Annotation</h3> 
     <p> </p> 
     <p> <a id="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_reflection_behavior_displayname_displayname.java"></a> The <a href="#TheReflectFramework">ReflectFramework</a> will automatically convert the names used in the program code to a human readable English format by default. In some cases the default <a href="#ObjectBehavior_DisplayName_DisplayNameAnnotation">DisplayName</a> does not suffice, in example when: </p> 
@@ -851,7 +1007,7 @@
     <p> <a id="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_reflection_behavior_description_descriptionmodel.java"></a> </p> 
     <p> Each <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> or <a href="#ActionMethods">ActionMethod</a> can have a text to explain the class member in more detail. This <a href="#ObjectBehavior_Description">DescriptionModel</a> is often displayed in a graphical user interface as <a href="https://en.wikipedia.org/wiki/Tooltip">tooltip</a> or can be used by most <a href="https://en.wikipedia.org/wiki/Computer_accessibility">accessibility tools (e.g. for blind people)</a> when the user hovers over the <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> or <a href="#ActionMethods">ActionMethod</a> (menu item) or icon </p> 
     <h3 id="ObjectBehavior_Description_DescriptionDefault">Description Default</h3> 
-    <p> By default the description is the same as the default <a href="#ObjectBehavior_DisplayName_DisplayNameAnnotation">DisplayName</a>, therefore it is recommended to override the default value where needed. You can override the default value by by adding the <a href="#ObjectBehavior_Description_DescriptionAnnotation">Description</a> in the language property files (see <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_language_defaultlanguageprovider.java">LanguageProvider</a>) or by adding a description annotation. </p> 
+    <p> By default the description is the same as the default <a href="#ObjectBehavior_DisplayName_DisplayNameAnnotation">DisplayName</a>, therefore it is recommended to override the default value where needed. You can override the default value by by adding the <a href="#ObjectBehavior_Description_DescriptionAnnotation">Description</a> in the language property files (see <a href="#TheProviderLayer_LanguageProvider">LanguageProvider</a>) or by adding a description annotation. </p> 
     <h3 id="ObjectBehavior_Description_DescriptionAnnotation">Description Annotation</h3> 
     <p> </p> 
     <p> <a id="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_reflection_behavior_description_description.java"></a> </p> 
@@ -927,7 +1083,7 @@
     <p> <a id="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_reflection_behavior_fonticon_fonticon.java"></a> </p> 
     <p> You can define the <a href="ReferenceName_reflect_reflect-for-javafx_src_main_java_nth_reflect_fw_javafx_control_fonticon_fonticon.java">FontIcon</a> by placing an <a href="ReferenceName_reflect_reflect-for-javafx_src_main_java_nth_reflect_fw_javafx_control_fonticon_fonticon.java">FontIcon</a> annotation before the class key word of the <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a> or the <a href="#TheDomainLayer_DomainObjects">DomainObject</a> or before the <a href="#ActionMethods">ActionMethod</a>. </p> 
     <p> Syntax: <a href="ReferenceName_reflect_reflect-for-javafx_src_main_java_nth_reflect_fw_javafx_control_fonticon_fonticon.java">FontIcon</a>(String fontIconUrl) </p> 
-    <p> Parameter fontIconUrl: See <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_url_fonticon_fonticonurl.java">FontIconUrl</a> </p> 
+    <p> Parameter fontIconUrl: See <a href="#TheProviderLayer_URLProviders_FontIconUrlProvider">FontIconUrl</a> </p> 
     <p></p> 
     <p></p> 
     <h3 id="ObjectBehavior_FontIcon_FontIconMethod">FontIcon Method</h3> 
@@ -935,7 +1091,7 @@
     <p> <a id="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_reflection_behavior_fonticon_fonticonmethod.java"></a> </p> 
     <p> Instead of the <a href="ReferenceName_reflect_reflect-for-javafx_src_main_java_nth_reflect_fw_javafx_control_fonticon_fonticon.java">FontIcon</a> annotation you can also define the icon with a <a href="#ObjectBehavior_FontIcon_FontIconMethod">FontIconMethod</a>. This allows you to change the icon dynamically during runtime, based on the object state (e.g. when the <a href="#TheDomainLayer_DomainObjects">DomainObject</a> Person is a male or female). </p> 
     <p> Syntax: public string &lt;className or <a href="#ActionMethods">ActionMethod</a>Name&gt;FontIcon() </p> The return value must be an 
-    <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_url_fonticon_fonticonurl.java">FontIconUrl</a>. TODO EXAMPLE customer male or female icon 
+    <a href="#TheProviderLayer_URLProviders_FontIconUrlProvider">FontIconUrl</a>. TODO EXAMPLE customer male or female icon 
     <p></p> 
     <p></p> 
     <p></p> 
@@ -957,7 +1113,7 @@
     <p> <a id="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_reflection_behavior_applicationicon_applicationicon.java"></a> </p> 
     <p> You can define the <a href="#ObjectBehavior_ApplicationIcon_ApplicationIconAnnotation">ApplicationIcon</a> by placing an <a href="ReferenceName_reflect_reflect-for-javafx_src_main_java_nth_reflect_fw_javafx_control_fonticon_fonticon.java">FontIcon</a> annotation before the “class” of the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a>. </p> 
     <p> Syntax: <a href="#ObjectBehavior_ApplicationIcon_ApplicationIconAnnotation">ApplicationIcon</a>(String iconURL) </p> 
-    <p> Parameter iconURI: a URL to a image file. Best practice is to put the icon file in the package of the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a> class and refer to it using a <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_url_classresource_classresourceurl.java">ClassResourceUrl</a>. TODO: example. </p> 
+    <p> Parameter iconURI: a URL to a image file. Best practice is to put the icon file in the package of the <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a> class and refer to it using a <a href="#TheProviderLayer_URLProviders_ClassResourceUrlProvider">ClassResourceUrl</a>. TODO: example. </p> 
     <p></p> 
     <p></p> 
     <h3 id="ObjectBehavior_ApplicationIcon_ApplicationIconMethod">ApplicationIcon Method</h3> 
@@ -966,7 +1122,7 @@
     <p> Instead of the <a href="ReferenceName_reflect_reflect-for-javafx_src_main_java_nth_reflect_fw_javafx_control_fonticon_fonticon.java">FontIcon</a> annotation you can also define the icon with a <a href="#ObjectBehavior_ApplicationIcon_ApplicationIconMethod">ApplicationIconMethod</a>. This allows you to change the icon dynamically during runtime, based on state (e.g. when the <a href="#TheDomainLayer_DomainObjects">DomainObject</a> Person is a male or female). </p> 
     <p> Syntax: public string &lt;ApplicationClassName&gt;ApplicationIcon() </p> The return value must be an a URL to the 
     <a href="#ObjectBehavior_ApplicationIcon_ApplicationIconAnnotation">ApplicationIcon</a> file, e.g. a 
-    <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_url_classresource_classresourceurl.java">ClassResourceUrl</a>. TODO EXAMPLE of a changing application icon 
+    <a href="#TheProviderLayer_URLProviders_ClassResourceUrlProvider">ClassResourceUrl</a>. TODO EXAMPLE of a changing application icon 
     <p></p> 
     <p></p> 
     <p></p> 
@@ -989,8 +1145,8 @@
     <p> Syntax: @Hidden(propertyHiddenFor, exceptForRoles) </p> 
     <p> Parameters: </p> 
     <ul> 
-     <li><a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_reflection_behavior_disabled_disabledmodel.java">propertyHiddenFor()</a>: optional and for properties only: to indicate if the property should be hidden in <a href="ReferenceName_reflect_reflect-for-swing_src_main_java_nth_reflect_fw_ui_swing_tab_form_formtab.java">FormTab</a>s, <a href="ReferenceName_reflect_reflect-for-vaadin_src_main_java_nth_reflect_ui_vaadin_tab_treetable_treetabletab.java">TableTab</a>s or both (hidden for both is default).</li> 
-     <li><a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_reflection_behavior_disabled_disabledmodel.java">exceptForRoleNames()</a> : optional comma separated string of user roles that are allowed to see the <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> or <a href="#ActionMethods">ActionMethod</a></li> 
+     <li><a href="ReferenceName_">propertyHiddenFor()</a>: optional and for properties only: to indicate if the property should be hidden in <a href="ReferenceName_reflect_reflect-for-swing_src_main_java_nth_reflect_fw_ui_swing_tab_form_formtab.java">FormTab</a>s, <a href="ReferenceName_reflect_reflect-for-vaadin_src_main_java_nth_reflect_ui_vaadin_tab_table_tabletab.java">TableTab</a>s or both (hidden for both is default).</li> 
+     <li><a href="ReferenceName_">exceptForRoleNames()</a> : optional comma separated string of user roles that are allowed to see the <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> or <a href="#ActionMethods">ActionMethod</a></li> 
     </ul> 
     <p></p> TODO EXAMPLE 
     <p></p> 
@@ -998,8 +1154,8 @@
     <h3 id="ObjectBehavior_Hidden_HiddenMethod">Hidden Method</h3> 
     <p> </p> 
     <p> <a id="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_reflection_behavior_hidden_hiddenmethod.java"></a> </p> 
-    <p> You can hide a <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> or <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer3domain_domainobjectactionmethod.java">DomainObjectActionMethod</a> depending on the <a href="#TheDomainLayer_DomainObjects">DomainObject</a> state (the value of its properties), with an ...Hidden method. If you have a <a href="#ObjectBehavior_Hidden_HiddenAnnotation">Hidden</a> annotation and a ...Hidden method, both need to be true in order to hide the <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> or <a href="#ActionMethods">ActionMethod</a>. </p> 
-    <p> Note that you can not change the visibility with a ...Hidden method for <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> in a <a href="ReferenceName_reflect_reflect-for-vaadin_src_main_java_nth_reflect_ui_vaadin_tab_treetable_treetabletab.java">TableTab</a>! </p> 
+    <p> You can hide a <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> or <a href="#ActionMethods_ActionMethodsForDomainObjects">DomainObjectActionMethod</a> depending on the <a href="#TheDomainLayer_DomainObjects">DomainObject</a> state (the value of its properties), with an ...Hidden method. If you have a <a href="#ObjectBehavior_Hidden_HiddenAnnotation">Hidden</a> annotation and a ...Hidden method, both need to be true in order to hide the <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> or <a href="#ActionMethods">ActionMethod</a>. </p> 
+    <p> Note that you can not change the visibility with a ...Hidden method for <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> in a <a href="ReferenceName_reflect_reflect-for-vaadin_src_main_java_nth_reflect_ui_vaadin_tab_table_tabletab.java">TableTab</a>! </p> 
     <p> Syntax: public boolean &lt;property name or actionMethodName&amp;gtHidden;() </p> 
     <p> ReturnValue: a boolean that is true if the <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> or <a href="#ActionMethods">ActionMethod</a> needs to be hidden </p> 
     <p></p> 
@@ -1024,13 +1180,13 @@
     <p> <a id="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_reflection_behavior_disabled_disabled.java"></a> </p> 
     <p> You can disable a <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> by putting the <a href="#ObjectBehavior_Disabled_DisabledAnnotation">Disabled</a> annotation before the getter method or you can disable an <a href="#ActionMethods">ActionMethod</a> by putting the <a href="#ObjectBehavior_Disabled_DisabledAnnotation">Disabled</a> annotation before the <a href="#ActionMethods">ActionMethod</a>. </p> 
     <p> Syntax: @Disabled(exceptForRoles) </p> 
-    <p> Parameter: <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_reflection_behavior_disabled_disabledmodel.java">exceptForRoleNames()</a>: optional comma separated string of user roles that are allowed to edit the <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> or invoke a <a href="#ActionMethods">ActionMethod</a> </p> TODO EXAMPLE 
+    <p> Parameter: <a href="ReferenceName_">exceptForRoleNames()</a>: optional comma separated string of user roles that are allowed to edit the <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> or invoke a <a href="#ActionMethods">ActionMethod</a> </p> TODO EXAMPLE 
     <p></p> 
     <p></p> 
     <h3 id="ObjectBehavior_Disabled_DisabledMethod">Disabled Method</h3> 
     <p> </p> 
     <p> <a id="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_reflection_behavior_disabled_disabledmethod.java"></a> </p> 
-    <p> You can disable a <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> or <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer3domain_domainobjectactionmethod.java">DomainObjectActionMethod</a> depending on the <a href="#TheDomainLayer_DomainObjects">DomainObject</a> state (the value of its properties). </p> 
+    <p> You can disable a <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> or <a href="#ActionMethods_ActionMethodsForDomainObjects">DomainObjectActionMethod</a> depending on the <a href="#TheDomainLayer_DomainObjects">DomainObject</a> state (the value of its properties). </p> 
     <p> If you have a <a href="#ObjectBehavior_Disabled_DisabledAnnotation">Disabled</a> annotation and a disabled method, only one needs to be true in order to disable the <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> or <a href="#ActionMethods">ActionMethod</a>. </p> 
     <p> Syntax: public boolean &lt;property name or actionMethodName&gt;Disabled() </p> 
     <p> ReturnValue: a boolean that is true if the <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> or <a href="#ActionMethods">ActionMethod</a> needs to be disabled </p> 
@@ -1055,7 +1211,14 @@
     <p></p> 
     <h2 id="ObjectBehavior_Format">Format</h2> 
     <p> </p> 
-    <p> <a id="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_reflection_behavior_format_impl_numericformat.java"></a> Adapter for <a href="ReferenceName_DecimalFormat">DecimalFormat</a> to return the correct <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_reflection_behavior_disabled_disabledmodel.java">numberType</a> </p> 
+    <p> <a id="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_reflection_behavior_format_format.java"></a> </p> 
+    <p> Some property types such as <a href="ReferenceName_Date">Date</a>, time, <a href="ReferenceName_Number">Number</a> can be formatted with help of the <a href="#ObjectBehavior_Format">Format</a> annotation. Note that the format can NOT be changed during runtime. </p> The 
+    <a href="#ObjectBehavior_Format">Format</a> annotation can be added before the getter method of a 
+    <a href="#TheDomainLayer_Properties">DomainObjectProperty</a>. 
+    <p></p> 
+    <p> Syntax: @Format(string pattern) </p> 
+    <p> Please see the JavaDoc of the <a href="ReferenceName_SimpleDateFormat">SimpleDateFormat</a> and <a href="ReferenceName_DecimalFormat">DecimalFormat</a> formatters to learn more about the patterns that can be used. See the <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_reflection_behavior_format_formatfactory.java">FormatFactory</a> to learn how the formating works for the different <a href="#TheDomainLayer_Properties">DomainObjectProperty</a> types. </p> TODO example 
+    <p></p> 
     <p></p> 
     <h2 id="ObjectBehavior_FieldMode">Field Mode</h2> 
     <p> </p> 
@@ -1093,7 +1256,7 @@
     <p> </p> 
     <p> <a id="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_reflection_behavior_parameterfactory_parameterfactorymodelfactory.java"></a> </p> 
     <p> The parameter factory allows you to create an object for an <a href="#ActionMethods">ActionMethod</a>. This object can then be edited by the user (depending how the <a href="#ActionMethods">ActionMethod</a> is annotated, see <a href="#ObjectBehavior_ExecutionMode">ExecutionMode</a> annotation) after which it is passed as method parameter when the <a href="#ActionMethods">ActionMethod</a> is invoked. </p> 
-    <p> The <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceDesignRules_MainMenu">MainMenu</a> will display all <a href="#ActionMethods">ActionMethod</a>s of all registered <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s that can directly be executed (without the need of an opened <a href="#TheDomainLayer_DomainObjects">DomainObject</a>). This means that only <a href="#ActionMethods">ActionMethod</a>s that either have no method parameter or have an <a href="#ObjectBehavior_ParameterRandomGenerator_ParameterFactoryAnnotation">ParameterFactory</a> are displayed as menu items in the <a href="#TheUserInterfaceLayer_GraphicalUserInterfaceDesignRules_MainMenu">MainMenu</a>. </p> 
+    <p> The <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a> will display all <a href="#ActionMethods">ActionMethod</a>s of all registered <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s that can directly be executed (without the need of an opened <a href="#TheDomainLayer_DomainObjects">DomainObject</a>). This means that only <a href="#ActionMethods">ActionMethod</a>s that either have no method parameter or have an <a href="#ObjectBehavior_ParameterRandomGenerator_ParameterFactoryAnnotation">ParameterFactory</a> are displayed as menu items in the <a href="#ActionMethods_ActionMethodsForServiceObjects_MainMenu">MainMenu</a>. </p> 
     <p> </p> 
     <h3 id="ObjectBehavior_ParameterRandomGenerator_ParameterFactoryAnnotation">ParameterFactory Annotation</h3> 
     <p> </p> 
@@ -1116,7 +1279,7 @@
     <h2 id="ObjectBehavior_Validation">Validation</h2> 
     <p> </p> 
     <p> <a id="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_reflection_behavior_validation_validationmethodfactory.java"></a> </p> 
-    <p> The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> sometimes let’s the user edit an <a href="#TheDomainLayer_DomainObjects">DomainObject</a> before it is passed as an <a href="#ActionMethods">ActionMethod</a> parameter (depending on how the <a href="#ActionMethods">ActionMethod</a> is annotated, see <a href="#ObjectBehavior_ExecutionMode">ExecutionMode</a>). The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> then validates the edited <a href="#TheDomainLayer_DomainObjects">DomainObject</a> using the <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_validation_defaultvalidationprovider.java">ValidationProvider</a> before the <a href="#ActionMethods">ActionMethod</a> is called.The <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_validation_defaultvalidationprovider.java">ValidationProvider</a> will use validation annotations and validation methods that are located in the <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s them selves to validate the <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s. </p> 
+    <p> The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> sometimes let’s the user edit an <a href="#TheDomainLayer_DomainObjects">DomainObject</a> before it is passed as an <a href="#ActionMethods">ActionMethod</a> parameter (depending on how the <a href="#ActionMethods">ActionMethod</a> is annotated, see <a href="#ObjectBehavior_ExecutionMode">ExecutionMode</a>). The <a href="#TheUserInterfaceLayer_UserInterfaceController">UserInterfaceController</a> then validates the edited <a href="#TheDomainLayer_DomainObjects">DomainObject</a> using the <a href="#TheProviderLayer_ValidationProvider">ValidationProvider</a> before the <a href="#ActionMethods">ActionMethod</a> is called.The <a href="#TheProviderLayer_ValidationProvider">ValidationProvider</a> will use validation annotations and validation methods that are located in the <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s them selves to validate the <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s. </p> 
     <h3 id="ObjectBehavior_Validation_ValidationAnnotations">Validation annotations</h3> 
     <p> A <a href="#TheDomainLayer_Properties">DomainObjectProperty</a>s can be validated by putting validation annotations before the getter method of a property. The <a href="#TheReflectFramework">ReflectFramework</a> uses the JSR303 complient Apache BVal library for validation. Please read the BVal documentation on how to annotate the getter methods of the properties. </p> 
     <h3 id="ObjectBehavior_Validation_ValidationMethods">Validation methods</h3> 
@@ -1146,7 +1309,7 @@
     <p> </p> 
     <p> <a id="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_junit_reflectapplicationforjunit.java"></a> The <a href="#ReflectApplicationProjectsGettingStarted_ReflectForJUnit">ReflectApplicationForJUnit</a> is created to be used for <a href="http://en.wikipedia.org/wiki/JUnit">JUnit tests</a>. Its big advantage over using one of the other <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a> implementations in a JUnit test is that the <a href="#ReflectApplicationProjectsGettingStarted_ReflectForJUnit">ReflectApplicationForJUnit</a>: </p> 
     <ul> 
-     <li>Does not have a <a href="#TheUserInterfaceLayer">UserInterfaceLayer</a>, because it is not needed for testing. None of the <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s, <a href="#TheDomainLayer_DomainObjects">DomainObject</a>'s <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a>, <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_language_defaultlanguageprovider.java">Provider</a> Objects that you create or maintain do know the UserTestObject Interface (see <a href="#TheReflectFramework_ArchitectureOfAnReflectApplication">ReflectArchitecture</a>). We do not need to test the <a href="#TheReflectFramework">ReflectFramework</a> <a href="#TheUserInterfaceLayer">UserInterfaceLayer</a> if we assume it works as it should.</li> 
+     <li>Does not have a <a href="#TheUserInterfaceLayer">UserInterfaceLayer</a>, because it is not needed for testing. None of the <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s, <a href="#TheDomainLayer_DomainObjects">DomainObject</a>'s <a href="#TheInfrastructureLayer_InfrastructureObjects">InfrastructureObject</a>, <a href="#TheProviderLayer_ProviderObjects">Provider</a> Objects that you create or maintain do know the UserTestObject Interface (see <a href="#TheReflectFramework_ArchitectureOfAnReflectApplication">ReflectArchitecture</a>). We do not need to test the <a href="#TheReflectFramework">ReflectFramework</a> <a href="#TheUserInterfaceLayer">UserInterfaceLayer</a> if we assume it works as it should.</li> 
      <li>You only need to register the classes that need testing. You register classes by overriding the get...Class or get...Classes methods in the <a href="#ReflectApplicationProjectsGettingStarted_ReflectForJUnit">ReflectApplicationForJUnit</a> class</li> 
     </ul> 
     <p> If you are new to JUnit test I recommend to watch one of the many instruction video's on the Internet. Your IDE most likely supports you with implementing and running JUnit tests (and if not you can probably download a plug-in for it) </p> 
@@ -1187,7 +1350,7 @@
     <p> The <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a> is an implementation of the <a href="#TheReflectFramework">ReflectFramework</a> for <a href="https://en.wikipedia.org/wiki/Command-line_interface">command line interfaces</a>.<br /> <br /> If you execute the application with parameters it will: </p> 
     <ul> 
      <li>parse the given command line</li> 
-     <li>call one of the <a href="#ActionMethods">ServiceObjectActionMethod</a>'s with an optional parameter</li> 
+     <li>call one of the <a href="#ActionMethods_ActionMethodsForServiceObjects">ServiceObjectActionMethod</a>'s with an optional parameter</li> 
      <li>Return the result of the method or return a message if a method was successfully executed or not</li> 
      <li>The <a href="#ReflectApplicationProjectsGettingStarted_ReflectForCommandLine">ReflectApplicationForCommandLine</a> is than terminated (state is lost unless the application stores state somehow)</li> 
     </ul> If you execute the application without parameters it will: 
@@ -1227,7 +1390,7 @@
     <p></p> 
     <h1 id="ReflectProviderProjects">Reflect Provider Projects</h1> 
     <p> <a id="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_documentation_reflectproviderprojects.java"></a> </p>
-    <p> <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_language_defaultlanguageprovider.java">Provider</a> objects can have different implementations. Depending on the type of application you can write your own implementation of a provider or use or extend one of the <a href="#ReflectProviderProjects">ReflectProviderProjects</a> that come with the framework. In example, depending on your application you might need a different <a href="#TheProviderLayer_AuthorizationProvider">AuthorizationProvider</a> such as: </p> 
+    <p> <a href="#TheProviderLayer_ProviderObjects">Provider</a> objects can have different implementations. Depending on the type of application you can write your own implementation of a provider or use or extend one of the <a href="#ReflectProviderProjects">ReflectProviderProjects</a> that come with the framework. In example, depending on your application you might need a different <a href="#TheProviderLayer_AuthorizationProvider">AuthorizationProvider</a> such as: </p> 
     <ul> 
      <li>hard coded authorization</li> 
      <li>file based authorization</li> 
@@ -1237,7 +1400,7 @@
      <li><a href="https://nl.wikipedia.org/wiki/Active_Directory">Active directory</a></li> 
      <li>or other</li> 
     </ul> 
-    <p> If you wish to use a non default <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_language_defaultlanguageprovider.java">Provider</a>, you need to register a <a href="ReferenceName_reflect_reflect-core_src_main_java_nth_reflect_fw_layer5provider_language_defaultlanguageprovider.java">Provider</a> by overwriting the matching <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication.get ...ProviderClass()</a> method. </p> 
+    <p> If you wish to use a non default <a href="#TheProviderLayer_ProviderObjects">Provider</a>, you need to register a <a href="#TheProviderLayer_ProviderObjects">Provider</a> by overwriting the matching <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication.get ...ProviderClass()</a> method. </p> 
     <p> The following sections will describe the optional <a href="#ReflectProviderProjects">ReflectProviderProjects</a> that come with the <a href="#TheReflectFramework">ReflectFramework</a>. </p> 
     <h2 id="ReflectProviderProjects_ReflectProviderTomcatAuthorization">ReflectProviderTomcatAuthorization</h2> 
     <p> TODO </p> 
@@ -1322,7 +1485,17 @@
         <li><a href="#TheUserInterfaceLayer_GraphicalUserInterfaceDesignRules">Graphical User Interface Design Rules</a></li>
        </ul></a></li>
      <li><a href="#ActionMethods">Action Methods
-       <ul></ul></a></li>
+       <ul>
+        <li><a href="#ActionMethods_ActionMethodsForDomainObjects">Action Methods for Domain Objects</a></li>
+        <li><a href="#ActionMethods_ActionMethodsForDomainObjectProperties">Action Methods for Domain Object Properties</a></li>
+        <li><a href="#ActionMethods_ActionMethodsForServiceObjects">Action Methods for Service Objects</a></li>
+        <li><a href="#ActionMethods_ActionMethodsConvention">Action Methods Convention</a></li>
+        <li><a href="#ActionMethods_ActionMethodNames">Action method names</a></li>
+        <li><a href="#ActionMethods_ActionMethodParameter">Action method parameter</a></li>
+        <li><a href="#ActionMethods_ActionMethodReturnValue">Action method return value</a></li>
+        <li><a href="#ActionMethods_ActionExecutionModes">Action execution modes</a></li>
+        <li><a href="#ActionMethods_ActionBehavior">Action behavior</a></li>
+       </ul></a></li>
      <li><a href="#ObjectBehavior">Object behavior
        <ul>
         <li><a href="#ObjectBehavior_DisplayName">Display Name</a></li>
