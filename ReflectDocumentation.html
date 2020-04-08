@@ -1545,65 +1545,65 @@
     <h1 id="ReflectUtilProjects">Reflect Util Projects</h1> 
     <p> <a id="ReferenceName_reflect-framework_reflect_reflect-core_src_main_java_nth_reflect_fw_documentation_reflectutilprojects.java"></a> <a href="#ReflectUtilProjects">ReflectUtilProjects</a> are reusable Java components that are or can be used in ReflectApplications. Most <a href="#ReflectUtilProjects">ReflectUtilProjects</a> do not require (have no dependencies with) the <a href="#TheReflectFramework">ReflectFramework</a>. </p>
     <p> </p> 
-    <h2 id="ReflectUtilProjects_Reflectutilmavenproject">reflect-util-maven-project</h2> 
+    <h2 id="ReflectUtilProjects_Reflectutilmavenplugin">reflect-util-maven-plugin</h2> 
     <p> <a id="ReferenceName_reflect-framework_reflect_reflect-util-maven-plugin_src_main_java_nth_reflect_util_maven_plugin_reflectutilmavenplugin.java"></a> <a href="#ReflectUtilProjects_Reflectutiljavaarchivescanner">ReflectUtilMavenPlugin</a> can be used to execute goals for a <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a>. </p> 
-    <h3 id="ReflectUtilProjects_Reflectutilmavenproject_AddingAReflectUtilMavenPluginToAReflectApplication">Adding a <a href="#ReflectUtilProjects_Reflectutiljavaarchivescanner">ReflectUtilMavenPlugin</a> to a <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a></h3> Add the following XML tags to the pom.xml file: 
+    <h3 id="ReflectUtilProjects_Reflectutilmavenplugin_AddingAReflectUtilMavenPluginToAReflectApplication">Adding a <a href="#ReflectUtilProjects_Reflectutiljavaarchivescanner">ReflectUtilMavenPlugin</a> to a <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a></h3> Add the following XML tags to the pom.xml file: 
     <pre>
  &lt;build&gt;
  	&lt;plugins&gt;
  		&lt;plugin&gt;
  			&lt;groupId&gt;com.github.reflect-framework&lt;/groupId&gt;
  			&lt;version&gt;0.0.2-SNAPSHOT&lt;/version&gt;
- 			&lt;artifactId&gt;reflect-utils-maven-plugin&lt;/artifactId&gt;
+ 			&lt;artifactId&gt;reflect-util-maven-plugin&lt;/artifactId&gt;
 		&lt;/plugin&gt;
 	&lt;/plugins&gt;
  &lt;/build&gt;}
  </pre> 
-    <h3 id="ReflectUtilProjects_Reflectutilmavenproject_ExecutingAReflectUtilMavenPluginGoal">Executing a <a href="#ReflectUtilProjects_Reflectutiljavaarchivescanner">ReflectUtilMavenPlugin</a> goal</h3> 
+    <h3 id="ReflectUtilProjects_Reflectutilmavenplugin_ExecutingAReflectUtilMavenPluginGoal">Executing a <a href="#ReflectUtilProjects_Reflectutiljavaarchivescanner">ReflectUtilMavenPlugin</a> goal</h3> 
     <ul> 
-     <li>In Eclipse you can execute goals by right clicking the project, selecting Debug as, Maven build... and entering the goal.<br /> e.g.: com.github.reflect-framework:reflect-utils-maven-plugin:<a href="#ReflectUtilProjects_Reflectutilmavenproject_UpdateLanguageFilesGoal">UpdateLanguageFiles</a></li> 
-     <li>You can also open a command console, go to the project folder and enter mvn followed by the goal.<br /> e.g.:mvn com.github.reflect-framework:reflect-utils-maven-plugin:<a href="#ReflectUtilProjects_Reflectutilmavenproject_UpdateLanguageFilesGoal">UpdateLanguageFiles</a> </li> 
+     <li>In Eclipse you can execute goals by right clicking the project, selecting Debug as, Maven build... and entering the goal.<br /> e.g.: com.github.reflect-framework:reflect-util-maven-plugin:<a href="#ReflectUtilProjects_Reflectutilmavenplugin_UpdateLanguageFilesGoal">UpdateLanguageFiles</a></li> 
+     <li>You can also open a command console, go to the project folder and enter mvn followed by the goal.<br /> e.g.:mvn com.github.reflect-framework:reflect-util-maven-plugin:<a href="#ReflectUtilProjects_Reflectutilmavenplugin_UpdateLanguageFilesGoal">UpdateLanguageFiles</a> </li> 
     </ul> 
-    <h3 id="ReflectUtilProjects_Reflectutilmavenproject_UpdateLanguageFilesGoal"><a href="#ReflectUtilProjects_Reflectutilmavenproject_UpdateLanguageFilesGoal">UpdateLanguageFiles</a> goal</h3> 
+    <h3 id="ReflectUtilProjects_Reflectutilmavenplugin_UpdateLanguageFilesGoal"><a href="#ReflectUtilProjects_Reflectutilmavenplugin_UpdateLanguageFilesGoal">UpdateLanguageFiles</a> goal</h3> 
     <p> <a id="ReferenceName_reflect-framework_reflect_reflect-util-maven-plugin_src_main_java_nth_reflect_util_maven_plugin_language_files_updatelanguagefiles.java"></a> The <a href="#ReflectUtilProjects_Reflectutiljavaarchivescanner_UpdateLanguageFilesGoal">UpdateLanguageFiles</a> goal will update language files. It will: </p> 
     <ul> 
      <li>Find all texts within a Reflect application that will need to be translated</li> 
      <li>Adds key and text values for text that where not already translated to the language file. New text values will start with the @(at) symbol to indicate that the English default text (derived from the code or a annotation) needs to be translated to another language.</li> 
-     <li>adds the &quot;depricated.&quot; prefix to the key's for deprecated text that where where already translated but are no longer in use in the code.</li> 
+     <li>Adds the &quot;deprecated.&quot; prefix to the key's for deprecated text that where where already translated but are no longer in use in the code.</li> 
     </ul> 
     <p> A new language file is created by creating a new empty text file (e.g. src/test/resources/language_de.properties for the German language). New or empty <a href="ReferenceName_reflect-framework_reflect_reflect-util-maven-plugin_src_main_java_nth_reflect_util_maven_plugin_language_files_file_languagefile.java">LanguageFile</a> or existing <a href="ReferenceName_reflect-framework_reflect_reflect-util-maven-plugin_src_main_java_nth_reflect_util_maven_plugin_language_files_file_languagefile.java">LanguageFile</a> can be updated by executing the {@link UpdateLanguageFiles| goal when when changes to the <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s and <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s have been completed. The files can then be translated. </p> 
-    <p> You can execute the <a href="#ReflectUtilProjects_Reflectutiljavaarchivescanner_UpdateLanguageFilesGoal">UpdateLanguageFiles</a> goal after installing the <a href="#ReflectUtilProjects_Reflectutiljavaarchivescanner">ReflectUtilMavenPlugin</a>. The Maven goal can than be executed: com.github.reflect-framework:reflect-maven-plugin:updateLanguageFiles </p> 
+    <p> You can execute the <a href="#ReflectUtilProjects_Reflectutiljavaarchivescanner_UpdateLanguageFilesGoal">UpdateLanguageFiles</a> goal after installing the <a href="#ReflectUtilProjects_Reflectutiljavaarchivescanner">ReflectUtilMavenPlugin</a>. The Maven goal can than be executed: com.github.reflect-framework:reflect-util-maven-plugin:updateLanguageFiles </p> 
     <p></p> 
     <p></p> 
     <p> </p> 
     <h2 id="ReflectUtilProjects_Reflectutiljavaarchivescanner">reflect-util-java-archive-scanner</h2> 
     <p> <a id="ReferenceName_reflect-framework_reflect_reflect-util-maven-plugin_src_main_java_nth_reflect_util_maven_plugin_reflectutilmavenplugin.java"></a> <a href="#ReflectUtilProjects_Reflectutiljavaarchivescanner">ReflectUtilMavenPlugin</a> can be used to execute goals for a <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a>. </p> 
-    <h3 id="ReflectUtilProjects_Reflectutilmavenproject_AddingAReflectUtilMavenPluginToAReflectApplication">Adding a <a href="#ReflectUtilProjects_Reflectutiljavaarchivescanner">ReflectUtilMavenPlugin</a> to a <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a></h3> Add the following XML tags to the pom.xml file: 
+    <h3 id="ReflectUtilProjects_Reflectutilmavenplugin_AddingAReflectUtilMavenPluginToAReflectApplication">Adding a <a href="#ReflectUtilProjects_Reflectutiljavaarchivescanner">ReflectUtilMavenPlugin</a> to a <a href="#TheReflectFramework_TheReflectApplication">ReflectApplication</a></h3> Add the following XML tags to the pom.xml file: 
     <pre>
  &lt;build&gt;
  	&lt;plugins&gt;
  		&lt;plugin&gt;
  			&lt;groupId&gt;com.github.reflect-framework&lt;/groupId&gt;
  			&lt;version&gt;0.0.2-SNAPSHOT&lt;/version&gt;
- 			&lt;artifactId&gt;reflect-utils-maven-plugin&lt;/artifactId&gt;
+ 			&lt;artifactId&gt;reflect-util-maven-plugin&lt;/artifactId&gt;
 		&lt;/plugin&gt;
 	&lt;/plugins&gt;
  &lt;/build&gt;}
  </pre> 
-    <h3 id="ReflectUtilProjects_Reflectutilmavenproject_ExecutingAReflectUtilMavenPluginGoal">Executing a <a href="#ReflectUtilProjects_Reflectutiljavaarchivescanner">ReflectUtilMavenPlugin</a> goal</h3> 
+    <h3 id="ReflectUtilProjects_Reflectutilmavenplugin_ExecutingAReflectUtilMavenPluginGoal">Executing a <a href="#ReflectUtilProjects_Reflectutiljavaarchivescanner">ReflectUtilMavenPlugin</a> goal</h3> 
     <ul> 
-     <li>In Eclipse you can execute goals by right clicking the project, selecting Debug as, Maven build... and entering the goal.<br /> e.g.: com.github.reflect-framework:reflect-utils-maven-plugin:<a href="#ReflectUtilProjects_Reflectutiljavaarchivescanner_UpdateLanguageFilesGoal">UpdateLanguageFiles</a></li> 
-     <li>You can also open a command console, go to the project folder and enter mvn followed by the goal.<br /> e.g.:mvn com.github.reflect-framework:reflect-utils-maven-plugin:<a href="#ReflectUtilProjects_Reflectutiljavaarchivescanner_UpdateLanguageFilesGoal">UpdateLanguageFiles</a> </li> 
+     <li>In Eclipse you can execute goals by right clicking the project, selecting Debug as, Maven build... and entering the goal.<br /> e.g.: com.github.reflect-framework:reflect-util-maven-plugin:<a href="#ReflectUtilProjects_Reflectutiljavaarchivescanner_UpdateLanguageFilesGoal">UpdateLanguageFiles</a></li> 
+     <li>You can also open a command console, go to the project folder and enter mvn followed by the goal.<br /> e.g.:mvn com.github.reflect-framework:reflect-util-maven-plugin:<a href="#ReflectUtilProjects_Reflectutiljavaarchivescanner_UpdateLanguageFilesGoal">UpdateLanguageFiles</a> </li> 
     </ul> 
-    <h3 id="ReflectUtilProjects_Reflectutilmavenproject_UpdateLanguageFilesGoal"><a href="#ReflectUtilProjects_Reflectutiljavaarchivescanner_UpdateLanguageFilesGoal">UpdateLanguageFiles</a> goal</h3> 
+    <h3 id="ReflectUtilProjects_Reflectutilmavenplugin_UpdateLanguageFilesGoal"><a href="#ReflectUtilProjects_Reflectutiljavaarchivescanner_UpdateLanguageFilesGoal">UpdateLanguageFiles</a> goal</h3> 
     <p> <a id="ReferenceName_reflect-framework_reflect_reflect-util-maven-plugin_src_main_java_nth_reflect_util_maven_plugin_language_files_updatelanguagefiles.java"></a> The <a href="#ReflectUtilProjects_Reflectutiljavaarchivescanner_UpdateLanguageFilesGoal">UpdateLanguageFiles</a> goal will update language files. It will: </p> 
     <ul> 
      <li>Find all texts within a Reflect application that will need to be translated</li> 
      <li>Adds key and text values for text that where not already translated to the language file. New text values will start with the @(at) symbol to indicate that the English default text (derived from the code or a annotation) needs to be translated to another language.</li> 
-     <li>adds the &quot;depricated.&quot; prefix to the key's for deprecated text that where where already translated but are no longer in use in the code.</li> 
+     <li>Adds the &quot;deprecated.&quot; prefix to the key's for deprecated text that where where already translated but are no longer in use in the code.</li> 
     </ul> 
     <p> A new language file is created by creating a new empty text file (e.g. src/test/resources/language_de.properties for the German language). New or empty <a href="ReferenceName_reflect-framework_reflect_reflect-util-maven-plugin_src_main_java_nth_reflect_util_maven_plugin_language_files_file_languagefile.java">LanguageFile</a> or existing <a href="ReferenceName_reflect-framework_reflect_reflect-util-maven-plugin_src_main_java_nth_reflect_util_maven_plugin_language_files_file_languagefile.java">LanguageFile</a> can be updated by executing the {@link UpdateLanguageFiles| goal when when changes to the <a href="#TheServiceLayer_ServiceObjects">ServiceObject</a>s and <a href="#TheDomainLayer_DomainObjects">DomainObject</a>s have been completed. The files can then be translated. </p> 
-    <p> You can execute the <a href="#ReflectUtilProjects_Reflectutiljavaarchivescanner_UpdateLanguageFilesGoal">UpdateLanguageFiles</a> goal after installing the <a href="#ReflectUtilProjects_Reflectutiljavaarchivescanner">ReflectUtilMavenPlugin</a>. The Maven goal can than be executed: com.github.reflect-framework:reflect-maven-plugin:updateLanguageFiles </p> 
+    <p> You can execute the <a href="#ReflectUtilProjects_Reflectutiljavaarchivescanner_UpdateLanguageFilesGoal">UpdateLanguageFiles</a> goal after installing the <a href="#ReflectUtilProjects_Reflectutiljavaarchivescanner">ReflectUtilMavenPlugin</a>. The Maven goal can than be executed: com.github.reflect-framework:reflect-util-maven-plugin:updateLanguageFiles </p> 
     <p></p> 
     <p></p> 
     <p></p> 
@@ -1733,7 +1733,7 @@
        <ul></ul></a></li>
      <li><a href="#ReflectUtilProjects">Reflect Util Projects
        <ul>
-        <li><a href="#ReflectUtilProjects_Reflectutilmavenproject">reflect-util-maven-project</a></li>
+        <li><a href="#ReflectUtilProjects_Reflectutilmavenplugin">reflect-util-maven-plugin</a></li>
         <li><a href="#ReflectUtilProjects_Reflectutiljavaarchivescanner">reflect-util-java-archive-scanner</a></li>
        </ul></a></li>
      <li><a href="#Downloads">Downloads
